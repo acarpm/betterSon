@@ -64,8 +64,8 @@ jobs:
         run: |
           choco install innosetup -y --no-progress
           $version = "${{ github.ref_name }}".TrimStart("v")
-          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DAppVersion=$version" installer\batconnect.iss
-          if (-not (Test-Path out\BatConnect-Setup.exe)) { throw "Installateur non généré" }
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DAppVersion=$version" installer\betterson.iss
+          if (-not (Test-Path out\BetterSon-Setup.exe)) { throw "Installateur non généré" }
 
       - uses: actions/upload-artifact@v4
         with:
