@@ -10,6 +10,7 @@ import serial
 
 import envoi
 import theme as T
+import identite
 from instruments import ea as charge  # pilote de la charge EA (partagé)
 from theme import BG, BLEU, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT, GraphesTemps
 
@@ -100,7 +101,7 @@ class PageEnCours(tk.Frame):
         self.app.btn_menu.config(state="disabled" if mode == "test" else "normal")
 
     # ---------- test ----------
-    def demarrer(self, p, serie, port, chemin):
+    def demarrer(self, p, serie, port, chemin, technicien=""):
         if self.en_test():
             return
         for serie in self.series.values():
@@ -110,6 +111,8 @@ class PageEnCours(tk.Frame):
         self.lbl_profil.config(text=p["nom"])
         morceaux = [f"N° de série : {serie}"] if serie else []
         morceaux.append(T.resume_profil(p))
+        if technicien:
+            morceaux.append(f"Technicien : {technicien}")
         self.lbl_detail.config(text="   ·   ".join(morceaux))
         self.graphes.definir(self.series, seuil_v=p["tension_coupure"])
         self.dernier_csv = chemin
@@ -117,7 +120,7 @@ class PageEnCours(tk.Frame):
         self._boutons("test")
         self._etat("Test en cours… ne débranchez pas la batterie.", BLEU)
         self.thread = threading.Thread(
-            target=self._test, args=(port, chemin, p["tension_coupure"], p["courant"], p["puissance"]), daemon=True)
+            target=self._test, args=(port, chemin, p["tension_coupure"], p["courant"], p["puissance"], technicien), daemon=True)
         self.thread.start()
 
     def _arreter(self):
@@ -130,7 +133,7 @@ class PageEnCours(tk.Frame):
         if self.thread:
             self.thread.join(timeout=5)  # laisse le temps de couper l'entrée de la charge
 
-    def _test(self, port, chemin, v_cut, courant, puissance):
+    def _test(self, port, chemin, v_cut, courant, puissance, technicien=""):
         """Thread de test : seul à parler à la charge pendant toute sa durée."""
         q = self.file
         try:
@@ -141,7 +144,8 @@ class PageEnCours(tk.Frame):
                 try:
                     charge.regler_charge(s, None, courant, puissance)
                     ah = wh = 0.0
-                    with open(chemin, "w", newline="") as f:
+                    with open(chemin, "w", newline="", encoding="utf-8") as f:
+                        f.write(identite.lignes_signature(technicien))  # signature : technicien et poste, lignes de commentaire
                         ecr = csv.writer(f)
                         ecr.writerow(["temps_s", "V", "A", "W", "Ah", "Wh"])
                         if not charge.entree(s, True):

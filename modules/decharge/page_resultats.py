@@ -30,7 +30,7 @@ class PageResultats(tk.Frame):
         self.var_filtre = tk.StringVar()
         e = ttk.Entry(gauche, textvariable=self.var_filtre, font=f(12))
         e.pack(fill="x")
-        tk.Label(gauche, text="Filtrer par profil ou n° de série", bg=BG, fg=GRIS, font=f(10),
+        tk.Label(gauche, text="Filtrer par profil, n° de série, technicien ou poste", bg=BG, fg=GRIS, font=f(10),
                  anchor="w").pack(fill="x", pady=(2, 8))
         self.var_filtre.trace_add("write", lambda *a: self._filtrer())
         self.liste = ListeLignes(gauche, f, hauteur=300, radio=False, on_select=self._afficher,
@@ -95,7 +95,7 @@ class PageResultats(tk.Frame):
 
     def _filtrer(self):
         mots = self.var_filtre.get().lower().split()
-        self.affiches = [r for r in self.tous if all(m in r["nom"].lower() for m in mots)]
+        self.affiches = [r for r in self.tous if all(m in f"{r['nom']} {r['technicien'] or ''} {r['poste'] or ''}".lower() for m in mots)]
         items = [(r["nom"], f"{r['date']:%d/%m/%Y %H:%M}  ·  {r['ah']:.2f} Ah  ·  {r['wh']:.0f} Wh")
                  for r in self.affiches]
         self.liste.remplir(items, 0 if items else -1)
@@ -119,7 +119,8 @@ class PageResultats(tk.Frame):
             self.graphes.definir({k: [] for k in VIDE})
             return
         self.lbl_nom.config(text=r["nom"])
-        self.lbl_date.config(text=f"{r['date']:%d/%m/%Y à %H:%M}")
+        self.lbl_date.config(text=f"{r['date']:%d/%m/%Y à %H:%M}  ·  Technicien : {r['technicien'] or 'non renseigné'}"
+                                           + (f"  ·  Poste : {r['poste']}" if r["poste"] else ""))
         v = self.vals
         v["ah"].config(text=f"{r['ah']:.3f} Ah")
         v["wh"].config(text=f"{r['wh']:.1f} Wh")

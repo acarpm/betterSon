@@ -9,7 +9,7 @@ from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT
 from instruments.daly import resume_cellules
 
 from .acquisition import Acquisition
-from .widgets import BarresCellules, Mesures, resume_equilibrage
+from .widgets import BarresCellules, Mesures, resume_equilibrage, texte_courant
 
 ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
 
@@ -34,13 +34,13 @@ class PageCellules(tk.Frame):
         tk.Label(textes, text="Tensions des cellules", bg=BG, fg=TEXTE, font=f(22, True), anchor="w").pack(fill="x")
         self.lbl_etat = tk.Label(textes, text="", bg=BG, fg=GRIS, font=f(13, True), anchor="w")
         self.lbl_etat.pack(fill="x", pady=(2, 0))
-        self.lbl_eq = tk.Label(textes, text="", bg=BG, fg=GRIS, font=f(12), anchor="w")
+        self.lbl_eq = tk.Label(textes, text="", bg=BG, fg=GRIS, font=f(12), anchor="w", justify="left", wraplength=820)
         self.lbl_eq.pack(fill="x")
         tk.Frame(corps, bg=BORD, height=1).pack(fill="x", pady=(12, 12))
 
-        self.mesures = Mesures(corps, f, [("v_pack", "Tension pack"), ("moyenne", "Moyenne des cellules"),
+        self.mesures = Mesures(corps, f, [("v_pack", "Tension pack"), ("courant", "Courant d'équilibrage"),
                                           ("ecart", "Écart max - min"), ("haute", "Plus haute"),
-                                          ("basse", "Plus basse"), ("soc", "Charge (SoC)")])
+                                          ("basse", "Plus basse"), ("moyenne", "Moyenne"), ("soc", "Charge (SoC)")])
         self.mesures.masquer("soc")  # n'apparaît que si l'appareil fournit un SoC (un équilibreur n'en a pas)
         self.mesures.pack(fill="x")
         tk.Label(corps, text="Une barre par cellule (série)", bg=BG, fg=TEXTE, font=f(14, True), anchor="w").pack(fill="x", pady=(14, 0))
@@ -131,16 +131,17 @@ class PageCellules(tk.Frame):
         mesurees = [v for v in cel if v is not None]
         pack = d["v_pack"] if d["v_pack"] is not None else (sum(mesurees) if mesurees and len(mesurees) == len(cel) else None)
         m.regler("v_pack", "--" if pack is None else f"{pack:.2f} V")
+        m.regler("courant", texte_courant(d["courant"], d["equilibrage"]))
         if r:
             m.regler("moyenne", f"{sum(mesurees) / len(mesurees):.3f} V")
             m.regler("ecart", f"{r['ecart_mv']:.0f} mV")
             m.regler("haute", f"{r['v_max']:.3f} V", f"Plus haute · C{r['i_max'] + 1}")
             m.regler("basse", f"{r['v_min']:.3f} V", f"Plus basse · C{r['i_min'] + 1}")
-        m.masquer("soc", d["soc"] is None)
-        if d["soc"] is not None:
+        m.masquer("soc", not d["soc"])  # 0 ou absent : un équilibreur n'a pas de SoC
+        if d["soc"]:
             m.regler("soc", f"{d['soc']:.0f} %")
         if cel:
             self.barres.definir(cel, d["equilibrage"])
-            texte, couleur = resume_equilibrage(d["equilibrage"])
+            texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"))
             self.lbl_eq.config(text=texte, fg=couleur)
         self._etat(f"● Lecture en direct · {len(cel)} cellules", VERT)

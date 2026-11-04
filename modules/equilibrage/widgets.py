@@ -5,14 +5,39 @@ import tkinter as tk
 from theme import BG, BORD, CARTE, GRIS, LIME, ORANGE, ROUGE, TEAL, TEXTE
 
 
-def resume_equilibrage(flags):
-    """(texte, couleur) décrivant ce que fait l'appareil, d'après son état d'équilibrage par cellule (commande 0x97)."""
-    if flags is None:
-        return "Équilibrage : état non signalé par l'appareil", GRIS
-    actives = [f"C{i + 1}" for i, a in enumerate(flags) if a]
-    if not actives:
-        return "Équilibrage : l'appareil n'équilibre aucune cellule en ce moment", GRIS
-    return f"Équilibrage en cours sur {', '.join(actives)}", ORANGE
+ECART_ANORMAL_MV = 30   # au-delà, un équilibreur au repos mérite d'être signalé (le seuil réel de l'appareil est inconnu)
+
+
+def equilibrage_actif(flags, courant):
+    """Vrai si l'appareil signale une activité : cellule en cours d'équilibrage (0x97) ou courant d'équilibrage non nul."""
+    return any(flags or []) or (courant is not None and abs(courant) >= 0.05)
+
+
+def texte_courant(courant, flags=None):
+    """Texte de la tuile « Courant d'équilibrage ».
+
+    Mesuré sur l'appareil : le champ courant de la trame 0x90 reste à 0,0 A même pendant l'équilibrage (cellule signalée
+    active par 0x97). Un 0,0 A pendant une activité signalée n'est donc pas une mesure : « non fourni ».
+    """
+    if courant is None:
+        return "--"
+    if abs(courant) >= 0.05:
+        return f"{courant:+.1f} A"
+    return "non fourni" if any(flags or []) else "0.0 A"
+
+
+def resume_equilibrage(flags, courant=None, ecart_mv=None):
+    """(texte, couleur) décrivant ce que fait l'appareil : états d'équilibrage par cellule (0x97) et courant d'équilibrage."""
+    actives = [f"C{i + 1}" for i, a in enumerate(flags or []) if a]
+    if equilibrage_actif(flags, courant):
+        detail = f" sur {', '.join(actives)}" if actives else ""
+        amp = f" · courant {courant:+.1f} A" if courant is not None and abs(courant) >= 0.05 else ""
+        return f"Équilibrage en cours{detail}{amp}", ORANGE
+    mesure = ("courant 0,0 A" + (", aucune cellule active" if flags is not None else "")) if courant is not None else "aucune activité signalée"
+    if ecart_mv is not None and ecart_mv >= ECART_ANORMAL_MV:
+        return (f"L'appareil n'équilibre pas alors que l'écart est de {ecart_mv:.0f} mV ({mesure}) : équilibrage désactivé, "
+                "réservé à la charge, ou seuil de déclenchement plus élevé ? Voir les réglages de l'appareil."), ROUGE
+    return f"Équilibrage au repos ({mesure}) : rien à équilibrer, ou l'écart n'a pas atteint le seuil de l'appareil", GRIS
 
 
 class Mesures(tk.Frame):
@@ -23,8 +48,9 @@ class Mesures(tk.Frame):
 
     def __init__(self, parent, f, champs, taille=22, fond=BG):
         super().__init__(parent, bg=fond)
-        self.vals, self.titres, self.blocs, self._titres_defaut = {}, {}, {}, {}
+        self.vals, self.titres, self.blocs, self._titres_defaut, self._colonnes = {}, {}, {}, {}, {}
         for col, (cle, titre) in enumerate(champs):
+            self._colonnes[cle] = col
             self.columnconfigure(col, weight=1, uniform="m")
             bloc = tk.Frame(self, bg=fond)
             bloc.grid(row=0, column=col, sticky="w")
@@ -40,10 +66,13 @@ class Mesures(tk.Frame):
             self.titres[cle].config(text=titre)
 
     def masquer(self, cle, cache=True):
+        col = self._colonnes[cle]
         if cache:
             self.blocs[cle].grid_remove()
+            self.columnconfigure(col, weight=0, uniform="")   # une valeur masquée ne prend plus de place
         else:
             self.blocs[cle].grid()
+            self.columnconfigure(col, weight=1, uniform="m")
 
     def effacer(self):
         for cle, lbl in self.vals.items():

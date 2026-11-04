@@ -7,10 +7,12 @@ from tkinter import messagebox, ttk
 
 import envoi
 import theme as T
+import identite
+from dialogue_identite import SelecteurTechnicien
 from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEAL, TEXTE, VERT, GraphesTemps
 
 from .acquisition import Acquisition, CritereFin
-from .widgets import BarresCellules, Mesures, resume_equilibrage
+from .widgets import BarresCellules, Mesures, equilibrage_actif, resume_equilibrage, texte_courant
 
 ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
 
@@ -35,13 +37,14 @@ class PageSession(tk.Frame):
         f = app.f
         self.file = queue.Queue()
         self.acq = None
-        self.series = {"ecart": [], "vpack": []}
+        self.series = {"ecart": [], "courant": []}
         self.ecart_initial = None
         self.chemin = None
         self._visible = False
         self._dernier_etat_instrument = None
         self._cible = self._stable = 0.0
         self._deja_equilibre = False
+        self._activite_vue = False
 
         corps = tk.Frame(self, bg=BG)
         corps.pack(fill="both", expand=True, padx=28, pady=(18, 16))
@@ -55,6 +58,8 @@ class PageSession(tk.Frame):
         T.titre(gauche, "Session d'équilibrage", f)
         self.vars = {"serie": tk.StringVar(), "cible": tk.StringVar(value="10"),
                      "duree": tk.StringVar(value="180"), "stable": tk.StringVar(value="60")}
+        self.sel_technicien = SelecteurTechnicien(gauche, f)
+        self.sel_technicien.pack(fill="x", pady=(8, 0))
         self.champs = []
         for cle, texte in (("serie", "N° de série du pack (facultatif)"), ("cible", "Écart cible max - min (mV)"),
                            ("duree", "Durée maximale (minutes)"), ("stable", "Tenir la cible pendant (secondes)")):
@@ -80,17 +85,17 @@ class PageSession(tk.Frame):
         # ---- droite : mesures, cellules, graphe ----
         droite = tk.Frame(corps, bg=BG)
         droite.grid(row=0, column=1, sticky="nsew")
-        self.mesures = Mesures(droite, f, [("ecart", "Écart actuel"), ("initial", "Écart initial"), ("v_pack", "Tension pack"),
+        self.mesures = Mesures(droite, f, [("ecart", "Écart actuel"), ("initial", "Écart initial"), ("courant", "Courant d'équilibrage"),
                                            ("duree", "Durée"), ("haute", "Plus haute"), ("basse", "Plus basse")], taille=19)
         self.mesures.pack(fill="x")
-        self.lbl_eq = tk.Label(droite, text="", bg=BG, fg=GRIS, font=f(12), anchor="w")
+        self.lbl_eq = tk.Label(droite, text="", bg=BG, fg=GRIS, font=f(12), anchor="w", justify="left", wraplength=640)
         self.lbl_eq.pack(fill="x", pady=(4, 0))
         tk.Frame(droite, bg=BORD, height=1).pack(fill="x", pady=(8, 8))
         self.barres = BarresCellules(droite, f, hauteur=150)
         self.barres.pack(fill="x")
         tk.Frame(droite, bg=BORD, height=1).pack(fill="x", pady=(8, 8))
         self.graphes = GraphesTemps(droite, f, vide="La courbe d'écart apparaît dès les premières mesures",
-                                    defs=[("ecart", "Écart max - min", "mV", ROUGE), ("vpack", "Tension pack", "V", TEAL)],
+                                    defs=[("ecart", "Écart max - min", "mV", ROUGE), ("courant", "Courant d'équilibrage", "A", TEAL)],
                                     libelle_seuil="cible")
         self.graphes.pack(fill="both", expand=True)
         self.graphes.definir(self.series)
@@ -100,6 +105,7 @@ class PageSession(tk.Frame):
     # ---------- cycle de vie ----------
     def on_show(self):
         self._visible = True
+        self.sel_technicien.rafraichir()
         if not self.occupe():
             self._dernier_etat_instrument = None
             if not self.app.instruments.port(ID):
@@ -143,6 +149,9 @@ class PageSession(tk.Frame):
     def _demarrer(self):
         if self.occupe():
             return
+        technicien = self.sel_technicien.valeur()
+        if not technicien:
+            return messagebox.showwarning("Technicien", "Choisissez le technicien qui commande cette session (bouton « Gérer » pour l'ajouter).")
         inst = self.app.instruments
         if inst.en_recherche(ID):
             return messagebox.showinfo("Recherche en cours", "Recherche de l'équilibreur en cours, patientez quelques secondes.")
@@ -162,14 +171,15 @@ class PageSession(tk.Frame):
         for s in self.series.values():
             s.clear()
         self.ecart_initial = None
-        self._cible, self._stable, self._deja_equilibre = cible, stable, False
+        self._cible, self._stable, self._deja_equilibre, self._activite_vue = cible, stable, False, False
         self.lbl_eq.config(text="")
         self.mesures.effacer()
         self.barres.vider()
         self.graphes.definir(self.series, seuil_v=cible)
         self.file = queue.Queue()
         self.acq = Acquisition(port, self.file, intervalle=INTERVALLE_S, chemin_csv=self.chemin, baud=inst.instrument(ID).baud,
-                               critere=CritereFin(cible, stable, duree * 60), silence_max_s=SILENCE_MAX_S)
+                               critere=CritereFin(cible, stable, duree * 60), silence_max_s=SILENCE_MAX_S,
+                               signature=identite.lignes_signature(technicien))
         self.acq.demarrer()
         self._mode(True)
         self._etat("Session en cours… ne débranchez pas l'équilibreur.", T.BLEU)
@@ -210,13 +220,14 @@ class PageSession(tk.Frame):
             m.regler("haute", f"{d['v_max']:.3f} V", f"Plus haute · C{d['i_max'] + 1}")
             m.regler("basse", f"{d['v_min']:.3f} V", f"Plus basse · C{d['i_min'] + 1}")
             self.series["ecart"].append((t, ecart))
-            if d["v_pack"] is not None:
-                self.series["vpack"].append((t, d["v_pack"]))
+            if d["courant"] is not None:
+                self.series["courant"].append((t, d["courant"]))
             self.graphes.tracer()
-        m.regler("v_pack", "--" if d["v_pack"] is None else f"{d['v_pack']:.2f} V")
+        m.regler("courant", texte_courant(d["courant"], d["equilibrage"]))
         m.regler("duree", T.duree(t))
         self.barres.definir(d["cellules"], d["equilibrage"])
-        texte, couleur = resume_equilibrage(d["equilibrage"])
+        self._activite_vue = self._activite_vue or equilibrage_actif(d["equilibrage"], d["courant"])
+        texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"))
         self.lbl_eq.config(text=texte, fg=couleur)
         if self._deja_equilibre:  # c'est le cas d'un pack déjà équilibré : l'appareil n'a rien à corriger, il ne se passera rien
             self._etat(f"Pack déjà équilibré : écart {self.ecart_initial:.0f} mV, sous la cible de {self._cible:g} mV. "
@@ -234,6 +245,9 @@ class PageSession(tk.Frame):
         fin = "--" if r["ecart_final"] is None else f"{r['ecart_final']:.0f} mV"
         debut = "--" if r["ecart_initial"] is None else f"{r['ecart_initial']:.0f} mV"
         bilan = f"écart {debut} → {fin} en {T.duree(r['duree_s'])} · enregistré dans sessions/"
+        sans_activite = (not self._activite_vue and r["ecart_final"] is not None and r["ecart_final"] > self._cible)
+        if sans_activite:  # l'appareil n'a rien fait pendant toute la session : à dire, ce n'est pas un « résultat »
+            bilan += " · AUCUNE activité d'équilibrage observée : l'appareil n'a pas équilibré (voir ses réglages)"
         if motif == "cible":
             self._etat("✔ Écart cible atteint et tenu · " + bilan, VERT)
         elif motif == "duree":
@@ -241,4 +255,4 @@ class PageSession(tk.Frame):
         elif motif == "silence":
             self._etat("Session arrêtée : l'appareil ne répond plus · " + bilan, ROUGE)
         else:
-            self._etat("Session arrêtée manuellement · " + bilan, GRIS)
+            self._etat("Session arrêtée manuellement · " + bilan, ORANGE if sans_activite else GRIS)

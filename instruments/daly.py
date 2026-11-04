@@ -92,10 +92,12 @@ class Daly:
         if not t:
             return None
         t = t[0]
-        v, i, s = (t[4] << 8) | t[5], (t[6] << 8) | t[7], (t[8] << 8) | t[9]
-        # Un équilibreur n'a ni courant ni SoC : il répond 0 (courant -3000 A) ou 30000 (SoC 3000 %). Valeur absente, pas mesure.
+        # Octets de données de la réponse 0x90 (t[4:12]) :  0-1 tension du pack (0,1 V) | 2-3 tension de collecte |
+        #                                                    4-5 courant (0,1 A, décalage 30000) | 6-7 SoC (0,1 %)
+        # Pour un équilibreur actif, « courant » est le courant d'équilibrage : 0 A au repos, non nul quand il équilibre.
+        v, i, s = (t[4] << 8) | t[5], (t[8] << 8) | t[9], (t[10] << 8) | t[11]
         return {"v_pack": None if v in (0, 0xFFFF) else v / 10.0,
-                "courant": None if i in (0, 0xFFFF) else (i - 30000) / 10.0,
+                "courant": None if i in (0, 0xFFFF) else (i - 30000) / 10.0,   # 0 ou 0xFFFF = champ non géré
                 "soc": s / 10.0 if s <= 1000 else None}
 
     def lire_nombre_cellules(self):

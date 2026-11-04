@@ -15,6 +15,7 @@ import urllib.request
 from urllib.parse import quote
 
 import config
+import identite
 import theme as T
 
 FICHIER_FILE = os.path.join(T.BASE, "envoi_attente.json")
@@ -29,7 +30,7 @@ _thread = None
 def _reglages():
     r = config.charger().get("reglages", {}).get("serveur", {})
     url, cle = str(r.get("url", "")).rstrip("/"), str(r.get("cle", ""))
-    poste = str(r.get("poste", "")) or os.environ.get("COMPUTERNAME") or os.uname().nodename
+    poste = str(r.get("poste", "")) or identite.poste() or os.environ.get("COMPUTERNAME") or os.uname().nodename
     return (url, cle, poste) if url and cle else None
 
 

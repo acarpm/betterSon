@@ -12,7 +12,10 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 import config
+import dialogue_identite
 import envoi
+import identite
+import synchro
 import modules
 import theme as T
 import updater
@@ -47,12 +50,16 @@ class Application(tk.Tk):
         self._entete()
         self.zone = tk.Frame(self, bg=BG)
         self.zone.pack(fill="both", expand=True)
+        self._maj_poste()
         self.aller("accueil")
         self._rafraichir_statut()
         self.protocol("WM_DELETE_WINDOW", self._fermer)
         updater.nettoyer()  # supprime l'ancienne version laissée par la dernière mise à jour
         self.after(2500, self._verifier_maj)
         self.after(500, self._traiter_maj)
+        synchro.lancer(force=True)  # annuaire des techniciens : copie locale mise à jour dès que le serveur répond
+        if not identite.poste():
+            self.after(100, self._premier_lancement)  # une fois la fenêtre affichée
 
     # ---------- en-tête ----------
     def _entete(self):
@@ -69,6 +76,8 @@ class Application(tk.Tk):
         self.lbl_version = tk.Label(tete, text=f"v{version.__version__}", bg=CARTE, fg="#a5a5a0", font=self.f(10), cursor="hand2")
         self.lbl_version.pack(side="right", padx=(0, 20))
         self.lbl_version.bind("<Button-1>", lambda e: self._lancer_verification(manuel=True))  # clic = vérifier maintenant
+        self.btn_poste = ttk.Button(tete, text="", style="Tool.TButton", command=self.changer_poste, takefocus=False)
+        self.btn_poste.pack(side="right", padx=(0, 4))
         self.lbl_statut = tk.Label(tete, text="", bg=CARTE, fg=GRIS, font=self.f(12, True))
         self.lbl_statut.pack(side="right", padx=(24, 12))
         self.btn_menu = ttk.Button(tete, text="←  Retour", style="Tool.TButton", command=self.retour, takefocus=False)
@@ -85,6 +94,22 @@ class Application(tk.Tk):
         self.btn_maj = ttk.Button(self.banniere, text="Mettre à jour maintenant", style="Maj.TButton",
                                   command=self._installer_maj)
         self.btn_maj.pack(side="right", padx=8)
+
+    # ---------- poste ----------
+    def _maj_poste(self):
+        self.btn_poste.config(text=f"Poste : {identite.poste() or 'à renseigner'}")
+
+    def _premier_lancement(self):
+        """Premier démarrage : l'identifiant du poste est obligatoire, fermer la fenêtre quitte le logiciel."""
+        if not dialogue_identite.demander_poste(self, self.f, obligatoire=True):
+            return self.destroy()
+        self._maj_poste()
+        synchro.lancer(force=True)
+
+    def changer_poste(self):
+        if dialogue_identite.demander_poste(self, self.f, obligatoire=False):
+            self._maj_poste()
+            synchro.lancer(force=True)
 
     # ---------- mises à jour ----------
     def _etat_version(self, texte="", couleur="#a5a5a0"):

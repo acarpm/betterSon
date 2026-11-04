@@ -37,9 +37,10 @@ class Acquisition:
         ("fin", motif, resume)   motif : stop | cible | duree | silence | erreur ; resume : dict ou message d'erreur
     """
 
-    def __init__(self, port, sortie, intervalle=1.0, chemin_csv=None, critere=None, silence_max_s=None, baud=BAUD):
+    def __init__(self, port, sortie, intervalle=1.0, chemin_csv=None, critere=None, silence_max_s=None, baud=BAUD, signature=""):
         self.port, self.sortie, self.intervalle = port, sortie, intervalle
         self.chemin_csv, self.critere, self.silence_max_s, self.baud = chemin_csv, critere, silence_max_s, baud
+        self.signature = signature  # ligne de commentaire placée en tête du CSV (opérateur)
         self.stop = threading.Event()
         self.thread = None
 
@@ -73,6 +74,7 @@ class Acquisition:
                 if self.chemin_csv:
                     os.makedirs(os.path.dirname(self.chemin_csv), exist_ok=True)
                     fichier = open(self.chemin_csv, "w", newline="", encoding="utf-8")
+                    fichier.write(self.signature)
                     ecrivain = csv.writer(fichier)
                 try:
                     while not self.stop.is_set():
@@ -97,11 +99,12 @@ class Acquisition:
                             if ecrivain and d["cellules"]:  # pas de ligne (ni d'en-tête) tant qu'on n'a pas les cellules
                                 if not entete_ecrit:
                                     ecrivain.writerow(["temps_s", "v_pack", "courant", "soc", "ecart_mv"]
-                                                      + [f"c{i + 1}" for i in range(len(d["cellules"]))])
+                                                      + [f"c{i + 1}" for i in range(len(d["cellules"]))] + ["cellules_actives"])
                                     entete_ecrit = True
                                 ecrivain.writerow([f"{t:.1f}", d["v_pack"], d["courant"], d["soc"],
                                                    "" if ecart is None else f"{ecart:.1f}"]
-                                                  + ["" if v is None else v for v in d["cellules"]])
+                                                  + ["" if v is None else v for v in d["cellules"]]
+                                                  + [" ".join(str(i + 1) for i, on in enumerate(d["equilibrage"] or []) if on)])
                                 fichier.flush()  # rien n'est perdu si le programme est coupé
                             q.put(("donnees", t, d))
                         if self.critere:

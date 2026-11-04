@@ -7,6 +7,7 @@ from tkinter import messagebox, ttk
 import serial
 
 import theme as T
+from dialogue_identite import SelecteurTechnicien
 from instruments import ea as charge  # pilote de la charge EA (partagé)
 from theme import BG, BORD, CARTE, GRIS, TEXTE, ListeLignes
 
@@ -70,8 +71,10 @@ class PageLancer(tk.Frame):
                                   justify="left", wraplength=560)
         self.lbl_notes.pack(fill="x", pady=(12, 0))
 
+        self.sel_technicien = SelecteurTechnicien(droite, f)
+        self.sel_technicien.pack(fill="x", pady=(20, 0))
         tk.Label(droite, text="N° de série de la batterie (facultatif)", bg=BG, fg=GRIS, font=f(11),
-                 anchor="w").pack(fill="x", pady=(20, 2))
+                 anchor="w").pack(fill="x", pady=(12, 2))
         self.var_serie = tk.StringVar()
         self.e_serie = ttk.Entry(droite, textvariable=self.var_serie, font=f(14))
         self.e_serie.pack(fill="x")
@@ -93,6 +96,7 @@ class PageLancer(tk.Frame):
 
     def on_show(self):
         self.lbl_etat.config(text="")
+        self.sel_technicien.rafraichir()
         noms = [p["nom"] for p in self.mod.profils]
         i = noms.index(self.mod.dernier) if self.mod.dernier in noms else (0 if noms else -1)
         self.liste.remplir([(p["nom"], T.resume_profil(p)) for p in self.mod.profils], i)
@@ -150,6 +154,9 @@ class PageLancer(tk.Frame):
         p = self._profil_courant()
         if p is None:
             return messagebox.showwarning("Aucun profil", "Créez ou choisissez un profil de test.")
+        technicien = self.sel_technicien.valeur()
+        if not technicien:
+            return messagebox.showwarning("Technicien", "Choisissez le technicien qui commande ce test (bouton « Gérer » pour l'ajouter).")
         port = self.app.instruments.port_ou_erreur("charge_ea")
         if not port:
             return
@@ -157,6 +164,6 @@ class PageLancer(tk.Frame):
         nom = "_".join(x for x in (_propre(p["nom"]), _propre(serie)) if x) or "batterie"
         os.makedirs(chemins.dossier_csv(), exist_ok=True)
         chemin = os.path.join(chemins.dossier_csv(), f"{nom}_{datetime.now():%Y%m%d_%H%M%S}.csv")
-        self.app.page("decharge.encours").demarrer(p, serie, port, chemin)
+        self.app.page("decharge.encours").demarrer(p, serie, port, chemin, technicien)
         self.var_serie.set("")  # prêt pour la batterie suivante
         self.app.aller("decharge.encours")
