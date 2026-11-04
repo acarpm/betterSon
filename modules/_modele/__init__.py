@@ -1,11 +1,11 @@
-"""MODÈLE de module : à copier pour créer un nouveau module (équilibrage, résistance interne…).
+"""MODÈLE de module : à copier pour créer un nouveau module (résistance interne…).
 
 Ce paquet n'est PAS enregistré dans modules.TOUS : il n'apparaît pas dans le logiciel.
 
-Pour créer le module « equilibrage » :
-  1. copier ce dossier en modules/equilibrage/ et renommer la classe, `id`, `nom`, `description` ;
+Pour créer le module « resistance » :
+  1. copier ce dossier en modules/resistance/ et renommer la classe, `id`, `nom`, `description` ;
   2. remplacer la page d'exemple par les vraies pages (une classe tk.Frame par page, voir modules/decharge/) ;
-  3. dans modules/__init__.py :  from .equilibrage import Equilibrage   puis   TOUS = [Decharge(), Equilibrage()]
+  3. dans modules/__init__.py :  from .resistance import Resistance   puis   TOUS = [Decharge(), Equilibrage(), Resistance()]
 
 Ce que le logiciel fournit déjà à un module :
   - activation / désactivation par l'opérateur (« Gérer les modules »), tuile sur l'accueil, menu du module ;
@@ -34,7 +34,7 @@ class PageExemple(tk.Frame):
     def on_show(self):
         self.titre.config(text=self.mod.nom)
 
-    # def occupe(self):  # décommenter si la page peut lancer une opération longue (test, équilibrage…)
+    # def occupe(self):  # décommenter si la page peut lancer une opération longue (test, mesure…)
     #     return self.opération_en_cours
 
 

@@ -6,5 +6,6 @@ Pour ajouter un module :
 Chaque module peut ensuite être activé / désactivé depuis l'écran « Gérer les modules ».
 """
 from .decharge import Decharge
+from .equilibrage import Equilibrage
 
-TOUS = [Decharge()]
+TOUS = [Decharge(), Equilibrage()]

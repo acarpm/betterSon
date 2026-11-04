@@ -237,6 +237,20 @@ def icone(parent, genre, fond, teinte, taille=84):
         for x0, y0 in ((23, 46), (37, 37), (51, 27)):
             c.create_rectangle(x0, y0, x0 + 11, 58, fill=ANTHRACITE, outline="")
         c.create_line(19, 59, 66, 59, fill=ANTHRACITE, width=2)
+    elif genre == "cellules":  # cellules côte à côte, légèrement inégales
+        for x0, h in ((20, 22), (32, 30), (44, 26), (56, 19)):
+            c.create_rectangle(x0, 60 - h, x0 + 9, 60, fill=TEAL, outline="")
+        c.create_line(17, 61, 68, 61, fill=ANTHRACITE, width=2)
+    elif genre == "equilibrage":  # deux cellules inégales et des flèches d'échange
+        c.create_rectangle(20, 26, 36, 60, fill=TEAL, outline="")
+        c.create_rectangle(48, 42, 64, 60, fill=TEAL, outline="")
+        c.create_line(38, 32, 46, 32, arrow="last", width=3, fill=ANTHRACITE)
+        c.create_line(46, 42, 38, 42, arrow="last", width=3, fill=ANTHRACITE)
+    elif genre == "connexion":  # prise
+        c.create_rectangle(29, 38, 55, 56, outline=ANTHRACITE, width=3)
+        c.create_rectangle(34, 24, 39, 38, fill=ANTHRACITE, outline="")
+        c.create_rectangle(45, 24, 50, 38, fill=ANTHRACITE, outline="")
+        c.create_line(42, 56, 42, 66, fill=ANTHRACITE, width=3)
     else:  # module générique : quatre pièces dont une « branchée »
         for x0, y0, col in ((22, 22, ANTHRACITE), (44, 22, ANTHRACITE), (22, 44, ANTHRACITE), (44, 44, LIME)):
             c.create_rectangle(x0, y0, x0 + 18, y0 + 18, fill=col, outline="")
@@ -313,18 +327,21 @@ class GraphesTemps(tk.Frame):
     DEFS = [("V", "Tension", "V", TEAL), ("A", "Courant", "A", "#8a9a00"), ("W", "Puissance", "W", ANTHRACITE)]
     LARGEUR_AXE = 58
 
-    def __init__(self, parent, f, vide="Aucune donnée"):
+    def __init__(self, parent, f, vide="Aucune donnée", defs=None, libelle_seuil="coupure"):
+        """defs : liste de (clé, nom, unité, couleur) ; la première série donne l'axe du temps et porte le seuil."""
         super().__init__(parent, bg=BG)
-        self.f, self.vide = f, vide
-        self.series = {"V": [], "A": [], "W": []}
+        self.f, self.vide, self.libelle_seuil = f, vide, libelle_seuil
+        self.defs = defs or self.DEFS
+        self.cle_seuil = self.defs[0][0]
+        self.series = {k: [] for k, *_ in self.defs}
         self.seuil_v = None
-        self.actifs = {k: True for k, *_ in self.DEFS}
+        self.actifs = {k: True for k, *_ in self.defs}
         self._ctx = None
 
         barre = tk.Frame(self, bg=BG)
         barre.pack(fill="x", pady=(0, 6))
         self.pastilles = {}
-        for cle, nom, unite, couleur in self.DEFS:
+        for cle, nom, unite, couleur in self.defs:
             lbl = tk.Label(barre, text=f"●  {nom} ({unite})", font=f(12, True), padx=14, pady=6, cursor="hand2")
             lbl.pack(side="left", padx=(0, 6))
             lbl.bind("<Button-1>", lambda e, c=cle: self.basculer(c))
@@ -352,7 +369,7 @@ class GraphesTemps(tk.Frame):
         self.tracer()
 
     def _maj_pastilles(self):
-        for cle, nom, unite, couleur in self.DEFS:
+        for cle, nom, unite, couleur in self.defs:
             on = self.actifs[cle]
             self.pastilles[cle].config(bg="#eef0e2" if on else "#e4e4df", fg=couleur if on else "#a5a5a0")
 
@@ -363,13 +380,13 @@ class GraphesTemps(tk.Frame):
         self._ctx = None
         w, h = c.winfo_width(), c.winfo_height()
         f = self.f
-        actifs = [k for k, *_ in self.DEFS if self.actifs[k]]
+        actifs = [k for k, *_ in self.defs if self.actifs[k] and self.series.get(k)]  # une série vide est ignorée
         gauche = self.LARGEUR_AXE
         droite = 14 + self.LARGEUR_AXE * (len(actifs) - 1)
         haut, bas = 14, 26
         if w < 220 or h < 100:
             return
-        v_pts = self.series["V"]
+        v_pts = self.series[self.defs[0][0]]
         if len(v_pts) < 2:
             c.create_text(w / 2, h / 2, text=self.vide, fill=GRIS, font=f(12))
             return
@@ -383,7 +400,7 @@ class GraphesTemps(tk.Frame):
         plage = {}
         for k in actifs:
             lo, hi = min(vals[k]), max(vals[k])
-            if k == "V" and self.seuil_v is not None:
+            if k == self.cle_seuil and self.seuil_v is not None:
                 lo = min(lo, self.seuil_v)
             marge = max((hi - lo) * 0.12, 0.05)
             plage[k] = (lo - marge, hi + marge)
@@ -391,7 +408,7 @@ class GraphesTemps(tk.Frame):
         larg, haut_plot = w - gauche - droite, h - bas - haut
         px = lambda t: gauche + t / t_max * larg
         py = lambda k, v: (h - bas) - (v - plage[k][0]) / (plage[k][1] - plage[k][0]) * haut_plot
-        couleurs = {k: col for k, _, _, col in self.DEFS}
+        couleurs = {k: col for k, _, _, col in self.defs}
 
         for j in range(5):  # grille commune + graduations temps
             y = (h - bas) - haut_plot * j / 4
@@ -410,10 +427,11 @@ class GraphesTemps(tk.Frame):
                 else:
                     x = w - droite + 6 + self.LARGEUR_AXE * (rang - 1)
                     c.create_text(x, y, text=f"{v:.{dec}f}", anchor="w", fill=couleurs[k], font=f(10, True))
-        if "V" in actifs and self.seuil_v is not None:
-            y = py("V", self.seuil_v)
+        if self.cle_seuil in actifs and self.seuil_v is not None:
+            unites_seuil = next(u for k, _, u, _ in self.defs if k == self.cle_seuil)
+            y = py(self.cle_seuil, self.seuil_v)
             c.create_line(gauche, y, w - droite, y, fill=ROUGE, dash=(5, 4))
-            c.create_text(w - droite - 4, y - 4, text=f"coupure {self.seuil_v:g} V", anchor="se", fill=ROUGE, font=f(10))
+            c.create_text(w - droite - 4, y - 4, text=f"{self.libelle_seuil} {self.seuil_v:g} {unites_seuil}", anchor="se", fill=ROUGE, font=f(10))
         for k in actifs:
             c.create_line(*[xy for t, v in zip(ts, vals[k]) for xy in (px(t), py(k, v))],
                           fill=couleurs[k], width=3, joinstyle="round")
@@ -433,9 +451,11 @@ class GraphesTemps(tk.Frame):
         xc = x["px"](x["ts"][i])
         c.create_line(xc, x["haut"], xc, x["h"] - x["bas"], fill="#9a9a94", dash=(3, 3), tags="curseur")
         lignes = [(time.strftime("%H:%M:%S", time.gmtime(x["ts"][i])), GRIS)]
-        unites = {k: u for k, _, u, _ in self.DEFS}
-        noms = {k: n for k, n, _, _ in self.DEFS}
+        unites = {k: u for k, _, u, _ in self.defs}
+        noms = {k: n for k, n, _, _ in self.defs}
         for k in x["actifs"]:
+            if i >= len(x["vals"][k]):
+                continue
             v = x["vals"][k][i]
             y = x["py"](k, v)
             c.create_oval(xc - 5, y - 5, xc + 5, y + 5, fill=x["couleurs"][k], outline="white", width=2, tags="curseur")

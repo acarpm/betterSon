@@ -200,7 +200,11 @@ class Application(tk.Tk):
             return
         page = self.page(page_id)
         if self.courante in self.pages:
-            self.pages[self.courante].pack_forget()
+            ancienne = self.pages[self.courante]
+            quitter = getattr(ancienne, "on_hide", None)  # ex. une page qui lit un port série le libère en la quittant
+            if quitter and self.courante != page_id:
+                quitter()
+            ancienne.pack_forget()
         self.courante = page_id
         page.pack(fill="both", expand=True)
         page.on_show()

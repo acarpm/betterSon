@@ -62,9 +62,25 @@ Trois actions :
 
 Pendant une opération (un test, par ex.), la navigation est verrouillée : on ne peut pas quitter la page en cours.
 
-### Modules à venir
+### Module « Équilibrage de batteries » (équilibreur actif Daly)
 
-Équilibrage de batteries, calcul de la résistance interne des cellules : voir « Ajouter un module » ci-dessous.
+Lit l'équilibreur Daly par son port série (adaptateur USB-UART, 9600 bauds, protocole Daly en **lecture seule**). Trois actions :
+
+- **Connexion** : choisir le port série de l'équilibreur (la charge EA n'est jamais proposée) et tester la liaison.
+  Le port est mémorisé dans `config.json`.
+- **Lire les tensions** : tension de chaque cellule en direct (une barre par cellule, échelle zoomée), tension / courant / SoC du pack,
+  écart max - min, cellule la plus haute et la plus basse, cellules en cours d'équilibrage si l'appareil le signale.
+  La lecture s'arrête et libère le port quand on quitte la page.
+- **Session d'équilibrage** : suivi supervisé. On fixe l'écart cible (mV), la durée maximale et la durée de maintien ; la session
+  enregistre un CSV (`Documents/BetterSon/equilibrage/sessions/`), trace l'écart en fonction du temps et **s'arrête seule**
+  quand l'écart cible est tenu (ou à la durée maximale). La navigation est verrouillée pendant la session.
+
+Le logiciel **ne commande pas** l'équilibreur (aucune commande d'écriture n'est envoyée) : il surveille et enregistre pendant
+que l'appareil équilibre de lui-même.
+
+### Module à venir
+
+Calcul de la résistance interne des cellules : voir « Ajouter un module » ci-dessous.
 
 ## Développement
 
@@ -88,6 +104,7 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 | `modules/base.py` | contrat d'un module (`Module`, `Action`) |
 | `modules/__init__.py` | **registre des modules** (`TOUS`) |
 | `modules/decharge/` | module Décharge : pages, profils, analyse des CSV, chemins de données |
+| `modules/equilibrage/` | module Équilibrage : protocole Daly (`daly.py`), lecture périodique + CSV (`acquisition.py`), pages |
 | `modules/_modele/` | squelette commenté à copier pour un nouveau module (non enregistré) |
 | `main.py` | communication avec la charge EA (version console) |
 | `install.sh`, `install.ps1` | installation en une commande |
@@ -95,9 +112,9 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 
 ### Ajouter un module
 
-1. Copier `modules/_modele/` en `modules/<id>/` (ex. `modules/equilibrage/`) et adapter la classe : `id`, `nom`, `description`,
+1. Copier `modules/_modele/` en `modules/<id>/` (ex. `modules/resistance/`) et adapter la classe : `id`, `nom`, `description`,
    `actions()` (les tuiles du menu du module), `creer_page()` (une classe `tk.Frame` par page), `statut()` (matériel connecté, facultatif).
-2. L'enregistrer dans `modules/__init__.py` : `from .equilibrage import Equilibrage`, puis `TOUS = [Decharge(), Equilibrage()]`.
+2. L'enregistrer dans `modules/__init__.py` : `from .resistance import Resistance`, puis `TOUS = [Decharge(), Equilibrage(), Resistance()]`.
 3. C'est tout : tuile sur l'accueil, activation / désactivation, navigation, verrouillage pendant une opération
    (méthode `occupe()` d'une page), dossier de données (`self.dossier()`) et mises à jour automatiques sont fournis.
 

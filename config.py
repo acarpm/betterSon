@@ -30,3 +30,14 @@ def definir_module(module_id, actif):
     data = charger()
     data.setdefault("modules", {})[module_id] = bool(actif)
     sauver(data)
+
+
+def reglage(module_id, cle, defaut=None):
+    """Réglage propre à un module (ex. le port série de l'équilibreur)."""
+    return charger().get("reglages", {}).get(module_id, {}).get(cle, defaut)
+
+
+def definir_reglage(module_id, cle, valeur):
+    data = charger()
+    data.setdefault("reglages", {}).setdefault(module_id, {})[cle] = valeur
+    sauver(data)
