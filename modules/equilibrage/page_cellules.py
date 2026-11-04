@@ -6,6 +6,8 @@ from tkinter import ttk
 import theme as T
 from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT
 
+from instruments.daly import resume_cellules
+
 from .acquisition import Acquisition
 from .widgets import BarresCellules, Mesures
 
@@ -34,22 +36,25 @@ class PageCellules(tk.Frame):
         self.lbl_etat.pack(fill="x", pady=(2, 0))
         tk.Frame(corps, bg=BORD, height=1).pack(fill="x", pady=(12, 12))
 
-        self.mesures = Mesures(corps, f, [("v_pack", "Tension pack"), ("courant", "Courant"), ("soc", "SoC"),
-                                          ("ecart", "Écart max - min"), ("haute", "Plus haute"), ("basse", "Plus basse")])
+        self.mesures = Mesures(corps, f, [("v_pack", "Tension pack"), ("moyenne", "Moyenne des cellules"),
+                                          ("ecart", "Écart max - min"), ("haute", "Plus haute"),
+                                          ("basse", "Plus basse"), ("soc", "Charge (SoC)")])
+        self.mesures.masquer("soc")  # n'apparaît que si l'appareil fournit un SoC (un équilibreur n'en a pas)
         self.mesures.pack(fill="x")
         tk.Label(corps, text="Une barre par cellule (série)", bg=BG, fg=TEXTE, font=f(14, True), anchor="w").pack(fill="x", pady=(14, 0))
         tk.Frame(corps, bg=BORD, height=1).pack(fill="x", pady=(4, 8))
+        # la légende est empaquetée AVANT les barres (side="bottom") : elle reste visible même dans une fenêtre peu haute
+        tk.Label(corps, text="● rouge : plus haute   ● bleu-gris : plus basse   ● orange sous la barre : cellule en cours d'équilibrage "
+                             "(si l'appareil le signale)", bg=BG, fg=GRIS, font=f(10), anchor="w").pack(side="bottom", fill="x", pady=(6, 0))
         self.barres = BarresCellules(corps, f)
         self.barres.pack(fill="both", expand=True)
-        tk.Label(corps, text="● rouge : plus haute   ● bleu-gris : plus basse   ● orange sous la barre : cellule en cours d'équilibrage "
-                             "(si l'appareil le signale)", bg=BG, fg=GRIS, font=f(10), anchor="w").pack(fill="x", pady=(6, 0))
         self.after(200, self._traiter)
 
     # ---------- cycle de vie ----------
     def on_show(self):
         self._visible = True
         self.mesures.effacer()
-        self.barres.definir([])
+        self.barres.vider()
         self._demarrer()
 
     def on_hide(self):
@@ -119,12 +124,19 @@ class PageCellules(tk.Frame):
 
     def _afficher(self, d):
         m = self.mesures
-        m.regler("v_pack", "--" if d["v_pack"] is None else f"{d['v_pack']:.1f} V")
-        m.regler("courant", "--" if d["courant"] is None else f"{d['courant']:.1f} A")
-        m.regler("soc", "--" if d["soc"] is None else f"{d['soc']:.1f} %")
-        if d.get("ecart_mv") is not None:
-            m.regler("ecart", f"{d['ecart_mv']:.0f} mV")
-            m.regler("haute", f"C{d['i_max'] + 1}  {d['v_max']:.3f} V")
-            m.regler("basse", f"C{d['i_min'] + 1}  {d['v_min']:.3f} V")
-        self.barres.definir(d["cellules"], d["equilibrage"])
-        self._etat(f"● Lecture en direct · {len(d['cellules'])} cellules", VERT)
+        cel = d["cellules"]  # déjà complétée par les dernières valeurs connues si une trame a été perdue (voir Daly._tenir)
+        r = resume_cellules(cel) if cel else None
+        mesurees = [v for v in cel if v is not None]
+        pack = d["v_pack"] if d["v_pack"] is not None else (sum(mesurees) if mesurees and len(mesurees) == len(cel) else None)
+        m.regler("v_pack", "--" if pack is None else f"{pack:.2f} V")
+        if r:
+            m.regler("moyenne", f"{sum(mesurees) / len(mesurees):.3f} V")
+            m.regler("ecart", f"{r['ecart_mv']:.0f} mV")
+            m.regler("haute", f"{r['v_max']:.3f} V", f"Plus haute · C{r['i_max'] + 1}")
+            m.regler("basse", f"{r['v_min']:.3f} V", f"Plus basse · C{r['i_min'] + 1}")
+        m.masquer("soc", d["soc"] is None)
+        if d["soc"] is not None:
+            m.regler("soc", f"{d['soc']:.0f} %")
+        if cel:
+            self.barres.definir(cel, d["equilibrage"])
+        self._etat(f"● Lecture en direct · {len(cel)} cellules", VERT)

@@ -13,6 +13,7 @@ import time
 from .base import Instrument
 
 BAUD = 9600
+TENUE = 5   # une cellule dont la trame manque garde sa dernière valeur pendant TENUE lectures, puis passe à « inconnue »
 DEBUT = 0xA5
 ADRESSE_PC = 0x40
 CMD_GLOBAL, CMD_ETAT, CMD_CELLULES, CMD_EQUILIBRAGE = 0x90, 0x94, 0x95, 0x97
@@ -49,6 +50,9 @@ class Daly:
         self.delai = delai
         self.n_cellules = None
         self._manques_equilibrage = 0
+        self._prec = None          # dernières tensions connues (pour tenir les valeurs lors d'une trame perdue)
+        self._manques_cell = []
+        self._lectures_vides = 0
 
     # ---------- bas niveau ----------
     def _lire_trame(self, cmd):
@@ -84,31 +88,63 @@ class Daly:
         if not t:
             return None
         t = t[0]
-        return {"v_pack": ((t[4] << 8) | t[5]) / 10.0,
-                "courant": (((t[6] << 8) | t[7]) - 30000) / 10.0,
-                "soc": ((t[8] << 8) | t[9]) / 10.0}
+        v, i, s = (t[4] << 8) | t[5], (t[6] << 8) | t[7], (t[8] << 8) | t[9]
+        # Un équilibreur n'a ni courant ni SoC : il répond 0 (courant -3000 A) ou 30000 (SoC 3000 %). Valeur absente, pas mesure.
+        return {"v_pack": None if v in (0, 0xFFFF) else v / 10.0,
+                "courant": None if i in (0, 0xFFFF) else (i - 30000) / 10.0,
+                "soc": s / 10.0 if s <= 1000 else None}
 
     def lire_nombre_cellules(self):
         t = self._interroger(CMD_ETAT)
         return t[0][4] if t and t[0][4] > 0 else None
 
     def lire_cellules(self):
-        """Tensions (V) de chaque cellule, dans l'ordre ; None pour une cellule dont la trame manque."""
+        """Tensions (V) de chaque cellule, dans l'ordre ; None pour une cellule dont la trame manque.
+
+        Si des trames manquent, la lecture est retentée une fois ; une cellule encore manquante garde sa dernière valeur
+        pendant TENUE lectures (une trame perdue ne doit pas faire clignoter l'affichage).
+        """
         nombre = math.ceil(self.n_cellules / 3) if self.n_cellules else 16
-        trames = self._interroger(CMD_CELLULES, nombre)
-        if not trames:
-            return None
-        base = min(t[4] for t in trames)  # numéro de la première trame : 0 ou 1 selon les appareils
+        par_numero = {}
+        for _ in range(2 if self.n_cellules else 1):
+            for tr in self._interroger(CMD_CELLULES, nombre):
+                par_numero[tr[4]] = tr
+            if len(par_numero) >= nombre:
+                break
+        if not par_numero:
+            return self._tenir(None)
+        base = min(par_numero)  # numéro de la première trame : 0 ou 1 selon les appareils
         par_indice = {}
-        for t in trames:
+        for numero, tr in par_numero.items():
             for k, off in enumerate((5, 7, 9)):
-                par_indice[(t[4] - base) * 3 + k] = ((t[off] << 8) | t[off + 1]) / 1000.0
+                par_indice[(numero - base) * 3 + k] = ((tr[off] << 8) | tr[off + 1]) / 1000.0
         liste = [par_indice.get(i) for i in range(max(par_indice) + 1)]
         if self.n_cellules:
-            return (liste + [None] * self.n_cellules)[:self.n_cellules]
-        while liste and not liste[-1]:  # nombre inconnu : on retire les voies non câblées (0 V)
-            liste.pop()
-        return liste or None
+            liste = (liste + [None] * self.n_cellules)[:self.n_cellules]
+        else:
+            while liste and not liste[-1]:  # nombre inconnu : on retire les voies non câblées (0 V)
+                liste.pop()
+        return self._tenir(liste or None)
+
+    def _tenir(self, liste):
+        """Complète une lecture incomplète avec les dernières valeurs connues (au plus TENUE lectures de suite)."""
+        if liste is None:
+            if self._prec and self._lectures_vides < TENUE:
+                self._lectures_vides += 1
+                return list(self._prec)
+            return None
+        self._lectures_vides = 0
+        if self._prec is None or len(self._prec) != len(liste):
+            self._manques_cell = [0] * len(liste)
+        else:
+            for i, v in enumerate(liste):
+                if v is None and self._manques_cell[i] < TENUE and self._prec[i] is not None:
+                    liste[i] = self._prec[i]
+                    self._manques_cell[i] += 1
+                elif v is not None:
+                    self._manques_cell[i] = 0
+        self._prec = list(liste)
+        return liste
 
     def lire_equilibrage(self, n):
         """Liste de booléens (cellule en cours d'équilibrage), ou None si l'appareil ne répond pas à cette commande."""

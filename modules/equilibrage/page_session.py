@@ -159,7 +159,7 @@ class PageSession(tk.Frame):
             s.clear()
         self.ecart_initial = None
         self.mesures.effacer()
-        self.barres.definir([])
+        self.barres.vider()
         self.graphes.definir(self.series, seuil_v=cible)
         self.file = queue.Queue()
         self.acq = Acquisition(port, self.file, intervalle=INTERVALLE_S, chemin_csv=self.chemin, baud=inst.instrument(ID).baud,
@@ -200,13 +200,13 @@ class PageSession(tk.Frame):
                 self.ecart_initial = ecart
                 m.regler("initial", f"{ecart:.0f} mV")
             m.regler("ecart", f"{ecart:.0f} mV")
-            m.regler("haute", f"C{d['i_max'] + 1}  {d['v_max']:.3f} V")
-            m.regler("basse", f"C{d['i_min'] + 1}  {d['v_min']:.3f} V")
+            m.regler("haute", f"{d['v_max']:.3f} V", f"Plus haute · C{d['i_max'] + 1}")
+            m.regler("basse", f"{d['v_min']:.3f} V", f"Plus basse · C{d['i_min'] + 1}")
             self.series["ecart"].append((t, ecart))
             if d["v_pack"] is not None:
                 self.series["vpack"].append((t, d["v_pack"]))
             self.graphes.tracer()
-        m.regler("v_pack", "--" if d["v_pack"] is None else f"{d['v_pack']:.1f} V")
+        m.regler("v_pack", "--" if d["v_pack"] is None else f"{d['v_pack']:.2f} V")
         m.regler("duree", T.duree(t))
         self.barres.definir(d["cellules"], d["equilibrage"])
         self._etat("Session en cours…", T.BLEU)
