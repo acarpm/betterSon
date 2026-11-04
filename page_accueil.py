@@ -29,6 +29,8 @@ class Accueil(tk.Frame):
         self.centre.place(relx=0.5, rely=0.46, anchor="center")
         ttk.Button(self, text="Gérer les modules", style="Tool.TButton",
                    command=lambda: app.aller("modules")).place(relx=1, rely=1, x=-28, y=-16, anchor="se")
+        ttk.Button(self, text="Instruments", style="Tool.TButton",
+                   command=lambda: app.aller("instruments")).place(relx=0, rely=1, x=28, y=-16, anchor="sw")
 
     def on_show(self):
         a, f = self.app, self.app.f
@@ -60,6 +62,9 @@ class PageModule(tk.Frame):
         self.app, self.module = app, module
         self.centre = tk.Frame(self, bg=BG)
         self.centre.place(relx=0.5, rely=0.46, anchor="center")
+        if module.instruments:
+            ttk.Button(self, text="Instruments", style="Tool.TButton",
+                       command=lambda: app.aller("instruments")).place(relx=0, rely=1, x=28, y=-16, anchor="sw")
 
     def on_show(self):
         a, f, m = self.app, self.app.f, self.module

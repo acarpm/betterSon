@@ -12,13 +12,20 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 import config
+import envoi
 import modules
 import theme as T
 import updater
 import version
+from instruments import TOUS as INSTRUMENTS
+from instruments import Gestionnaire
 from page_accueil import Accueil, PageModule
+from page_instruments import PageInstruments
 from page_modules import PageModules
-from theme import ANTHRACITE, BG, CARTE, GRIS, LIME, TEXTE
+from theme import ANTHRACITE, BG, CARTE, GRIS, LIME, ORANGE, ROUGE, TEXTE, VERT
+
+COULEURS_ETAT = {"ok": VERT, "info": GRIS, "attention": ORANGE, "erreur": ROUGE}
+GRAVITE = ["ok", "info", "attention", "erreur"]   # du moins au plus grave : la barre d'état prend la couleur du pire
 
 
 class Application(tk.Tk):
@@ -30,6 +37,7 @@ class Application(tk.Tk):
         self.minsize(960, 720)
         self.f = T.init_styles(self)
         self.modules = {m.id: m for m in modules.TOUS}
+        self.instruments = Gestionnaire(INSTRUMENTS)   # détection et attribution des ports série, pour tous les modules
         self.pages = {}        # créées à la demande : un module jamais ouvert ne coûte rien
         self.courante = None
         self._maj_file = queue.Queue()  # messages du thread de mise à jour -> interface
@@ -58,8 +66,9 @@ class Application(tk.Tk):
             lbl = tk.Label(tete, text="BATCONNECT", bg=CARTE, fg=ANTHRACITE, font=self.f(20, True), cursor="hand2")
             lbl.pack(side="left", padx=24, pady=14)
         lbl.bind("<Button-1>", lambda e: self.aller("accueil"))  # clic sur le logo = retour à l'accueil
-        tk.Label(tete, text=f"v{version.__version__}", bg=CARTE, fg="#a5a5a0", font=self.f(10)).pack(
-            side="right", padx=(0, 20))
+        self.lbl_version = tk.Label(tete, text=f"v{version.__version__}", bg=CARTE, fg="#a5a5a0", font=self.f(10), cursor="hand2")
+        self.lbl_version.pack(side="right", padx=(0, 20))
+        self.lbl_version.bind("<Button-1>", lambda e: self._lancer_verification(manuel=True))  # clic = vérifier maintenant
         self.lbl_statut = tk.Label(tete, text="", bg=CARTE, fg=GRIS, font=self.f(12, True))
         self.lbl_statut.pack(side="right", padx=(24, 12))
         self.btn_menu = ttk.Button(tete, text="←  Retour", style="Tool.TButton", command=self.retour, takefocus=False)
@@ -78,25 +87,57 @@ class Application(tk.Tk):
         self.btn_maj.pack(side="right", padx=8)
 
     # ---------- mises à jour ----------
+    def _etat_version(self, texte="", couleur="#a5a5a0"):
+        """Numéro de version en en-tête, suivi de l'état des mises à jour."""
+        self.lbl_version.config(text=f"v{version.__version__}" + (f" · {texte}" if texte else ""), fg=couleur)
+
+    def _lancer_verification(self, manuel=False):
+        """Interroge GitHub en tâche de fond (jamais bloquant). manuel : clic de l'opérateur -> résultat toujours expliqué."""
+        if self._maj_en_cours:
+            return
+        if version.__version__ == "dev" or not updater.installe():
+            if manuel:
+                messagebox.showinfo("Mises à jour", "Version de développement : les mises à jour automatiques "
+                                                    "ne concernent que le logiciel installé.")
+            return
+        if manuel:
+            self._etat_version("vérification…", GRIS)
+        threading.Thread(target=lambda: self._maj_file.put(("verif", *updater.verifier(), manuel)), daemon=True).start()
+
     def _verifier_maj(self):
-        """Interroge GitHub en tâche de fond (jamais bloquant) ; se répète toutes les 2 h."""
-        if updater.installe() and version.__version__ != "dev" and not self._maj_en_cours:
-            threading.Thread(target=lambda: self._maj_file.put(("info", updater.derniere_version())),
-                             daemon=True).start()
+        """Vérification automatique : au démarrage, puis toutes les 2 h."""
+        self._lancer_verification()
         self.after(2 * 3600 * 1000, self._verifier_maj)
+
+    def _resultat_verification(self, info, erreur, manuel):
+        if erreur:  # jamais d'échec silencieux : visible en en-tête, détaillé si l'opérateur a cliqué
+            self._etat_version("mises à jour : vérification impossible (cliquer pour réessayer)", ORANGE)
+            if manuel:
+                messagebox.showwarning("Mises à jour", f"Impossible de vérifier les mises à jour :\n{erreur}")
+            return
+        if updater.plus_recente(info) and not self._maj_en_cours:
+            self._maj_info = info
+            self._etat_version("mise à jour disponible", ORANGE)
+            self.lbl_maj.config(text=f"Nouvelle version {info['tag']} disponible (installée : v{version.__version__})")
+            self.btn_maj.config(state="normal", text="Mettre à jour maintenant")
+            self.btn_plus_tard.config(state="normal")
+            self.banniere.pack(fill="x", after=self.filet)
+            return
+        self._etat_version("à jour")
+        if manuel:
+            if info["version"] > updater._numeros(version.__version__):  # plus récente, mais inutilisable ici
+                manquants = [n for n in (updater.ASSETS[updater.systeme()], updater.SOMMES) if n not in info["assets"]]
+                messagebox.showwarning("Mises à jour", f"La version {info['tag']} existe mais ne contient pas les fichiers "
+                                                       f"nécessaires pour ce poste ({', '.join(manquants)}).")
+            else:
+                messagebox.showinfo("Mises à jour", f"Vous avez la dernière version (v{version.__version__}).")
 
     def _traiter_maj(self):
         try:
             while True:
                 msg = self._maj_file.get_nowait()
-                if msg[0] == "info":
-                    if updater.plus_recente(msg[1]) and not self._maj_en_cours:
-                        self._maj_info = msg[1]
-                        self.lbl_maj.config(text=f"Nouvelle version {msg[1]['tag']} disponible "
-                                                 f"(installée : v{version.__version__})")
-                        self.btn_maj.config(state="normal", text="Mettre à jour maintenant")
-                        self.btn_plus_tard.config(state="normal")
-                        self.banniere.pack(fill="x", after=self.filet)
+                if msg[0] == "verif":
+                    self._resultat_verification(msg[1], msg[2], msg[3])
                 elif msg[0] == "progression":
                     fait, total = msg[1], msg[2]
                     self.lbl_maj.config(text="Téléchargement de la mise à jour… "
@@ -172,6 +213,8 @@ class Application(tk.Tk):
                 p = Accueil(self.zone, self)
             elif page_id == "modules":
                 p = PageModules(self.zone, self)
+            elif page_id == "instruments":
+                p = PageInstruments(self.zone, self)
             elif page_id.startswith("module:"):
                 p = PageModule(self.zone, self, self.modules[page_id[7:]])
             else:
@@ -218,11 +261,13 @@ class Application(tk.Tk):
     def retour(self):
         self.aller(self.parent_de(self.courante))
 
-    # ---------- statut du matériel (fourni par le module affiché) ----------
+    # ---------- statut des appareils (ceux que déclare le module affiché) ----------
     def _maj_statut(self):
         module_id = self.module_de(self.courante)
-        res = self.modules[module_id].statut(self) if module_id in self.modules else None
-        self.lbl_statut.config(text=res[0] if res else "", fg=res[1] if res else GRIS)
+        ids = self.modules[module_id].instruments if module_id in self.modules else ()
+        statuts = [self.instruments.statut(i) for i in ids]
+        pire = max((s[0] for s in statuts), key=GRAVITE.index, default=None)
+        self.lbl_statut.config(text="     ".join("● " + s[1] for s in statuts), fg=COULEURS_ETAT.get(pire, GRIS))
 
     def _rafraichir_statut(self):
         if not self.occupe():
@@ -241,4 +286,5 @@ class Application(tk.Tk):
 
 
 if __name__ == "__main__":
+    envoi.reprendre()
     Application().mainloop()

@@ -29,6 +29,7 @@ class Module:
     couleur = LIME
     teinte = "#eef3c0"
     actif_par_defaut = True
+    instruments = ()               # identifiants des instruments utilisés (ex. ("charge_ea",)) : statut en en-tête, port via app.instruments
 
     def actions(self):
         """Liste d'Action : le menu du module."""
@@ -48,6 +49,3 @@ class Module:
         os.makedirs(chemin, exist_ok=True)
         return chemin
 
-    def statut(self, app):
-        """(texte, couleur) affiché en haut à droite quand on est dans ce module (ex. matériel connecté), ou None."""
-        return None

@@ -39,7 +39,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt "pyinstaller>=6.9"
-          python -c "import tkinter, serial; print('tkinter', tkinter.TkVersion)"
+          python -c "import tkinter, serial, certifi; print('tkinter', tkinter.TkVersion, '| certificats', certifi.where())"
 
       - name: Numéro de version = tag
         run: echo "__version__ = \"${GITHUB_REF_NAME#v}\"" > version.py
@@ -49,7 +49,7 @@ jobs:
           SEP=":"; [ "$RUNNER_OS" = "Windows" ] && SEP=";"
           MODE="--onefile"; [ "$RUNNER_OS" = "macOS" ] && MODE="--onedir"
           python -m PyInstaller --noconfirm --clean --windowed $MODE --name BetterSon \
-            --add-data "assets${SEP}assets" --collect-submodules serial gui.py
+            --add-data "assets${SEP}assets" --collect-submodules serial --collect-data certifi gui.py
           mkdir out
           case "$RUNNER_OS" in
             Windows) cp dist/BetterSon.exe out/BetterSon-windows.exe ;;

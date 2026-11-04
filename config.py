@@ -1,8 +1,11 @@
 """Réglages de l'application (modules activés), dans config.json du dossier de données."""
 import json
 import os
+import threading
 
 import theme as T
+
+_VERROU = threading.RLock()  # lecture-modification-écriture : la détection d'instruments écrit en tâche de fond
 
 
 def charger():
@@ -27,9 +30,10 @@ def module_actif(module_id, defaut=True):
 
 
 def definir_module(module_id, actif):
-    data = charger()
-    data.setdefault("modules", {})[module_id] = bool(actif)
-    sauver(data)
+    with _VERROU:
+        data = charger()
+        data.setdefault("modules", {})[module_id] = bool(actif)
+        sauver(data)
 
 
 def reglage(module_id, cle, defaut=None):
@@ -38,6 +42,7 @@ def reglage(module_id, cle, defaut=None):
 
 
 def definir_reglage(module_id, cle, valeur):
-    data = charger()
-    data.setdefault("reglages", {}).setdefault(module_id, {})[cle] = valeur
-    sauver(data)
+    with _VERROU:
+        data = charger()
+        data.setdefault("reglages", {}).setdefault(module_id, {})[cle] = valeur
+        sauver(data)

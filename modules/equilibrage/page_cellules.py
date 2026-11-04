@@ -9,6 +9,8 @@ from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT
 from .acquisition import Acquisition
 from .widgets import BarresCellules, Mesures
 
+ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
+
 
 class PageCellules(tk.Frame):
     def __init__(self, parent, app, mod):
@@ -17,6 +19,7 @@ class PageCellules(tk.Frame):
         f = app.f
         self.file = queue.Queue()
         self.acq = None
+        self._visible = False
         corps = tk.Frame(self, bg=BG)
         corps.pack(fill="both", expand=True, padx=28, pady=(18, 16))
 
@@ -44,12 +47,14 @@ class PageCellules(tk.Frame):
 
     # ---------- cycle de vie ----------
     def on_show(self):
+        self._visible = True
         self.mesures.effacer()
         self.barres.definir([])
         self._demarrer()
 
     def on_hide(self):
         """Libère le port série en quittant la page."""
+        self._visible = False
         if self.acq:
             self.acq.arreter()
             self.acq.attendre(3)
@@ -65,15 +70,30 @@ class PageCellules(tk.Frame):
             self._demarrer()
 
     def _demarrer(self):
-        port = self.mod.port()
-        if not port:
+        inst = self.app.instruments
+        port = inst.port(ID)
+        if not port:  # port inconnu : recherche automatique en arrière-plan, puis démarrage dès que l'appareil est trouvé
+            inst.lancer_detection(ID)
             self.btn.config(state="disabled")
-            return self._etat("Aucun port choisi : ouvrez « Connexion » pour sélectionner l'équilibreur.", ORANGE)
+            self._etat("Recherche de l'équilibreur sur les ports série…", GRIS)
+            return self.after(500, self._attendre_detection)
         self.file = queue.Queue()
-        self.acq = Acquisition(port, self.file, intervalle=1.0)
+        self.acq = Acquisition(port, self.file, intervalle=1.0, baud=inst.instrument(ID).baud)
         self.acq.demarrer()
         self.btn.config(text="Arrêter la lecture", state="normal")
         self._etat(f"Lecture sur {port}…", T.BLEU)
+
+    def _attendre_detection(self):
+        if not self._visible:
+            return
+        inst = self.app.instruments
+        if inst.en_recherche(ID):
+            return self.after(500, self._attendre_detection)
+        if inst.port(ID):
+            return self._demarrer()
+        self.btn.config(text="Rechercher à nouveau", state="normal")
+        self._etat("Équilibreur introuvable : vérifiez l'adaptateur USB et l'alimentation, "
+                   "ou ouvrez « Instruments » depuis l'accueil.", ORANGE)
 
     def _etat(self, texte, couleur=GRIS):
         self.lbl_etat.config(text=texte, fg=couleur)

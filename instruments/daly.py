@@ -10,6 +10,8 @@ Commandes utilisées (toutes en lecture, aucune ne modifie l'appareil) :
 import math
 import time
 
+from .base import Instrument
+
 BAUD = 9600
 DEBUT = 0xA5
 ADRESSE_PC = 0x40
@@ -133,3 +135,20 @@ class Daly:
             res["equilibrage"] = self.lire_equilibrage(len(cellules))
             res.update(resume_cellules(cellules) or {})
         return res
+
+
+class EquilibreurDaly(Instrument):
+    id = "equilibreur_daly"
+    nom = "Équilibreur actif Daly"
+    libelle = "Équilibreur Daly"
+    description = ("Équilibreur / BMS Daly relié par un adaptateur USB-série (UART, 9600 bauds). L'USB ne l'identifie pas : "
+                   "le port est trouvé en interrogeant les ports série disponibles, puis mémorisé.")
+    aide = "Branchez l'adaptateur USB-série de l'équilibreur et vérifiez son alimentation."
+    baud = BAUD
+    identification_directe = False
+
+    def sonde(self, ser):
+        d = Daly(ser).lire_tout()
+        if d is None:
+            return None
+        return {"cellules": len(d["cellules"]), "v_pack": d["v_pack"], "ecart_mv": d.get("ecart_mv")}

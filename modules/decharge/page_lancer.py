@@ -6,8 +6,8 @@ from tkinter import messagebox, ttk
 
 import serial
 
-import main as charge  # communication avec la charge EA
 import theme as T
+from instruments import ea as charge  # pilote de la charge EA (partagé)
 from theme import BG, BORD, CARTE, GRIS, TEXTE, ListeLignes
 
 from . import chemins, profils
@@ -125,11 +125,11 @@ class PageLancer(tk.Frame):
 
     # ---------- diagnostic ----------
     def _commande_simple(self, fonction):
-        port = self.mod.port_ou_erreur()
+        port = self.app.instruments.port_ou_erreur("charge_ea")
         if not port:
             return
         try:
-            with serial.Serial(port, 115200, timeout=1) as s:
+            with serial.Serial(port, charge.BAUD, timeout=1) as s:
                 return fonction(s)
         except (serial.SerialException, OSError, ValueError) as e:
             messagebox.showerror("Erreur de communication", str(e))
@@ -150,7 +150,7 @@ class PageLancer(tk.Frame):
         p = self._profil_courant()
         if p is None:
             return messagebox.showwarning("Aucun profil", "Créez ou choisissez un profil de test.")
-        port = self.mod.port_ou_erreur()
+        port = self.app.instruments.port_ou_erreur("charge_ea")
         if not port:
             return
         serie = self.var_serie.get().strip()

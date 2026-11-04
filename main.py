@@ -4,64 +4,12 @@ import time
 from datetime import datetime
 
 import serial
-import serial.tools.list_ports as lp
 
-INTERVALLE_S = 1  # pause entre deux mesures (en secondes)
-DOSSIER_CSV =os.path.join(os.path.dirname(os.path.abspath(__file__)), "mesures")
+# Pilote de la charge EA et détection du port : partagés avec l'interface graphique (voir instruments/ea.py)
+from instruments.ea import (INTERVALLE_S, entree, identifier, lire_valeurs, mesurer, regler_charge,  # noqa: F401
+                            trouver_ports, verrou)
 
-# Identifiants USB de la charge 
-VID_EA = 0x232E
-SN_CIBLE = "2289160002"  # id Propre a la charge EA dans l'atelier
-
-
-def trouver_ports(sn=SN_CIBLE):
-    return [
-        p.device
-        for p in lp.comports() #list port info
-        if p.vid == VID_EA and (sn is None or p.serial_number == sn)
-    ]
-
-
-def identifier(s):
-    s.write(b"*IDN?\n")
-    return s.readline().decode(errors="ignore").strip()
-
-
-def mesurer(s, commande):
-    s.write(commande)
-    reponse = s.readline().decode(errors="ignore").strip()  # ex : "0.00 V"
-    return float(reponse.split()[0])  # garde le nombre, enlève l'unité
-
-
-def lire_valeurs(s, v, i, p):
-    if (v != None):
-        v = mesurer(s, b"MEAS:VOLT?\n")
-    if (i != None):
-        i = mesurer(s, b"MEAS:CURR?\n")
-    if (p != None):
-        p = mesurer(s, b"MEAS:POW?\n")
-    return v, i, p
-
-def regler_charge(s, v, i, p):
-    if (v != None):
-        s.write(f"VOLT {v}\n".encode())
-    if (i != None):
-        s.write(f"CURR {i}\n".encode())
-    if (p != None):
-        s.write(f"POW {p}\n".encode())
-
-def verrou(s, actif):
-    s.write(b"SYST:LOCK ON\n" if actif else b"SYST:LOCK OFF\n")
-    time.sleep(0.5)  # la charge ignore les requêtes pendant qu'elle change de mode
-    s.reset_input_buffer()
-    s.write(b"SYST:LOCK:OWN?\n")
-    return (s.readline().decode(errors="ignore").strip() == "REMOTE") == actif  # vérifie l'état réel
-
-
-def entree(s, actif):
-    s.write(b"INP ON\n" if actif else b"INP OFF\n")
-    s.write(b"INP?\n")
-    return (s.readline().decode(errors="ignore").strip() == "ON") == actif  # vérifie l'état réel
+DOSSIER_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mesures")
 
 
 def demander_nombre(question, defaut=None, optionnel=False):

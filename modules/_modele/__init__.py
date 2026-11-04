@@ -12,6 +12,7 @@ Ce que le logiciel fournit déjà à un module :
   - navigation (bouton Retour), verrouillage automatique pendant une opération (méthode occupe() d'une page) ;
   - thème et composants (theme.py : ListeLignes, GraphesTemps, Interrupteur, couleurs, polices app.f) ;
   - dossier de données propre : self.dossier() (créé à la demande, sous le dossier de données de l'application) ;
+  - détection / connexion des appareils série : déclarer `instruments = ("id",)` ; voir instruments/ (pilotes + page « Instruments ») ;
   - mises à jour automatiques (le module fait partie de l'application, rien à faire).
 """
 import tkinter as tk
@@ -44,6 +45,8 @@ class Modele(Module):
     description = "Squelette à copier pour créer un nouveau module."
     icone = "module"                   # "test", "profils", "resultats" ou générique ; en ajouter dans theme.icone()
     actif_par_defaut = True
+    instruments = ()                   # ex. ("charge_ea",) : l'application détecte l'appareil, affiche son état en en-tête
+                                       # et fournit son port : app.instruments.port("charge_ea")
 
     def actions(self):
         return [Action("accueil", "Page d'exemple", "Ouvre la page d'exemple du modèle.", info=lambda app: "prêt")]
@@ -53,5 +56,3 @@ class Modele(Module):
             return PageExemple(parent, app, self)
         return super().creer_page(nom, parent, app)
 
-    def statut(self, app):
-        return None                    # ex. ("● Équilibreur connecté", theme.VERT) pour afficher le matériel du module

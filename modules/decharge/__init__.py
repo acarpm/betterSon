@@ -1,8 +1,5 @@
 """Module « Décharge » : décharge d'une batterie sur la charge électronique EA, avec profils de test et analyse."""
-from tkinter import messagebox
-
-import main as charge  # communication avec la charge EA
-from theme import ANTHRACITE, LIME, ROUGE, TEAL, VERT
+from theme import ANTHRACITE, LIME, TEAL
 
 from ..base import Action, Module
 from . import chemins, profils, resultats
@@ -15,11 +12,11 @@ class Decharge(Module):
     icone = "test"
     couleur = LIME
     teinte = "#eef3c0"
+    instruments = ("charge_ea",)   # détection, port et statut : gérés par l'application (app.instruments)
 
     def __init__(self):
         self._profils = None   # chargés à la première utilisation (et non à l'import)
         self._dernier = None
-        self.port = None
 
     # ---------- état partagé par les pages du module ----------
     def _charger(self):
@@ -40,20 +37,6 @@ class Decharge(Module):
     def dernier(self, nom):
         self._charger()
         self._dernier = nom
-
-    # ---------- matériel ----------
-    def port_ou_erreur(self):
-        """Port série de la charge EA, ou message d'erreur pour l'opérateur."""
-        self.port = (charge.trouver_ports() or [None])[0]
-        if not self.port:
-            messagebox.showerror("Charge introuvable",
-                                 "Aucune charge EA détectée.\nBranchez le câble USB et allumez la charge.")
-        return self.port
-
-    def statut(self, app):
-        if charge.trouver_ports():
-            return "● Charge connectée", VERT
-        return "● Charge non détectée - vérifiez le câble USB", ROUGE
 
     # ---------- interface ----------
     def actions(self):

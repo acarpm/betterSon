@@ -6,7 +6,7 @@ import time
 
 import serial
 
-from .daly import BAUD, Daly
+from instruments.daly import BAUD, Daly
 
 
 class CritereFin:

@@ -8,8 +8,9 @@ from tkinter import messagebox, ttk
 
 import serial
 
-import main as charge  # communication avec la charge EA
+import envoi
 import theme as T
+from instruments import ea as charge  # pilote de la charge EA (partagé)
 from theme import BG, BLEU, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT, GraphesTemps
 
 
@@ -133,7 +134,7 @@ class PageEnCours(tk.Frame):
         """Thread de test : seul à parler à la charge pendant toute sa durée."""
         q = self.file
         try:
-            with serial.Serial(port, 115200, timeout=1) as s:
+            with serial.Serial(port, charge.BAUD, timeout=1) as s:
                 if not charge.verrou(s, True):
                     q.put(("fin", "erreur", "La charge n'est pas passée en mode distant."))
                     return
@@ -194,6 +195,7 @@ class PageEnCours(tk.Frame):
 
     def _fin_test(self, motif, detail):
         self._boutons("fin")
+        envoi.envoyer("decharge", self.dernier_csv, motif)
         if motif == "erreur":
             self._etat("Test interrompu sur erreur - vérifiez la charge.", ROUGE)
             messagebox.showerror("Erreur", f"{detail}\n\nL'entrée de la charge a été coupée (vérifiez-le sur la charge).")

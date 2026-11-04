@@ -5,11 +5,14 @@ import tkinter as tk
 from datetime import datetime
 from tkinter import messagebox, ttk
 
+import envoi
 import theme as T
 from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEAL, TEXTE, VERT, GraphesTemps
 
 from .acquisition import Acquisition, CritereFin
 from .widgets import BarresCellules, Mesures
+
+ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
 
 INTERVALLE_S = 2.0       # une lecture toutes les 2 s : assez fin pour le suivi, fichier raisonnable sur des heures
 SILENCE_MAX_S = 120      # l'appareil ne répond plus depuis 2 minutes : la session s'arrête (le CSV est conservé)
@@ -35,6 +38,8 @@ class PageSession(tk.Frame):
         self.series = {"ecart": [], "vpack": []}
         self.ecart_initial = None
         self.chemin = None
+        self._visible = False
+        self._dernier_etat_instrument = None
 
         corps = tk.Frame(self, bg=BG)
         corps.pack(fill="both", expand=True, padx=28, pady=(18, 16))
@@ -90,8 +95,27 @@ class PageSession(tk.Frame):
 
     # ---------- cycle de vie ----------
     def on_show(self):
-        if not self.occupe() and not self.mod.port():
-            self._etat("Aucun port choisi : ouvrez « Connexion » pour sélectionner l'équilibreur.", ORANGE)
+        self._visible = True
+        if not self.occupe():
+            self._dernier_etat_instrument = None
+            if not self.app.instruments.port(ID):
+                self.app.instruments.lancer_detection(ID)  # recherche en arrière-plan : prêt quand l'opérateur a rempli les champs
+            self._surveiller_instrument()
+
+    def on_hide(self):
+        self._visible = False
+
+    def _surveiller_instrument(self):
+        """Affiche l'état de l'équilibreur tant qu'on est sur la page et qu'aucune session ne tourne."""
+        if not self._visible or self.occupe():
+            return
+        inst = self.app.instruments
+        etat, texte = inst.statut(ID)
+        if (etat, texte) != self._dernier_etat_instrument:
+            self._dernier_etat_instrument = (etat, texte)
+            couleur = {"ok": VERT, "info": GRIS, "attention": ORANGE, "erreur": ROUGE}[etat]
+            self._etat(texte if etat != "attention" else texte + " - ouvrez « Instruments » depuis l'accueil", couleur)
+        self.after(700, self._surveiller_instrument)
 
     def occupe(self):
         """Vrai pendant la session : l'application verrouille la navigation."""
@@ -115,9 +139,12 @@ class PageSession(tk.Frame):
     def _demarrer(self):
         if self.occupe():
             return
-        port = self.mod.port()
+        inst = self.app.instruments
+        if inst.en_recherche(ID):
+            return messagebox.showinfo("Recherche en cours", "Recherche de l'équilibreur en cours, patientez quelques secondes.")
+        port = inst.port_ou_erreur(ID)
         if not port:
-            return messagebox.showwarning("Aucun port", "Choisissez d'abord le port de l'équilibreur dans « Connexion ».")
+            return
         try:
             cible = _nombre(self.vars["cible"].get(), "Écart cible")
             duree = _nombre(self.vars["duree"].get(), "Durée maximale")
@@ -135,7 +162,7 @@ class PageSession(tk.Frame):
         self.barres.definir([])
         self.graphes.definir(self.series, seuil_v=cible)
         self.file = queue.Queue()
-        self.acq = Acquisition(port, self.file, intervalle=INTERVALLE_S, chemin_csv=self.chemin,
+        self.acq = Acquisition(port, self.file, intervalle=INTERVALLE_S, chemin_csv=self.chemin, baud=inst.instrument(ID).baud,
                                critere=CritereFin(cible, stable, duree * 60), silence_max_s=SILENCE_MAX_S)
         self.acq.demarrer()
         self._mode(True)
@@ -186,6 +213,7 @@ class PageSession(tk.Frame):
 
     def _fin(self, motif, detail):
         self._mode(False)
+        envoi.envoyer("equilibrage", self.chemin, motif)
         if motif == "erreur":
             self._etat("Session interrompue sur erreur.", ROUGE)
             return messagebox.showerror("Erreur", detail)

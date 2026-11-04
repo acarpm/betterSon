@@ -27,9 +27,11 @@ Elles ne sont jamais touchées par les mises à jour ni par une réinstallation.
 
 ## Mises à jour automatiques
 
-Au démarrage (puis toutes les 2 h), le logiciel regarde si une nouvelle release existe sur GitHub. Si oui, un bandeau
+Au démarrage (puis toutes les 2 h), le logiciel regarde si une nouvelle release existe sur GitHub (certificats HTTPS embarqués via `certifi` : une application packagée ne peut pas
+utiliser ceux du système). Si oui, un bandeau
 propose **Mettre à jour maintenant** : le fichier est téléchargé, sa somme SHA-256 est vérifiée, le logiciel se remplace
-puis redémarre. Impossible pendant un test (le bouton est refusé) ; un échec laisse l'ancienne version intacte.
+puis redémarre. Un clic sur le numéro de version (en haut à droite) vérifie tout de suite et explique le résultat : « à jour », mise à jour
+disponible, ou la cause d'un échec (réseau, certificats, limite GitHub). Impossible pendant un test (le bouton est refusé) ; un échec laisse l'ancienne version intacte.
 Le dépôt doit être **public** pour que les mises à jour et les commandes d'installation fonctionnent sans identifiants.
 
 ## Publier une nouvelle version (développeur)
@@ -43,6 +45,18 @@ GitHub Actions ([.github/workflows/release.yml](.github/workflows/release.yml)) 
 crée la release `v1.2.0` avec les fichiers et `SHA256SUMS.txt`, puis les postes installés proposent la mise à jour.
 Le numéro de version du logiciel est celui du tag (écrit dans `version.py` pendant la construction).
 Numérotation conseillée : `vMAJEUR.MINEUR.CORRECTIF` (ex. `v1.2.1`) ; une version n'est proposée que si elle est plus grande.
+
+## Instruments (détection des appareils)
+
+La détection des appareils série est commune à toute l'application (paquet `instruments/`), pas propre à un module.
+Le bouton **Instruments** de l'accueil (et de chaque menu de module) affiche les appareils connus et permet de les chercher,
+de choisir un port à la main ou de tester la liaison. L'état de l'appareil du module affiché apparaît en haut à droite.
+
+- **Charge EA** : reconnue directement par son identifiant USB, sans rien lui envoyer. Avec plusieurs charges, celle du numéro de
+  série préféré (`SN_PREFERE`, `instruments/ea.py`) passe en premier.
+- **Équilibreur Daly** : l'USB ne l'identifie pas ; l'application interroge les ports série disponibles (jamais ceux d'un autre
+  appareil déjà reconnu, ni les pseudo-ports Bluetooth), garde celui qui répond et le mémorise (`config.json`).
+- Un choix manuel n'est jamais remplacé en silence : si ce port disparaît, l'état passe au rouge.
 
 ## Utilisation
 
@@ -64,10 +78,9 @@ Pendant une opération (un test, par ex.), la navigation est verrouillée : on n
 
 ### Module « Équilibrage de batteries » (équilibreur actif Daly)
 
-Lit l'équilibreur Daly par son port série (adaptateur USB-UART, 9600 bauds, protocole Daly en **lecture seule**). Trois actions :
+Lit l'équilibreur Daly par son port série (adaptateur USB-UART, 9600 bauds, protocole Daly en **lecture seule**).
+Le port est trouvé tout seul (voir « Instruments »). Deux actions :
 
-- **Connexion** : choisir le port série de l'équilibreur (la charge EA n'est jamais proposée) et tester la liaison.
-  Le port est mémorisé dans `config.json`.
 - **Lire les tensions** : tension de chaque cellule en direct (une barre par cellule, échelle zoomée), tension / courant / SoC du pack,
   écart max - min, cellule la plus haute et la plus basse, cellules en cours d'équilibrage si l'appareil le signale.
   La lecture s'arrête et libère le port quand on quitte la page.
@@ -101,12 +114,14 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 | `config.py` | réglages (modules activés) dans `config.json` |
 | `theme.py` | couleurs de la charte, composants partagés (tuile, liste, graphe, interrupteur), dossiers de données |
 | `updater.py`, `version.py` | mise à jour depuis les releases GitHub, numéro de version |
-| `modules/base.py` | contrat d'un module (`Module`, `Action`) |
+| `instruments/` | **détection et pilotes des appareils** : `gestionnaire.py` (ports, détection, mémorisation, statut), `ea.py` (charge EA), `daly.py` (protocole Daly), `base.py` |
+| `page_instruments.py` | page « Instruments » : détection, choix du port, test de liaison |
+| `modules/base.py` | contrat d'un module (`Module`, `Action`, `instruments` utilisés) |
 | `modules/__init__.py` | **registre des modules** (`TOUS`) |
 | `modules/decharge/` | module Décharge : pages, profils, analyse des CSV, chemins de données |
-| `modules/equilibrage/` | module Équilibrage : protocole Daly (`daly.py`), lecture périodique + CSV (`acquisition.py`), pages |
+| `modules/equilibrage/` | module Équilibrage : lecture périodique + CSV (`acquisition.py`), pages |
 | `modules/_modele/` | squelette commenté à copier pour un nouveau module (non enregistré) |
-| `main.py` | communication avec la charge EA (version console) |
+| `main.py` | version console du test de décharge (utilise `instruments/ea.py`) |
 | `install.sh`, `install.ps1` | installation en une commande |
 | `installer/betterson.iss` | installateur Windows (Inno Setup), construit par la CI |
 
@@ -116,7 +131,8 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
    `actions()` (les tuiles du menu du module), `creer_page()` (une classe `tk.Frame` par page), `statut()` (matériel connecté, facultatif).
 2. L'enregistrer dans `modules/__init__.py` : `from .resistance import Resistance`, puis `TOUS = [Decharge(), Equilibrage(), Resistance()]`.
 3. C'est tout : tuile sur l'accueil, activation / désactivation, navigation, verrouillage pendant une opération
-   (méthode `occupe()` d'une page), dossier de données (`self.dossier()`) et mises à jour automatiques sont fournis.
+   (méthode `occupe()` d'une page), dossier de données (`self.dossier()`), détection des appareils (`instruments = ("id",)` puis
+   `app.instruments.port("id")`) et mises à jour automatiques sont fournis. Un nouvel appareil se déclare dans `instruments/`.
 
 Un module est aussi livré à tous les postes par la mise à jour ; l'opérateur choisit ensuite de l'activer ou non.
 

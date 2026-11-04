@@ -9,11 +9,12 @@ import json
 import os
 import re
 import shutil
+import ssl
 import subprocess
 import sys
 import tempfile
 import urllib.request
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 
 import version
 
@@ -48,16 +49,55 @@ def _requete(url):
                                                 "Accept": "application/vnd.github+json"})
 
 
-def derniere_version(timeout=8):
-    """Infos de la dernière release publiée (hors brouillons / préversions), ou None si injoignable."""
+def _contexte_ssl():
+    """Certificats HTTPS : ceux de certifi, embarqués avec le logiciel.
+
+    Une application packagée ne peut pas compter sur ceux du système : son OpenSSL cherche les certificats dans le dossier
+    de la machine où elle a été construite, qui n'existe pas sur le poste de l'opérateur (échec silencieux de toute requête HTTPS).
+    """
     try:
-        with urllib.request.urlopen(_requete(API), timeout=timeout) as r:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:  # noqa: BLE001 - sans certifi on retombe sur les certificats du système
+        return ssl.create_default_context()
+
+
+def _ouvrir(url, timeout):
+    return urllib.request.urlopen(_requete(url), timeout=timeout, context=_contexte_ssl())
+
+
+def _expliquer(e):
+    """Message lisible pour une erreur réseau."""
+    if isinstance(e, HTTPError):
+        if e.code == 403:
+            return "limite de requêtes GitHub atteinte, réessayez dans un moment"
+        if e.code == 404:
+            return "aucune release trouvée (dépôt privé ou sans release ?)"
+        return f"GitHub a répondu {e.code}"
+    raison = getattr(e, "reason", e)
+    if isinstance(raison, ssl.SSLError):
+        return f"certificats HTTPS invalides ou introuvables ({raison})"
+    return f"réseau indisponible ({raison})"
+
+
+def verifier(timeout=8):
+    """(infos, erreur) : infos de la dernière release publiée (hors brouillons / préversions) ; en cas d'échec,
+    infos vaut None et erreur explique pourquoi (jamais d'échec silencieux)."""
+    try:
+        with _ouvrir(API, timeout) as r:
             data = json.load(r)
-    except (URLError, OSError, ValueError):
-        return None
+    except (URLError, OSError) as e:
+        return None, _expliquer(e)
+    except ValueError:
+        return None, "réponse de GitHub illisible"
     tag = str(data.get("tag_name") or "")
     return {"tag": tag, "version": _numeros(tag), "notes": data.get("body") or "",
-            "assets": {a["name"]: a["browser_download_url"] for a in data.get("assets", []) if "name" in a}}
+            "assets": {a["name"]: a["browser_download_url"] for a in data.get("assets", []) if "name" in a}}, None
+
+
+def derniere_version(timeout=8):
+    """Comme verifier(), sans le message d'erreur : infos de la dernière release, ou None."""
+    return verifier(timeout)[0]
 
 
 def plus_recente(info, courante=None):
@@ -71,7 +111,7 @@ def plus_recente(info, courante=None):
 
 # ---------- téléchargement ----------
 def _somme_attendue(info, nom):
-    with urllib.request.urlopen(_requete(info["assets"][SOMMES]), timeout=15) as r:
+    with _ouvrir(info["assets"][SOMMES], 15) as r:
         for ligne in r.read().decode("utf-8", "replace").splitlines():
             morceaux = ligne.split()
             if len(morceaux) == 2 and morceaux[1].lstrip("*") == nom:
@@ -86,7 +126,7 @@ def telecharger(info, progression=None):
         attendu = _somme_attendue(info, nom)
         dest = os.path.join(tempfile.mkdtemp(prefix="betterson-maj-"), nom)
         h = hashlib.sha256()
-        with urllib.request.urlopen(_requete(info["assets"][nom]), timeout=30) as r, open(dest, "wb") as f:
+        with _ouvrir(info["assets"][nom], 30) as r, open(dest, "wb") as f:
             total = int(r.headers.get("Content-Length") or 0)
             fait = 0
             while True:
