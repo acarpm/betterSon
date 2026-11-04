@@ -28,8 +28,7 @@ def _dossier_donnees():
 
 
 BASE = _dossier_donnees()
-DOSSIER_CSV = os.path.join(BASE, "mesures")
-FICHIER_PROFILS = os.path.join(BASE, "profils.json")
+FICHIER_CONFIG = os.path.join(BASE, "config.json")
 
 # Couleurs de la charte BatConnect (relevées sur le logo)
 LIME = "#bcd00a"
@@ -227,11 +226,75 @@ def icone(parent, genre, fond, teinte, taille=84):
         for y, x in ((30, 34), (42, 52), (54, 38)):
             c.create_line(21, y, 63, y, fill=TEAL, width=3, capstyle="round")
             c.create_oval(x - 6, y - 6, x + 6, y + 6, fill="white", outline=TEAL, width=3)
-    else:  # histogramme
+    elif genre == "resultats":  # histogramme
         for x0, y0 in ((23, 46), (37, 37), (51, 27)):
             c.create_rectangle(x0, y0, x0 + 11, 58, fill=ANTHRACITE, outline="")
         c.create_line(19, 59, 66, 59, fill=ANTHRACITE, width=2)
+    else:  # module générique : quatre pièces dont une « branchée »
+        for x0, y0, col in ((22, 22, ANTHRACITE), (44, 22, ANTHRACITE), (22, 44, ANTHRACITE), (44, 44, LIME)):
+            c.create_rectangle(x0, y0, x0 + 18, y0 + 18, fill=col, outline="")
     return c
+
+
+def tuile(parent, f, titre_, desc, genre, couleur, teinte, commande, largeur=330, hauteur=330):
+    """Grande tuile cliquable (icône, titre, description, ligne d'info, flèche). Renvoie le Label d'info."""
+    t = tk.Frame(parent, bg=CARTE, highlightbackground=BORD, highlightcolor=couleur, highlightthickness=2,
+                 cursor="hand2", width=largeur, height=hauteur)
+    t.pack_propagate(False)
+    corps = tk.Frame(t, bg=CARTE)
+    corps.pack(fill="both", expand=True, padx=26, pady=24)
+    ico = icone(corps, genre, CARTE, teinte)
+    ico.pack(anchor="w")
+    lbl_t = tk.Label(corps, text=titre_, bg=CARTE, fg=TEXTE, font=f(18, True), anchor="w", justify="left",
+                     wraplength=largeur - 70)
+    lbl_t.pack(fill="x", pady=(18, 0))
+    lbl_d = tk.Label(corps, text=desc, bg=CARTE, fg=GRIS, font=f(12), anchor="w", justify="left",
+                     wraplength=largeur - 70)
+    lbl_d.pack(fill="x", pady=(8, 0))
+    bas = tk.Frame(corps, bg=CARTE)
+    bas.pack(side="bottom", fill="x")
+    info = tk.Label(bas, text="", bg=CARTE, fg=TEAL, font=f(12, True), anchor="w")
+    info.pack(side="left")
+    fleche = tk.Label(bas, text="→", bg=CARTE, fg=GRIS, font=f(22, True))
+    fleche.pack(side="right")
+
+    def survol(dedans):
+        t.config(highlightbackground=couleur if dedans else BORD)
+        fleche.config(fg=TEXTE if dedans else GRIS)
+
+    for w in (t, corps, ico, lbl_t, lbl_d, bas, info, fleche):
+        w.bind("<Button-1>", lambda e: commande())
+        w.bind("<Enter>", lambda e: survol(True))
+        w.bind("<Leave>", lambda e: survol(False))
+    info.tuile = t  # le conteneur à placer (pack/grid) par l'appelant
+    return info
+
+
+class Interrupteur(tk.Canvas):
+    """Interrupteur à glissière (activé = lime). commande(nouvel_etat) est appelée à chaque clic."""
+
+    def __init__(self, parent, actif, commande, fond=CARTE):
+        super().__init__(parent, width=56, height=30, bg=fond, highlightthickness=0, cursor="hand2")
+        self.actif, self.commande = actif, commande
+        self.bind("<Button-1>", lambda e: self.basculer())
+        self._dessiner()
+
+    def regler(self, actif):
+        self.actif = actif
+        self._dessiner()
+
+    def basculer(self):
+        self.regler(not self.actif)
+        self.commande(self.actif)
+
+    def _dessiner(self):
+        self.delete("all")
+        couleur = LIME if self.actif else "#cfcfca"
+        self.create_oval(2, 2, 30, 28, fill=couleur, outline=couleur)
+        self.create_oval(26, 2, 54, 28, fill=couleur, outline=couleur)
+        self.create_rectangle(16, 2, 40, 28, fill=couleur, outline=couleur)
+        x = 41 if self.actif else 15
+        self.create_oval(x - 11, 4, x + 11, 26, fill="white", outline="#b8b8b2" if not self.actif else "#9aab00")
 
 
 class GraphesTemps(tk.Frame):

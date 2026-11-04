@@ -22,7 +22,7 @@ Linux : l'utilisateur doit être dans le groupe `dialout` pour accéder à la ch
 
 ### Où sont les données ?
 
-Dans le dossier **Documents/BatConnect** de l'opérateur : `profils.json` (profils de test) et `mesures/` (un CSV par test).
+Dans le dossier **Documents/BatConnect** de l'opérateur : `profils.json` (profils de test) et `mesures/` (un CSV par test) pour le module Décharge, `config.json` (modules activés), et un sous-dossier par futur module.
 Elles ne sont jamais touchées par les mises à jour ni par une réinstallation. Copier `profils.json` suffit pour partager des profils.
 
 ## Mises à jour automatiques
@@ -46,7 +46,12 @@ Numérotation conseillée : `vMAJEUR.MINEUR.CORRECTIF` (ex. `v1.2.1`) ; une vers
 
 ## Utilisation
 
-L'écran d'accueil propose trois actions :
+Le logiciel est organisé en **modules** que l'on peut activer ou désactiver (bouton **Gérer les modules**, en bas à droite de l'accueil).
+L'accueil affiche une tuile par module activé ; un module désactivé disparaît (ses données sont conservées).
+
+### Module « Décharge de batteries »
+
+Trois actions :
 
 - **Lancer un test** : choisir un profil dans la liste (récapitulatif à droite), saisir éventuellement le n° de série, puis
   « Lancer le test ». La page **test en cours** affiche les mesures et le graphe tension + courant + puissance (un axe par
@@ -55,7 +60,11 @@ L'écran d'accueil propose trois actions :
 - **Analyser les résultats** : liste des tests réalisés (filtre par profil / n° de série), synthèse
   (capacité, énergie, durée, tensions, moyennes) et graphe des mesures.
 
-Pendant un test, la navigation est verrouillée : on ne peut pas quitter la page « test en cours ».
+Pendant une opération (un test, par ex.), la navigation est verrouillée : on ne peut pas quitter la page en cours.
+
+### Modules à venir
+
+Équilibrage de batteries, calcul de la résistance interne des cellules : voir « Ajouter un module » ci-dessous.
 
 ## Développement
 
@@ -65,20 +74,34 @@ python3 -m venv .venv
 .venv/bin/python gui.py
 ```
 
-Lancé depuis les sources, le logiciel garde ses données dans le dossier du projet (`profils.json`, `mesures/`, ignorés par git)
+Lancé depuis les sources, le logiciel garde ses données dans le dossier du projet (`profils.json`, `mesures/`, `config.json`, ignorés par git)
 et ne vérifie pas les mises à jour (`version.py` vaut `dev`). La variable d'environnement `BATCONNECT_DATA` force un autre dossier de données.
 Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 
 | Fichier | Rôle |
 |---|---|
-| `gui.py` | fenêtre, accueil, page de sélection du test, page de test en cours, bannière de mise à jour |
-| `page_profils.py`, `page_resultats.py` | pages de gestion des profils et d'analyse |
-| `theme.py` | couleurs de la charte, composants partagés (liste, graphe), dossiers de données |
-| `profils.py`, `resultats.py` | lecture / validation des profils, lecture / analyse des CSV (sans interface) |
+| `gui.py` | coque de l'application : fenêtre, navigation, verrouillage, bannière de mise à jour |
+| `page_accueil.py`, `page_modules.py` | accueil (une tuile par module), menu d'un module, activation des modules |
+| `config.py` | réglages (modules activés) dans `config.json` |
+| `theme.py` | couleurs de la charte, composants partagés (tuile, liste, graphe, interrupteur), dossiers de données |
 | `updater.py`, `version.py` | mise à jour depuis les releases GitHub, numéro de version |
+| `modules/base.py` | contrat d'un module (`Module`, `Action`) |
+| `modules/__init__.py` | **registre des modules** (`TOUS`) |
+| `modules/decharge/` | module Décharge : pages, profils, analyse des CSV, chemins de données |
+| `modules/_modele/` | squelette commenté à copier pour un nouveau module (non enregistré) |
 | `main.py` | communication avec la charge EA (version console) |
 | `install.sh`, `install.ps1` | installation en une commande |
 | `installer/batconnect.iss` | installateur Windows (Inno Setup), construit par la CI |
+
+### Ajouter un module
+
+1. Copier `modules/_modele/` en `modules/<id>/` (ex. `modules/equilibrage/`) et adapter la classe : `id`, `nom`, `description`,
+   `actions()` (les tuiles du menu du module), `creer_page()` (une classe `tk.Frame` par page), `statut()` (matériel connecté, facultatif).
+2. L'enregistrer dans `modules/__init__.py` : `from .equilibrage import Equilibrage`, puis `TOUS = [Decharge(), Equilibrage()]`.
+3. C'est tout : tuile sur l'accueil, activation / désactivation, navigation, verrouillage pendant une opération
+   (méthode `occupe()` d'une page), dossier de données (`self.dossier()`) et mises à jour automatiques sont fournis.
+
+Un module est aussi livré à tous les postes par la mise à jour ; l'opérateur choisit ensuite de l'activer ou non.
 
 Construction locale (même commande que la CI) :
 

@@ -3,17 +3,19 @@ import os
 import tkinter as tk
 from tkinter import ttk
 
-import resultats
 import theme as T
 from theme import BG, BORD, GRIS, TEXTE, GraphesTemps, ListeLignes
+
+from . import chemins, resultats
 
 VIDE = {"V": [], "A": [], "W": []}
 
 
 class PageResultats(tk.Frame):
-    def __init__(self, parent, app):
+    def __init__(self, parent, app, mod):
         super().__init__(parent, bg=BG)
         self.app = app
+        self.mod = mod
         f = app.f
         self.tous, self.affiches = [], []
         self.a_selectionner = None
@@ -75,8 +77,8 @@ class PageResultats(tk.Frame):
 
     @staticmethod
     def _dossier():
-        os.makedirs(T.DOSSIER_CSV, exist_ok=True)
-        return T.DOSSIER_CSV
+        os.makedirs(chemins.dossier_csv(), exist_ok=True)
+        return chemins.dossier_csv()
 
     # ---------- cycle de vie ----------
     def on_show(self):

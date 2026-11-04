@@ -2,15 +2,17 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 
-import profils
 import theme as T
 from theme import BG, BORD, GRIS, ROUGE, TEXTE, VERT, ListeLignes
 
+from . import chemins, profils
+
 
 class PageProfils(tk.Frame):
-    def __init__(self, parent, app):
+    def __init__(self, parent, app, mod):
         super().__init__(parent, bg=BG)
         self.app = app
+        self.mod = mod
         f = app.f
         self.index = None  # profil en cours d'édition (None = nouveau)
         corps = tk.Frame(self, bg=BG)
@@ -68,13 +70,13 @@ class PageProfils(tk.Frame):
 
     # ---------- cycle de vie ----------
     def on_show(self):
-        noms = [p["nom"] for p in self.app.profils]
-        i = noms.index(self.app.dernier) if self.app.dernier in noms else -1
+        noms = [p["nom"] for p in self.mod.profils]
+        i = noms.index(self.mod.dernier) if self.mod.dernier in noms else -1
         self._rafraichir(i)
         self._selectionner(i) if i >= 0 else self._nouveau()
 
     def _rafraichir(self, index=-1):
-        self.liste.remplir([(p["nom"], T.resume_profil(p)) for p in self.app.profils], index)
+        self.liste.remplir([(p["nom"], T.resume_profil(p)) for p in self.mod.profils], index)
 
     def _afficher(self, p):
         for cle, var in self.vars.items():
@@ -91,11 +93,11 @@ class PageProfils(tk.Frame):
         self.e_nom.focus_set()
 
     def _selectionner(self, i):
-        if not 0 <= i < len(self.app.profils):
+        if not 0 <= i < len(self.mod.profils):
             return self._nouveau()
         self.index = i
         self.liste.choisir(i, notifier=False)
-        self._afficher(self.app.profils[i])
+        self._afficher(self.mod.profils[i])
         self.lbl_titre.config(text="Modifier le profil")
         self.btn_suppr.config(state="normal")
 
@@ -104,16 +106,16 @@ class PageProfils(tk.Frame):
             p = profils.valider({cle: var.get() for cle, var in self.vars.items()})
         except ValueError as e:
             return self.lbl_msg.config(text=str(e), fg=ROUGE)
-        autres = [q["nom"].lower() for k, q in enumerate(self.app.profils) if k != self.index]
+        autres = [q["nom"].lower() for k, q in enumerate(self.mod.profils) if k != self.index]
         if p["nom"].lower() in autres:
             return self.lbl_msg.config(text="Un profil porte déjà ce nom.", fg=ROUGE)
         if self.index is None:
-            self.app.profils.append(p)
-            self.index = len(self.app.profils) - 1
+            self.mod.profils.append(p)
+            self.index = len(self.mod.profils) - 1
         else:
-            self.app.profils[self.index] = p
-        self.app.dernier = p["nom"]
-        profils.sauver(T.FICHIER_PROFILS, self.app.profils, p["nom"])
+            self.mod.profils[self.index] = p
+        self.mod.dernier = p["nom"]
+        profils.sauver(chemins.fichier_profils(), self.mod.profils, p["nom"])
         self._rafraichir(self.index)
         self._selectionner(self.index)
         self.lbl_msg.config(text="✔ Profil enregistré.", fg=VERT)
@@ -121,11 +123,11 @@ class PageProfils(tk.Frame):
     def _supprimer(self):
         if self.index is None:
             return
-        nom = self.app.profils[self.index]["nom"]
+        nom = self.mod.profils[self.index]["nom"]
         if not messagebox.askyesno("Supprimer", f"Supprimer le profil « {nom} » ?"):
             return
-        del self.app.profils[self.index]
-        self.app.dernier = None
-        profils.sauver(T.FICHIER_PROFILS, self.app.profils, None)
+        del self.mod.profils[self.index]
+        self.mod.dernier = None
+        profils.sauver(chemins.fichier_profils(), self.mod.profils, None)
         self._rafraichir()
         self._nouveau()
