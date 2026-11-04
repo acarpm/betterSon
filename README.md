@@ -110,3 +110,5 @@ pip install pyinstaller
 pyinstaller --noconfirm --windowed --onefile --name BatConnect --add-data "assets:assets" --collect-submodules serial gui.py
 # Windows : --add-data "assets;assets" ; macOS : remplacer --onefile par --onedir
 ```
+
+new versions git tag v ** && git push origin v **

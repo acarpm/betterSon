@@ -6,13 +6,17 @@ import theme as T
 from theme import BG, GRIS, ORANGE, TEXTE
 
 
-def _disposer(parent, tuiles, par_ligne=3):
-    """Range des tuiles par rangées de `par_ligne`, centrées."""
-    for debut in range(0, len(tuiles), par_ligne):
+def _disposer(parent, fabriques, par_ligne=3):
+    """Range des tuiles par rangées centrées de `par_ligne`.
+
+    Chaque fabrique reçoit la rangée et construit la tuile DANS celle-ci : une tuile créée ailleurs puis
+    replacée dans la rangée serait empilée sous elle et resterait invisible.
+    """
+    for debut in range(0, len(fabriques), par_ligne):
         rangee = tk.Frame(parent, bg=BG)
         rangee.pack(pady=(0, 18))
-        for t in tuiles[debut:debut + par_ligne]:
-            t.pack(in_=rangee, side="left", padx=10)
+        for fabrique in fabriques[debut:debut + par_ligne]:
+            fabrique(rangee).pack(side="left", padx=10)
 
 
 class Accueil(tk.Frame):
@@ -37,13 +41,15 @@ class Accueil(tk.Frame):
             tk.Label(self.centre, text="Activez au moins un module avec « Gérer les modules » (en bas à droite).",
                      bg=BG, fg=ORANGE, font=f(13)).pack()
             return
-        tuiles = []
-        for m in actifs:
-            info = T.tuile(self.centre, f, m.nom, m.description, m.icone, m.couleur, m.teinte,
-                           lambda m=m: a.aller(f"module:{m.id}"))
-            info.config(text=m.info(a))
-            tuiles.append(info.tuile)
-        _disposer(self.centre, tuiles)
+        def fabrique(m):
+            def construire(rangee):
+                info = T.tuile(rangee, f, m.nom, m.description, m.icone, m.couleur, m.teinte,
+                               lambda: a.aller(f"module:{m.id}"))
+                info.config(text=m.info(a))
+                return info.tuile
+            return construire
+
+        _disposer(self.centre, [fabrique(m) for m in actifs])
 
 
 class PageModule(tk.Frame):
@@ -61,11 +67,13 @@ class PageModule(tk.Frame):
             w.destroy()
         tk.Label(self.centre, text=m.nom, bg=BG, fg=TEXTE, font=f(24, True)).pack()
         tk.Label(self.centre, text=m.description, bg=BG, fg=GRIS, font=f(12), wraplength=760).pack(pady=(4, 26))
-        tuiles = []
-        for act in m.actions():
-            info = T.tuile(self.centre, f, act.titre, act.description, act.icone, act.couleur, act.teinte,
-                           lambda act=act: a.aller(f"{m.id}.{act.page}"))
-            if act.info:
-                info.config(text=act.info(a))
-            tuiles.append(info.tuile)
-        _disposer(self.centre, tuiles)
+        def fabrique(act):
+            def construire(rangee):
+                info = T.tuile(rangee, f, act.titre, act.description, act.icone, act.couleur, act.teinte,
+                               lambda: a.aller(f"{m.id}.{act.page}"))
+                if act.info:
+                    info.config(text=act.info(a))
+                return info.tuile
+            return construire
+
+        _disposer(self.centre, [fabrique(act) for act in m.actions()])
