@@ -48,13 +48,13 @@ jobs:
         run: |
           SEP=":"; [ "$RUNNER_OS" = "Windows" ] && SEP=";"
           MODE="--onefile"; [ "$RUNNER_OS" = "macOS" ] && MODE="--onedir"
-          python -m PyInstaller --noconfirm --clean --windowed $MODE --name BatConnect \
+          python -m PyInstaller --noconfirm --clean --windowed $MODE --name BetterSon \
             --add-data "assets${SEP}assets" --collect-submodules serial gui.py
           mkdir out
           case "$RUNNER_OS" in
-            Windows) cp dist/BatConnect.exe out/BatConnect-windows.exe ;;
-            Linux)   cp dist/BatConnect out/BatConnect-linux ;;
-            macOS)   ditto -c -k --keepParent dist/BatConnect.app out/BatConnect-macos.zip ;;
+            Windows) cp dist/BetterSon.exe out/BetterSon-windows.exe ;;
+            Linux)   cp dist/BetterSon out/BetterSon-linux ;;
+            macOS)   ditto -c -k --keepParent dist/BetterSon.app out/BetterSon-macos.zip ;;
           esac
           ls -la out
 
@@ -95,4 +95,4 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           gh release create "$GITHUB_REF_NAME" publication/* \
-            --title "BatConnect $GITHUB_REF_NAME" --generate-notes
+            --title "BetterSon $GITHUB_REF_NAME" --generate-notes
