@@ -1,0 +1,19 @@
+{
+  "profils": [
+    {
+      "nom": "Coursier Test 19Ah",
+      "tension_coupure": 32.5,
+      "courant": 20.0,
+      "puissance": 975.0,
+      "notes": ""
+    },
+    {
+      "nom": "Coursier Test 5A",
+      "tension_coupure": 37.75,
+      "courant": 5.0,
+      "puissance": 500.0,
+      "notes": ""
+    }
+  ],
+  "dernier": "Coursier Test 19Ah"
+}

@@ -1,1 +1,4 @@
 /mesures
+.venv/
+__pycache__/
+*.tmp
