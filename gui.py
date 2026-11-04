@@ -20,6 +20,8 @@ import main as charge  # fonctions de communication avec la charge
 import profils
 import resultats
 import theme as T
+import updater
+import version
 from page_profils import PageProfils
 from page_resultats import PageResultats
 from theme import (ANTHRACITE, BG, BLEU, BORD, CARTE, GRIS, LIME, ORANGE, ROUGE, TEAL, TEXTE, VERT,
@@ -439,6 +441,9 @@ class Application(tk.Tk):
         self.f = T.init_styles(self)
         self.profils, self.dernier = profils.charger(T.FICHIER_PROFILS)
         self.port = None
+        self._maj_file = queue.Queue()  # messages du thread de mise à jour -> interface
+        self._maj_info = None
+        self._maj_en_cours = False
 
         self._entete()
         zone = tk.Frame(self, bg=BG)
@@ -450,6 +455,9 @@ class Application(tk.Tk):
         self.aller("accueil")
         self._rafraichir_port()
         self.protocol("WM_DELETE_WINDOW", self._fermer)
+        updater.nettoyer()  # supprime l'ancienne version laissée par la dernière mise à jour
+        self.after(2500, self._verifier_maj)
+        self.after(500, self._traiter_maj)
 
     def _entete(self):
         tete = tk.Frame(self, bg=CARTE)
@@ -462,10 +470,89 @@ class Application(tk.Tk):
             lbl = tk.Label(tete, text="BATCONNECT", bg=CARTE, fg=ANTHRACITE, font=self.f(20, True), cursor="hand2")
             lbl.pack(side="left", padx=24, pady=14)
         lbl.bind("<Button-1>", lambda e: self.aller("accueil"))  # clic sur le logo = retour au menu
+        tk.Label(tete, text=f"v{version.__version__}", bg=CARTE, fg="#a5a5a0", font=self.f(10)).pack(
+            side="right", padx=(0, 20))
         self.lbl_port = tk.Label(tete, text="Recherche de la charge…", bg=CARTE, fg=GRIS, font=self.f(12, True))
-        self.lbl_port.pack(side="right", padx=24)
+        self.lbl_port.pack(side="right", padx=(24, 12))
         self.btn_menu = ttk.Button(tete, text="←  Menu", style="Tool.TButton", command=lambda: self.aller("accueil"), takefocus=False)
-        tk.Frame(self, bg=LIME, height=4).pack(fill="x")
+        self.filet = tk.Frame(self, bg=LIME, height=4)
+        self.filet.pack(fill="x")
+
+        # bannière de mise à jour (masquée tant qu'aucune nouvelle version n'est détectée)
+        self.banniere = tk.Frame(self, bg="#fbf6d5")
+        self.lbl_maj = tk.Label(self.banniere, text="", bg="#fbf6d5", fg=TEXTE, font=self.f(12, True), anchor="w")
+        self.lbl_maj.pack(side="left", padx=(24, 12), pady=8)
+        self.btn_plus_tard = ttk.Button(self.banniere, text="Plus tard", style="Tool.TButton",
+                                        command=self.banniere.pack_forget)
+        self.btn_plus_tard.pack(side="right", padx=(0, 20))
+        self.btn_maj = ttk.Button(self.banniere, text="Mettre à jour maintenant", style="Maj.TButton",
+                                  command=self._installer_maj)
+        self.btn_maj.pack(side="right", padx=8)
+
+    # ---------- mises à jour ----------
+    def _verifier_maj(self):
+        """Interroge GitHub en tâche de fond (jamais bloquant) ; se répète toutes les 2 h."""
+        if updater.installe() and version.__version__ != "dev" and not self._maj_en_cours:
+            threading.Thread(target=lambda: self._maj_file.put(("info", updater.derniere_version())),
+                             daemon=True).start()
+        self.after(2 * 3600 * 1000, self._verifier_maj)
+
+    def _traiter_maj(self):
+        try:
+            while True:
+                msg = self._maj_file.get_nowait()
+                if msg[0] == "info":
+                    if updater.plus_recente(msg[1]) and not self._maj_en_cours:
+                        self._maj_info = msg[1]
+                        self.lbl_maj.config(text=f"Nouvelle version {msg[1]['tag']} disponible "
+                                                 f"(installée : v{version.__version__})")
+                        self.btn_maj.config(state="normal", text="Mettre à jour maintenant")
+                        self.btn_plus_tard.config(state="normal")
+                        self.banniere.pack(fill="x", after=self.filet)
+                elif msg[0] == "progression":
+                    fait, total = msg[1], msg[2]
+                    self.lbl_maj.config(text="Téléchargement de la mise à jour… "
+                                             + (f"{fait * 100 // total} %" if total else f"{fait // 1024} Ko"))
+                elif msg[0] == "pret":
+                    self._maj_pret(msg[1])
+                elif msg[0] == "erreur":
+                    self._maj_en_cours = False
+                    self.lbl_maj.config(text="Mise à jour impossible : " + msg[1])
+                    self.btn_maj.config(state="normal", text="Réessayer")
+                    self.btn_plus_tard.config(state="normal")
+        except queue.Empty:
+            pass
+        self.after(300, self._traiter_maj)
+
+    def _installer_maj(self):
+        if self.en_test():
+            return messagebox.showinfo("Test en cours", "Terminez le test en cours avant de mettre à jour.")
+        info = self._maj_info
+        if not info or self._maj_en_cours:
+            return
+        self._maj_en_cours = True
+        self.btn_maj.config(state="disabled")
+        self.btn_plus_tard.config(state="disabled")
+        self.lbl_maj.config(text="Téléchargement de la mise à jour… 0 %")
+
+        def tache():
+            try:
+                fichier = updater.telecharger(info, lambda a, t: self._maj_file.put(("progression", a, t)))
+                self._maj_file.put(("pret", updater.appliquer(fichier)))
+            except updater.ErreurMaj as e:
+                self._maj_file.put(("erreur", str(e)))
+            except Exception as e:  # noqa: BLE001 - jamais de plantage silencieux du thread
+                self._maj_file.put(("erreur", f"erreur inattendue ({e})"))
+        threading.Thread(target=tache, daemon=True).start()
+
+    def _maj_pret(self, chemin):
+        if self.en_test():  # un test a été lancé entre-temps : on ne coupe surtout pas le programme
+            self.lbl_maj.config(text="Mise à jour installée : elle sera active au prochain démarrage du logiciel.")
+            return
+        self.lbl_maj.config(text="Mise à jour installée, redémarrage…")
+        self.update_idletasks()
+        updater.relancer(chemin)
+        self.destroy()
 
     def aller(self, nom):
         if self.en_test() and nom != "encours":

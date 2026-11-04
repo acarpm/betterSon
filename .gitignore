@@ -1,4 +1,12 @@
+# données locales (version développement)
 /mesures
+/profils.json
+# environnement / builds
 .venv/
 __pycache__/
 *.tmp
+.DS_Store
+build/
+dist/
+out/
+*.spec

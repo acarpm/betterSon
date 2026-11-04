@@ -8,9 +8,26 @@ import tkinter as tk
 from tkinter import font as tkfont
 from tkinter import messagebox, ttk
 
-# Ressources (logo) et données (à côté du programme, ou de l'exécutable si packagé)
+# Ressources (logo) : dans le bundle si packagé, sinon à côté du code.
 RES = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
-BASE = os.path.dirname(sys.executable if getattr(sys, "frozen", False) else os.path.abspath(__file__))
+
+
+def _dossier_donnees():
+    """Où vivent profils.json et mesures/ : jamais dans l'application (elle est remplacée à chaque mise à jour).
+
+    - variable BATCONNECT_DATA si définie ;
+    - version installée : Documents/BatConnect (facile à retrouver pour l'opérateur) ;
+    - lancé depuis les sources : le dossier du projet.
+    """
+    perso = os.environ.get("BATCONNECT_DATA")
+    if perso:
+        return os.path.abspath(os.path.expanduser(perso))
+    if getattr(sys, "frozen", False):
+        return os.path.join(os.path.expanduser("~"), "Documents", "BatConnect")
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+BASE = _dossier_donnees()
 DOSSIER_CSV = os.path.join(BASE, "mesures")
 FICHIER_PROFILS = os.path.join(BASE, "profils.json")
 
@@ -45,6 +62,10 @@ def init_styles(root):
                      padding=(16, 11), borderwidth=0, focusthickness=0, focuscolor=fond)
         st.map(f"{nom}.TButton", background=[("disabled", "#dcdcd7"), ("active", actif)],
                foreground=[("disabled", "#a5a5a0")])
+    st.configure("Maj.TButton", background=LIME, foreground=ANTHRACITE, font=f(11, True),
+                 padding=(14, 6), borderwidth=0, focusthickness=0, focuscolor=LIME)
+    st.map("Maj.TButton", background=[("disabled", "#dcdcd7"), ("active", "#a9bc09")],
+           foreground=[("disabled", "#a5a5a0")])
     st.configure("Tool.TButton", background=BG, foreground=TEAL, font=f(11),
                  padding=(8, 5), borderwidth=0, focusthickness=0, focuscolor=BG)
     st.map("Tool.TButton", foreground=[("disabled", "#b5b5b0"), ("active", ANTHRACITE)],

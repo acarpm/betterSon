@@ -1,0 +1,98 @@
+name: Release
+
+# Publier une version :   git tag v1.2.0 && git push origin v1.2.0
+# La CI construit le logiciel pour Windows, macOS et Linux et crée la release GitHub.
+# Les postes déjà installés détectent la release et proposent la mise à jour.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.nom }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - { os: windows-latest, nom: windows }
+          - { os: macos-latest, nom: macos }   # Apple Silicon (arm64)
+          - { os: ubuntu-22.04, nom: linux }   # glibc ancienne = binaire compatible avec plus de distributions
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dépendances système (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libtk8.6
+
+      - name: Dépendances Python
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt "pyinstaller>=6.9"
+          python -c "import tkinter, serial; print('tkinter', tkinter.TkVersion)"
+
+      - name: Numéro de version = tag
+        run: echo "__version__ = \"${GITHUB_REF_NAME#v}\"" > version.py
+
+      - name: Construction (PyInstaller)
+        run: |
+          SEP=":"; [ "$RUNNER_OS" = "Windows" ] && SEP=";"
+          MODE="--onefile"; [ "$RUNNER_OS" = "macOS" ] && MODE="--onedir"
+          python -m PyInstaller --noconfirm --clean --windowed $MODE --name BatConnect \
+            --add-data "assets${SEP}assets" --collect-submodules serial gui.py
+          mkdir out
+          case "$RUNNER_OS" in
+            Windows) cp dist/BatConnect.exe out/BatConnect-windows.exe ;;
+            Linux)   cp dist/BatConnect out/BatConnect-linux ;;
+            macOS)   ditto -c -k --keepParent dist/BatConnect.app out/BatConnect-macos.zip ;;
+          esac
+          ls -la out
+
+      - name: Installateur Windows (Inno Setup)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          $version = "${{ github.ref_name }}".TrimStart("v")
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DAppVersion=$version" installer\batconnect.iss
+          if (-not (Test-Path out\BatConnect-Setup.exe)) { throw "Installateur non généré" }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.nom }}
+          path: out/*
+          if-no-files-found: error
+
+  release:
+    name: Publier la release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: publication
+          merge-multiple: true
+
+      - name: Sommes de contrôle
+        run: |
+          cd publication
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Créer la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" publication/* \
+            --title "BatConnect $GITHUB_REF_NAME" --generate-notes
