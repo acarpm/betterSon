@@ -5,6 +5,16 @@ import tkinter as tk
 from theme import BG, BORD, CARTE, GRIS, LIME, ORANGE, ROUGE, TEAL, TEXTE
 
 
+def resume_equilibrage(flags):
+    """(texte, couleur) décrivant ce que fait l'appareil, d'après son état d'équilibrage par cellule (commande 0x97)."""
+    if flags is None:
+        return "Équilibrage : état non signalé par l'appareil", GRIS
+    actives = [f"C{i + 1}" for i, a in enumerate(flags) if a]
+    if not actives:
+        return "Équilibrage : l'appareil n'équilibre aucune cellule en ce moment", GRIS
+    return f"Équilibrage en cours sur {', '.join(actives)}", ORANGE
+
+
 class Mesures(tk.Frame):
     """Rangée de grandes valeurs étiquetées.
 

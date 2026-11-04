@@ -6,7 +6,7 @@ import time
 
 import serial
 
-from instruments.daly import BAUD, Daly
+from instruments.daly import BAUD, DELAI_SERIE, Daly
 
 
 class CritereFin:
@@ -63,10 +63,11 @@ class Acquisition:
         fichier = ecrivain = None
         premier = dernier = None
         n_lectures = silence = 0
+        entete_ecrit = False
         motif = "stop"
         silence_depuis = None
         try:
-            with serial.Serial(self.port, self.baud, timeout=0.3) as ser:
+            with serial.Serial(self.port, self.baud, timeout=DELAI_SERIE) as ser:
                 daly = Daly(ser)
                 t0 = time.monotonic()
                 if self.chemin_csv:
@@ -90,12 +91,14 @@ class Acquisition:
                             silence, silence_depuis = 0, None
                             ecart = d.get("ecart_mv")
                             n_lectures += 1
-                            premier = premier or d
-                            dernier = d
-                            if ecrivain:
-                                if n_lectures == 1:
+                            if ecart is not None:
+                                premier = premier or d
+                                dernier = d
+                            if ecrivain and d["cellules"]:  # pas de ligne (ni d'en-tête) tant qu'on n'a pas les cellules
+                                if not entete_ecrit:
                                     ecrivain.writerow(["temps_s", "v_pack", "courant", "soc", "ecart_mv"]
                                                       + [f"c{i + 1}" for i in range(len(d["cellules"]))])
+                                    entete_ecrit = True
                                 ecrivain.writerow([f"{t:.1f}", d["v_pack"], d["courant"], d["soc"],
                                                    "" if ecart is None else f"{ecart:.1f}"]
                                                   + ["" if v is None else v for v in d["cellules"]])

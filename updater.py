@@ -193,12 +193,14 @@ def _remplacer_app(archive, app):
         nouveau = os.path.join(tmp, os.path.basename(app))
         if not os.path.isdir(nouveau):
             raise ErreurMaj("Archive de mise à jour invalide.")
-        shutil.rmtree(ancien, ignore_errors=True)
-        os.rename(app, ancien)
+        if os.path.exists(app):
+            shutil.rmtree(ancien, ignore_errors=True)
+            os.rename(app, ancien)
         try:
             os.rename(nouveau, app)
         except OSError:
-            os.rename(ancien, app)
+            if os.path.exists(ancien):
+                os.rename(ancien, app)
             raise
     except (OSError, subprocess.CalledProcessError) as e:
         raise ErreurMaj(f"Impossible de remplacer l'application ({e}).") from e
@@ -206,10 +208,27 @@ def _remplacer_app(archive, app):
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def _cible_macos(app):
+    """Où installer la mise à jour sur macOS.
+
+    Une application téléchargée puis lancée sans avoir été déplacée tourne depuis un emplacement TEMPORAIRE en lecture seule
+    (« App Translocation » : /private/var/folders/.../AppTranslocation/...) : on ne peut ni l'y remplacer ni écrire à côté.
+    Il en va de même d'un dossier non modifiable. Dans ces cas, la nouvelle version est installée dans ~/Applications
+    (toujours modifiable, sans droits administrateur) et c'est elle qui est relancée.
+    """
+    if "/AppTranslocation/" in app or not os.access(os.path.dirname(app), os.W_OK):
+        dossier = os.path.join(os.path.expanduser("~"), "Applications")
+        os.makedirs(dossier, exist_ok=True)
+        return os.path.join(dossier, os.path.basename(app))
+    return app
+
+
 def appliquer(fichier, cible=None):
-    """Remplace le programme installé par le fichier téléchargé ; renvoie le chemin à relancer."""
+    """Remplace le programme installé par le fichier téléchargé ; renvoie le chemin à relancer
+    (qui peut différer du programme en cours sur macOS, voir _cible_macos)."""
     cible = cible or _chemin_actuel()
     if systeme() == "macos":
+        cible = _cible_macos(cible)
         _remplacer_app(fichier, cible)
     else:
         _remplacer_fichier(fichier, cible)

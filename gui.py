@@ -178,7 +178,12 @@ class Application(tk.Tk):
         if self.occupe():  # une opération a démarré entre-temps : on ne coupe surtout pas le programme
             self.lbl_maj.config(text="Mise à jour installée : elle sera active au prochain démarrage du logiciel.")
             return
-        self.lbl_maj.config(text="Mise à jour installée, redémarrage…")
+        try:
+            ailleurs = os.path.abspath(chemin) != os.path.abspath(updater._chemin_actuel())
+        except updater.ErreurMaj:
+            ailleurs = False
+        self.lbl_maj.config(text="Mise à jour installée dans « Applications » de votre dossier personnel, redémarrage…"
+                            if ailleurs else "Mise à jour installée, redémarrage…")
         self.update_idletasks()
         updater.relancer(chemin)
         self.destroy()

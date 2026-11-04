@@ -115,7 +115,7 @@ class Gestionnaire:
             return False, f"Aucun port pour {inst.libelle}."
         with self._verrou_ports:
             try:
-                with serial.Serial(port, inst.baud, timeout=0.4) as ser:
+                with serial.Serial(port, inst.baud, timeout=inst.delai_serie) as ser:
                     infos = inst.sonde(ser)
             except (serial.SerialException, OSError) as e:
                 return False, f"Port {port} inaccessible : {e}\nIl est peut-être utilisé par un autre logiciel."

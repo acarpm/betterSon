@@ -15,6 +15,7 @@ class Instrument:
     description = ""
     aide = ""                    # conseil affiché quand l'appareil est introuvable
     baud = 9600
+    delai_serie = 0.4            # délai de lecture du port série (secondes) pour les dialogues de reconnaissance
     identification_directe = False
 
     def reconnu_par_vid(self, port):

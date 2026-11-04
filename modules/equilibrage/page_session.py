@@ -10,7 +10,7 @@ import theme as T
 from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEAL, TEXTE, VERT, GraphesTemps
 
 from .acquisition import Acquisition, CritereFin
-from .widgets import BarresCellules, Mesures
+from .widgets import BarresCellules, Mesures, resume_equilibrage
 
 ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
 
@@ -40,6 +40,8 @@ class PageSession(tk.Frame):
         self.chemin = None
         self._visible = False
         self._dernier_etat_instrument = None
+        self._cible = self._stable = 0.0
+        self._deja_equilibre = False
 
         corps = tk.Frame(self, bg=BG)
         corps.pack(fill="both", expand=True, padx=28, pady=(18, 16))
@@ -81,6 +83,8 @@ class PageSession(tk.Frame):
         self.mesures = Mesures(droite, f, [("ecart", "Écart actuel"), ("initial", "Écart initial"), ("v_pack", "Tension pack"),
                                            ("duree", "Durée"), ("haute", "Plus haute"), ("basse", "Plus basse")], taille=19)
         self.mesures.pack(fill="x")
+        self.lbl_eq = tk.Label(droite, text="", bg=BG, fg=GRIS, font=f(12), anchor="w")
+        self.lbl_eq.pack(fill="x", pady=(4, 0))
         tk.Frame(droite, bg=BORD, height=1).pack(fill="x", pady=(8, 8))
         self.barres = BarresCellules(droite, f, hauteur=150)
         self.barres.pack(fill="x")
@@ -158,6 +162,8 @@ class PageSession(tk.Frame):
         for s in self.series.values():
             s.clear()
         self.ecart_initial = None
+        self._cible, self._stable, self._deja_equilibre = cible, stable, False
+        self.lbl_eq.config(text="")
         self.mesures.effacer()
         self.barres.vider()
         self.graphes.definir(self.series, seuil_v=cible)
@@ -198,6 +204,7 @@ class PageSession(tk.Frame):
         if ecart is not None:
             if self.ecart_initial is None:
                 self.ecart_initial = ecart
+                self._deja_equilibre = ecart <= self._cible
                 m.regler("initial", f"{ecart:.0f} mV")
             m.regler("ecart", f"{ecart:.0f} mV")
             m.regler("haute", f"{d['v_max']:.3f} V", f"Plus haute · C{d['i_max'] + 1}")
@@ -209,7 +216,13 @@ class PageSession(tk.Frame):
         m.regler("v_pack", "--" if d["v_pack"] is None else f"{d['v_pack']:.2f} V")
         m.regler("duree", T.duree(t))
         self.barres.definir(d["cellules"], d["equilibrage"])
-        self._etat("Session en cours…", T.BLEU)
+        texte, couleur = resume_equilibrage(d["equilibrage"])
+        self.lbl_eq.config(text=texte, fg=couleur)
+        if self._deja_equilibre:  # c'est le cas d'un pack déjà équilibré : l'appareil n'a rien à corriger, il ne se passera rien
+            self._etat(f"Pack déjà équilibré : écart {self.ecart_initial:.0f} mV, sous la cible de {self._cible:g} mV. "
+                       f"L'équilibreur n'a rien à corriger ; la session s'arrêtera après {self._stable:g} s sous la cible.", T.BLEU)
+        else:
+            self._etat("Session en cours…", T.BLEU)
 
     def _fin(self, motif, detail):
         self._mode(False)

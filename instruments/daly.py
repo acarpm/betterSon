@@ -13,6 +13,9 @@ import time
 from .base import Instrument
 
 BAUD = 9600
+# Mesuré sur l'appareil : réponse en ~75 ms, mais le 1er échange après une pause peut prendre 500-600 ms.
+# Un délai de 300 ms perdait donc régulièrement des réponses (tension du pack absente, cellules manquantes).
+DELAI_SERIE = 0.9
 TENUE = 5   # une cellule dont la trame manque garde sa dernière valeur pendant TENUE lectures, puis passe à « inconnue »
 DEBUT = 0xA5
 ADRESSE_PC = 0x40
@@ -45,7 +48,7 @@ def resume_cellules(cellules):
 class Daly:
     """Dialogue avec l'appareil sur un port série déjà ouvert (9600 8N1, timeout court)."""
 
-    def __init__(self, ser, delai=0.5):
+    def __init__(self, ser, delai=DELAI_SERIE):
         self.ser = ser
         self.delai = delai
         self.n_cellules = None
@@ -53,6 +56,7 @@ class Daly:
         self._prec = None          # dernières tensions connues (pour tenir les valeurs lors d'une trame perdue)
         self._manques_cell = []
         self._lectures_vides = 0
+        self._pack_prec, self._pack_manques = None, 0
 
     # ---------- bas niveau ----------
     def _lire_trame(self, cmd):
@@ -165,7 +169,12 @@ class Daly:
         cellules = self.lire_cellules()
         if g is None and cellules is None:
             return None
-        res = {"v_pack": g["v_pack"] if g else None, "courant": g["courant"] if g else None,
+        v_pack = g["v_pack"] if g else None
+        if v_pack is not None:
+            self._pack_prec, self._pack_manques = v_pack, 0
+        elif self._pack_prec is not None and self._pack_manques < TENUE:  # réponse perdue : on tient la dernière valeur
+            v_pack, self._pack_manques = self._pack_prec, self._pack_manques + 1
+        res = {"v_pack": v_pack, "courant": g["courant"] if g else None,
                "soc": g["soc"] if g else None, "cellules": cellules or [], "equilibrage": None}
         if cellules:
             res["equilibrage"] = self.lire_equilibrage(len(cellules))
@@ -181,6 +190,7 @@ class EquilibreurDaly(Instrument):
                    "le port est trouvé en interrogeant les ports série disponibles, puis mémorisé.")
     aide = "Branchez l'adaptateur USB-série de l'équilibreur et vérifiez son alimentation."
     baud = BAUD
+    delai_serie = DELAI_SERIE
     identification_directe = False
 
     def sonde(self, ser):

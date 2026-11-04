@@ -9,7 +9,7 @@ from theme import BG, BORD, GRIS, ORANGE, ROUGE, TEXTE, VERT
 from instruments.daly import resume_cellules
 
 from .acquisition import Acquisition
-from .widgets import BarresCellules, Mesures
+from .widgets import BarresCellules, Mesures, resume_equilibrage
 
 ID = "equilibreur_daly"   # instrument utilisé (détecté par l'application)
 
@@ -34,6 +34,8 @@ class PageCellules(tk.Frame):
         tk.Label(textes, text="Tensions des cellules", bg=BG, fg=TEXTE, font=f(22, True), anchor="w").pack(fill="x")
         self.lbl_etat = tk.Label(textes, text="", bg=BG, fg=GRIS, font=f(13, True), anchor="w")
         self.lbl_etat.pack(fill="x", pady=(2, 0))
+        self.lbl_eq = tk.Label(textes, text="", bg=BG, fg=GRIS, font=f(12), anchor="w")
+        self.lbl_eq.pack(fill="x")
         tk.Frame(corps, bg=BORD, height=1).pack(fill="x", pady=(12, 12))
 
         self.mesures = Mesures(corps, f, [("v_pack", "Tension pack"), ("moyenne", "Moyenne des cellules"),
@@ -139,4 +141,6 @@ class PageCellules(tk.Frame):
             m.regler("soc", f"{d['soc']:.0f} %")
         if cel:
             self.barres.definir(cel, d["equilibrage"])
+            texte, couleur = resume_equilibrage(d["equilibrage"])
+            self.lbl_eq.config(text=texte, fg=couleur)
         self._etat(f"● Lecture en direct · {len(cel)} cellules", VERT)
