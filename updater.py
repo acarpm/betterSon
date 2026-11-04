@@ -19,7 +19,7 @@ import version
 
 DEPOT = "acarpm/betterSon"
 API = f"https://api.github.com/repos/{DEPOT}/releases/latest"
-ASSETS = {"windows": "BatConnect-windows.exe", "macos": "BatConnect-macos.zip", "linux": "BatConnect-linux"}
+ASSETS = {"windows": "BetterSon-windows.exe", "macos": "BetterSon-macos.zip", "linux": "BetterSon-linux"}
 SOMMES = "SHA256SUMS.txt"
 
 
@@ -44,7 +44,7 @@ def _numeros(v):
 
 
 def _requete(url):
-    return urllib.request.Request(url, headers={"User-Agent": "BatConnect-updater",
+    return urllib.request.Request(url, headers={"User-Agent": "BetterSon-updater",
                                                 "Accept": "application/vnd.github+json"})
 
 
@@ -84,7 +84,7 @@ def telecharger(info, progression=None):
     nom = ASSETS[systeme()]
     try:
         attendu = _somme_attendue(info, nom)
-        dest = os.path.join(tempfile.mkdtemp(prefix="batconnect-maj-"), nom)
+        dest = os.path.join(tempfile.mkdtemp(prefix="betterson-maj-"), nom)
         h = hashlib.sha256()
         with urllib.request.urlopen(_requete(info["assets"][nom]), timeout=30) as r, open(dest, "wb") as f:
             total = int(r.headers.get("Content-Length") or 0)

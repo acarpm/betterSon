@@ -16,14 +16,21 @@ def _dossier_donnees():
     """Où vivent profils.json et mesures/ : jamais dans l'application (elle est remplacée à chaque mise à jour).
 
     - variable BATCONNECT_DATA si définie ;
-    - version installée : Documents/BatConnect (facile à retrouver pour l'opérateur) ;
+    - version installée : Documents/BetterSon (facile à retrouver pour l'opérateur) ;
     - lancé depuis les sources : le dossier du projet.
     """
     perso = os.environ.get("BATCONNECT_DATA")
     if perso:
         return os.path.abspath(os.path.expanduser(perso))
     if getattr(sys, "frozen", False):
-        return os.path.join(os.path.expanduser("~"), "Documents", "BatConnect")
+        documents = os.path.join(os.path.expanduser("~"), "Documents")
+        nouveau, ancien = os.path.join(documents, "BetterSon"), os.path.join(documents, "BatConnect")
+        if not os.path.exists(nouveau) and os.path.isdir(ancien):  # ancien nom (v0.1.0) : on reprend les données
+            try:
+                os.rename(ancien, nouveau)
+            except OSError:
+                return ancien  # migration impossible : on continue avec l'ancien dossier plutôt que de perdre les données
+        return nouveau
     return os.path.dirname(os.path.abspath(__file__))
 
 

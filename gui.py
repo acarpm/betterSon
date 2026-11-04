@@ -1,4 +1,4 @@
-"""BatConnect : coque de l'application (navigation, mises à jour) qui charge des modules activables.
+"""BetterSon : coque de l'application (navigation, mises à jour) qui charge des modules activables.
 
 Lancement :  python gui.py
 Dépendance : pyserial (tkinter est fourni avec Python).
@@ -24,7 +24,7 @@ from theme import ANTHRACITE, BG, CARTE, GRIS, LIME, TEXTE
 class Application(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("BatConnect - Test de batterie")
+        self.title("BetterSon - Test de batterie")
         self.configure(bg=BG)
         self.geometry("1100x760")
         self.minsize(960, 720)

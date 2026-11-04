@@ -1,4 +1,4 @@
-# BatConnect - Test de batterie
+# BetterSon - Test de batterie
 
 Logiciel de test de décharge de batteries sur charge électronique EA (USB).
 Fonctionne sous Windows, macOS (Apple Silicon) et Linux (x86_64).
@@ -14,7 +14,7 @@ Une seule commande dans un terminal. Elle télécharge la dernière version, vé
 | **Linux** (Terminal) | `curl -fsSL https://raw.githubusercontent.com/acarpm/betterSon/main/install.sh \| bash` |
 
 Sans terminal : télécharger le fichier de la dernière version sur la page **Releases** du dépôt
-(`BatConnect-Setup.exe` sous Windows, `BatConnect-macos.zip` sous macOS, `BatConnect-linux` sous Linux).
+(`BetterSon-Setup.exe` sous Windows, `BetterSon-macos.zip` sous macOS, `BetterSon-linux` sous Linux).
 Les fichiers téléchargés par navigateur ne sont pas signés : Windows (SmartScreen) et macOS (Gatekeeper) demandent
 une confirmation au premier lancement (macOS : clic droit sur l'application > Ouvrir). Les commandes ci-dessus évitent ce message.
 
@@ -22,7 +22,7 @@ Linux : l'utilisateur doit être dans le groupe `dialout` pour accéder à la ch
 
 ### Où sont les données ?
 
-Dans le dossier **Documents/BatConnect** de l'opérateur : `profils.json` (profils de test) et `mesures/` (un CSV par test) pour le module Décharge, `config.json` (modules activés), et un sous-dossier par futur module.
+Dans le dossier **Documents/BetterSon** de l'opérateur : `profils.json` (profils de test) et `mesures/` (un CSV par test) pour le module Décharge, `config.json` (modules activés), et un sous-dossier par futur module.
 Elles ne sont jamais touchées par les mises à jour ni par une réinstallation. Copier `profils.json` suffit pour partager des profils.
 
 ## Mises à jour automatiques
@@ -91,7 +91,7 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 | `modules/_modele/` | squelette commenté à copier pour un nouveau module (non enregistré) |
 | `main.py` | communication avec la charge EA (version console) |
 | `install.sh`, `install.ps1` | installation en une commande |
-| `installer/batconnect.iss` | installateur Windows (Inno Setup), construit par la CI |
+| `installer/betterson.iss` | installateur Windows (Inno Setup), construit par la CI |
 
 ### Ajouter un module
 
@@ -107,7 +107,7 @@ Construction locale (même commande que la CI) :
 
 ```bash
 pip install pyinstaller
-pyinstaller --noconfirm --windowed --onefile --name BatConnect --add-data "assets:assets" --collect-submodules serial gui.py
+pyinstaller --noconfirm --windowed --onefile --name BetterSon --add-data "assets:assets" --collect-submodules serial gui.py
 # Windows : --add-data "assets;assets" ; macOS : remplacer --onefile par --onedir
 ```
 
