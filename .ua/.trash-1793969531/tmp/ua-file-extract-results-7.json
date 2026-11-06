@@ -1,0 +1,181 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [
+    "install.ps1",
+    "requirements.txt"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "results": [
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "sections": [
+        {
+          "heading": "CLAUDE.md - Coding Profile",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Best for: dev projects, code review, debugging, refactoring",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "Extends: Universal CLAUDE.md rules",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "Output",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Code Rules",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Review Rules",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Debugging Rules",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Simple Formatting",
+          "level": 2,
+          "line": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 148,
+      "nonEmptyLines": 110,
+      "sections": [
+        {
+          "heading": "BetterSon - Test de batterie",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Installer (opérateurs)",
+          "level": 2,
+          "line": 6
+        },
+        {
+          "heading": "Où sont les données ?",
+          "level": 3,
+          "line": 23
+        },
+        {
+          "heading": "Mises à jour automatiques",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Publier une nouvelle version (développeur)",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "Instruments (détection des appareils)",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Utilisation",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Module « Décharge de batteries »",
+          "level": 3,
+          "line": 66
+        },
+        {
+          "heading": "Module « Équilibrage de batteries » (équilibreur actif Daly)",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Module à venir",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Développement",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Ajouter un module",
+          "level": 3,
+          "line": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "install.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 75,
+      "nonEmptyLines": 70,
+      "functions": [
+        {
+          "name": "telecharger",
+          "startLine": 16,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "verifier",
+          "startLine": 18,
+          "endLine": 25,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "name": "betterSon",
+  "description": "Logiciel de test de décharge de batteries sur charge électronique EA (USB), application de bureau Python/Tkinter fonctionnant sous Windows, macOS et Linux.",
+  "languages": [
+    "iss",
+    "markdown",
+    "powershell",
+    "python",
+    "shell",
+    "txt",
+    "yaml"
+  ],
+  "frameworks": [
+    "GitHub Actions"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/release.yml",
+      "language": "yaml",
+      "sizeLines": 98,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 147,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "config.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dialogue_identite.py",
+      "language": "python",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": "envoi.py",
+      "language": "python",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "gui.py",
+      "language": "python",
+      "sizeLines": 321,
+      "fileCategory": "code"
+    },
+    {
+      "path": "identite.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "install.ps1",
+      "language": "powershell",
+      "sizeLines": 44,
+      "fileCategory": "script"
+    },
+    {
+      "path": "install.sh",
+      "language": "shell",
+      "sizeLines": 75,
+      "fileCategory": "script"
+    },
+    {
+      "path": "installer/betterson.iss",
+      "language": "iss",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "instruments/__init__.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "instruments/base.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "instruments/daly.py",
+      "language": "python",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "instruments/ea.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "instruments/gestionnaire.py",
+      "language": "python",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "main.py",
+      "language": "python",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/__init__.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/_modele/__init__.py",
+      "language": "python",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/base.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/__init__.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/chemins.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/page_encours.py",
+      "language": "python",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/page_lancer.py",
+      "language": "python",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/page_profils.py",
+      "language": "python",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/page_resultats.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/profils.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/decharge/resultats.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/equilibrage/__init__.py",
+      "language": "python",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/equilibrage/acquisition.py",
+      "language": "python",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/equilibrage/page_cellules.py",
+      "language": "python",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/equilibrage/page_session.py",
+      "language": "python",
+      "sizeLines": 258,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/equilibrage/widgets.py",
+      "language": "python",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/__init__.py",
+      "language": "python",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/calcul.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/chemins.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/mesure.py",
+      "language": "python",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/page_encours.py",
+      "language": "python",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/page_lancer.py",
+      "language": "python",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/page_profils.py",
+      "language": "python",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/page_resultats.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/profils.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/resultats.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "modules/resistance/widgets.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "page_accueil.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "page_instruments.py",
+      "language": "python",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "page_modules.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "sizeLines": 2,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "synchro.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "theme.py",
+      "language": "python",
+      "sizeLines": 471,
+      "fileCategory": "code"
+    },
+    {
+      "path": "updater.py",
+      "language": "python",
+      "sizeLines": 261,
+      "fileCategory": "code"
+    },
+    {
+      "path": "version.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 52,
+  "filteredByIgnore": 15,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    ".github/workflows/release.yml": [],
+    "CLAUDE.md": [],
+    "README.md": [],
+    "config.py": [
+      "theme.py"
+    ],
+    "dialogue_identite.py": [
+      "identite.py",
+      "synchro.py",
+      "theme.py"
+    ],
+    "envoi.py": [
+      "config.py",
+      "identite.py",
+      "theme.py",
+      "version.py"
+    ],
+    "gui.py": [
+      "config.py",
+      "dialogue_identite.py",
+      "envoi.py",
+      "identite.py",
+      "instruments/__init__.py",
+      "modules/__init__.py",
+      "page_accueil.py",
+      "page_instruments.py",
+      "page_modules.py",
+      "synchro.py",
+      "theme.py",
+      "updater.py",
+      "version.py"
+    ],
+    "identite.py": [
+      "config.py",
+      "version.py"
+    ],
+    "install.ps1": [],
+    "install.sh": [],
+    "installer/betterson.iss": [],
+    "instruments/__init__.py": [
+      "instruments/daly.py",
+      "instruments/ea.py",
+      "instruments/gestionnaire.py"
+    ],
+    "instruments/base.py": [],
+    "instruments/daly.py": [
+      "instruments/base.py"
+    ],
+    "instruments/ea.py": [
+      "instruments/base.py"
+    ],
+    "instruments/gestionnaire.py": [
+      "config.py"
+    ],
+    "main.py": [
+      "instruments/ea.py"
+    ],
+    "modules/__init__.py": [
+      "modules/decharge/__init__.py",
+      "modules/equilibrage/__init__.py",
+      "modules/resistance/__init__.py"
+    ],
+    "modules/_modele/__init__.py": [
+      "modules/base.py",
+      "theme.py"
+    ],
+    "modules/base.py": [
+      "theme.py"
+    ],
+    "modules/decharge/__init__.py": [
+      "modules/base.py",
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "modules/decharge/resultats.py",
+      "theme.py"
+    ],
+    "modules/decharge/chemins.py": [
+      "theme.py"
+    ],
+    "modules/decharge/page_encours.py": [
+      "envoi.py",
+      "identite.py",
+      "instruments/__init__.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_lancer.py": [
+      "dialogue_identite.py",
+      "instruments/__init__.py",
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_profils.py": [
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_resultats.py": [
+      "modules/decharge/chemins.py",
+      "modules/decharge/resultats.py",
+      "theme.py"
+    ],
+    "modules/decharge/profils.py": [],
+    "modules/decharge/resultats.py": [
+      "identite.py"
+    ],
+    "modules/equilibrage/__init__.py": [
+      "modules/base.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/acquisition.py": [
+      "instruments/daly.py"
+    ],
+    "modules/equilibrage/page_cellules.py": [
+      "instruments/daly.py",
+      "modules/equilibrage/acquisition.py",
+      "modules/equilibrage/widgets.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/page_session.py": [
+      "dialogue_identite.py",
+      "envoi.py",
+      "identite.py",
+      "modules/equilibrage/acquisition.py",
+      "modules/equilibrage/widgets.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/widgets.py": [
+      "theme.py"
+    ],
+    "modules/resistance/__init__.py": [
+      "modules/base.py",
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/calcul.py": [],
+    "modules/resistance/chemins.py": [
+      "theme.py"
+    ],
+    "modules/resistance/mesure.py": [
+      "instruments/__init__.py",
+      "instruments/daly.py",
+      "modules/resistance/calcul.py"
+    ],
+    "modules/resistance/page_encours.py": [
+      "envoi.py",
+      "identite.py",
+      "modules/resistance/calcul.py",
+      "modules/resistance/mesure.py",
+      "modules/resistance/profils.py",
+      "modules/resistance/widgets.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_lancer.py": [
+      "dialogue_identite.py",
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_profils.py": [
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_resultats.py": [
+      "modules/resistance/chemins.py",
+      "modules/resistance/page_encours.py",
+      "modules/resistance/resultats.py",
+      "modules/resistance/widgets.py",
+      "theme.py"
+    ],
+    "modules/resistance/profils.py": [],
+    "modules/resistance/resultats.py": [
+      "identite.py",
+      "modules/resistance/calcul.py"
+    ],
+    "modules/resistance/widgets.py": [
+      "theme.py"
+    ],
+    "page_accueil.py": [
+      "theme.py"
+    ],
+    "page_instruments.py": [
+      "theme.py"
+    ],
+    "page_modules.py": [
+      "config.py",
+      "theme.py"
+    ],
+    "requirements.txt": [],
+    "synchro.py": [
+      "envoi.py",
+      "identite.py"
+    ],
+    "theme.py": [],
+    "updater.py": [
+      "version.py"
+    ],
+    "version.py": []
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "approved": true,
+  "issues": [],
+  "warnings": [
+    "pipeline node pipeline:.github/workflows/release.yml:build has no triggers edge",
+    "pipeline node pipeline:.github/workflows/release.yml:release has no triggers edge",
+    "document node document:CLAUDE.md has no documents edge",
+    "Cross-check: scan files=52, file-level graph filePaths=52"
+  ],
+  "stats": {
+    "totalNodes": 199,
+    "totalEdges": 402,
+    "totalLayers": 9,
+    "tourSteps": 11,
+    "nodeTypes": {
+      "file": 48,
+      "function": 107,
+      "class": 38,
+      "pipeline": 3,
+      "document": 2,
+      "config": 1
+    },
+    "edgeTypes": {
+      "contains": 147,
+      "exports": 131,
+      "imports": 109,
+      "inherits": 6,
+      "calls": 3,
+      "deploys": 1,
+      "triggers": 1,
+      "documents": 3,
+      "related": 1
+    }
+  }
+}

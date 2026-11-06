@@ -1,0 +1,2187 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "modules/resistance/calcul.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 62,
+      "functions": [
+        {
+          "name": "moyenne",
+          "startLine": 17,
+          "endLine": 19,
+          "params": [
+            "valeurs"
+          ]
+        },
+        {
+          "name": "_r_mohm",
+          "startLine": 22,
+          "endLine": 25,
+          "params": [
+            "v_repos",
+            "v_pulse",
+            "courant"
+          ]
+        },
+        {
+          "name": "_moyenne_cellules",
+          "startLine": 28,
+          "endLine": 30,
+          "params": [
+            "echantillons",
+            "nb"
+          ]
+        },
+        {
+          "name": "resistance_essai",
+          "startLine": 33,
+          "endLine": 47,
+          "params": [
+            "echantillons",
+            "essai"
+          ]
+        },
+        {
+          "name": "resistances",
+          "startLine": 50,
+          "endLine": 53,
+          "params": [
+            "echantillons"
+          ]
+        },
+        {
+          "name": "_stats",
+          "startLine": 56,
+          "endLine": 61,
+          "params": [
+            "valeurs"
+          ]
+        },
+        {
+          "name": "synthese",
+          "startLine": 64,
+          "endLine": 80,
+          "params": [
+            "essais"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "moyenne",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "_r_mohm",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "_moyenne_cellules",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "resistance_essai",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "resistances",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "_stats",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "synthese",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "moyenne",
+          "callee": "sum",
+          "lineNumber": 19
+        },
+        {
+          "caller": "moyenne",
+          "callee": "len",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_moyenne_cellules",
+          "callee": "moyenne",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_moyenne_cellules",
+          "callee": "len",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_moyenne_cellules",
+          "callee": "e.get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_moyenne_cellules",
+          "callee": "range",
+          "lineNumber": 30
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "max",
+          "lineNumber": 40
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "len",
+          "lineNumber": 40
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "e.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "moyenne",
+          "lineNumber": 41
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "moyenne",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "moyenne",
+          "lineNumber": 42
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "_moyenne_cellules",
+          "lineNumber": 43
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "_moyenne_cellules",
+          "lineNumber": 43
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "_r_mohm",
+          "lineNumber": 45
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "_r_mohm",
+          "lineNumber": 46
+        },
+        {
+          "caller": "resistance_essai",
+          "callee": "zip",
+          "lineNumber": 46
+        },
+        {
+          "caller": "resistances",
+          "callee": "sorted",
+          "lineNumber": 52
+        },
+        {
+          "caller": "resistances",
+          "callee": "resistance_essai",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_stats",
+          "callee": "statistics.fmean",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_stats",
+          "callee": "statistics.stdev",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_stats",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_stats",
+          "callee": "len",
+          "lineNumber": 61
+        },
+        {
+          "caller": "synthese",
+          "callee": "max",
+          "lineNumber": 69
+        },
+        {
+          "caller": "synthese",
+          "callee": "len",
+          "lineNumber": 69
+        },
+        {
+          "caller": "synthese",
+          "callee": "_stats",
+          "lineNumber": 70
+        },
+        {
+          "caller": "synthese",
+          "callee": "len",
+          "lineNumber": 70
+        },
+        {
+          "caller": "synthese",
+          "callee": "range",
+          "lineNumber": 70
+        },
+        {
+          "caller": "synthese",
+          "callee": "statistics.median",
+          "lineNumber": 72
+        },
+        {
+          "caller": "synthese",
+          "callee": "abs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "synthese",
+          "callee": "abs",
+          "lineNumber": 78
+        },
+        {
+          "caller": "synthese",
+          "callee": "len",
+          "lineNumber": 79
+        },
+        {
+          "caller": "synthese",
+          "callee": "_stats",
+          "lineNumber": 79
+        },
+        {
+          "caller": "synthese",
+          "callee": "sum",
+          "lineNumber": 80
+        },
+        {
+          "caller": "synthese",
+          "callee": "len",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/resistance/mesure.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 113,
+      "classes": [
+        {
+          "name": "Mesure",
+          "startLine": 29,
+          "endLine": 129,
+          "methods": [
+            "__init__",
+            "demarrer",
+            "arreter",
+            "vivant",
+            "attendre",
+            "_boucle",
+            "_sequence"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Mesure",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Event",
+          "lineNumber": 33
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.stop.clear",
+          "lineNumber": 38
+        },
+        {
+          "caller": "demarrer",
+          "callee": "threading.Thread",
+          "lineNumber": 39
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.thread.start",
+          "lineNumber": 40
+        },
+        {
+          "caller": "arreter",
+          "callee": "self.stop.set",
+          "lineNumber": 43
+        },
+        {
+          "caller": "vivant",
+          "callee": "self.thread.is_alive",
+          "lineNumber": 46
+        },
+        {
+          "caller": "attendre",
+          "callee": "self.thread.join",
+          "lineNumber": 50
+        },
+        {
+          "caller": "_boucle",
+          "callee": "serial.Serial",
+          "lineNumber": 56
+        },
+        {
+          "caller": "_boucle",
+          "callee": "serial.Serial",
+          "lineNumber": 57
+        },
+        {
+          "caller": "_boucle",
+          "callee": "Daly",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_boucle",
+          "callee": "range",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_boucle",
+          "callee": "daly.lire_nombre_cellules",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 64
+        },
+        {
+          "caller": "_boucle",
+          "callee": "charge.verrou",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_boucle",
+          "callee": "charge.regler_charge",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self._sequence",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_boucle",
+          "callee": "charge.entree",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_boucle",
+          "callee": "charge.verrou",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_boucle",
+          "callee": "calcul.synthese",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_boucle",
+          "callee": "calcul.resistances",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_sequence",
+          "callee": "open",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_sequence",
+          "callee": "fichier.write",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_sequence",
+          "callee": "csv.writer",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_sequence",
+          "callee": "ecr.writerow",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_sequence",
+          "callee": "range",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_sequence",
+          "callee": "time.monotonic",
+          "lineNumber": 85
+        },
+        {
+          "caller": "phase",
+          "callee": "time.monotonic",
+          "lineNumber": 89
+        },
+        {
+          "caller": "phase",
+          "callee": "q.put",
+          "lineNumber": 90
+        },
+        {
+          "caller": "phase",
+          "callee": "self.stop.is_set",
+          "lineNumber": 91
+        },
+        {
+          "caller": "phase",
+          "callee": "time.monotonic",
+          "lineNumber": 92
+        },
+        {
+          "caller": "phase",
+          "callee": "charge.lire_valeurs",
+          "lineNumber": 97
+        },
+        {
+          "caller": "phase",
+          "callee": "daly.lire_cellules",
+          "lineNumber": 98
+        },
+        {
+          "caller": "phase",
+          "callee": "self.echantillons.append",
+          "lineNumber": 100
+        },
+        {
+          "caller": "phase",
+          "callee": "ecr.writerow",
+          "lineNumber": 101
+        },
+        {
+          "caller": "phase",
+          "callee": "fichier.flush",
+          "lineNumber": 102
+        },
+        {
+          "caller": "phase",
+          "callee": "q.put",
+          "lineNumber": 103
+        },
+        {
+          "caller": "phase",
+          "callee": "any",
+          "lineNumber": 105
+        },
+        {
+          "caller": "phase",
+          "callee": "self.stop.wait",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_sequence",
+          "callee": "range",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_sequence",
+          "callee": "phase",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_sequence",
+          "callee": "phase",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_sequence",
+          "callee": "charge.entree",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_sequence",
+          "callee": "ValueError",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_sequence",
+          "callee": "phase",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_sequence",
+          "callee": "charge.entree",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_sequence",
+          "callee": "calcul.resistance_essai",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_sequence",
+          "callee": "q.put",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/page_encours.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 161,
+      "classes": [
+        {
+          "name": "PageEnCours",
+          "startLine": 20,
+          "endLine": 181,
+          "methods": [
+            "__init__",
+            "on_show",
+            "en_test",
+            "occupe",
+            "_etat",
+            "_boutons",
+            "demarrer",
+            "_arreter",
+            "arreter_et_attendre",
+            "_traiter_file",
+            "_essai_termine",
+            "_fin_test",
+            "_voir_analyse"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageEnCours",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "haut.pack",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.zone_btn.pack",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "textes.pack",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_profil.pack",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_detail.pack",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=BG, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(corps, text=\"Résistance interne de chaque cellule (moyenne des pulses terminés)\", bg=BG, fg=TEXTE,\n                 font=f(14, True), anchor=\"w\").pack",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "BarresResistance",
+          "lineNumber": 69
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.barres.pack",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "GraphesTemps",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.definir",
+          "lineNumber": 73
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 74
+        },
+        {
+          "caller": "en_test",
+          "callee": "self.mesure.vivant",
+          "lineNumber": 80
+        },
+        {
+          "caller": "occupe",
+          "callee": "self.en_test",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_etat",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.zone_btn.winfo_children",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_boutons",
+          "callee": "w.pack_forget",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_stop.pack",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_nouveau.pack",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_analyse.pack",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.app.btn_menu.config",
+          "lineNumber": 97
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.en_test",
+          "lineNumber": 101
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.series.values",
+          "lineNumber": 103
+        },
+        {
+          "caller": "demarrer",
+          "callee": "s.clear",
+          "lineNumber": 104
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.vals.values",
+          "lineNumber": 106
+        },
+        {
+          "caller": "demarrer",
+          "callee": "lbl.config",
+          "lineNumber": 107
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.barres.definir",
+          "lineNumber": 108
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.lbl_profil.config",
+          "lineNumber": 109
+        },
+        {
+          "caller": "demarrer",
+          "callee": "profils.resume",
+          "lineNumber": 110
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.lbl_detail.config",
+          "lineNumber": 111
+        },
+        {
+          "caller": "demarrer",
+          "callee": "\"   ·   \".join",
+          "lineNumber": 111
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.graphes.definir",
+          "lineNumber": 112
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self._boutons",
+          "lineNumber": 113
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self._etat",
+          "lineNumber": 114
+        },
+        {
+          "caller": "demarrer",
+          "callee": "Mesure",
+          "lineNumber": 115
+        },
+        {
+          "caller": "demarrer",
+          "callee": "identite.lignes_signature",
+          "lineNumber": 115
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.mesure.demarrer",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.mesure.arreter",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self._etat",
+          "lineNumber": 122
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.mesure.arreter",
+          "lineNumber": 126
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.mesure.attendre",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.file.get_nowait",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"essai\"].config",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"V\"].config",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"A\"].config",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.series[\"V\"].append",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.series[\"A\"].append",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.graphes.tracer",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self._essai_termine",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self._fin_test",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.en_test",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self._etat",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "max",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "int",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "time.monotonic",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.after",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "self.essais.append",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "calcul.synthese",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "self.vals[\"r\"].config",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "texte_mohm",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "self.vals[\"rm\"].config",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "texte_mohm",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_essai_termine",
+          "callee": "self.barres.definir",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._boutons",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "envoi.envoyer",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "messagebox.showerror",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "texte_mohm",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self.barres.definir",
+          "lineNumber": 177
+        },
+        {
+          "caller": "_voir_analyse",
+          "callee": "self.app.page",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_voir_analyse",
+          "callee": "self.app.aller",
+          "lineNumber": 181
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/page_resultats.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 116,
+      "classes": [
+        {
+          "name": "PageResultats",
+          "startLine": 14,
+          "endLine": 127,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_filtrer",
+            "_courant",
+            "_afficher",
+            "_ouvrir_csv"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageResultats",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 16
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 16
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 21
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 27
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 28
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry(gauche, textvariable=self.var_filtre, font=f(12)).pack",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(gauche, text=\"Filtrer par profil, n° de série, technicien ou poste\", bg=BG, fg=GRIS, font=f(10),\n                 anchor=\"w\").pack",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.var_filtre.trace_add",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._filtrer",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(gauche, text=\"Ouvrir le dossier des résultats\", style=\"Tool.TButton\",\n                   command=lambda: T.ouvrir(chemins.dossier_csv())).pack",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.ouvrir",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.pack",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_nom.pack",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_date.pack",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=BG, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "BarresResistance",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.barres.pack",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_anormales.pack",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "GraphesTemps",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.pack",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "actions.pack",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_csv.pack",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._ouvrir_csv",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_voir.pack",
+          "lineNumber": 69
+        },
+        {
+          "caller": "on_show",
+          "callee": "resultats.analyser_dossier",
+          "lineNumber": 72
+        },
+        {
+          "caller": "on_show",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 72
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.var_filtre.set",
+          "lineNumber": 73
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._filtrer",
+          "lineNumber": 74
+        },
+        {
+          "caller": "on_show",
+          "callee": "enumerate",
+          "lineNumber": 77
+        },
+        {
+          "caller": "on_show",
+          "callee": "os.path.abspath",
+          "lineNumber": 78
+        },
+        {
+          "caller": "on_show",
+          "callee": "os.path.abspath",
+          "lineNumber": 78
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.liste.choisir",
+          "lineNumber": 79
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._afficher",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get().lower().split",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get().lower",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "all",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "f\"{r['nom']} {r['technicien'] or ''} {r['poste'] or ''}\".lower",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "texte_mohm",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.liste.remplir",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self._afficher",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self._afficher",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_courant",
+          "callee": "len",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_afficher",
+          "callee": "b.config",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_date.config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_anormales.config",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.vals.values",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_afficher",
+          "callee": "lbl.config",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.barres.definir",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.graphes.definir",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_date.config",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"r\"].config",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_afficher",
+          "callee": "texte_mohm",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"ecart\"].config",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"somme\"].config",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_afficher",
+          "callee": "texte_mohm",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"n\"].config",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_afficher",
+          "callee": "str",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"duree\"].config",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_afficher",
+          "callee": "T.duree",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.barres.definir",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_afficher",
+          "callee": "enumerate",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_anormales.config",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_afficher",
+          "callee": "\", \".join",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.graphes.definir",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_ouvrir_csv",
+          "callee": "self._courant",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_ouvrir_csv",
+          "callee": "T.ouvrir",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/resultats.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "lister",
+          "startLine": 15,
+          "endLine": 16,
+          "params": [
+            "dossier"
+          ]
+        },
+        {
+          "name": "_nombre",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "texte"
+          ]
+        },
+        {
+          "name": "analyser",
+          "startLine": 26,
+          "endLine": 57,
+          "params": [
+            "chemin"
+          ]
+        },
+        {
+          "name": "analyser_dossier",
+          "startLine": 60,
+          "endLine": 63,
+          "params": [
+            "dossier"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "lister",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "_nombre",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "analyser",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "analyser_dossier",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lister",
+          "callee": "glob.glob",
+          "lineNumber": 16
+        },
+        {
+          "caller": "lister",
+          "callee": "os.path.join",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_nombre",
+          "callee": "float",
+          "lineNumber": 21
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.basename",
+          "lineNumber": 28
+        },
+        {
+          "caller": "analyser",
+          "callee": "MOTIF.match",
+          "lineNumber": 29
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.strptime",
+          "lineNumber": 31
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.fromtimestamp",
+          "lineNumber": 31
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.getmtime",
+          "lineNumber": 31
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.fromtimestamp",
+          "lineNumber": 33
+        },
+        {
+          "caller": "analyser",
+          "callee": "(m[\"nom\"] if m else os.path.splitext(base)[0]).replace",
+          "lineNumber": 34
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.splitext",
+          "lineNumber": 34
+        },
+        {
+          "caller": "analyser",
+          "callee": "open",
+          "lineNumber": 37
+        },
+        {
+          "caller": "analyser",
+          "callee": "identite.lire_entete",
+          "lineNumber": 38
+        },
+        {
+          "caller": "analyser",
+          "callee": "csv.reader",
+          "lineNumber": 39
+        },
+        {
+          "caller": "analyser",
+          "callee": "next",
+          "lineNumber": 40
+        },
+        {
+          "caller": "analyser",
+          "callee": "len",
+          "lineNumber": 42
+        },
+        {
+          "caller": "analyser",
+          "callee": "_nombre",
+          "lineNumber": 42
+        },
+        {
+          "caller": "analyser",
+          "callee": "ligne[1].isdigit",
+          "lineNumber": 42
+        },
+        {
+          "caller": "analyser",
+          "callee": "echantillons.append",
+          "lineNumber": 44
+        },
+        {
+          "caller": "analyser",
+          "callee": "int",
+          "lineNumber": 44
+        },
+        {
+          "caller": "analyser",
+          "callee": "_nombre",
+          "lineNumber": 44
+        },
+        {
+          "caller": "analyser",
+          "callee": "_nombre",
+          "lineNumber": 44
+        },
+        {
+          "caller": "analyser",
+          "callee": "_nombre",
+          "lineNumber": 45
+        },
+        {
+          "caller": "analyser",
+          "callee": "temps.append",
+          "lineNumber": 46
+        },
+        {
+          "caller": "analyser",
+          "callee": "float",
+          "lineNumber": 46
+        },
+        {
+          "caller": "analyser",
+          "callee": "calcul.resistances",
+          "lineNumber": 51
+        },
+        {
+          "caller": "analyser",
+          "callee": "calcul.synthese",
+          "lineNumber": 54
+        },
+        {
+          "caller": "analyser",
+          "callee": "zip",
+          "lineNumber": 55
+        },
+        {
+          "caller": "analyser",
+          "callee": "zip",
+          "lineNumber": 56
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "analyser",
+          "lineNumber": 62
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "lister",
+          "lineNumber": 62
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "sorted",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/resistance/widgets.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "texte_mohm",
+          "startLine": 50,
+          "endLine": 51,
+          "params": [
+            "valeur",
+            "decimales"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BarresResistance",
+          "startLine": 7,
+          "endLine": 47,
+          "methods": [
+            "__init__",
+            "definir",
+            "tracer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "BarresResistance",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "texte_mohm",
+          "line": 50,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 12
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 12
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.bind",
+          "lineNumber": 14
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.tracer",
+          "lineNumber": 14
+        },
+        {
+          "caller": "definir",
+          "callee": "list",
+          "lineNumber": 18
+        },
+        {
+          "caller": "definir",
+          "callee": "self.tracer",
+          "lineNumber": 19
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.delete",
+          "lineNumber": 22
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.winfo_width",
+          "lineNumber": 23
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.winfo_height",
+          "lineNumber": 23
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 28
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 28
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 30
+        },
+        {
+          "caller": "tracer",
+          "callee": "min",
+          "lineNumber": 32
+        },
+        {
+          "caller": "tracer",
+          "callee": "max",
+          "lineNumber": 33
+        },
+        {
+          "caller": "tracer",
+          "callee": "max",
+          "lineNumber": 33
+        },
+        {
+          "caller": "tracer",
+          "callee": "enumerate",
+          "lineNumber": 35
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 37
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 37
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 39
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 39
+        },
+        {
+          "caller": "tracer",
+          "callee": "max",
+          "lineNumber": 41
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_rectangle",
+          "lineNumber": 42
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.get",
+          "lineNumber": 43
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 44
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 45
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 46
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    }
+  ]
+}

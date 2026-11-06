@@ -20,6 +20,9 @@ class Resistance(Module):
     icone = "resistance"
     couleur = TEAL
     teinte = "#dcebf1"
+
+    def dossier_csv(self):
+        return chemins.dossier_csv()
     instruments = ("charge_ea", "equilibreur_daly")   # détection, port et statut : gérés par l'application
 
     def __init__(self):

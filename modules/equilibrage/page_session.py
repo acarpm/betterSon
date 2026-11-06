@@ -179,7 +179,7 @@ class PageSession(tk.Frame):
         self.file = queue.Queue()
         self.acq = Acquisition(port, self.file, intervalle=INTERVALLE_S, chemin_csv=self.chemin, baud=inst.instrument(ID).baud,
                                critere=CritereFin(cible, stable, duree * 60), silence_max_s=SILENCE_MAX_S,
-                               signature=identite.lignes_signature(technicien))
+                               signature=identite.lignes_signature(technicien), piloter=True)
         self.acq.demarrer()
         self._mode(True)
         self._etat("Session en cours… ne débranchez pas l'équilibreur.", T.BLEU)

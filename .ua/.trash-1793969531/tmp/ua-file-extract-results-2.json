@@ -1,0 +1,4374 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 12,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 12,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "modules/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/_modele/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 43,
+      "classes": [
+        {
+          "name": "PageExemple",
+          "startLine": 25,
+          "endLine": 39,
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Modele",
+          "startLine": 42,
+          "endLine": 57,
+          "methods": [
+            "actions",
+            "creer_page"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageExemple",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "Modele",
+          "line": 42,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.f",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.titre.pack",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(self, text=\"Page d'exemple : remplacez-la par la vôtre.\", bg=BG, fg=GRIS, font=app.f(13)).pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.f",
+          "lineNumber": 33
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.titre.config",
+          "lineNumber": 36
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 52
+        },
+        {
+          "caller": "creer_page",
+          "callee": "PageExemple",
+          "lineNumber": 56
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super().creer_page",
+          "lineNumber": 57
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super",
+          "lineNumber": 57
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "modules/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 43,
+      "classes": [
+        {
+          "name": "Action",
+          "startLine": 11,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "page",
+            "titre",
+            "description",
+            "icone",
+            "couleur",
+            "teinte",
+            "info"
+          ]
+        },
+        {
+          "name": "Module",
+          "startLine": 22,
+          "endLine": 54,
+          "methods": [
+            "actions",
+            "creer_page",
+            "info",
+            "dossier_csv",
+            "dossier"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Action",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "Module",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "creer_page",
+          "callee": "NotImplementedError",
+          "lineNumber": 40
+        },
+        {
+          "caller": "dossier",
+          "callee": "os.path.join",
+          "lineNumber": 52
+        },
+        {
+          "caller": "dossier",
+          "callee": "os.makedirs",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "modules/equilibrage/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 45,
+      "classes": [
+        {
+          "name": "Equilibrage",
+          "startLine": 15,
+          "endLine": 57,
+          "methods": [
+            "dossier_csv",
+            "dossier_sessions",
+            "_nb_sessions",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Equilibrage",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dossier_csv",
+          "callee": "self.dossier_sessions",
+          "lineNumber": 25
+        },
+        {
+          "caller": "dossier_sessions",
+          "callee": "os.path.join",
+          "lineNumber": 28
+        },
+        {
+          "caller": "dossier_sessions",
+          "callee": "self.dossier",
+          "lineNumber": 28
+        },
+        {
+          "caller": "dossier_sessions",
+          "callee": "os.makedirs",
+          "lineNumber": 29
+        },
+        {
+          "caller": "_nb_sessions",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_nb_sessions",
+          "callee": "glob.glob",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_nb_sessions",
+          "callee": "os.path.join",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_nb_sessions",
+          "callee": "self.dossier",
+          "lineNumber": 33
+        },
+        {
+          "caller": "info_session",
+          "callee": "self._nb_sessions",
+          "lineNumber": 37
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 41
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 43
+        },
+        {
+          "caller": "info",
+          "callee": "self._nb_sessions",
+          "lineNumber": 48
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super().creer_page",
+          "lineNumber": 56
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super",
+          "lineNumber": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 65,
+      "classes": [
+        {
+          "name": "Resistance",
+          "startLine": 16,
+          "endLine": 81,
+          "methods": [
+            "dossier_csv",
+            "__init__",
+            "_charger",
+            "profils",
+            "dernier",
+            "dernier",
+            "_nb_tests",
+            "_pluriel",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Resistance",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dossier_csv",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_charger",
+          "callee": "profils.charger",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_charger",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 34
+        },
+        {
+          "caller": "profils",
+          "callee": "self._charger",
+          "lineNumber": 38
+        },
+        {
+          "caller": "dernier",
+          "callee": "self._charger",
+          "lineNumber": 43
+        },
+        {
+          "caller": "dernier",
+          "callee": "self._charger",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_nb_tests",
+          "callee": "len",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_nb_tests",
+          "callee": "glob.glob",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_nb_tests",
+          "callee": "os.path.join",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_nb_tests",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 53
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 61
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 64
+        },
+        {
+          "caller": "actions",
+          "callee": "self._pluriel",
+          "lineNumber": 65
+        },
+        {
+          "caller": "actions",
+          "callee": "len",
+          "lineNumber": 65
+        },
+        {
+          "caller": "actions",
+          "callee": "len",
+          "lineNumber": 65
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 66
+        },
+        {
+          "caller": "actions",
+          "callee": "self._pluriel",
+          "lineNumber": 67
+        },
+        {
+          "caller": "actions",
+          "callee": "self._nb_tests",
+          "lineNumber": 67
+        },
+        {
+          "caller": "actions",
+          "callee": "self._nb_tests",
+          "lineNumber": 67
+        },
+        {
+          "caller": "info",
+          "callee": "self._pluriel",
+          "lineNumber": 71
+        },
+        {
+          "caller": "info",
+          "callee": "len",
+          "lineNumber": 71
+        },
+        {
+          "caller": "info",
+          "callee": "self._pluriel",
+          "lineNumber": 71
+        },
+        {
+          "caller": "info",
+          "callee": "self._nb_tests",
+          "lineNumber": 71
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super().creer_page",
+          "lineNumber": 80
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/chemins.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "dossier",
+          "startLine": 9,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "dossier_csv",
+          "startLine": 15,
+          "endLine": 18,
+          "params": []
+        },
+        {
+          "name": "fichier_profils",
+          "startLine": 21,
+          "endLine": 22,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "dossier",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "dossier_csv",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "fichier_profils",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dossier",
+          "callee": "os.path.join",
+          "lineNumber": 10
+        },
+        {
+          "caller": "dossier",
+          "callee": "os.makedirs",
+          "lineNumber": 11
+        },
+        {
+          "caller": "dossier_csv",
+          "callee": "os.path.join",
+          "lineNumber": 16
+        },
+        {
+          "caller": "dossier_csv",
+          "callee": "dossier",
+          "lineNumber": 16
+        },
+        {
+          "caller": "dossier_csv",
+          "callee": "os.makedirs",
+          "lineNumber": 17
+        },
+        {
+          "caller": "fichier_profils",
+          "callee": "os.path.join",
+          "lineNumber": 22
+        },
+        {
+          "caller": "fichier_profils",
+          "callee": "dossier",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/resistance/page_lancer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 124,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "_propre",
+          "startLine": 14,
+          "endLine": 15,
+          "params": [
+            "texte"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageLancer",
+          "startLine": 18,
+          "endLine": 124,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_profil_courant",
+            "_profil_choisi",
+            "_resume",
+            "_demarrer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_propre",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "PageLancer",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_propre",
+          "callee": "\"\".join",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_propre",
+          "callee": "c.isalnum",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_propre",
+          "callee": "texte.strip",
+          "lineNumber": 15
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 20
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 20
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 23
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.columnconfigure",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.rowconfigure",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 28
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.grid",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(gauche, text=\"Créer ou modifier un profil\", style=\"Tool.TButton\",\n                   command=lambda: app.aller(\"resistance.profils\")).pack",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.grid",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "carte.pack",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "interne.pack",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_nom.pack",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=CARTE, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_notes.pack",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "SelecteurTechnicien",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.sel_technicien.pack",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"N° de série de la batterie (facultatif)\", bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "e.pack",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "e.bind",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._demarrer",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 69
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_start.pack",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"La charge EA doit être branchée sur les bornes du pack, et l'équilibreur Daly sur ses cellules.\",\n                 bg=BG, fg=GRIS, font=f(11), anchor=\"w\", justify=\"left\", wraplength=560).pack",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 72
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.sel_technicien.rafraichir",
+          "lineNumber": 75
+        },
+        {
+          "caller": "on_show",
+          "callee": "noms.index",
+          "lineNumber": 77
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.liste.remplir",
+          "lineNumber": 78
+        },
+        {
+          "caller": "on_show",
+          "callee": "profils.resume",
+          "lineNumber": 78
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._resume",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_profil_courant",
+          "callee": "len",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "profils.sauver",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "self._resume",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_resume",
+          "callee": "self._profil_courant",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.btn_start.config",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.vals.values",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_resume",
+          "callee": "lbl.config",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_notes.config",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_resume",
+          "callee": "v[\"courant\"].config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_resume",
+          "callee": "v[\"pulse\"].config",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_resume",
+          "callee": "v[\"repet\"].config",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_resume",
+          "callee": "str",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_resume",
+          "callee": "v[\"attente\"].config",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_resume",
+          "callee": "v[\"duree\"].config",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_resume",
+          "callee": "T.duree",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_resume",
+          "callee": "profils.duree_totale_s",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_notes.config",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._profil_courant",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.sel_technicien.valeur",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.instruments.port_ou_erreur",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.instruments.port_ou_erreur",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.get().strip",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.get",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "\"_\".join",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_propre",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_propre",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "os.path.join",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "datetime.now",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.page(\"resistance.encours\").demarrer",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.page",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.set",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.aller",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/page_profils.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 113,
+      "classes": [
+        {
+          "name": "PageProfils",
+          "startLine": 11,
+          "endLine": 129,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_rafraichir",
+            "_afficher",
+            "_nouveau",
+            "_selectionner",
+            "_enregistrer",
+            "_supprimer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageProfils",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 17
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 18
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 20
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack",
+          "lineNumber": 21
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 23
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(gauche, text=\"+  Nouveau profil\", style=\"Start.TButton\", command=self._nouveau).pack",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 27
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.pack",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "boutons.pack",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(boutons, text=\"Enregistrer\", style=\"Start.TButton\", command=self._enregistrer).pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_suppr.pack",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_titre.pack",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 40
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Frame",
+          "lineNumber": 43
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Label(bloc, text=texte, bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 44
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Label",
+          "lineNumber": 44
+        },
+        {
+          "caller": "champ",
+          "callee": "f",
+          "lineNumber": 44
+        },
+        {
+          "caller": "champ",
+          "callee": "ttk.Entry",
+          "lineNumber": 45
+        },
+        {
+          "caller": "champ",
+          "callee": "f",
+          "lineNumber": 45
+        },
+        {
+          "caller": "champ",
+          "callee": "e.pack",
+          "lineNumber": 46
+        },
+        {
+          "caller": "champ",
+          "callee": "e.bind",
+          "lineNumber": 47
+        },
+        {
+          "caller": "champ",
+          "callee": "self._enregistrer",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.pack",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "divmod",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "b_.grid",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"Chaque pulse : repos (charge coupée, tension de référence) puis pulse de courant. \"\n                              \"La tension est mesurée sur la fin du pulse, à partir du délai indiqué. \"\n                              \"Si une cellule passe sous la tension mini pendant un pulse, le test s'arrête.\",\n                 bg=BG, fg=GRIS, font=f(10), anchor=\"w\", justify=\"left\", wraplength=560).pack",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.pack",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_msg.pack",
+          "lineNumber": 67
+        },
+        {
+          "caller": "on_show",
+          "callee": "noms.index",
+          "lineNumber": 71
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._rafraichir",
+          "lineNumber": 72
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._selectionner",
+          "lineNumber": 73
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._nouveau",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.liste.remplir",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "profils.resume",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.vars.items",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_afficher",
+          "callee": "(p if p else profils.defauts()).get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_afficher",
+          "callee": "profils.defauts",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_afficher",
+          "callee": "var.set",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_afficher",
+          "callee": "isinstance",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_afficher",
+          "callee": "str",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.liste.choisir",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self._afficher",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.lbl_titre.config",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.btn_suppr.config",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.e_nom.focus_set",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "len",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self._nouveau",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.liste.choisir",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self._afficher",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.lbl_titre.config",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.btn_suppr.config",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "profils.valider",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "var.get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.vars.items",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "str",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "p[\"nom\"].lower",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "q[\"nom\"].lower",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "enumerate",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.mod.profils.append",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "profils.sauver",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self._rafraichir",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self._selectionner",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "messagebox.askyesno",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "profils.sauver",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "self._rafraichir",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "self._nouveau",
+          "lineNumber": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/resistance/profils.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 71,
+      "functions": [
+        {
+          "name": "defauts",
+          "startLine": 18,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "_nombre",
+          "startLine": 22,
+          "endLine": 37,
+          "params": [
+            "valeur",
+            "libelle",
+            "entier",
+            "optionnel"
+          ]
+        },
+        {
+          "name": "valider",
+          "startLine": 40,
+          "endLine": 52,
+          "params": [
+            "brut"
+          ]
+        },
+        {
+          "name": "duree_totale_s",
+          "startLine": 55,
+          "endLine": 58,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "resume",
+          "startLine": 61,
+          "endLine": 63,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "charger",
+          "startLine": 66,
+          "endLine": 79,
+          "params": [
+            "chemin"
+          ]
+        },
+        {
+          "name": "sauver",
+          "startLine": 82,
+          "endLine": 86,
+          "params": [
+            "chemin",
+            "profils",
+            "dernier"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "defauts",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "_nombre",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "valider",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "duree_totale_s",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "resume",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "charger",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "sauver",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 26
+        },
+        {
+          "caller": "_nombre",
+          "callee": "float",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip().replace",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 32
+        },
+        {
+          "caller": "_nombre",
+          "callee": "int",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_nombre",
+          "callee": "int",
+          "lineNumber": 36
+        },
+        {
+          "caller": "valider",
+          "callee": "str(brut.get(\"nom\") or \"\").strip",
+          "lineNumber": 42
+        },
+        {
+          "caller": "valider",
+          "callee": "str",
+          "lineNumber": 42
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "valider",
+          "callee": "ValueError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "valider",
+          "callee": "_nombre",
+          "lineNumber": 47
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "valider",
+          "callee": "ValueError",
+          "lineNumber": 49
+        },
+        {
+          "caller": "valider",
+          "callee": "str(brut.get(\"notes\") or \"\").strip",
+          "lineNumber": 51
+        },
+        {
+          "caller": "valider",
+          "callee": "str",
+          "lineNumber": 51
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "charger",
+          "callee": "open",
+          "lineNumber": 69
+        },
+        {
+          "caller": "charger",
+          "callee": "json.load",
+          "lineNumber": 70
+        },
+        {
+          "caller": "charger",
+          "callee": "donnees.get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "charger",
+          "callee": "isinstance",
+          "lineNumber": 74
+        },
+        {
+          "caller": "charger",
+          "callee": "profils.append",
+          "lineNumber": 76
+        },
+        {
+          "caller": "charger",
+          "callee": "valider",
+          "lineNumber": 76
+        },
+        {
+          "caller": "charger",
+          "callee": "donnees.get",
+          "lineNumber": 79
+        },
+        {
+          "caller": "charger",
+          "callee": "isinstance",
+          "lineNumber": 79
+        },
+        {
+          "caller": "sauver",
+          "callee": "open",
+          "lineNumber": 84
+        },
+        {
+          "caller": "sauver",
+          "callee": "json.dump",
+          "lineNumber": 85
+        },
+        {
+          "caller": "sauver",
+          "callee": "os.replace",
+          "lineNumber": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "page_accueil.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 70,
+      "functions": [
+        {
+          "name": "_disposer",
+          "startLine": 9,
+          "endLine": 19,
+          "params": [
+            "parent",
+            "fabriques",
+            "par_ligne"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Accueil",
+          "startLine": 22,
+          "endLine": 54,
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": []
+        },
+        {
+          "name": "PageModule",
+          "startLine": 57,
+          "endLine": 84,
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_disposer",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "Accueil",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "PageModule",
+          "line": 57,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_disposer",
+          "callee": "range",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_disposer",
+          "callee": "len",
+          "lineNumber": 15
+        },
+        {
+          "caller": "_disposer",
+          "callee": "tk.Frame",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_disposer",
+          "callee": "rangee.pack",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_disposer",
+          "callee": "fabrique(rangee).pack",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_disposer",
+          "callee": "fabrique",
+          "lineNumber": 19
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 28
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.centre.place",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(self, text=\"Gérer les modules\", style=\"Tool.TButton\",\n                   command=lambda: app.aller(\"modules\")).place",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(self, text=\"Instruments\", style=\"Tool.TButton\",\n                   command=lambda: app.aller(\"instruments\")).place",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 33
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.centre.winfo_children",
+          "lineNumber": 37
+        },
+        {
+          "caller": "on_show",
+          "callee": "w.destroy",
+          "lineNumber": 38
+        },
+        {
+          "caller": "on_show",
+          "callee": "a.modules_actifs",
+          "lineNumber": 39
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(self.centre, text=\"Que souhaitez-vous faire ?\" if actifs else \"Aucun module activé\",\n                 bg=BG, fg=TEXTE, font=f(24, True)).pack",
+          "lineNumber": 40
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 40
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 41
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(self.centre, text=\"Activez au moins un module avec « Gérer les modules » (en bas à droite).\",\n                     bg=BG, fg=ORANGE, font=f(13)).pack",
+          "lineNumber": 43
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 43
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 44
+        },
+        {
+          "caller": "construire",
+          "callee": "T.tuile",
+          "lineNumber": 48
+        },
+        {
+          "caller": "construire",
+          "callee": "a.aller",
+          "lineNumber": 49
+        },
+        {
+          "caller": "construire",
+          "callee": "info.config",
+          "lineNumber": 50
+        },
+        {
+          "caller": "construire",
+          "callee": "m.info",
+          "lineNumber": 50
+        },
+        {
+          "caller": "on_show",
+          "callee": "_disposer",
+          "lineNumber": 54
+        },
+        {
+          "caller": "on_show",
+          "callee": "fabrique",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.centre.place",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(self, text=\"Instruments\", style=\"Tool.TButton\",\n                       command=lambda: app.aller(\"instruments\")).place",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 67
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.centre.winfo_children",
+          "lineNumber": 71
+        },
+        {
+          "caller": "on_show",
+          "callee": "w.destroy",
+          "lineNumber": 72
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(self.centre, text=m.nom, bg=BG, fg=TEXTE, font=f(24, True)).pack",
+          "lineNumber": 73
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 73
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 73
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(self.centre, text=m.description, bg=BG, fg=GRIS, font=f(12), wraplength=760).pack",
+          "lineNumber": 74
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 74
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 74
+        },
+        {
+          "caller": "construire",
+          "callee": "T.tuile",
+          "lineNumber": 77
+        },
+        {
+          "caller": "construire",
+          "callee": "a.aller",
+          "lineNumber": 78
+        },
+        {
+          "caller": "construire",
+          "callee": "info.config",
+          "lineNumber": 80
+        },
+        {
+          "caller": "construire",
+          "callee": "act.info",
+          "lineNumber": 80
+        },
+        {
+          "caller": "on_show",
+          "callee": "_disposer",
+          "lineNumber": 84
+        },
+        {
+          "caller": "on_show",
+          "callee": "fabrique",
+          "lineNumber": 84
+        },
+        {
+          "caller": "on_show",
+          "callee": "m.actions",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "page_instruments.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 149,
+      "functions": [
+        {
+          "name": "_decrire",
+          "startLine": 13,
+          "endLine": 24,
+          "params": [
+            "infos"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageInstruments",
+          "startLine": 27,
+          "endLine": 170,
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_courant",
+            "_boucle",
+            "_rafraichir",
+            "_actualiser",
+            "_choisir_instrument",
+            "_choisir_port",
+            "_rechercher",
+            "_tester"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_decrire",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "PageInstruments",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_decrire",
+          "callee": "infos.get",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_decrire",
+          "callee": "morceaux.append",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_decrire",
+          "callee": "infos.get",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_decrire",
+          "callee": "morceaux.append",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_decrire",
+          "callee": "infos.get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_decrire",
+          "callee": "morceaux.append",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_decrire",
+          "callee": "\", \".join",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "list",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste_inst.pack",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.pack",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_nom.pack",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_desc.pack",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"Port utilisé\", bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste_ports.pack",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "boutons.pack",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_test.pack",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_rech.pack",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_res.pack",
+          "lineNumber": 69
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 75
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._boucle",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self._rafraichir",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self.after",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.gest.ports",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "tuple",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.gest.statut",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "tuple",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.gest.candidats",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self._courant",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.gest.manuel",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self._courant",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self._actualiser",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.file.get_nowait",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.btn_test.config",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.instrument",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.statut",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.liste_inst.remplir",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.instrument",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self._courant",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self._courant",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.lbl_desc.config",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.statut",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "{\"manuel\": \"choix manuel\", \"memorise\": \"détecté et mémorisé\", \"auto\": \"détection automatique\"}.get",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.origine",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "list",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.candidats",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.manuel",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "lignes.append",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "devices.append",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.liste_ports.remplir",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "devices.index",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.btn_test.config",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "g.port",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_actualiser",
+          "callee": "self.btn_rech.config",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_choisir_instrument",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_choisir_instrument",
+          "callee": "self.after",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self._courant",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self.gest.choisir",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self.gest.instrument",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self.gest.lancer_detection",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_choisir_port",
+          "callee": "self.after",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self._courant",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.gest.choisir",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.gest.ports",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.gest.instrument",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.gest.lancer_detection",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.gest.instrument",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_rechercher",
+          "callee": "self.after",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_tester",
+          "callee": "self._courant",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_tester",
+          "callee": "self.btn_test.config",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_tester",
+          "callee": "self.lbl_res.config",
+          "lineNumber": 164
+        },
+        {
+          "caller": "tache",
+          "callee": "self.gest.tester",
+          "lineNumber": 167
+        },
+        {
+          "caller": "tache",
+          "callee": "self.file.put",
+          "lineNumber": 168
+        },
+        {
+          "caller": "tache",
+          "callee": "_decrire",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_tester",
+          "callee": "threading.Thread(target=tache, daemon=True).start",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_tester",
+          "callee": "threading.Thread",
+          "lineNumber": 170
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "theme.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 471,
+      "nonEmptyLines": 416,
+      "functions": [
+        {
+          "name": "_dossier_donnees",
+          "startLine": 15,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "init_styles",
+          "startLine": 56,
+          "endLine": 79,
+          "params": [
+            "root"
+          ]
+        },
+        {
+          "name": "titre",
+          "startLine": 82,
+          "endLine": 84,
+          "params": [
+            "parent",
+            "texte",
+            "f",
+            "fond"
+          ]
+        },
+        {
+          "name": "resume_profil",
+          "startLine": 87,
+          "endLine": 93,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "duree",
+          "startLine": 96,
+          "endLine": 98,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "ouvrir",
+          "startLine": 101,
+          "endLine": 115,
+          "params": [
+            "chemin",
+            "reveler"
+          ]
+        },
+        {
+          "name": "icone",
+          "startLine": 224,
+          "endLine": 259,
+          "params": [
+            "parent",
+            "genre",
+            "fond",
+            "teinte",
+            "taille"
+          ]
+        },
+        {
+          "name": "tuile",
+          "startLine": 262,
+          "endLine": 293,
+          "params": [
+            "parent",
+            "f",
+            "titre_",
+            "desc",
+            "genre",
+            "couleur",
+            "teinte",
+            "commande",
+            "largeur",
+            "hauteur"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ListeLignes",
+          "startLine": 118,
+          "endLine": 221,
+          "methods": [
+            "__init__",
+            "_maj_defilement",
+            "_molette",
+            "_roue",
+            "remplir",
+            "_ligne",
+            "_survol",
+            "choisir",
+            "activer"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Interrupteur",
+          "startLine": 296,
+          "endLine": 320,
+          "methods": [
+            "__init__",
+            "regler",
+            "basculer",
+            "_dessiner"
+          ],
+          "properties": []
+        },
+        {
+          "name": "GraphesTemps",
+          "startLine": 323,
+          "endLine": 471,
+          "methods": [
+            "__init__",
+            "definir",
+            "basculer",
+            "_maj_pastilles",
+            "tracer",
+            "_survol"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_dossier_donnees",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "init_styles",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "titre",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "resume_profil",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "duree",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "ouvrir",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "ListeLignes",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "icone",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "tuile",
+          "line": 262,
+          "isDefault": false
+        },
+        {
+          "name": "Interrupteur",
+          "line": 296,
+          "isDefault": false
+        },
+        {
+          "name": "GraphesTemps",
+          "line": 323,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.environ.get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.abspath",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.expanduser",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "getattr",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.join",
+          "lineNumber": 26
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.expanduser",
+          "lineNumber": 26
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.join",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.join",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.exists",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.isdir",
+          "lineNumber": 28
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.rename",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.dirname",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_dossier_donnees",
+          "callee": "os.path.abspath",
+          "lineNumber": 34
+        },
+        {
+          "caller": "init_styles",
+          "callee": "tkfont.nametofont(\"TkDefaultFont\").actual",
+          "lineNumber": 58
+        },
+        {
+          "caller": "init_styles",
+          "callee": "tkfont.nametofont",
+          "lineNumber": 58
+        },
+        {
+          "caller": "init_styles",
+          "callee": "ttk.Style",
+          "lineNumber": 60
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.theme_use",
+          "lineNumber": 61
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.configure",
+          "lineNumber": 62
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.map",
+          "lineNumber": 64
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.configure",
+          "lineNumber": 67
+        },
+        {
+          "caller": "init_styles",
+          "callee": "f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.map",
+          "lineNumber": 69
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.configure",
+          "lineNumber": 71
+        },
+        {
+          "caller": "init_styles",
+          "callee": "f",
+          "lineNumber": 71
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.map",
+          "lineNumber": 73
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.configure",
+          "lineNumber": 75
+        },
+        {
+          "caller": "init_styles",
+          "callee": "f",
+          "lineNumber": 75
+        },
+        {
+          "caller": "init_styles",
+          "callee": "st.map",
+          "lineNumber": 77
+        },
+        {
+          "caller": "titre",
+          "callee": "tk.Label(parent, text=texte, bg=fond, fg=TEXTE, font=f(14, True), anchor=\"w\").pack",
+          "lineNumber": 83
+        },
+        {
+          "caller": "titre",
+          "callee": "tk.Label",
+          "lineNumber": 83
+        },
+        {
+          "caller": "titre",
+          "callee": "f",
+          "lineNumber": 83
+        },
+        {
+          "caller": "titre",
+          "callee": "tk.Frame(parent, bg=BORD, height=1).pack",
+          "lineNumber": 84
+        },
+        {
+          "caller": "titre",
+          "callee": "tk.Frame",
+          "lineNumber": 84
+        },
+        {
+          "caller": "resume_profil",
+          "callee": "morceaux.append",
+          "lineNumber": 90
+        },
+        {
+          "caller": "resume_profil",
+          "callee": "morceaux.append",
+          "lineNumber": 92
+        },
+        {
+          "caller": "resume_profil",
+          "callee": "\"  ·  \".join",
+          "lineNumber": 93
+        },
+        {
+          "caller": "duree",
+          "callee": "int",
+          "lineNumber": 97
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "sys.platform.startswith",
+          "lineNumber": 104
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.path.isfile",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "subprocess.Popen",
+          "lineNumber": 106
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.path.normpath",
+          "lineNumber": 106
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.startfile",
+          "lineNumber": 108
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "subprocess.Popen",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.path.isfile",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.path.dirname",
+          "lineNumber": 112
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "os.path.isfile",
+          "lineNumber": 112
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "subprocess.Popen",
+          "lineNumber": 113
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "messagebox.showerror",
+          "lineNumber": 115
+        },
+        {
+          "caller": "ouvrir",
+          "callee": "str",
+          "lineNumber": 115
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 122
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 122
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Canvas",
+          "lineNumber": 125
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Scrollbar",
+          "lineNumber": 126
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.configure",
+          "lineNumber": 127
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.pack",
+          "lineNumber": 128
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 129
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.create_window",
+          "lineNumber": 130
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.interieur.bind",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._maj_defilement",
+          "lineNumber": 131
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.bind",
+          "lineNumber": 132
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.itemconfigure",
+          "lineNumber": 132
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._maj_defilement",
+          "lineNumber": 133
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.bind",
+          "lineNumber": 134
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._molette",
+          "lineNumber": 134
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.bind",
+          "lineNumber": 135
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._molette",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.canvas.configure",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.canvas.bbox",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.interieur.winfo_reqheight",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.canvas.winfo_height",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.barre.pack",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.barre.pack_forget",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_maj_defilement",
+          "callee": "self.canvas.yview_moveto",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_molette",
+          "callee": "self.bind_all",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_molette",
+          "callee": "self.unbind_all",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_roue",
+          "callee": "self.interieur.winfo_reqheight",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_roue",
+          "callee": "self.canvas.winfo_height",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_roue",
+          "callee": "self.canvas.yview_scroll",
+          "lineNumber": 157
+        },
+        {
+          "caller": "remplir",
+          "callee": "self.interieur.winfo_children",
+          "lineNumber": 162
+        },
+        {
+          "caller": "remplir",
+          "callee": "w.destroy",
+          "lineNumber": 163
+        },
+        {
+          "caller": "remplir",
+          "callee": "tk.Label(self.interieur, text=self.texte_vide, bg=BG, fg=ORANGE, font=self.f(12),\n                     justify=\"left\", wraplength=280).pack",
+          "lineNumber": 166
+        },
+        {
+          "caller": "remplir",
+          "callee": "tk.Label",
+          "lineNumber": 166
+        },
+        {
+          "caller": "remplir",
+          "callee": "self.f",
+          "lineNumber": 166
+        },
+        {
+          "caller": "remplir",
+          "callee": "enumerate",
+          "lineNumber": 168
+        },
+        {
+          "caller": "remplir",
+          "callee": "self._ligne",
+          "lineNumber": 169
+        },
+        {
+          "caller": "remplir",
+          "callee": "self.choisir",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Frame",
+          "lineNumber": 173
+        },
+        {
+          "caller": "_ligne",
+          "callee": "carte.pack",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Frame",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_ligne",
+          "callee": "interne.pack",
+          "lineNumber": 177
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Canvas",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_ligne",
+          "callee": "pastille.pack",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Frame",
+          "lineNumber": 182
+        },
+        {
+          "caller": "_ligne",
+          "callee": "texte.pack",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Label",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self.f",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_ligne",
+          "callee": "lbl_nom.pack",
+          "lineNumber": 185
+        },
+        {
+          "caller": "_ligne",
+          "callee": "tk.Label",
+          "lineNumber": 186
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self.f",
+          "lineNumber": 186
+        },
+        {
+          "caller": "_ligne",
+          "callee": "lbl_det.pack",
+          "lineNumber": 187
+        },
+        {
+          "caller": "_ligne",
+          "callee": "w.bind",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self.choisir",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_ligne",
+          "callee": "w.bind",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self._survol",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_ligne",
+          "callee": "w.bind",
+          "lineNumber": 192
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self._survol",
+          "lineNumber": 192
+        },
+        {
+          "caller": "_ligne",
+          "callee": "self.lignes.append",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_survol",
+          "callee": "len",
+          "lineNumber": 196
+        },
+        {
+          "caller": "_survol",
+          "callee": "self.lignes[k][0].config",
+          "lineNumber": 198
+        },
+        {
+          "caller": "choisir",
+          "callee": "len",
+          "lineNumber": 203
+        },
+        {
+          "caller": "choisir",
+          "callee": "enumerate",
+          "lineNumber": 204
+        },
+        {
+          "caller": "choisir",
+          "callee": "w.config",
+          "lineNumber": 208
+        },
+        {
+          "caller": "choisir",
+          "callee": "carte.config",
+          "lineNumber": 209
+        },
+        {
+          "caller": "choisir",
+          "callee": "pastille.delete",
+          "lineNumber": 211
+        },
+        {
+          "caller": "choisir",
+          "callee": "pastille.create_oval",
+          "lineNumber": 212
+        },
+        {
+          "caller": "choisir",
+          "callee": "pastille.create_oval",
+          "lineNumber": 214
+        },
+        {
+          "caller": "choisir",
+          "callee": "self.on_select",
+          "lineNumber": 216
+        },
+        {
+          "caller": "activer",
+          "callee": "carte.config",
+          "lineNumber": 221
+        },
+        {
+          "caller": "icone",
+          "callee": "tk.Canvas",
+          "lineNumber": 226
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_oval",
+          "lineNumber": 227
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 229
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 230
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_polygon",
+          "lineNumber": 231
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 234
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_oval",
+          "lineNumber": 235
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 238
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 239
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 242
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 243
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 245
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 246
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 247
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 248
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 250
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 252
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 253
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 254
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_line",
+          "lineNumber": 255
+        },
+        {
+          "caller": "icone",
+          "callee": "c.create_rectangle",
+          "lineNumber": 258
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Frame",
+          "lineNumber": 264
+        },
+        {
+          "caller": "tuile",
+          "callee": "t.pack_propagate",
+          "lineNumber": 266
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Frame",
+          "lineNumber": 267
+        },
+        {
+          "caller": "tuile",
+          "callee": "corps.pack",
+          "lineNumber": 268
+        },
+        {
+          "caller": "tuile",
+          "callee": "icone",
+          "lineNumber": 269
+        },
+        {
+          "caller": "tuile",
+          "callee": "ico.pack",
+          "lineNumber": 270
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Label",
+          "lineNumber": 271
+        },
+        {
+          "caller": "tuile",
+          "callee": "f",
+          "lineNumber": 271
+        },
+        {
+          "caller": "tuile",
+          "callee": "lbl_t.pack",
+          "lineNumber": 273
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Label",
+          "lineNumber": 274
+        },
+        {
+          "caller": "tuile",
+          "callee": "f",
+          "lineNumber": 274
+        },
+        {
+          "caller": "tuile",
+          "callee": "lbl_d.pack",
+          "lineNumber": 276
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Frame",
+          "lineNumber": 277
+        },
+        {
+          "caller": "tuile",
+          "callee": "bas.pack",
+          "lineNumber": 278
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Label",
+          "lineNumber": 279
+        },
+        {
+          "caller": "tuile",
+          "callee": "f",
+          "lineNumber": 279
+        },
+        {
+          "caller": "tuile",
+          "callee": "info.pack",
+          "lineNumber": 280
+        },
+        {
+          "caller": "tuile",
+          "callee": "tk.Label",
+          "lineNumber": 281
+        },
+        {
+          "caller": "tuile",
+          "callee": "f",
+          "lineNumber": 281
+        },
+        {
+          "caller": "tuile",
+          "callee": "fleche.pack",
+          "lineNumber": 282
+        },
+        {
+          "caller": "survol",
+          "callee": "t.config",
+          "lineNumber": 285
+        },
+        {
+          "caller": "survol",
+          "callee": "fleche.config",
+          "lineNumber": 286
+        },
+        {
+          "caller": "tuile",
+          "callee": "w.bind",
+          "lineNumber": 289
+        },
+        {
+          "caller": "tuile",
+          "callee": "commande",
+          "lineNumber": 289
+        },
+        {
+          "caller": "tuile",
+          "callee": "w.bind",
+          "lineNumber": 290
+        },
+        {
+          "caller": "tuile",
+          "callee": "survol",
+          "lineNumber": 290
+        },
+        {
+          "caller": "tuile",
+          "callee": "w.bind",
+          "lineNumber": 291
+        },
+        {
+          "caller": "tuile",
+          "callee": "survol",
+          "lineNumber": 291
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 300
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 300
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.bind",
+          "lineNumber": 302
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.basculer",
+          "lineNumber": 302
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._dessiner",
+          "lineNumber": 303
+        },
+        {
+          "caller": "regler",
+          "callee": "self._dessiner",
+          "lineNumber": 307
+        },
+        {
+          "caller": "basculer",
+          "callee": "self.regler",
+          "lineNumber": 310
+        },
+        {
+          "caller": "basculer",
+          "callee": "self.commande",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_dessiner",
+          "callee": "self.delete",
+          "lineNumber": 314
+        },
+        {
+          "caller": "_dessiner",
+          "callee": "self.create_oval",
+          "lineNumber": 316
+        },
+        {
+          "caller": "_dessiner",
+          "callee": "self.create_oval",
+          "lineNumber": 317
+        },
+        {
+          "caller": "_dessiner",
+          "callee": "self.create_rectangle",
+          "lineNumber": 318
+        },
+        {
+          "caller": "_dessiner",
+          "callee": "self.create_oval",
+          "lineNumber": 320
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 334
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 334
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 343
+        },
+        {
+          "caller": "__init__",
+          "callee": "barre.pack",
+          "lineNumber": 344
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 347
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 347
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 348
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.bind",
+          "lineNumber": 349
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.basculer",
+          "lineNumber": 349
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(barre, text=\"cliquer pour masquer / afficher une courbe\", bg=BG, fg=GRIS, font=f(10)).pack",
+          "lineNumber": 351
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 351
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 351
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Canvas",
+          "lineNumber": 353
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.pack",
+          "lineNumber": 354
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.bind",
+          "lineNumber": 355
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.tracer",
+          "lineNumber": 355
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.bind",
+          "lineNumber": 356
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.bind",
+          "lineNumber": 357
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.canvas.delete",
+          "lineNumber": 357
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._maj_pastilles",
+          "lineNumber": 358
+        },
+        {
+          "caller": "definir",
+          "callee": "self.tracer",
+          "lineNumber": 364
+        },
+        {
+          "caller": "basculer",
+          "callee": "sum",
+          "lineNumber": 367
+        },
+        {
+          "caller": "basculer",
+          "callee": "self.actifs.values",
+          "lineNumber": 367
+        },
+        {
+          "caller": "basculer",
+          "callee": "self._maj_pastilles",
+          "lineNumber": 370
+        },
+        {
+          "caller": "basculer",
+          "callee": "self.tracer",
+          "lineNumber": 371
+        },
+        {
+          "caller": "_maj_pastilles",
+          "callee": "self.pastilles[cle].config",
+          "lineNumber": 376
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.delete",
+          "lineNumber": 381
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.winfo_width",
+          "lineNumber": 383
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.winfo_height",
+          "lineNumber": 383
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.series.get",
+          "lineNumber": 385
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 387
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 392
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_text",
+          "lineNumber": 393
+        },
+        {
+          "caller": "tracer",
+          "callee": "f",
+          "lineNumber": 393
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 395
+        },
+        {
+          "caller": "tracer",
+          "callee": "list",
+          "lineNumber": 397
+        },
+        {
+          "caller": "tracer",
+          "callee": "range",
+          "lineNumber": 397
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 400
+        },
+        {
+          "caller": "tracer",
+          "callee": "min",
+          "lineNumber": 404
+        },
+        {
+          "caller": "tracer",
+          "callee": "max",
+          "lineNumber": 404
+        },
+        {
+          "caller": "tracer",
+          "callee": "min",
+          "lineNumber": 406
+        },
+        {
+          "caller": "tracer",
+          "callee": "max",
+          "lineNumber": 407
+        },
+        {
+          "caller": "tracer",
+          "callee": "range",
+          "lineNumber": 415
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_line",
+          "lineNumber": 417
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_text",
+          "lineNumber": 419
+        },
+        {
+          "caller": "tracer",
+          "callee": "px",
+          "lineNumber": 419
+        },
+        {
+          "caller": "tracer",
+          "callee": "time.strftime",
+          "lineNumber": 419
+        },
+        {
+          "caller": "tracer",
+          "callee": "time.gmtime",
+          "lineNumber": 419
+        },
+        {
+          "caller": "tracer",
+          "callee": "f",
+          "lineNumber": 420
+        },
+        {
+          "caller": "tracer",
+          "callee": "enumerate",
+          "lineNumber": 421
+        },
+        {
+          "caller": "tracer",
+          "callee": "range",
+          "lineNumber": 424
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_text",
+          "lineNumber": 428
+        },
+        {
+          "caller": "tracer",
+          "callee": "f",
+          "lineNumber": 428
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_text",
+          "lineNumber": 431
+        },
+        {
+          "caller": "tracer",
+          "callee": "f",
+          "lineNumber": 431
+        },
+        {
+          "caller": "tracer",
+          "callee": "next",
+          "lineNumber": 433
+        },
+        {
+          "caller": "tracer",
+          "callee": "py",
+          "lineNumber": 434
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_line",
+          "lineNumber": 435
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_text",
+          "lineNumber": 436
+        },
+        {
+          "caller": "tracer",
+          "callee": "f",
+          "lineNumber": 436
+        },
+        {
+          "caller": "tracer",
+          "callee": "c.create_line",
+          "lineNumber": 438
+        },
+        {
+          "caller": "tracer",
+          "callee": "zip",
+          "lineNumber": 438
+        },
+        {
+          "caller": "tracer",
+          "callee": "px",
+          "lineNumber": 438
+        },
+        {
+          "caller": "tracer",
+          "callee": "py",
+          "lineNumber": 438
+        },
+        {
+          "caller": "tracer",
+          "callee": "dict",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_survol",
+          "callee": "c.delete",
+          "lineNumber": 446
+        },
+        {
+          "caller": "_survol",
+          "callee": "min",
+          "lineNumber": 450
+        },
+        {
+          "caller": "_survol",
+          "callee": "bisect.bisect_left",
+          "lineNumber": 450
+        },
+        {
+          "caller": "_survol",
+          "callee": "len",
+          "lineNumber": 450
+        },
+        {
+          "caller": "_survol",
+          "callee": "c.create_line",
+          "lineNumber": 454
+        },
+        {
+          "caller": "_survol",
+          "callee": "time.strftime",
+          "lineNumber": 455
+        },
+        {
+          "caller": "_survol",
+          "callee": "time.gmtime",
+          "lineNumber": 455
+        },
+        {
+          "caller": "_survol",
+          "callee": "len",
+          "lineNumber": 459
+        },
+        {
+          "caller": "_survol",
+          "callee": "c.create_oval",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_survol",
+          "callee": "lignes.append",
+          "lineNumber": 464
+        },
+        {
+          "caller": "_survol",
+          "callee": "len",
+          "lineNumber": 465
+        },
+        {
+          "caller": "_survol",
+          "callee": "c.create_rectangle",
+          "lineNumber": 468
+        },
+        {
+          "caller": "_survol",
+          "callee": "enumerate",
+          "lineNumber": 469
+        },
+        {
+          "caller": "_survol",
+          "callee": "c.create_text",
+          "lineNumber": 470
+        },
+        {
+          "caller": "_survol",
+          "callee": "self.f",
+          "lineNumber": 471
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 11,
+        "functionCount": 8,
+        "classCount": 3
+      }
+    }
+  ]
+}

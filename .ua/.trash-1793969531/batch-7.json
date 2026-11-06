@@ -1,0 +1,153 @@
+{
+ "nodes": [
+  {
+   "id": "document:CLAUDE.md",
+   "type": "document",
+   "name": "CLAUDE.md",
+   "filePath": "CLAUDE.md",
+   "summary": "Profil de codage pour Claude Code : règles de sortie, de code, de revue, de débogage et de formatage simple à respecter dans le projet.",
+   "tags": [
+    "documentation",
+    "configuration",
+    "conventions",
+    "ia"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "document:README.md",
+   "type": "document",
+   "name": "README.md",
+   "filePath": "README.md",
+   "summary": "Documentation principale : installation par commande, données utilisateur, mises à jour automatiques, publication de versions, détection des instruments et utilisation des modules Décharge et Équilibrage.",
+   "tags": [
+    "documentation",
+    "entry-point",
+    "installation",
+    "guide-utilisateur"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:install.ps1",
+   "type": "file",
+   "name": "install.ps1",
+   "filePath": "install.ps1",
+   "summary": "Script PowerShell d'installation Windows : télécharge la dernière release GitHub, vérifie la somme SHA-256, installe l'exécutable dans LOCALAPPDATA et crée les raccourcis Bureau et menu Démarrer.",
+   "tags": [
+    "installation",
+    "script",
+    "deployment",
+    "windows"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Remplace l'exécutable en le renommant en .old car un exe en cours d'exécution ne peut pas être écrasé."
+  },
+  {
+   "id": "file:install.sh",
+   "type": "file",
+   "name": "install.sh",
+   "filePath": "install.sh",
+   "summary": "Script d'installation macOS (Apple Silicon) et Linux x86_64 : télécharge la release GitHub, vérifie le SHA-256, installe l'application et crée lanceur ou entrée de bureau.",
+   "tags": [
+    "installation",
+    "script",
+    "deployment",
+    "shell"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Bash strict (set -euo pipefail) avec remplacement atomique du binaire sous Linux."
+  },
+  {
+   "id": "function:install.sh:telecharger",
+   "type": "function",
+   "name": "telecharger",
+   "filePath": "install.sh",
+   "lineRange": [
+    16,
+    16
+   ],
+   "summary": "Télécharge une URL vers un fichier avec curl et trois essais, et quitte en erreur en cas d'échec.",
+   "tags": [
+    "utilitaire",
+    "reseau",
+    "installation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:install.sh:verifier",
+   "type": "function",
+   "name": "verifier",
+   "filePath": "install.sh",
+   "lineRange": [
+    18,
+    25
+   ],
+   "summary": "Compare la somme SHA-256 d'un fichier à celle listée dans SHA256SUMS.txt et annule l'installation si elle diffère.",
+   "tags": [
+    "securite",
+    "verification",
+    "integrite"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "config:requirements.txt",
+   "type": "config",
+   "name": "requirements.txt",
+   "filePath": "requirements.txt",
+   "summary": "Dépendances Python du projet : pyserial pour la communication série USB et certifi pour les certificats HTTPS embarqués.",
+   "tags": [
+    "configuration",
+    "dependances",
+    "python"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:install.sh",
+   "target": "function:install.sh:telecharger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:install.sh",
+   "target": "function:install.sh:verifier",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:install.sh",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:README.md",
+   "target": "file:install.ps1",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:README.md",
+   "target": "config:requirements.txt",
+   "type": "documents",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "document:README.md",
+   "target": "document:CLAUDE.md",
+   "type": "related",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

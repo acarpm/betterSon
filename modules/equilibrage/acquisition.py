@@ -34,13 +34,15 @@ class Acquisition:
     """Messages poussés dans `sortie` :
         ("donnees", t, d)   une lecture (d : dict de Daly.lire_tout() + ecart_mv...)
         ("silence", n)      n lectures de suite sans réponse
+        ("pilotage", actif, reponse)   commande 0x24 envoyée (si piloter=True), reponse = 8 octets ou None
         ("fin", motif, resume)   motif : stop | cible | duree | silence | erreur ; resume : dict ou message d'erreur
     """
 
-    def __init__(self, port, sortie, intervalle=1.0, chemin_csv=None, critere=None, silence_max_s=None, baud=BAUD, signature=""):
+    def __init__(self, port, sortie, intervalle=1.0, chemin_csv=None, critere=None, silence_max_s=None, baud=BAUD, signature="", piloter=False):
         self.port, self.sortie, self.intervalle = port, sortie, intervalle
         self.chemin_csv, self.critere, self.silence_max_s, self.baud = chemin_csv, critere, silence_max_s, baud
         self.signature = signature  # ligne de commentaire placée en tête du CSV (opérateur)
+        self.piloter = piloter      # démarre l'équilibrage actif de l'appareil (0x24) et l'arrête en fin de session
         self.stop = threading.Event()
         self.thread = None
 
@@ -77,6 +79,8 @@ class Acquisition:
                     fichier.write(self.signature)
                     ecrivain = csv.writer(fichier)
                 try:
+                    if self.piloter:
+                        q.put(("pilotage", True, daly.piloter_equilibrage(True)))
                     while not self.stop.is_set():
                         debut = time.monotonic()
                         d = daly.lire_tout()
@@ -114,6 +118,16 @@ class Acquisition:
                                 break
                         self.stop.wait(max(0.05, self.intervalle - (time.monotonic() - debut)))
                 finally:
+                    if self.piloter:  # toujours arrêter l'équilibrage, quelle que soit la fin de session
+                        try:
+                            reponse = None
+                            for _ in range(3):
+                                reponse = daly.piloter_equilibrage(False)
+                                if reponse is not None:
+                                    break
+                            q.put(("pilotage", False, reponse))
+                        except (serial.SerialException, OSError):
+                            q.put(("pilotage", False, None))
                     if fichier:
                         fichier.close()
             q.put(("fin", motif, {

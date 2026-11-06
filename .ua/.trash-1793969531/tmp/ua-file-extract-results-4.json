@@ -1,0 +1,2380 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 7,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 7,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "modules/decharge/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 65,
+      "classes": [
+        {
+          "name": "Decharge",
+          "startLine": 8,
+          "endLine": 80,
+          "methods": [
+            "dossier_csv",
+            "__init__",
+            "_charger",
+            "profils",
+            "dernier",
+            "dernier",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Decharge",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dossier_csv",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_charger",
+          "callee": "profils.charger",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_charger",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 27
+        },
+        {
+          "caller": "profils",
+          "callee": "self._charger",
+          "lineNumber": 31
+        },
+        {
+          "caller": "dernier",
+          "callee": "self._charger",
+          "lineNumber": 36
+        },
+        {
+          "caller": "dernier",
+          "callee": "self._charger",
+          "lineNumber": 41
+        },
+        {
+          "caller": "info_lancer",
+          "callee": "len",
+          "lineNumber": 47
+        },
+        {
+          "caller": "info_profils",
+          "callee": "len",
+          "lineNumber": 51
+        },
+        {
+          "caller": "info_resultats",
+          "callee": "len",
+          "lineNumber": 55
+        },
+        {
+          "caller": "info_resultats",
+          "callee": "resultats.lister",
+          "lineNumber": 55
+        },
+        {
+          "caller": "info_resultats",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 55
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 59
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 61
+        },
+        {
+          "caller": "actions",
+          "callee": "Action",
+          "lineNumber": 63
+        },
+        {
+          "caller": "info",
+          "callee": "len",
+          "lineNumber": 68
+        },
+        {
+          "caller": "info",
+          "callee": "len",
+          "lineNumber": 68
+        },
+        {
+          "caller": "info",
+          "callee": "resultats.lister",
+          "lineNumber": 68
+        },
+        {
+          "caller": "info",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 68
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super().creer_page",
+          "lineNumber": 79
+        },
+        {
+          "caller": "creer_page",
+          "callee": "super",
+          "lineNumber": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/decharge/chemins.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 7,
+      "functions": [
+        {
+          "name": "dossier_csv",
+          "startLine": 7,
+          "endLine": 8,
+          "params": []
+        },
+        {
+          "name": "fichier_profils",
+          "startLine": 11,
+          "endLine": 12,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "dossier_csv",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "fichier_profils",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dossier_csv",
+          "callee": "os.path.join",
+          "lineNumber": 8
+        },
+        {
+          "caller": "fichier_profils",
+          "callee": "os.path.join",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/decharge/page_lancer.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 147,
+      "functions": [
+        {
+          "name": "_propre",
+          "startLine": 17,
+          "endLine": 19,
+          "params": [
+            "texte"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageLancer",
+          "startLine": 22,
+          "endLine": 169,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_profil_courant",
+            "_profil_choisi",
+            "_resume",
+            "_commande_simple",
+            "_identite",
+            "_mesure",
+            "_demarrer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_propre",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "PageLancer",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_propre",
+          "callee": "\"\".join",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_propre",
+          "callee": "c.isalnum",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_propre",
+          "callee": "texte.strip",
+          "lineNumber": 19
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.columnconfigure",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.rowconfigure",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.grid",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_creer.pack",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.grid",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "carte.pack",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "interne.pack",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_nom.pack",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=CARTE, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_notes.pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "SelecteurTechnicien",
+          "lineNumber": 74
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.sel_technicien.pack",
+          "lineNumber": 75
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"N° de série de la batterie (facultatif)\", bg=BG, fg=GRIS, font=f(11),\n                 anchor=\"w\").pack",
+          "lineNumber": 76
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 76
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 76
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 78
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry",
+          "lineNumber": 79
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 79
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.e_serie.pack",
+          "lineNumber": 80
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.e_serie.bind",
+          "lineNumber": 81
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._demarrer",
+          "lineNumber": 81
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 83
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_start.pack",
+          "lineNumber": 84
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"Vérifiez que la batterie est bien branchée sur la charge avant de lancer.\",\n                 bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 85
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 85
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 86
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 87
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 87
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 89
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 91
+        },
+        {
+          "caller": "__init__",
+          "callee": "outils.pack",
+          "lineNumber": 92
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(outils, bg=BORD, height=1).pack",
+          "lineNumber": 93
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 93
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(outils, text=\"Identité de la charge\", style=\"Tool.TButton\", command=self._identite).pack",
+          "lineNumber": 94
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 94
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(outils, text=\"Mesure instantanée\", style=\"Tool.TButton\", command=self._mesure).pack",
+          "lineNumber": 95
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 95
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 98
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.sel_technicien.rafraichir",
+          "lineNumber": 99
+        },
+        {
+          "caller": "on_show",
+          "callee": "noms.index",
+          "lineNumber": 101
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.liste.remplir",
+          "lineNumber": 102
+        },
+        {
+          "caller": "on_show",
+          "callee": "T.resume_profil",
+          "lineNumber": 102
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._resume",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_profil_courant",
+          "callee": "len",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "profils.sauver",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_profil_choisi",
+          "callee": "self._resume",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_resume",
+          "callee": "self._profil_courant",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.btn_start.config",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.vals.values",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_resume",
+          "callee": "lbl.config",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_notes.config",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.vals[\"v\"].config",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.vals[\"a\"].config",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.vals[\"w\"].config",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_resume",
+          "callee": "self.lbl_notes.config",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_commande_simple",
+          "callee": "self.app.instruments.port_ou_erreur",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_commande_simple",
+          "callee": "serial.Serial",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_commande_simple",
+          "callee": "fonction",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_commande_simple",
+          "callee": "messagebox.showerror",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_commande_simple",
+          "callee": "str",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_identite",
+          "callee": "self._commande_simple",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_identite",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_mesure",
+          "callee": "self._commande_simple",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_mesure",
+          "callee": "charge.lire_valeurs",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_mesure",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._profil_courant",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.sel_technicien.valeur",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.instruments.port_ou_erreur",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.get().strip",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.get",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "\"_\".join",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_propre",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_propre",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "os.makedirs",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "os.path.join",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "datetime.now",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.page(\"decharge.encours\").demarrer",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.page",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.var_serie.set",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.app.aller",
+          "lineNumber": 169
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/decharge/page_profils.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 117,
+      "classes": [
+        {
+          "name": "PageProfils",
+          "startLine": 11,
+          "endLine": 133,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_rafraichir",
+            "_afficher",
+            "_nouveau",
+            "_selectionner",
+            "_enregistrer",
+            "_supprimer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageProfils",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 18
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 19
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack",
+          "lineNumber": 23
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 24
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(gauche, text=\"+  Nouveau profil\", style=\"Start.TButton\", command=self._nouveau).pack",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 27
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "boutons.pack",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(boutons, text=\"Enregistrer\", style=\"Start.TButton\", command=self._enregistrer).pack",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_suppr.pack",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_titre.pack",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 43
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Frame",
+          "lineNumber": 46
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Label(bloc, text=texte, bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 47
+        },
+        {
+          "caller": "champ",
+          "callee": "tk.Label",
+          "lineNumber": 47
+        },
+        {
+          "caller": "champ",
+          "callee": "f",
+          "lineNumber": 47
+        },
+        {
+          "caller": "champ",
+          "callee": "ttk.Entry",
+          "lineNumber": 48
+        },
+        {
+          "caller": "champ",
+          "callee": "f",
+          "lineNumber": 48
+        },
+        {
+          "caller": "champ",
+          "callee": "e.pack",
+          "lineNumber": 49
+        },
+        {
+          "caller": "champ",
+          "callee": "e.bind",
+          "lineNumber": 50
+        },
+        {
+          "caller": "champ",
+          "callee": "self._enregistrer",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.pack",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "nombres.pack",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "nombres.columnconfigure",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "b_.grid",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(droite, text=\"Indiquez le courant, la puissance, ou les deux. Le test s'arrête dès que la \"\n                              \"tension passe sous la coupure.\", bg=BG, fg=GRIS, font=f(10), anchor=\"w\",\n                 justify=\"left\", wraplength=480).pack",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "champ",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.pack",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_msg.pack",
+          "lineNumber": 69
+        },
+        {
+          "caller": "on_show",
+          "callee": "noms.index",
+          "lineNumber": 74
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._rafraichir",
+          "lineNumber": 75
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._selectionner",
+          "lineNumber": 76
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._nouveau",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "self.liste.remplir",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_rafraichir",
+          "callee": "T.resume_profil",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.vars.items",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_afficher",
+          "callee": "p.get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_afficher",
+          "callee": "var.set",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_afficher",
+          "callee": "isinstance",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.liste.choisir",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self._afficher",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.lbl_titre.config",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.btn_suppr.config",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_nouveau",
+          "callee": "self.e_nom.focus_set",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "len",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self._nouveau",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.liste.choisir",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self._afficher",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.lbl_titre.config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_selectionner",
+          "callee": "self.btn_suppr.config",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "profils.valider",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "var.get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.vars.items",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "str",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "q[\"nom\"].lower",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "enumerate",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "p[\"nom\"].lower",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.mod.profils.append",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "len",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "profils.sauver",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self._rafraichir",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self._selectionner",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_enregistrer",
+          "callee": "self.lbl_msg.config",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "messagebox.askyesno",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "profils.sauver",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "chemins.fichier_profils",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "self._rafraichir",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_supprimer",
+          "callee": "self._nouveau",
+          "lineNumber": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/decharge/page_resultats.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 125,
+      "classes": [
+        {
+          "name": "PageResultats",
+          "startLine": 14,
+          "endLine": 142,
+          "methods": [
+            "__init__",
+            "_dossier",
+            "on_show",
+            "_filtrer",
+            "_courant",
+            "_afficher",
+            "_tracer",
+            "_ouvrir_csv"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageResultats",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 16
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 16
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 23
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack",
+          "lineNumber": 27
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 28
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "e.pack",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(gauche, text=\"Filtrer par profil, n° de série, technicien ou poste\", bg=BG, fg=GRIS, font=f(10),\n                 anchor=\"w\").pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.var_filtre.trace_add",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._filtrer",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "ListeLignes",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.liste.pack",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(gauche, text=\"Ouvrir le dossier des résultats\", style=\"Tool.TButton\",\n                   command=lambda: T.ouvrir(self._dossier())).pack",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.ouvrir",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._dossier",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.pack",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_nom.pack",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_date.pack",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "divmod",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=BG, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "GraphesTemps",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.pack",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "actions.pack",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_csv.pack",
+          "lineNumber": 73
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 74
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._ouvrir_csv",
+          "lineNumber": 75
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_voir.pack",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_dossier",
+          "callee": "os.makedirs",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_dossier",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_dossier",
+          "callee": "chemins.dossier_csv",
+          "lineNumber": 81
+        },
+        {
+          "caller": "on_show",
+          "callee": "resultats.analyser_dossier",
+          "lineNumber": 85
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._dossier",
+          "lineNumber": 85
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.var_filtre.set",
+          "lineNumber": 86
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._filtrer",
+          "lineNumber": 87
+        },
+        {
+          "caller": "on_show",
+          "callee": "enumerate",
+          "lineNumber": 90
+        },
+        {
+          "caller": "on_show",
+          "callee": "os.path.abspath",
+          "lineNumber": 91
+        },
+        {
+          "caller": "on_show",
+          "callee": "os.path.abspath",
+          "lineNumber": 91
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.liste.choisir",
+          "lineNumber": 92
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._afficher",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get().lower().split",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get().lower",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.var_filtre.get",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "all",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "f\"{r['nom']} {r['technicien'] or ''} {r['poste'] or ''}\".lower",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self.liste.remplir",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self._afficher",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_filtrer",
+          "callee": "self._afficher",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_courant",
+          "callee": "len",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.btn_csv.config",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.btn_voir.config",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_date.config",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.vals.values",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_afficher",
+          "callee": "lbl.config",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.graphes.definir",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_nom.config",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_date.config",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"ah\"].config",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"wh\"].config",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"duree\"].config",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_afficher",
+          "callee": "T.duree",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"points\"].config",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_afficher",
+          "callee": "str",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"v_debut\"].config",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"v_fin\"].config",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"i_moy\"].config",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_afficher",
+          "callee": "v[\"p_moy\"].config",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self._tracer",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_tracer",
+          "callee": "self._courant",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_tracer",
+          "callee": "self.graphes.definir",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_ouvrir_csv",
+          "callee": "self._courant",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_ouvrir_csv",
+          "callee": "T.ouvrir",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/decharge/profils.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "_nombre",
+          "startLine": 12,
+          "endLine": 23,
+          "params": [
+            "valeur",
+            "libelle",
+            "optionnel"
+          ]
+        },
+        {
+          "name": "valider",
+          "startLine": 26,
+          "endLine": 40,
+          "params": [
+            "brut"
+          ]
+        },
+        {
+          "name": "charger",
+          "startLine": 43,
+          "endLine": 56,
+          "params": [
+            "chemin"
+          ]
+        },
+        {
+          "name": "sauver",
+          "startLine": 59,
+          "endLine": 63,
+          "params": [
+            "chemin",
+            "profils",
+            "dernier"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_nombre",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "valider",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "charger",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "sauver",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip",
+          "lineNumber": 13
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str",
+          "lineNumber": 13
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_nombre",
+          "callee": "float",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip().replace",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str(valeur).strip",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_nombre",
+          "callee": "str",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 22
+        },
+        {
+          "caller": "valider",
+          "callee": "str(brut.get(\"nom\") or \"\").strip",
+          "lineNumber": 28
+        },
+        {
+          "caller": "valider",
+          "callee": "str",
+          "lineNumber": 28
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "valider",
+          "callee": "ValueError",
+          "lineNumber": 30
+        },
+        {
+          "caller": "valider",
+          "callee": "_nombre",
+          "lineNumber": 33
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "valider",
+          "callee": "_nombre",
+          "lineNumber": 34
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "valider",
+          "callee": "_nombre",
+          "lineNumber": 35
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "valider",
+          "callee": "str(brut.get(\"notes\") or \"\").strip",
+          "lineNumber": 36
+        },
+        {
+          "caller": "valider",
+          "callee": "str",
+          "lineNumber": 36
+        },
+        {
+          "caller": "valider",
+          "callee": "brut.get",
+          "lineNumber": 36
+        },
+        {
+          "caller": "valider",
+          "callee": "ValueError",
+          "lineNumber": 39
+        },
+        {
+          "caller": "charger",
+          "callee": "open",
+          "lineNumber": 46
+        },
+        {
+          "caller": "charger",
+          "callee": "json.load",
+          "lineNumber": 47
+        },
+        {
+          "caller": "charger",
+          "callee": "donnees.get",
+          "lineNumber": 51
+        },
+        {
+          "caller": "charger",
+          "callee": "isinstance",
+          "lineNumber": 51
+        },
+        {
+          "caller": "charger",
+          "callee": "profils.append",
+          "lineNumber": 53
+        },
+        {
+          "caller": "charger",
+          "callee": "valider",
+          "lineNumber": 53
+        },
+        {
+          "caller": "charger",
+          "callee": "donnees.get",
+          "lineNumber": 56
+        },
+        {
+          "caller": "sauver",
+          "callee": "open",
+          "lineNumber": 61
+        },
+        {
+          "caller": "sauver",
+          "callee": "json.dump",
+          "lineNumber": 62
+        },
+        {
+          "caller": "sauver",
+          "callee": "os.replace",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/decharge/resultats.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "lister",
+          "startLine": 14,
+          "endLine": 15,
+          "params": [
+            "dossier"
+          ]
+        },
+        {
+          "name": "analyser",
+          "startLine": 18,
+          "endLine": 54,
+          "params": [
+            "chemin"
+          ]
+        },
+        {
+          "name": "analyser_dossier",
+          "startLine": 57,
+          "endLine": 60,
+          "params": [
+            "dossier"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "lister",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "analyser",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "analyser_dossier",
+          "line": 57,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lister",
+          "callee": "glob.glob",
+          "lineNumber": 15
+        },
+        {
+          "caller": "lister",
+          "callee": "os.path.join",
+          "lineNumber": 15
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.basename",
+          "lineNumber": 20
+        },
+        {
+          "caller": "analyser",
+          "callee": "MOTIF.match",
+          "lineNumber": 21
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.strptime",
+          "lineNumber": 23
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.fromtimestamp",
+          "lineNumber": 23
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.getmtime",
+          "lineNumber": 23
+        },
+        {
+          "caller": "analyser",
+          "callee": "datetime.fromtimestamp",
+          "lineNumber": 25
+        },
+        {
+          "caller": "analyser",
+          "callee": "(m[\"nom\"] if m else os.path.splitext(base)[0]).replace",
+          "lineNumber": 26
+        },
+        {
+          "caller": "analyser",
+          "callee": "os.path.splitext",
+          "lineNumber": 26
+        },
+        {
+          "caller": "analyser",
+          "callee": "open",
+          "lineNumber": 32
+        },
+        {
+          "caller": "analyser",
+          "callee": "identite.lire_entete",
+          "lineNumber": 33
+        },
+        {
+          "caller": "analyser",
+          "callee": "csv.reader",
+          "lineNumber": 34
+        },
+        {
+          "caller": "analyser",
+          "callee": "next",
+          "lineNumber": 35
+        },
+        {
+          "caller": "analyser",
+          "callee": "float",
+          "lineNumber": 38
+        },
+        {
+          "caller": "analyser",
+          "callee": "t.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "analyser",
+          "callee": "v.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "analyser",
+          "callee": "a.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "analyser",
+          "callee": "w.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "analyser",
+          "callee": "len",
+          "lineNumber": 47
+        },
+        {
+          "caller": "analyser",
+          "callee": "min",
+          "lineNumber": 51
+        },
+        {
+          "caller": "analyser",
+          "callee": "sum",
+          "lineNumber": 52
+        },
+        {
+          "caller": "analyser",
+          "callee": "sum",
+          "lineNumber": 52
+        },
+        {
+          "caller": "analyser",
+          "callee": "list",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser",
+          "callee": "zip",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser",
+          "callee": "list",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser",
+          "callee": "zip",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser",
+          "callee": "list",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser",
+          "callee": "zip",
+          "lineNumber": 53
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "analyser",
+          "lineNumber": 59
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "lister",
+          "lineNumber": 59
+        },
+        {
+          "caller": "analyser_dossier",
+          "callee": "sorted",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

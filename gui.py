@@ -57,6 +57,7 @@ class Application(tk.Tk):
         updater.nettoyer()  # supprime l'ancienne version laissée par la dernière mise à jour
         self.after(2500, self._verifier_maj)
         self.after(500, self._traiter_maj)
+        envoi.rattraper({m.id: m.dossier_csv() for m in modules.TOUS if m.dossier_csv()})  # anciens tests locaux -> serveur
         synchro.lancer(force=True)  # annuaire des techniciens : copie locale mise à jour dès que le serveur répond
         if not identite.poste():
             self.after(100, self._premier_lancement)  # une fois la fenêtre affichée

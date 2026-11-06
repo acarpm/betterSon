@@ -1,0 +1,29 @@
+{
+  "issues": [],
+  "warnings": [],
+  "stats": {
+    "totalNodes": 199,
+    "totalEdges": 402,
+    "totalLayers": 9,
+    "tourSteps": 11,
+    "nodeTypes": {
+      "file": 48,
+      "function": 107,
+      "class": 38,
+      "pipeline": 3,
+      "document": 2,
+      "config": 1
+    },
+    "edgeTypes": {
+      "contains": 147,
+      "exports": 131,
+      "imports": 109,
+      "inherits": 6,
+      "calls": 3,
+      "deploys": 1,
+      "triggers": 1,
+      "documents": 3,
+      "related": 1
+    }
+  }
+}

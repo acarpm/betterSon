@@ -1,0 +1,2516 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "instruments/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "instruments/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 24,
+      "classes": [
+        {
+          "name": "Instrument",
+          "startLine": 4,
+          "endLine": 31,
+          "methods": [
+            "reconnu_par_vid",
+            "candidats",
+            "sonde"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Instrument",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "candidats",
+          "callee": "list",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "instruments/daly.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 249,
+      "nonEmptyLines": 217,
+      "functions": [
+        {
+          "name": "somme_controle",
+          "startLine": 28,
+          "endLine": 29,
+          "params": [
+            "trame"
+          ]
+        },
+        {
+          "name": "requete",
+          "startLine": 32,
+          "endLine": 39,
+          "params": [
+            "cmd",
+            "donnees"
+          ]
+        },
+        {
+          "name": "trame_valide",
+          "startLine": 42,
+          "endLine": 43,
+          "params": [
+            "t",
+            "cmd"
+          ]
+        },
+        {
+          "name": "resume_cellules",
+          "startLine": 46,
+          "endLine": 52,
+          "params": [
+            "cellules"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Daly",
+          "startLine": 55,
+          "endLine": 231,
+          "methods": [
+            "__init__",
+            "_lire_trame",
+            "_interroger",
+            "lire_global",
+            "lire_nombre_cellules",
+            "lire_cellules",
+            "_tenir",
+            "lire_equilibrage",
+            "lire_parametres_equilibrage",
+            "piloter_equilibrage",
+            "commander_equilibrage",
+            "lire_tout"
+          ],
+          "properties": []
+        },
+        {
+          "name": "EquilibreurDaly",
+          "startLine": 234,
+          "endLine": 249,
+          "methods": [
+            "sonde"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "somme_controle",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "requete",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "trame_valide",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "resume_cellules",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Daly",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "EquilibreurDaly",
+          "line": 234,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "somme_controle",
+          "callee": "sum",
+          "lineNumber": 29
+        },
+        {
+          "caller": "requete",
+          "callee": "list",
+          "lineNumber": 34
+        },
+        {
+          "caller": "requete",
+          "callee": "len",
+          "lineNumber": 35
+        },
+        {
+          "caller": "requete",
+          "callee": "ValueError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "requete",
+          "callee": "bytearray",
+          "lineNumber": 37
+        },
+        {
+          "caller": "requete",
+          "callee": "len",
+          "lineNumber": 37
+        },
+        {
+          "caller": "requete",
+          "callee": "somme_controle",
+          "lineNumber": 38
+        },
+        {
+          "caller": "requete",
+          "callee": "bytes",
+          "lineNumber": 39
+        },
+        {
+          "caller": "trame_valide",
+          "callee": "len",
+          "lineNumber": 43
+        },
+        {
+          "caller": "trame_valide",
+          "callee": "somme_controle",
+          "lineNumber": 43
+        },
+        {
+          "caller": "resume_cellules",
+          "callee": "enumerate",
+          "lineNumber": 48
+        },
+        {
+          "caller": "resume_cellules",
+          "callee": "min",
+          "lineNumber": 51
+        },
+        {
+          "caller": "resume_cellules",
+          "callee": "max",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "self.ser.read",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "self.ser.read",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "len",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "bytes",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "bytes",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_lire_trame",
+          "callee": "trame_valide",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_interroger",
+          "callee": "self.ser.reset_input_buffer",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_interroger",
+          "callee": "self.ser.write",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_interroger",
+          "callee": "requete",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_interroger",
+          "callee": "time.monotonic",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_interroger",
+          "callee": "len",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_interroger",
+          "callee": "time.monotonic",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_interroger",
+          "callee": "self._lire_trame",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_interroger",
+          "callee": "trames.append",
+          "lineNumber": 95
+        },
+        {
+          "caller": "lire_global",
+          "callee": "self._interroger",
+          "lineNumber": 100
+        },
+        {
+          "caller": "lire_nombre_cellules",
+          "callee": "self._interroger",
+          "lineNumber": 113
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "math.ceil",
+          "lineNumber": 125
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "range",
+          "lineNumber": 127
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "self._interroger",
+          "lineNumber": 128
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "len",
+          "lineNumber": 130
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "self._tenir",
+          "lineNumber": 133
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "min",
+          "lineNumber": 134
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "par_numero.items",
+          "lineNumber": 136
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "enumerate",
+          "lineNumber": 137
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "par_indice.get",
+          "lineNumber": 139
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "range",
+          "lineNumber": 139
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "max",
+          "lineNumber": 139
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "liste.pop",
+          "lineNumber": 144
+        },
+        {
+          "caller": "lire_cellules",
+          "callee": "self._tenir",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_tenir",
+          "callee": "list",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_tenir",
+          "callee": "len",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_tenir",
+          "callee": "len",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_tenir",
+          "callee": "len",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_tenir",
+          "callee": "enumerate",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_tenir",
+          "callee": "list",
+          "lineNumber": 164
+        },
+        {
+          "caller": "lire_equilibrage",
+          "callee": "self._interroger",
+          "lineNumber": 171
+        },
+        {
+          "caller": "lire_equilibrage",
+          "callee": "bool",
+          "lineNumber": 176
+        },
+        {
+          "caller": "lire_equilibrage",
+          "callee": "range",
+          "lineNumber": 176
+        },
+        {
+          "caller": "lire_equilibrage",
+          "callee": "min",
+          "lineNumber": 176
+        },
+        {
+          "caller": "lire_parametres_equilibrage",
+          "callee": "self._interroger",
+          "lineNumber": 180
+        },
+        {
+          "caller": "piloter_equilibrage",
+          "callee": "self._interroger",
+          "lineNumber": 191
+        },
+        {
+          "caller": "commander_equilibrage",
+          "callee": "isinstance",
+          "lineNumber": 202
+        },
+        {
+          "caller": "commander_equilibrage",
+          "callee": "isinstance",
+          "lineNumber": 202
+        },
+        {
+          "caller": "commander_equilibrage",
+          "callee": "ValueError",
+          "lineNumber": 203
+        },
+        {
+          "caller": "commander_equilibrage",
+          "callee": "self._interroger",
+          "lineNumber": 204
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "self.lire_global",
+          "lineNumber": 211
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "self.lire_nombre_cellules",
+          "lineNumber": 213
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "self.lire_cellules",
+          "lineNumber": 214
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "self.lire_parametres_equilibrage",
+          "lineNumber": 227
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "self.lire_equilibrage",
+          "lineNumber": 229
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "len",
+          "lineNumber": 229
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "res.update",
+          "lineNumber": 230
+        },
+        {
+          "caller": "lire_tout",
+          "callee": "resume_cellules",
+          "lineNumber": 230
+        },
+        {
+          "caller": "sonde",
+          "callee": "Daly(ser).lire_tout",
+          "lineNumber": 246
+        },
+        {
+          "caller": "sonde",
+          "callee": "Daly",
+          "lineNumber": 246
+        },
+        {
+          "caller": "sonde",
+          "callee": "len",
+          "lineNumber": 249
+        },
+        {
+          "caller": "sonde",
+          "callee": "d.get",
+          "lineNumber": 249
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 4,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "instruments/ea.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 63,
+      "functions": [
+        {
+          "name": "trouver_ports",
+          "startLine": 17,
+          "endLine": 21,
+          "params": [
+            "sn"
+          ]
+        },
+        {
+          "name": "identifier",
+          "startLine": 24,
+          "endLine": 26,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "mesurer",
+          "startLine": 29,
+          "endLine": 32,
+          "params": [
+            "s",
+            "commande"
+          ]
+        },
+        {
+          "name": "lire_valeurs",
+          "startLine": 35,
+          "endLine": 42,
+          "params": [
+            "s",
+            "v",
+            "i",
+            "p"
+          ]
+        },
+        {
+          "name": "regler_charge",
+          "startLine": 45,
+          "endLine": 51,
+          "params": [
+            "s",
+            "v",
+            "i",
+            "p"
+          ]
+        },
+        {
+          "name": "verrou",
+          "startLine": 54,
+          "endLine": 59,
+          "params": [
+            "s",
+            "actif"
+          ]
+        },
+        {
+          "name": "entree",
+          "startLine": 62,
+          "endLine": 65,
+          "params": [
+            "s",
+            "actif"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ChargeEA",
+          "startLine": 68,
+          "endLine": 86,
+          "methods": [
+            "reconnu_par_vid",
+            "candidats",
+            "sonde"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "trouver_ports",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "identifier",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "mesurer",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "lire_valeurs",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "regler_charge",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "verrou",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "entree",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "ChargeEA",
+          "line": 68,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "trouver_ports",
+          "callee": "lp.comports",
+          "lineNumber": 19
+        },
+        {
+          "caller": "trouver_ports",
+          "callee": "ports.sort",
+          "lineNumber": 20
+        },
+        {
+          "caller": "identifier",
+          "callee": "s.write",
+          "lineNumber": 25
+        },
+        {
+          "caller": "identifier",
+          "callee": "s.readline().decode(errors=\"ignore\").strip",
+          "lineNumber": 26
+        },
+        {
+          "caller": "identifier",
+          "callee": "s.readline().decode",
+          "lineNumber": 26
+        },
+        {
+          "caller": "identifier",
+          "callee": "s.readline",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mesurer",
+          "callee": "s.write",
+          "lineNumber": 30
+        },
+        {
+          "caller": "mesurer",
+          "callee": "s.readline().decode(errors=\"ignore\").strip",
+          "lineNumber": 31
+        },
+        {
+          "caller": "mesurer",
+          "callee": "s.readline().decode",
+          "lineNumber": 31
+        },
+        {
+          "caller": "mesurer",
+          "callee": "s.readline",
+          "lineNumber": 31
+        },
+        {
+          "caller": "mesurer",
+          "callee": "float",
+          "lineNumber": 32
+        },
+        {
+          "caller": "mesurer",
+          "callee": "reponse.split",
+          "lineNumber": 32
+        },
+        {
+          "caller": "lire_valeurs",
+          "callee": "mesurer",
+          "lineNumber": 37
+        },
+        {
+          "caller": "lire_valeurs",
+          "callee": "mesurer",
+          "lineNumber": 39
+        },
+        {
+          "caller": "lire_valeurs",
+          "callee": "mesurer",
+          "lineNumber": 41
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "s.write",
+          "lineNumber": 47
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "f\"VOLT {v}\\n\".encode",
+          "lineNumber": 47
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "s.write",
+          "lineNumber": 49
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "f\"CURR {i}\\n\".encode",
+          "lineNumber": 49
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "s.write",
+          "lineNumber": 51
+        },
+        {
+          "caller": "regler_charge",
+          "callee": "f\"POW {p}\\n\".encode",
+          "lineNumber": 51
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.write",
+          "lineNumber": 55
+        },
+        {
+          "caller": "verrou",
+          "callee": "time.sleep",
+          "lineNumber": 56
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.reset_input_buffer",
+          "lineNumber": 57
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.write",
+          "lineNumber": 58
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.readline().decode(errors=\"ignore\").strip",
+          "lineNumber": 59
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.readline().decode",
+          "lineNumber": 59
+        },
+        {
+          "caller": "verrou",
+          "callee": "s.readline",
+          "lineNumber": 59
+        },
+        {
+          "caller": "entree",
+          "callee": "s.write",
+          "lineNumber": 63
+        },
+        {
+          "caller": "entree",
+          "callee": "s.write",
+          "lineNumber": 64
+        },
+        {
+          "caller": "entree",
+          "callee": "s.readline().decode(errors=\"ignore\").strip",
+          "lineNumber": 65
+        },
+        {
+          "caller": "entree",
+          "callee": "s.readline().decode",
+          "lineNumber": 65
+        },
+        {
+          "caller": "entree",
+          "callee": "s.readline",
+          "lineNumber": 65
+        },
+        {
+          "caller": "candidats",
+          "callee": "self.reconnu_par_vid",
+          "lineNumber": 81
+        },
+        {
+          "caller": "candidats",
+          "callee": "sorted",
+          "lineNumber": 82
+        },
+        {
+          "caller": "sonde",
+          "callee": "identifier",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 7,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "main.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "demander_nombre",
+          "startLine": 15,
+          "endLine": 26,
+          "params": [
+            "question",
+            "defaut",
+            "optionnel"
+          ]
+        },
+        {
+          "name": "decharge",
+          "startLine": 29,
+          "endLine": 49,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "enregistrer",
+          "startLine": 52,
+          "endLine": 82,
+          "params": [
+            "s",
+            "chemin",
+            "v_coupure"
+          ]
+        },
+        {
+          "name": "menu",
+          "startLine": 85,
+          "endLine": 103,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 106,
+          "endLine": 117,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "demander_nombre",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "decharge",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "enregistrer",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "menu",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 106,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "demander_nombre",
+          "callee": "input(f\"{question}{suffixe} : \").strip",
+          "lineNumber": 18
+        },
+        {
+          "caller": "demander_nombre",
+          "callee": "input",
+          "lineNumber": 18
+        },
+        {
+          "caller": "demander_nombre",
+          "callee": "float",
+          "lineNumber": 24
+        },
+        {
+          "caller": "demander_nombre",
+          "callee": "texte.replace",
+          "lineNumber": 24
+        },
+        {
+          "caller": "demander_nombre",
+          "callee": "print",
+          "lineNumber": 26
+        },
+        {
+          "caller": "decharge",
+          "callee": "input(\"Nom de la batterie : \").strip",
+          "lineNumber": 30
+        },
+        {
+          "caller": "decharge",
+          "callee": "input",
+          "lineNumber": 30
+        },
+        {
+          "caller": "decharge",
+          "callee": "demander_nombre",
+          "lineNumber": 31
+        },
+        {
+          "caller": "decharge",
+          "callee": "demander_nombre",
+          "lineNumber": 32
+        },
+        {
+          "caller": "decharge",
+          "callee": "demander_nombre",
+          "lineNumber": 34
+        },
+        {
+          "caller": "decharge",
+          "callee": "demander_nombre",
+          "lineNumber": 36
+        },
+        {
+          "caller": "decharge",
+          "callee": "os.makedirs",
+          "lineNumber": 38
+        },
+        {
+          "caller": "decharge",
+          "callee": "os.path.join",
+          "lineNumber": 39
+        },
+        {
+          "caller": "decharge",
+          "callee": "datetime.now",
+          "lineNumber": 39
+        },
+        {
+          "caller": "decharge",
+          "callee": "verrou",
+          "lineNumber": 41
+        },
+        {
+          "caller": "decharge",
+          "callee": "print",
+          "lineNumber": 42
+        },
+        {
+          "caller": "decharge",
+          "callee": "regler_charge",
+          "lineNumber": 45
+        },
+        {
+          "caller": "decharge",
+          "callee": "input",
+          "lineNumber": 46
+        },
+        {
+          "caller": "decharge",
+          "callee": "enregistrer",
+          "lineNumber": 47
+        },
+        {
+          "caller": "decharge",
+          "callee": "verrou",
+          "lineNumber": 49
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "open",
+          "lineNumber": 54
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "csv.writer",
+          "lineNumber": 55
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "ecrivain.writerow",
+          "lineNumber": 56
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "entree",
+          "lineNumber": 57
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 58
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "time.monotonic",
+          "lineNumber": 60
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "lire_valeurs",
+          "lineNumber": 63
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "time.monotonic",
+          "lineNumber": 64
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "ecrivain.writerow",
+          "lineNumber": 69
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "f.flush",
+          "lineNumber": 70
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 71
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 73
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "time.sleep",
+          "lineNumber": 75
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 77
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "entree",
+          "lineNumber": 79
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 81
+        },
+        {
+          "caller": "enregistrer",
+          "callee": "print",
+          "lineNumber": 82
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 87
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 88
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 89
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 90
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 91
+        },
+        {
+          "caller": "menu",
+          "callee": "input(\"> \").strip",
+          "lineNumber": 92
+        },
+        {
+          "caller": "menu",
+          "callee": "input",
+          "lineNumber": 92
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 94
+        },
+        {
+          "caller": "menu",
+          "callee": "identifier",
+          "lineNumber": 94
+        },
+        {
+          "caller": "menu",
+          "callee": "lire_valeurs",
+          "lineNumber": 96
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 97
+        },
+        {
+          "caller": "menu",
+          "callee": "decharge",
+          "lineNumber": 99
+        },
+        {
+          "caller": "menu",
+          "callee": "print",
+          "lineNumber": 103
+        },
+        {
+          "caller": "main",
+          "callee": "trouver_ports",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 109
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 112
+        },
+        {
+          "caller": "main",
+          "callee": "serial.Serial",
+          "lineNumber": 114
+        },
+        {
+          "caller": "main",
+          "callee": "menu",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 117
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "modules/equilibrage/acquisition.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 124,
+      "classes": [
+        {
+          "name": "CritereFin",
+          "startLine": 12,
+          "endLine": 30,
+          "methods": [
+            "__init__",
+            "verifier"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Acquisition",
+          "startLine": 33,
+          "endLine": 138,
+          "methods": [
+            "__init__",
+            "demarrer",
+            "arreter",
+            "vivant",
+            "attendre",
+            "_boucle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CritereFin",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "Acquisition",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Event",
+          "lineNumber": 46
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.stop.clear",
+          "lineNumber": 50
+        },
+        {
+          "caller": "demarrer",
+          "callee": "threading.Thread",
+          "lineNumber": 51
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.thread.start",
+          "lineNumber": 52
+        },
+        {
+          "caller": "arreter",
+          "callee": "self.stop.set",
+          "lineNumber": 55
+        },
+        {
+          "caller": "vivant",
+          "callee": "self.thread.is_alive",
+          "lineNumber": 58
+        },
+        {
+          "caller": "attendre",
+          "callee": "self.thread.join",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_boucle",
+          "callee": "serial.Serial",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_boucle",
+          "callee": "Daly",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_boucle",
+          "callee": "time.monotonic",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_boucle",
+          "callee": "os.makedirs",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_boucle",
+          "callee": "os.path.dirname",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_boucle",
+          "callee": "open",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_boucle",
+          "callee": "fichier.write",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_boucle",
+          "callee": "csv.writer",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_boucle",
+          "callee": "daly.piloter_equilibrage",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self.stop.is_set",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_boucle",
+          "callee": "time.monotonic",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_boucle",
+          "callee": "daly.lire_tout",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_boucle",
+          "callee": "d.get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_boucle",
+          "callee": "ecrivain.writerow",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_boucle",
+          "callee": "range",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_boucle",
+          "callee": "len",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_boucle",
+          "callee": "ecrivain.writerow",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_boucle",
+          "callee": "\" \".join",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_boucle",
+          "callee": "str",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_boucle",
+          "callee": "enumerate",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_boucle",
+          "callee": "fichier.flush",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self.critere.verifier",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_boucle",
+          "callee": "self.stop.wait",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_boucle",
+          "callee": "max",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_boucle",
+          "callee": "time.monotonic",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_boucle",
+          "callee": "range",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_boucle",
+          "callee": "daly.piloter_equilibrage",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_boucle",
+          "callee": "fichier.close",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_boucle",
+          "callee": "time.monotonic",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_boucle",
+          "callee": "premier.get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_boucle",
+          "callee": "dernier.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_boucle",
+          "callee": "q.put",
+          "lineNumber": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "modules/equilibrage/page_cellules.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 147,
+      "nonEmptyLines": 130,
+      "classes": [
+        {
+          "name": "PageCellules",
+          "startLine": 17,
+          "endLine": 147,
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_actif",
+            "_basculer",
+            "_demarrer",
+            "_attendre_detection",
+            "_etat",
+            "_traiter",
+            "_afficher"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageCellules",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 19
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 19
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 25
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 28
+        },
+        {
+          "caller": "__init__",
+          "callee": "haut.pack",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 30
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn.pack",
+          "lineNumber": 31
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "textes.pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(textes, text=\"Tensions des cellules\", bg=BG, fg=TEXTE, font=f(22, True), anchor=\"w\").pack",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 34
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_eq.pack",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "Mesures",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.mesures.masquer",
+          "lineNumber": 44
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.mesures.pack",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(corps, text=\"Une barre par cellule (série)\", bg=BG, fg=TEXTE, font=f(14, True), anchor=\"w\").pack",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(corps, text=\"● rouge : plus haute   ● bleu-gris : plus basse   ● orange sous la barre : cellule en cours d'équilibrage \"\n                             \"(si l'appareil le signale)\", bg=BG, fg=GRIS, font=f(10), anchor=\"w\").pack",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "BarresCellules",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.barres.pack",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 53
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.mesures.effacer",
+          "lineNumber": 58
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.barres.vider",
+          "lineNumber": 59
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._demarrer",
+          "lineNumber": 60
+        },
+        {
+          "caller": "on_hide",
+          "callee": "self.acq.arreter",
+          "lineNumber": 66
+        },
+        {
+          "caller": "on_hide",
+          "callee": "self.acq.attendre",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_actif",
+          "callee": "self.acq.vivant",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_basculer",
+          "callee": "self._actif",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_basculer",
+          "callee": "self.acq.arreter",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_basculer",
+          "callee": "self.btn.config",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_basculer",
+          "callee": "self._demarrer",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.port",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.lancer_detection",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.btn.config",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._etat",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.after",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "queue.Queue",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "Acquisition",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.instrument",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.acq.demarrer",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.btn.config",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._etat",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "inst.en_recherche",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "self.after",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "inst.port",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "self._demarrer",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "self.btn.config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_attendre_detection",
+          "callee": "self._etat",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_etat",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self.file.get_nowait",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._afficher",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._etat",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self.btn.config",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._etat",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._etat",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self.after",
+          "lineNumber": 125
+        },
+        {
+          "caller": "_afficher",
+          "callee": "resume_cellules",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_afficher",
+          "callee": "sum",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_afficher",
+          "callee": "texte_courant",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_afficher",
+          "callee": "sum",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 138
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.masquer",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_afficher",
+          "callee": "m.regler",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.barres.definir",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_afficher",
+          "callee": "resume_equilibrage",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_afficher",
+          "callee": "d.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_afficher",
+          "callee": "d.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_afficher",
+          "callee": "d.get",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self.lbl_eq.config",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_afficher",
+          "callee": "self._etat",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_afficher",
+          "callee": "len",
+          "lineNumber": 147
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/equilibrage/widgets.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 159,
+      "functions": [
+        {
+          "name": "equilibrage_actif",
+          "startLine": 11,
+          "endLine": 13,
+          "params": [
+            "flags",
+            "courant"
+          ]
+        },
+        {
+          "name": "texte_courant",
+          "startLine": 16,
+          "endLine": 26,
+          "params": [
+            "courant",
+            "flags"
+          ]
+        },
+        {
+          "name": "resume_equilibrage",
+          "startLine": 29,
+          "endLine": 51,
+          "params": [
+            "flags",
+            "courant",
+            "ecart_mv",
+            "seuils",
+            "v_max"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Mesures",
+          "startLine": 54,
+          "endLine": 91,
+          "methods": [
+            "__init__",
+            "regler",
+            "masquer",
+            "effacer"
+          ],
+          "properties": []
+        },
+        {
+          "name": "BarresCellules",
+          "startLine": 94,
+          "endLine": 185,
+          "methods": [
+            "__init__",
+            "definir",
+            "vider",
+            "tracer",
+            "_construire",
+            "_positionner"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "equilibrage_actif",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "texte_courant",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "resume_equilibrage",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "Mesures",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "BarresCellules",
+          "line": 94,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "equilibrage_actif",
+          "callee": "any",
+          "lineNumber": 13
+        },
+        {
+          "caller": "equilibrage_actif",
+          "callee": "abs",
+          "lineNumber": 13
+        },
+        {
+          "caller": "texte_courant",
+          "callee": "abs",
+          "lineNumber": 24
+        },
+        {
+          "caller": "texte_courant",
+          "callee": "any",
+          "lineNumber": 26
+        },
+        {
+          "caller": "resume_equilibrage",
+          "callee": "enumerate",
+          "lineNumber": 32
+        },
+        {
+          "caller": "resume_equilibrage",
+          "callee": "equilibrage_actif",
+          "lineNumber": 33
+        },
+        {
+          "caller": "resume_equilibrage",
+          "callee": "', '.join",
+          "lineNumber": 34
+        },
+        {
+          "caller": "resume_equilibrage",
+          "callee": "abs",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.columnconfigure",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl_t.pack",
+          "lineNumber": 69
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 71
+        },
+        {
+          "caller": "regler",
+          "callee": "self.vals[cle].config",
+          "lineNumber": 75
+        },
+        {
+          "caller": "regler",
+          "callee": "self.titres[cle].config",
+          "lineNumber": 77
+        },
+        {
+          "caller": "masquer",
+          "callee": "self.blocs[cle].grid_remove",
+          "lineNumber": 82
+        },
+        {
+          "caller": "masquer",
+          "callee": "self.columnconfigure",
+          "lineNumber": 83
+        },
+        {
+          "caller": "masquer",
+          "callee": "self.blocs[cle].grid",
+          "lineNumber": 85
+        },
+        {
+          "caller": "masquer",
+          "callee": "self.columnconfigure",
+          "lineNumber": 86
+        },
+        {
+          "caller": "effacer",
+          "callee": "self.vals.items",
+          "lineNumber": 89
+        },
+        {
+          "caller": "effacer",
+          "callee": "lbl.config",
+          "lineNumber": 90
+        },
+        {
+          "caller": "effacer",
+          "callee": "self.titres[cle].config",
+          "lineNumber": 91
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 104
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 104
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.bind",
+          "lineNumber": 110
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.tracer",
+          "lineNumber": 110
+        },
+        {
+          "caller": "definir",
+          "callee": "list",
+          "lineNumber": 113
+        },
+        {
+          "caller": "definir",
+          "callee": "self.tracer",
+          "lineNumber": 117
+        },
+        {
+          "caller": "vider",
+          "callee": "self.tracer",
+          "lineNumber": 122
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.winfo_width",
+          "lineNumber": 125
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.winfo_height",
+          "lineNumber": 125
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.delete",
+          "lineNumber": 131
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.create_text",
+          "lineNumber": 133
+        },
+        {
+          "caller": "tracer",
+          "callee": "self.f",
+          "lineNumber": 133
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 135
+        },
+        {
+          "caller": "tracer",
+          "callee": "len",
+          "lineNumber": 135
+        },
+        {
+          "caller": "tracer",
+          "callee": "self._construire",
+          "lineNumber": 136
+        },
+        {
+          "caller": "tracer",
+          "callee": "self._positionner",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.delete",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_construire",
+          "callee": "len",
+          "lineNumber": 143
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.create_text",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_construire",
+          "callee": "f",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_construire",
+          "callee": "range",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.create_rectangle",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.create_text",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_construire",
+          "callee": "f",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.create_text",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_construire",
+          "callee": "f",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_construire",
+          "callee": "self.create_oval",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_construire",
+          "callee": "self._el.append",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_positionner",
+          "callee": "min",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_positionner",
+          "callee": "max",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_positionner",
+          "callee": "max",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_positionner",
+          "callee": "math.floor",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_positionner",
+          "callee": "max",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_positionner",
+          "callee": "math.ceil",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_positionner",
+          "callee": "len",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_positionner",
+          "callee": "min",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_positionner",
+          "callee": "enumerate",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 171
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 173
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 179
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 182
+        },
+        {
+          "caller": "_positionner",
+          "callee": "bool",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_positionner",
+          "callee": "len",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.coords",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_positionner",
+          "callee": "self.itemconfigure",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 3,
+        "classCount": 2
+      }
+    }
+  ]
+}

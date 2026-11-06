@@ -1,0 +1,1706 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 52,
+  "totalBatches": 8,
+  "exportsByPath": {
+    "config.py": [
+      "charger",
+      "sauver",
+      "module_actif",
+      "definir_module",
+      "reglage",
+      "definir_reglage"
+    ],
+    "dialogue_identite.py": [
+      "_fenetre",
+      "_afficher_modale",
+      "demander_poste",
+      "gerer_techniciens",
+      "SelecteurTechnicien"
+    ],
+    "envoi.py": [
+      "_reglages",
+      "_lire_file",
+      "_ecrire_file",
+      "_poster",
+      "_noter_envoyes",
+      "_boucle",
+      "_demarrer",
+      "envoyer",
+      "rattraper",
+      "reprendre"
+    ],
+    "gui.py": [
+      "Application"
+    ],
+    "identite.py": [
+      "nettoyer",
+      "poste",
+      "definir_poste",
+      "techniciens",
+      "ajouter_technicien",
+      "supprimer_technicien",
+      "_en_attente",
+      "operations_en_attente",
+      "operation_transmise",
+      "remplacer_techniciens",
+      "dernier_technicien",
+      "retenir_technicien",
+      "lignes_signature",
+      "lire_entete"
+    ],
+    "installer/betterson.iss": [],
+    "instruments/__init__.py": [],
+    "instruments/base.py": [
+      "Instrument"
+    ],
+    "instruments/daly.py": [
+      "somme_controle",
+      "requete",
+      "trame_valide",
+      "resume_cellules",
+      "Daly",
+      "EquilibreurDaly"
+    ],
+    "instruments/ea.py": [
+      "trouver_ports",
+      "identifier",
+      "mesurer",
+      "lire_valeurs",
+      "regler_charge",
+      "verrou",
+      "entree",
+      "ChargeEA"
+    ],
+    "instruments/gestionnaire.py": [
+      "Gestionnaire"
+    ],
+    "main.py": [
+      "demander_nombre",
+      "decharge",
+      "enregistrer",
+      "menu",
+      "main"
+    ],
+    "modules/__init__.py": [],
+    "modules/_modele/__init__.py": [
+      "PageExemple",
+      "Modele"
+    ],
+    "modules/base.py": [
+      "Action",
+      "Module"
+    ],
+    "modules/decharge/__init__.py": [
+      "Decharge"
+    ],
+    "modules/decharge/chemins.py": [
+      "dossier_csv",
+      "fichier_profils"
+    ],
+    "modules/decharge/page_encours.py": [
+      "PageEnCours"
+    ],
+    "modules/decharge/page_lancer.py": [
+      "_propre",
+      "PageLancer"
+    ],
+    "modules/decharge/page_profils.py": [
+      "PageProfils"
+    ],
+    "modules/decharge/page_resultats.py": [
+      "PageResultats"
+    ],
+    "modules/decharge/profils.py": [
+      "_nombre",
+      "valider",
+      "charger",
+      "sauver"
+    ],
+    "modules/decharge/resultats.py": [
+      "lister",
+      "analyser",
+      "analyser_dossier"
+    ],
+    "modules/equilibrage/__init__.py": [
+      "Equilibrage"
+    ],
+    "modules/equilibrage/acquisition.py": [
+      "CritereFin",
+      "Acquisition"
+    ],
+    "modules/equilibrage/page_cellules.py": [
+      "PageCellules"
+    ],
+    "modules/equilibrage/page_session.py": [
+      "_nombre",
+      "PageSession"
+    ],
+    "modules/equilibrage/widgets.py": [
+      "equilibrage_actif",
+      "texte_courant",
+      "resume_equilibrage",
+      "Mesures",
+      "BarresCellules"
+    ],
+    "modules/resistance/__init__.py": [
+      "Resistance"
+    ],
+    "modules/resistance/calcul.py": [
+      "moyenne",
+      "_r_mohm",
+      "_moyenne_cellules",
+      "resistance_essai",
+      "resistances",
+      "_stats",
+      "synthese"
+    ],
+    "modules/resistance/chemins.py": [
+      "dossier",
+      "dossier_csv",
+      "fichier_profils"
+    ],
+    "modules/resistance/mesure.py": [
+      "Mesure"
+    ],
+    "modules/resistance/page_encours.py": [
+      "PageEnCours"
+    ],
+    "modules/resistance/page_lancer.py": [
+      "_propre",
+      "PageLancer"
+    ],
+    "modules/resistance/page_profils.py": [
+      "PageProfils"
+    ],
+    "modules/resistance/page_resultats.py": [
+      "PageResultats"
+    ],
+    "modules/resistance/profils.py": [
+      "defauts",
+      "_nombre",
+      "valider",
+      "duree_totale_s",
+      "resume",
+      "charger",
+      "sauver"
+    ],
+    "modules/resistance/resultats.py": [
+      "lister",
+      "_nombre",
+      "analyser",
+      "analyser_dossier"
+    ],
+    "modules/resistance/widgets.py": [
+      "BarresResistance",
+      "texte_mohm"
+    ],
+    "page_accueil.py": [
+      "_disposer",
+      "Accueil",
+      "PageModule"
+    ],
+    "page_instruments.py": [
+      "_decrire",
+      "PageInstruments"
+    ],
+    "page_modules.py": [
+      "PageModules"
+    ],
+    "synchro.py": [
+      "etat",
+      "_appeler",
+      "synchroniser",
+      "lancer"
+    ],
+    "theme.py": [
+      "_dossier_donnees",
+      "init_styles",
+      "titre",
+      "resume_profil",
+      "duree",
+      "ouvrir",
+      "ListeLignes",
+      "icone",
+      "tuile",
+      "Interrupteur",
+      "GraphesTemps"
+    ],
+    "updater.py": [
+      "ErreurMaj",
+      "systeme",
+      "installe",
+      "_numeros",
+      "_requete",
+      "_contexte_ssl",
+      "_ouvrir",
+      "_expliquer",
+      "verifier",
+      "derniere_version",
+      "plus_recente",
+      "_somme_attendue",
+      "telecharger",
+      "_app_macos",
+      "_chemin_actuel",
+      "_remplacer_fichier",
+      "_remplacer_app",
+      "_cible_macos",
+      "appliquer",
+      "relancer",
+      "nettoyer"
+    ],
+    "version.py": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "config.py",
+          "language": "python",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "dialogue_identite.py",
+          "language": "python",
+          "sizeLines": 175,
+          "fileCategory": "code"
+        },
+        {
+          "path": "envoi.py",
+          "language": "python",
+          "sizeLines": 162,
+          "fileCategory": "code"
+        },
+        {
+          "path": "gui.py",
+          "language": "python",
+          "sizeLines": 321,
+          "fileCategory": "code"
+        },
+        {
+          "path": "identite.py",
+          "language": "python",
+          "sizeLines": 153,
+          "fileCategory": "code"
+        },
+        {
+          "path": "instruments/gestionnaire.py",
+          "language": "python",
+          "sizeLines": 163,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/page_encours.py",
+          "language": "python",
+          "sizeLines": 213,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/equilibrage/page_session.py",
+          "language": "python",
+          "sizeLines": 258,
+          "fileCategory": "code"
+        },
+        {
+          "path": "page_modules.py",
+          "language": "python",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "synchro.py",
+          "language": "python",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "updater.py",
+          "language": "python",
+          "sizeLines": 261,
+          "fileCategory": "code"
+        },
+        {
+          "path": "version.py",
+          "language": "python",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "config.py": [
+          "theme.py"
+        ],
+        "dialogue_identite.py": [
+          "identite.py",
+          "synchro.py",
+          "theme.py"
+        ],
+        "envoi.py": [
+          "config.py",
+          "identite.py",
+          "theme.py",
+          "version.py"
+        ],
+        "gui.py": [
+          "config.py",
+          "dialogue_identite.py",
+          "envoi.py",
+          "identite.py",
+          "instruments/__init__.py",
+          "modules/__init__.py",
+          "page_accueil.py",
+          "page_instruments.py",
+          "page_modules.py",
+          "synchro.py",
+          "theme.py",
+          "updater.py",
+          "version.py"
+        ],
+        "identite.py": [
+          "config.py",
+          "version.py"
+        ],
+        "instruments/gestionnaire.py": [
+          "config.py"
+        ],
+        "modules/decharge/page_encours.py": [
+          "envoi.py",
+          "identite.py",
+          "instruments/__init__.py",
+          "theme.py"
+        ],
+        "modules/equilibrage/page_session.py": [
+          "dialogue_identite.py",
+          "envoi.py",
+          "identite.py",
+          "modules/equilibrage/acquisition.py",
+          "modules/equilibrage/widgets.py",
+          "theme.py"
+        ],
+        "page_modules.py": [
+          "config.py",
+          "theme.py"
+        ],
+        "synchro.py": [
+          "envoi.py",
+          "identite.py"
+        ],
+        "updater.py": [
+          "version.py"
+        ],
+        "version.py": []
+      },
+      "neighborMap": {
+        "config.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "dialogue_identite.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_lancer.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_propre",
+              "PageLancer"
+            ]
+          },
+          {
+            "path": "modules/resistance/page_lancer.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_propre",
+              "PageLancer"
+            ]
+          }
+        ],
+        "envoi.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          },
+          {
+            "path": "modules/resistance/page_encours.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageEnCours"
+            ]
+          }
+        ],
+        "gui.py": [
+          {
+            "path": "instruments/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "modules/__init__.py",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "page_accueil.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_disposer",
+              "Accueil",
+              "PageModule"
+            ]
+          },
+          {
+            "path": "page_instruments.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_decrire",
+              "PageInstruments"
+            ]
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "identite.py": [
+          {
+            "path": "modules/decharge/resultats.py",
+            "batchIndex": 4,
+            "symbols": [
+              "lister",
+              "analyser",
+              "analyser_dossier"
+            ]
+          },
+          {
+            "path": "modules/resistance/page_encours.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageEnCours"
+            ]
+          },
+          {
+            "path": "modules/resistance/resultats.py",
+            "batchIndex": 5,
+            "symbols": [
+              "lister",
+              "_nombre",
+              "analyser",
+              "analyser_dossier"
+            ]
+          }
+        ],
+        "instruments/gestionnaire.py": [
+          {
+            "path": "instruments/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          }
+        ],
+        "modules/decharge/page_encours.py": [
+          {
+            "path": "instruments/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/equilibrage/page_session.py": [
+          {
+            "path": "modules/equilibrage/acquisition.py",
+            "batchIndex": 3,
+            "symbols": [
+              "CritereFin",
+              "Acquisition"
+            ]
+          },
+          {
+            "path": "modules/equilibrage/widgets.py",
+            "batchIndex": 3,
+            "symbols": [
+              "equilibrage_actif",
+              "texte_courant",
+              "resume_equilibrage",
+              "Mesures",
+              "BarresCellules"
+            ]
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "page_modules.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "modules/__init__.py",
+          "language": "python",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/_modele/__init__.py",
+          "language": "python",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/base.py",
+          "language": "python",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/equilibrage/__init__.py",
+          "language": "python",
+          "sizeLines": 57,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/__init__.py",
+          "language": "python",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/chemins.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/page_lancer.py",
+          "language": "python",
+          "sizeLines": 124,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/page_profils.py",
+          "language": "python",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/profils.py",
+          "language": "python",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "page_accueil.py",
+          "language": "python",
+          "sizeLines": 84,
+          "fileCategory": "code"
+        },
+        {
+          "path": "page_instruments.py",
+          "language": "python",
+          "sizeLines": 170,
+          "fileCategory": "code"
+        },
+        {
+          "path": "theme.py",
+          "language": "python",
+          "sizeLines": 471,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "modules/__init__.py": [
+          "modules/decharge/__init__.py",
+          "modules/equilibrage/__init__.py",
+          "modules/resistance/__init__.py"
+        ],
+        "modules/_modele/__init__.py": [
+          "modules/base.py",
+          "theme.py"
+        ],
+        "modules/base.py": [
+          "theme.py"
+        ],
+        "modules/equilibrage/__init__.py": [
+          "modules/base.py",
+          "theme.py"
+        ],
+        "modules/resistance/__init__.py": [
+          "modules/base.py",
+          "modules/resistance/chemins.py",
+          "modules/resistance/profils.py",
+          "theme.py"
+        ],
+        "modules/resistance/chemins.py": [
+          "theme.py"
+        ],
+        "modules/resistance/page_lancer.py": [
+          "dialogue_identite.py",
+          "modules/resistance/chemins.py",
+          "modules/resistance/profils.py",
+          "theme.py"
+        ],
+        "modules/resistance/page_profils.py": [
+          "modules/resistance/chemins.py",
+          "modules/resistance/profils.py",
+          "theme.py"
+        ],
+        "modules/resistance/profils.py": [],
+        "page_accueil.py": [
+          "theme.py"
+        ],
+        "page_instruments.py": [
+          "theme.py"
+        ],
+        "theme.py": []
+      },
+      "neighborMap": {
+        "modules/__init__.py": [
+          {
+            "path": "modules/decharge/__init__.py",
+            "batchIndex": 4,
+            "symbols": [
+              "Decharge"
+            ]
+          },
+          {
+            "path": "gui.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Application"
+            ]
+          }
+        ],
+        "modules/base.py": [
+          {
+            "path": "modules/decharge/__init__.py",
+            "batchIndex": 4,
+            "symbols": [
+              "Decharge"
+            ]
+          }
+        ],
+        "modules/resistance/chemins.py": [
+          {
+            "path": "modules/resistance/page_resultats.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageResultats"
+            ]
+          }
+        ],
+        "modules/resistance/page_lancer.py": [
+          {
+            "path": "dialogue_identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_fenetre",
+              "_afficher_modale",
+              "demander_poste",
+              "gerer_techniciens",
+              "SelecteurTechnicien"
+            ]
+          }
+        ],
+        "modules/resistance/profils.py": [
+          {
+            "path": "modules/resistance/page_encours.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageEnCours"
+            ]
+          }
+        ],
+        "page_accueil.py": [
+          {
+            "path": "gui.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Application"
+            ]
+          }
+        ],
+        "page_instruments.py": [
+          {
+            "path": "gui.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Application"
+            ]
+          }
+        ],
+        "theme.py": [
+          {
+            "path": "config.py",
+            "batchIndex": 1,
+            "symbols": [
+              "charger",
+              "sauver",
+              "module_actif",
+              "definir_module",
+              "reglage",
+              "definir_reglage"
+            ]
+          },
+          {
+            "path": "dialogue_identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_fenetre",
+              "_afficher_modale",
+              "demander_poste",
+              "gerer_techniciens",
+              "SelecteurTechnicien"
+            ]
+          },
+          {
+            "path": "envoi.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_reglages",
+              "_lire_file",
+              "_ecrire_file",
+              "_poster",
+              "_noter_envoyes",
+              "_boucle",
+              "_demarrer",
+              "envoyer",
+              "rattraper",
+              "reprendre"
+            ]
+          },
+          {
+            "path": "gui.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Application"
+            ]
+          },
+          {
+            "path": "modules/decharge/__init__.py",
+            "batchIndex": 4,
+            "symbols": [
+              "Decharge"
+            ]
+          },
+          {
+            "path": "modules/decharge/chemins.py",
+            "batchIndex": 4,
+            "symbols": [
+              "dossier_csv",
+              "fichier_profils"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_encours.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PageEnCours"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_lancer.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_propre",
+              "PageLancer"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_profils.py",
+            "batchIndex": 4,
+            "symbols": [
+              "PageProfils"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_resultats.py",
+            "batchIndex": 4,
+            "symbols": [
+              "PageResultats"
+            ]
+          },
+          {
+            "path": "modules/equilibrage/page_cellules.py",
+            "batchIndex": 3,
+            "symbols": [
+              "PageCellules"
+            ]
+          },
+          {
+            "path": "modules/equilibrage/page_session.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_nombre",
+              "PageSession"
+            ]
+          },
+          {
+            "path": "modules/equilibrage/widgets.py",
+            "batchIndex": 3,
+            "symbols": [
+              "equilibrage_actif",
+              "texte_courant",
+              "resume_equilibrage",
+              "Mesures",
+              "BarresCellules"
+            ]
+          },
+          {
+            "path": "modules/resistance/page_encours.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageEnCours"
+            ]
+          },
+          {
+            "path": "modules/resistance/page_resultats.py",
+            "batchIndex": 5,
+            "symbols": [
+              "PageResultats"
+            ]
+          },
+          {
+            "path": "modules/resistance/widgets.py",
+            "batchIndex": 5,
+            "symbols": [
+              "BarresResistance",
+              "texte_mohm"
+            ]
+          },
+          {
+            "path": "page_modules.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PageModules"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "instruments/__init__.py",
+          "language": "python",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "instruments/base.py",
+          "language": "python",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "instruments/daly.py",
+          "language": "python",
+          "sizeLines": 243,
+          "fileCategory": "code"
+        },
+        {
+          "path": "instruments/ea.py",
+          "language": "python",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "main.py",
+          "language": "python",
+          "sizeLines": 120,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/equilibrage/acquisition.py",
+          "language": "python",
+          "sizeLines": 124,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/equilibrage/page_cellules.py",
+          "language": "python",
+          "sizeLines": 147,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/equilibrage/widgets.py",
+          "language": "python",
+          "sizeLines": 185,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "instruments/__init__.py": [
+          "instruments/daly.py",
+          "instruments/ea.py",
+          "instruments/gestionnaire.py"
+        ],
+        "instruments/base.py": [],
+        "instruments/daly.py": [
+          "instruments/base.py"
+        ],
+        "instruments/ea.py": [
+          "instruments/base.py"
+        ],
+        "main.py": [
+          "instruments/ea.py"
+        ],
+        "modules/equilibrage/acquisition.py": [
+          "instruments/daly.py"
+        ],
+        "modules/equilibrage/page_cellules.py": [
+          "instruments/daly.py",
+          "modules/equilibrage/acquisition.py",
+          "modules/equilibrage/widgets.py",
+          "theme.py"
+        ],
+        "modules/equilibrage/widgets.py": [
+          "theme.py"
+        ]
+      },
+      "neighborMap": {
+        "instruments/__init__.py": [
+          {
+            "path": "instruments/gestionnaire.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Gestionnaire"
+            ]
+          },
+          {
+            "path": "gui.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Application"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_encours.py",
+            "batchIndex": 1,
+            "symbols": [
+              "PageEnCours"
+            ]
+          },
+          {
+            "path": "modules/decharge/page_lancer.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_propre",
+              "PageLancer"
+            ]
+          },
+          {
+            "path": "modules/resistance/mesure.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Mesure"
+            ]
+          }
+        ],
+        "instruments/daly.py": [
+          {
+            "path": "modules/resistance/mesure.py",
+            "batchIndex": 5,
+            "symbols": [
+              "Mesure"
+            ]
+          }
+        ],
+        "modules/equilibrage/acquisition.py": [
+          {
+            "path": "modules/equilibrage/page_session.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_nombre",
+              "PageSession"
+            ]
+          }
+        ],
+        "modules/equilibrage/page_cellules.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/equilibrage/widgets.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          },
+          {
+            "path": "modules/equilibrage/page_session.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_nombre",
+              "PageSession"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "modules/decharge/__init__.py",
+          "language": "python",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/chemins.py",
+          "language": "python",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/page_lancer.py",
+          "language": "python",
+          "sizeLines": 169,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/page_profils.py",
+          "language": "python",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/page_resultats.py",
+          "language": "python",
+          "sizeLines": 142,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/profils.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/decharge/resultats.py",
+          "language": "python",
+          "sizeLines": 60,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "modules/decharge/__init__.py": [
+          "modules/base.py",
+          "modules/decharge/chemins.py",
+          "modules/decharge/profils.py",
+          "modules/decharge/resultats.py",
+          "theme.py"
+        ],
+        "modules/decharge/chemins.py": [
+          "theme.py"
+        ],
+        "modules/decharge/page_lancer.py": [
+          "dialogue_identite.py",
+          "instruments/__init__.py",
+          "modules/decharge/chemins.py",
+          "modules/decharge/profils.py",
+          "theme.py"
+        ],
+        "modules/decharge/page_profils.py": [
+          "modules/decharge/chemins.py",
+          "modules/decharge/profils.py",
+          "theme.py"
+        ],
+        "modules/decharge/page_resultats.py": [
+          "modules/decharge/chemins.py",
+          "modules/decharge/resultats.py",
+          "theme.py"
+        ],
+        "modules/decharge/profils.py": [],
+        "modules/decharge/resultats.py": [
+          "identite.py"
+        ]
+      },
+      "neighborMap": {
+        "modules/decharge/__init__.py": [
+          {
+            "path": "modules/base.py",
+            "batchIndex": 2,
+            "symbols": [
+              "Action",
+              "Module"
+            ]
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          },
+          {
+            "path": "modules/__init__.py",
+            "batchIndex": 2,
+            "symbols": []
+          }
+        ],
+        "modules/decharge/chemins.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/decharge/page_lancer.py": [
+          {
+            "path": "dialogue_identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_fenetre",
+              "_afficher_modale",
+              "demander_poste",
+              "gerer_techniciens",
+              "SelecteurTechnicien"
+            ]
+          },
+          {
+            "path": "instruments/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/decharge/page_profils.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/decharge/page_resultats.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/decharge/resultats.py": [
+          {
+            "path": "identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "nettoyer",
+              "poste",
+              "definir_poste",
+              "techniciens",
+              "ajouter_technicien",
+              "supprimer_technicien",
+              "_en_attente",
+              "operations_en_attente",
+              "operation_transmise",
+              "remplacer_techniciens",
+              "dernier_technicien",
+              "retenir_technicien",
+              "lignes_signature",
+              "lire_entete"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "modules/resistance/calcul.py",
+          "language": "python",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/mesure.py",
+          "language": "python",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/page_encours.py",
+          "language": "python",
+          "sizeLines": 181,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/page_resultats.py",
+          "language": "python",
+          "sizeLines": 127,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/resultats.py",
+          "language": "python",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "modules/resistance/widgets.py",
+          "language": "python",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "modules/resistance/calcul.py": [],
+        "modules/resistance/mesure.py": [
+          "instruments/__init__.py",
+          "instruments/daly.py",
+          "modules/resistance/calcul.py"
+        ],
+        "modules/resistance/page_encours.py": [
+          "envoi.py",
+          "identite.py",
+          "modules/resistance/calcul.py",
+          "modules/resistance/mesure.py",
+          "modules/resistance/profils.py",
+          "modules/resistance/widgets.py",
+          "theme.py"
+        ],
+        "modules/resistance/page_resultats.py": [
+          "modules/resistance/chemins.py",
+          "modules/resistance/page_encours.py",
+          "modules/resistance/resultats.py",
+          "modules/resistance/widgets.py",
+          "theme.py"
+        ],
+        "modules/resistance/resultats.py": [
+          "identite.py",
+          "modules/resistance/calcul.py"
+        ],
+        "modules/resistance/widgets.py": [
+          "theme.py"
+        ]
+      },
+      "neighborMap": {
+        "modules/resistance/mesure.py": [
+          {
+            "path": "instruments/__init__.py",
+            "batchIndex": 3,
+            "symbols": []
+          },
+          {
+            "path": "instruments/daly.py",
+            "batchIndex": 3,
+            "symbols": [
+              "somme_controle",
+              "requete",
+              "trame_valide",
+              "resume_cellules",
+              "Daly",
+              "EquilibreurDaly"
+            ]
+          }
+        ],
+        "modules/resistance/page_encours.py": [
+          {
+            "path": "envoi.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_reglages",
+              "_lire_file",
+              "_ecrire_file",
+              "_poster",
+              "_noter_envoyes",
+              "_boucle",
+              "_demarrer",
+              "envoyer",
+              "rattraper",
+              "reprendre"
+            ]
+          },
+          {
+            "path": "identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "nettoyer",
+              "poste",
+              "definir_poste",
+              "techniciens",
+              "ajouter_technicien",
+              "supprimer_technicien",
+              "_en_attente",
+              "operations_en_attente",
+              "operation_transmise",
+              "remplacer_techniciens",
+              "dernier_technicien",
+              "retenir_technicien",
+              "lignes_signature",
+              "lire_entete"
+            ]
+          },
+          {
+            "path": "modules/resistance/profils.py",
+            "batchIndex": 2,
+            "symbols": [
+              "defauts",
+              "_nombre",
+              "valider",
+              "duree_totale_s",
+              "resume",
+              "charger",
+              "sauver"
+            ]
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/resistance/page_resultats.py": [
+          {
+            "path": "modules/resistance/chemins.py",
+            "batchIndex": 2,
+            "symbols": [
+              "dossier",
+              "dossier_csv",
+              "fichier_profils"
+            ]
+          },
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ],
+        "modules/resistance/resultats.py": [
+          {
+            "path": "identite.py",
+            "batchIndex": 1,
+            "symbols": [
+              "nettoyer",
+              "poste",
+              "definir_poste",
+              "techniciens",
+              "ajouter_technicien",
+              "supprimer_technicien",
+              "_en_attente",
+              "operations_en_attente",
+              "operation_transmise",
+              "remplacer_techniciens",
+              "dernier_technicien",
+              "retenir_technicien",
+              "lignes_signature",
+              "lire_entete"
+            ]
+          }
+        ],
+        "modules/resistance/widgets.py": [
+          {
+            "path": "theme.py",
+            "batchIndex": 2,
+            "symbols": [
+              "_dossier_donnees",
+              "init_styles",
+              "titre",
+              "resume_profil",
+              "duree",
+              "ouvrir",
+              "ListeLignes",
+              "icone",
+              "tuile",
+              "Interrupteur",
+              "GraphesTemps"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": ".github/workflows/release.yml",
+          "language": "yaml",
+          "sizeLines": 98,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".github/workflows/release.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "CLAUDE.md",
+          "language": "markdown",
+          "sizeLines": 35,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 147,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "install.ps1",
+          "language": "powershell",
+          "sizeLines": 44,
+          "fileCategory": "script"
+        },
+        {
+          "path": "install.sh",
+          "language": "shell",
+          "sizeLines": 75,
+          "fileCategory": "script"
+        },
+        {
+          "path": "requirements.txt",
+          "language": "txt",
+          "sizeLines": 2,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "CLAUDE.md": [],
+        "README.md": [],
+        "install.ps1": [],
+        "install.sh": [],
+        "requirements.txt": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "installer/betterson.iss",
+          "language": "iss",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "installer/betterson.iss": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

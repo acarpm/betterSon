@@ -1,0 +1,721 @@
+{
+ "nodes": [
+  {
+   "id": "file:modules/resistance/calcul.py",
+   "type": "file",
+   "name": "calcul.py",
+   "filePath": "modules/resistance/calcul.py",
+   "summary": "Calculs purs de resistance interne (en mOhm) a partir des mesures de tension et courant des essais : moyennes, resistance par essai, statistiques et synthese.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire",
+    "mesure"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/mesure.py",
+   "type": "file",
+   "name": "mesure.py",
+   "filePath": "modules/resistance/mesure.py",
+   "summary": "Thread de mesure qui pilote l'equilibreur Daly pendant un essai de resistance interne et enchaine la sequence d'acquisition.",
+   "tags": [
+    "thread",
+    "acquisition",
+    "resistance-interne",
+    "instrument"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/page_encours.py",
+   "type": "file",
+   "name": "page_encours.py",
+   "filePath": "modules/resistance/page_encours.py",
+   "summary": "Page Tkinter de test en cours du module resistance : demarrage/arret de la mesure, traitement de la file d'essais, envoi des resultats et affichage de l'analyse.",
+   "tags": [
+    "ui",
+    "tkinter",
+    "page",
+    "resistance-interne"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:modules/resistance/page_resultats.py",
+   "type": "file",
+   "name": "page_resultats.py",
+   "filePath": "modules/resistance/page_resultats.py",
+   "summary": "Page Tkinter listant les resultats de resistance interne enregistres, avec filtrage, affichage des barres et ouverture des CSV.",
+   "tags": [
+    "ui",
+    "tkinter",
+    "page",
+    "resultats"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/resultats.py",
+   "type": "file",
+   "name": "resultats.py",
+   "filePath": "modules/resistance/resultats.py",
+   "summary": "Lecture et analyse des fichiers CSV de resultats de resistance interne, produisant les syntheses par fichier ou par dossier.",
+   "tags": [
+    "analyse",
+    "csv",
+    "resultats",
+    "resistance-interne"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/widgets.py",
+   "type": "file",
+   "name": "widgets.py",
+   "filePath": "modules/resistance/widgets.py",
+   "summary": "Widget graphique de barres de resistance par cellule et formatage du texte en mOhm.",
+   "tags": [
+    "widget",
+    "ui",
+    "graphique",
+    "tkinter"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:moyenne",
+   "type": "function",
+   "name": "moyenne",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    17,
+    19
+   ],
+   "summary": "Calcule la moyenne d'une liste de valeurs.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:_r_mohm",
+   "type": "function",
+   "name": "_r_mohm",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    22,
+    25
+   ],
+   "summary": "Convertit une difference tension/courant en resistance en mOhm.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:_moyenne_cellules",
+   "type": "function",
+   "name": "_moyenne_cellules",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    28,
+    30
+   ],
+   "summary": "Moyenne des valeurs par cellule.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:resistance_essai",
+   "type": "function",
+   "name": "resistance_essai",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    33,
+    47
+   ],
+   "summary": "Calcule la resistance interne de chaque cellule pour un essai.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:resistances",
+   "type": "function",
+   "name": "resistances",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    50,
+    53
+   ],
+   "summary": "Calcule les resistances pour l'ensemble des essais.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:_stats",
+   "type": "function",
+   "name": "_stats",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    56,
+    61
+   ],
+   "summary": "Calcule des statistiques simples sur les resistances.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/calcul.py:synthese",
+   "type": "function",
+   "name": "synthese",
+   "filePath": "modules/resistance/calcul.py",
+   "lineRange": [
+    64,
+    80
+   ],
+   "summary": "Produit la synthese finale des resistances par cellule.",
+   "tags": [
+    "calcul",
+    "resistance-interne",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/resistance/mesure.py:Mesure",
+   "type": "class",
+   "name": "Mesure",
+   "filePath": "modules/resistance/mesure.py",
+   "lineRange": [
+    29,
+    129
+   ],
+   "summary": "Thread de mesure : demarre, arrete et execute la sequence d'essais en interrogeant l'equilibreur Daly.",
+   "tags": [
+    "thread",
+    "acquisition",
+    "instrument"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:modules/resistance/page_encours.py:PageEnCours",
+   "type": "class",
+   "name": "PageEnCours",
+   "filePath": "modules/resistance/page_encours.py",
+   "lineRange": [
+    20,
+    181
+   ],
+   "summary": "Page de test en cours : gere les boutons, l'etat, la file d'essais et la fin de test avec envoi et analyse.",
+   "tags": [
+    "ui",
+    "page",
+    "tkinter",
+    "etat"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:modules/resistance/page_resultats.py:PageResultats",
+   "type": "class",
+   "name": "PageResultats",
+   "filePath": "modules/resistance/page_resultats.py",
+   "lineRange": [
+    14,
+    127
+   ],
+   "summary": "Page des resultats : liste filtrable, affichage detaille et ouverture des CSV.",
+   "tags": [
+    "ui",
+    "page",
+    "tkinter",
+    "resultats"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:modules/resistance/resultats.py:lister",
+   "type": "function",
+   "name": "lister",
+   "filePath": "modules/resistance/resultats.py",
+   "lineRange": [
+    15,
+    16
+   ],
+   "summary": "Liste les fichiers de resultats d'un dossier.",
+   "tags": [
+    "analyse",
+    "csv",
+    "resultats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/resultats.py:_nombre",
+   "type": "function",
+   "name": "_nombre",
+   "filePath": "modules/resistance/resultats.py",
+   "lineRange": [
+    19,
+    23
+   ],
+   "summary": "Convertit une valeur CSV en nombre.",
+   "tags": [
+    "analyse",
+    "csv",
+    "resultats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/resultats.py:analyser",
+   "type": "function",
+   "name": "analyser",
+   "filePath": "modules/resistance/resultats.py",
+   "lineRange": [
+    26,
+    57
+   ],
+   "summary": "Analyse un fichier CSV de resultats et en tire la synthese.",
+   "tags": [
+    "analyse",
+    "csv",
+    "resultats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/resultats.py:analyser_dossier",
+   "type": "function",
+   "name": "analyser_dossier",
+   "filePath": "modules/resistance/resultats.py",
+   "lineRange": [
+    60,
+    63
+   ],
+   "summary": "Analyse tous les CSV d'un dossier.",
+   "tags": [
+    "analyse",
+    "csv",
+    "resultats"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/resistance/widgets.py:BarresResistance",
+   "type": "class",
+   "name": "BarresResistance",
+   "filePath": "modules/resistance/widgets.py",
+   "lineRange": [
+    7,
+    47
+   ],
+   "summary": "Widget dessinant des barres de resistance par cellule.",
+   "tags": [
+    "widget",
+    "graphique",
+    "tkinter"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/widgets.py:texte_mohm",
+   "type": "function",
+   "name": "texte_mohm",
+   "filePath": "modules/resistance/widgets.py",
+   "lineRange": [
+    50,
+    51
+   ],
+   "summary": "Formate une valeur en texte mOhm.",
+   "tags": [
+    "formatage",
+    "utilitaire",
+    "ui"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:moyenne",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:moyenne",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_r_mohm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_r_mohm",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_moyenne_cellules",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_moyenne_cellules",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:resistance_essai",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:resistance_essai",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:resistances",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:resistances",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_stats",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:_stats",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:synthese",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/calcul.py",
+   "target": "function:modules/resistance/calcul.py:synthese",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/mesure.py",
+   "target": "class:modules/resistance/mesure.py:Mesure",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/mesure.py",
+   "target": "class:modules/resistance/mesure.py:Mesure",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "class:modules/resistance/page_encours.py:PageEnCours",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "class:modules/resistance/page_encours.py:PageEnCours",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "class:modules/resistance/page_resultats.py:PageResultats",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "class:modules/resistance/page_resultats.py:PageResultats",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:lister",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:lister",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:_nombre",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:_nombre",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:analyser",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:analyser",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:analyser_dossier",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "function:modules/resistance/resultats.py:analyser_dossier",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/widgets.py",
+   "target": "class:modules/resistance/widgets.py:BarresResistance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/widgets.py",
+   "target": "class:modules/resistance/widgets.py:BarresResistance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/widgets.py",
+   "target": "function:modules/resistance/widgets.py:texte_mohm",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/widgets.py",
+   "target": "function:modules/resistance/widgets.py:texte_mohm",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/mesure.py",
+   "target": "file:instruments/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/mesure.py",
+   "target": "file:instruments/daly.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/mesure.py",
+   "target": "file:modules/resistance/calcul.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:envoi.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:identite.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:modules/resistance/calcul.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:modules/resistance/mesure.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:modules/resistance/profils.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:modules/resistance/widgets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_encours.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "file:modules/resistance/chemins.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "file:modules/resistance/page_encours.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "file:modules/resistance/resultats.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "file:modules/resistance/widgets.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_resultats.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "file:identite.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/resultats.py",
+   "target": "file:modules/resistance/calcul.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/widgets.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "class:modules/resistance/mesure.py:Mesure",
+   "target": "class:instruments/daly.py:Daly",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  }
+ ]
+}

@@ -1,0 +1,1356 @@
+{
+ "nodes": [
+  {
+   "id": "file:modules/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "modules/__init__.py",
+   "summary": "Registre des modules de l'application : importe les modules Decharge, Equilibrage et Resistance pour les exposer a l'interface.",
+   "tags": [
+    "barrel",
+    "registre",
+    "modules",
+    "entry-point"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:modules/_modele/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "modules/_modele/__init__.py",
+   "summary": "Modele de module a copier pour creer un nouveau module : fournit une page d'exemple et une classe Modele heritant de Module.",
+   "tags": [
+    "template",
+    "modele",
+    "module",
+    "exemple"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/_modele/__init__.py:PageExemple",
+   "type": "class",
+   "name": "PageExemple",
+   "filePath": "modules/_modele/__init__.py",
+   "lineRange": [
+    25,
+    39
+   ],
+   "summary": "Page d'exemple minimale montrant le cycle on_show d'une page de module.",
+   "tags": [
+    "page",
+    "exemple",
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/_modele/__init__.py:Modele",
+   "type": "class",
+   "name": "Modele",
+   "filePath": "modules/_modele/__init__.py",
+   "lineRange": [
+    42,
+    57
+   ],
+   "summary": "Module d'exemple declarant ses actions et creant sa page ; sert de gabarit.",
+   "tags": [
+    "module",
+    "template",
+    "exemple"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:modules/base.py",
+   "type": "file",
+   "name": "base.py",
+   "filePath": "modules/base.py",
+   "summary": "Definit les classes de base Action et Module dont heritent tous les modules (decharge, equilibrage, resistance interne).",
+   "tags": [
+    "base-class",
+    "module",
+    "abstraction",
+    "architecture"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/base.py:Action",
+   "type": "class",
+   "name": "Action",
+   "filePath": "modules/base.py",
+   "lineRange": [
+    11,
+    19
+   ],
+   "summary": "Description d'une action de module (libelle, icone, page cible) affichee comme tuile.",
+   "tags": [
+    "modele-de-donnees",
+    "action",
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:modules/base.py:Module",
+   "type": "class",
+   "name": "Module",
+   "filePath": "modules/base.py",
+   "lineRange": [
+    22,
+    54
+   ],
+   "summary": "Classe de base abstraite d'un module : actions, creation de page, informations et dossiers de donnees CSV.",
+   "tags": [
+    "base-class",
+    "module",
+    "architecture"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/equilibrage/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "modules/equilibrage/__init__.py",
+   "summary": "Module d'equilibrage de batteries (equilibreur Daly) : declare ses actions, ses informations de resume et la creation de la page de session.",
+   "tags": [
+    "module",
+    "equilibrage",
+    "daly",
+    "entry-point"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:modules/equilibrage/__init__.py:Equilibrage",
+   "type": "class",
+   "name": "Equilibrage",
+   "filePath": "modules/equilibrage/__init__.py",
+   "lineRange": [
+    15,
+    57
+   ],
+   "summary": "Module Equilibrage heritant de Module ; compte les sessions enregistrees et expose les actions de l'equilibreur.",
+   "tags": [
+    "module",
+    "equilibrage",
+    "daly"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/__init__.py",
+   "type": "file",
+   "name": "__init__.py",
+   "filePath": "modules/resistance/__init__.py",
+   "summary": "Module de mesure de resistance interne : charge les profils de test, expose les actions et construit les pages lancer, profils, en cours et resultats.",
+   "tags": [
+    "module",
+    "resistance-interne",
+    "entry-point",
+    "profils"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:modules/resistance/__init__.py:Resistance",
+   "type": "class",
+   "name": "Resistance",
+   "filePath": "modules/resistance/__init__.py",
+   "lineRange": [
+    16,
+    81
+   ],
+   "summary": "Module Resistance heritant de Module ; gere le chargement des profils, le dernier test et le comptage des tests.",
+   "tags": [
+    "module",
+    "resistance-interne",
+    "profils"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/chemins.py",
+   "type": "file",
+   "name": "chemins.py",
+   "filePath": "modules/resistance/chemins.py",
+   "summary": "Fonctions de chemins du module resistance : dossier de donnees, dossier CSV et fichier des profils.",
+   "tags": [
+    "utilitaire",
+    "chemins",
+    "fichiers",
+    "resistance-interne"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/chemins.py:dossier",
+   "type": "function",
+   "name": "dossier",
+   "filePath": "modules/resistance/chemins.py",
+   "lineRange": [
+    9,
+    12
+   ],
+   "summary": "Retourne le dossier de donnees du module resistance.",
+   "tags": [
+    "chemins",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/chemins.py:dossier_csv",
+   "type": "function",
+   "name": "dossier_csv",
+   "filePath": "modules/resistance/chemins.py",
+   "lineRange": [
+    15,
+    18
+   ],
+   "summary": "Retourne le dossier des CSV de resultats de resistance.",
+   "tags": [
+    "chemins",
+    "csv"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/chemins.py:fichier_profils",
+   "type": "function",
+   "name": "fichier_profils",
+   "filePath": "modules/resistance/chemins.py",
+   "lineRange": [
+    21,
+    22
+   ],
+   "summary": "Retourne le chemin du fichier JSON des profils de test.",
+   "tags": [
+    "chemins",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:modules/resistance/page_lancer.py",
+   "type": "file",
+   "name": "page_lancer.py",
+   "filePath": "modules/resistance/page_lancer.py",
+   "summary": "Page de lancement d'un test de resistance interne : choix du profil, du technicien et resume avant demarrage.",
+   "tags": [
+    "page",
+    "ui",
+    "tkinter",
+    "resistance-interne"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:modules/resistance/page_lancer.py:PageLancer",
+   "type": "class",
+   "name": "PageLancer",
+   "filePath": "modules/resistance/page_lancer.py",
+   "lineRange": [
+    18,
+    124
+   ],
+   "summary": "Page Tkinter permettant de choisir un profil, d'identifier le technicien et de demarrer un test.",
+   "tags": [
+    "page",
+    "ui",
+    "tkinter"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/page_profils.py",
+   "type": "file",
+   "name": "page_profils.py",
+   "filePath": "modules/resistance/page_profils.py",
+   "summary": "Page de gestion des profils de test de resistance : liste, edition, creation, enregistrement et suppression.",
+   "tags": [
+    "page",
+    "ui",
+    "crud",
+    "profils"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:modules/resistance/page_profils.py:PageProfils",
+   "type": "class",
+   "name": "PageProfils",
+   "filePath": "modules/resistance/page_profils.py",
+   "lineRange": [
+    11,
+    129
+   ],
+   "summary": "Page CRUD des profils : liste a gauche, formulaire d'edition, validation et sauvegarde.",
+   "tags": [
+    "page",
+    "ui",
+    "crud"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:modules/resistance/profils.py",
+   "type": "file",
+   "name": "profils.py",
+   "filePath": "modules/resistance/profils.py",
+   "summary": "Logique des profils de test de resistance : valeurs par defaut, validation, duree totale, resume, lecture et ecriture JSON.",
+   "tags": [
+    "profils",
+    "validation",
+    "serialisation",
+    "json"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:defauts",
+   "type": "function",
+   "name": "defauts",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    18,
+    19
+   ],
+   "summary": "Retourne un profil par defaut.",
+   "tags": [
+    "defauts",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:_nombre",
+   "type": "function",
+   "name": "_nombre",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    22,
+    37
+   ],
+   "summary": "Convertit et borne une valeur numerique saisie.",
+   "tags": [
+    "validation",
+    "parsing",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:valider",
+   "type": "function",
+   "name": "valider",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    40,
+    52
+   ],
+   "summary": "Valide un profil et retourne le profil nettoye ou les erreurs.",
+   "tags": [
+    "validation",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:duree_totale_s",
+   "type": "function",
+   "name": "duree_totale_s",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    55,
+    58
+   ],
+   "summary": "Calcule la duree totale d'un profil en secondes.",
+   "tags": [
+    "calcul",
+    "duree",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:resume",
+   "type": "function",
+   "name": "resume",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    61,
+    63
+   ],
+   "summary": "Produit un texte resume d'un profil.",
+   "tags": [
+    "formatage",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:charger",
+   "type": "function",
+   "name": "charger",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    66,
+    79
+   ],
+   "summary": "Charge les profils depuis le fichier JSON.",
+   "tags": [
+    "json",
+    "persistance",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:modules/resistance/profils.py:sauver",
+   "type": "function",
+   "name": "sauver",
+   "filePath": "modules/resistance/profils.py",
+   "lineRange": [
+    82,
+    86
+   ],
+   "summary": "Sauvegarde les profils dans le fichier JSON.",
+   "tags": [
+    "json",
+    "persistance",
+    "profils"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:page_accueil.py",
+   "type": "file",
+   "name": "page_accueil.py",
+   "filePath": "page_accueil.py",
+   "summary": "Page d'accueil de l'application : grille de tuiles des actions du module actif et page generique d'un module.",
+   "tags": [
+    "page",
+    "accueil",
+    "ui",
+    "tkinter"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:page_accueil.py:_disposer",
+   "type": "function",
+   "name": "_disposer",
+   "filePath": "page_accueil.py",
+   "lineRange": [
+    9,
+    19
+   ],
+   "summary": "Dispose des tuiles en grille adaptative.",
+   "tags": [
+    "layout",
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:page_accueil.py:Accueil",
+   "type": "class",
+   "name": "Accueil",
+   "filePath": "page_accueil.py",
+   "lineRange": [
+    22,
+    54
+   ],
+   "summary": "Page d'accueil presentant les actions du module actif.",
+   "tags": [
+    "page",
+    "accueil",
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:page_accueil.py:PageModule",
+   "type": "class",
+   "name": "PageModule",
+   "filePath": "page_accueil.py",
+   "lineRange": [
+    57,
+    84
+   ],
+   "summary": "Page generique affichant les actions d'un module.",
+   "tags": [
+    "page",
+    "module",
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:page_instruments.py",
+   "type": "file",
+   "name": "page_instruments.py",
+   "filePath": "page_instruments.py",
+   "summary": "Page de configuration des instruments : detection des ports, choix de l'instrument, test de connexion et affichage du courant.",
+   "tags": [
+    "page",
+    "instruments",
+    "ui",
+    "serie"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:page_instruments.py:_decrire",
+   "type": "function",
+   "name": "_decrire",
+   "filePath": "page_instruments.py",
+   "lineRange": [
+    13,
+    24
+   ],
+   "summary": "Formate la description d'un instrument detecte.",
+   "tags": [
+    "formatage",
+    "instruments"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:page_instruments.py:PageInstruments",
+   "type": "class",
+   "name": "PageInstruments",
+   "filePath": "page_instruments.py",
+   "lineRange": [
+    27,
+    170
+   ],
+   "summary": "Page Tkinter listant ports et instruments avec recherche, test et rafraichissement periodique.",
+   "tags": [
+    "page",
+    "instruments",
+    "ui"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:theme.py",
+   "type": "file",
+   "name": "theme.py",
+   "filePath": "theme.py",
+   "summary": "Theme et composants graphiques partages : styles ttk, liste defilante, interrupteur, tuiles, icones et graphes temporels.",
+   "tags": [
+    "theme",
+    "ui",
+    "widgets",
+    "utilitaire"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:theme.py:_dossier_donnees",
+   "type": "function",
+   "name": "_dossier_donnees",
+   "filePath": "theme.py",
+   "lineRange": [
+    15,
+    34
+   ],
+   "summary": "Determine le dossier de donnees utilisateur selon la plateforme.",
+   "tags": [
+    "chemins",
+    "plateforme"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:init_styles",
+   "type": "function",
+   "name": "init_styles",
+   "filePath": "theme.py",
+   "lineRange": [
+    56,
+    79
+   ],
+   "summary": "Initialise les styles ttk de l'application.",
+   "tags": [
+    "style",
+    "ttk"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:titre",
+   "type": "function",
+   "name": "titre",
+   "filePath": "theme.py",
+   "lineRange": [
+    82,
+    84
+   ],
+   "summary": "Cree un libelle de titre style.",
+   "tags": [
+    "ui"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:resume_profil",
+   "type": "function",
+   "name": "resume_profil",
+   "filePath": "theme.py",
+   "lineRange": [
+    87,
+    93
+   ],
+   "summary": "Formate le resume d'un profil.",
+   "tags": [
+    "formatage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:duree",
+   "type": "function",
+   "name": "duree",
+   "filePath": "theme.py",
+   "lineRange": [
+    96,
+    98
+   ],
+   "summary": "Formate une duree en texte lisible.",
+   "tags": [
+    "formatage"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:ouvrir",
+   "type": "function",
+   "name": "ouvrir",
+   "filePath": "theme.py",
+   "lineRange": [
+    101,
+    115
+   ],
+   "summary": "Ouvre un dossier ou fichier avec l'application systeme.",
+   "tags": [
+    "systeme",
+    "utilitaire"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:theme.py:ListeLignes",
+   "type": "class",
+   "name": "ListeLignes",
+   "filePath": "theme.py",
+   "lineRange": [
+    118,
+    221
+   ],
+   "summary": "Liste defilante personnalisee avec survol, molette et selection.",
+   "tags": [
+    "widget",
+    "ui",
+    "liste"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:theme.py:icone",
+   "type": "function",
+   "name": "icone",
+   "filePath": "theme.py",
+   "lineRange": [
+    224,
+    259
+   ],
+   "summary": "Dessine une icone vectorielle sur un canvas.",
+   "tags": [
+    "icone",
+    "canvas"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:theme.py:tuile",
+   "type": "function",
+   "name": "tuile",
+   "filePath": "theme.py",
+   "lineRange": [
+    262,
+    293
+   ],
+   "summary": "Construit une tuile cliquable avec icone et libelle.",
+   "tags": [
+    "widget",
+    "tuile"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:theme.py:Interrupteur",
+   "type": "class",
+   "name": "Interrupteur",
+   "filePath": "theme.py",
+   "lineRange": [
+    296,
+    320
+   ],
+   "summary": "Widget interrupteur on/off dessine sur un canvas.",
+   "tags": [
+    "widget",
+    "ui",
+    "switch"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:theme.py:GraphesTemps",
+   "type": "class",
+   "name": "GraphesTemps",
+   "filePath": "theme.py",
+   "lineRange": [
+    323,
+    471
+   ],
+   "summary": "Widget de graphes temporels multi-series avec pastilles et infobulle de survol.",
+   "tags": [
+    "widget",
+    "graphe",
+    "canvas"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "class:modules/_modele/__init__.py:PageExemple",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "class:modules/_modele/__init__.py:PageExemple",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "class:modules/_modele/__init__.py:Modele",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "class:modules/_modele/__init__.py:Modele",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/base.py",
+   "target": "class:modules/base.py:Action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/base.py",
+   "target": "class:modules/base.py:Action",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/base.py",
+   "target": "class:modules/base.py:Module",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/base.py",
+   "target": "class:modules/base.py:Module",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/equilibrage/__init__.py",
+   "target": "class:modules/equilibrage/__init__.py:Equilibrage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/equilibrage/__init__.py",
+   "target": "class:modules/equilibrage/__init__.py:Equilibrage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "class:modules/resistance/__init__.py:Resistance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "class:modules/resistance/__init__.py:Resistance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:dossier",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:dossier",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:dossier_csv",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:dossier_csv",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:fichier_profils",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "function:modules/resistance/chemins.py:fichier_profils",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "class:modules/resistance/page_lancer.py:PageLancer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "class:modules/resistance/page_lancer.py:PageLancer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/page_profils.py",
+   "target": "class:modules/resistance/page_profils.py:PageProfils",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/page_profils.py",
+   "target": "class:modules/resistance/page_profils.py:PageProfils",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:defauts",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:defauts",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:_nombre",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:valider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:valider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:duree_totale_s",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:duree_totale_s",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:resume",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:resume",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:charger",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:charger",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:sauver",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:modules/resistance/profils.py",
+   "target": "function:modules/resistance/profils.py:sauver",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "function:page_accueil.py:_disposer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "class:page_accueil.py:Accueil",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "class:page_accueil.py:Accueil",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "class:page_accueil.py:PageModule",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "class:page_accueil.py:PageModule",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:page_instruments.py",
+   "target": "function:page_instruments.py:_decrire",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:page_instruments.py",
+   "target": "class:page_instruments.py:PageInstruments",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:page_instruments.py",
+   "target": "class:page_instruments.py:PageInstruments",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:_dossier_donnees",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:init_styles",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:init_styles",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:titre",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:titre",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:resume_profil",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:resume_profil",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:duree",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:duree",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:ouvrir",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:ouvrir",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:ListeLignes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:ListeLignes",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:icone",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:icone",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:tuile",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "function:theme.py:tuile",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:Interrupteur",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:Interrupteur",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:GraphesTemps",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:theme.py",
+   "target": "class:theme.py:GraphesTemps",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:modules/__init__.py",
+   "target": "file:modules/decharge/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/__init__.py",
+   "target": "file:modules/equilibrage/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/__init__.py",
+   "target": "file:modules/resistance/__init__.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "file:modules/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/_modele/__init__.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/base.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/equilibrage/__init__.py",
+   "target": "file:modules/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/equilibrage/__init__.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "file:modules/base.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "file:modules/resistance/chemins.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "file:modules/resistance/profils.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/__init__.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/chemins.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "file:dialogue_identite.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "file:modules/resistance/chemins.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "file:modules/resistance/profils.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_lancer.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_profils.py",
+   "target": "file:modules/resistance/chemins.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_profils.py",
+   "target": "file:modules/resistance/profils.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:modules/resistance/page_profils.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:page_accueil.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:page_instruments.py",
+   "target": "file:theme.py",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "class:modules/equilibrage/__init__.py:Equilibrage",
+   "target": "class:modules/base.py:Module",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:modules/resistance/__init__.py:Resistance",
+   "target": "class:modules/base.py:Module",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:modules/_modele/__init__.py:Modele",
+   "target": "class:modules/base.py:Module",
+   "type": "inherits",
+   "direction": "forward",
+   "weight": 0.9
+  }
+ ]
+}

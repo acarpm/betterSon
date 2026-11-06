@@ -21,6 +21,7 @@ DEBUT = 0xA5
 ADRESSE_PC = 0x40
 CMD_GLOBAL, CMD_ETAT, CMD_CELLULES, CMD_EQUILIBRAGE = 0x90, 0x94, 0x95, 0x97
 CMD_PARAM_EQUILIBRAGE = 0x5F   # LECTURE : seuils de déclenchement de l'équilibrage (doc Daly p.18)
+CMD_EQUILIBRAGE_ACTIF = 0x24   # ÉCRITURE, non documentée (trouvée par capture CAN) : octet 0 = 1 démarre, 0 arrête l'équilibrage actif
 CMD_TEST_EQUILIBRAGE = 0xD7    # ÉCRITURE « Balanced test » : démarre/arrête l'équilibrage d'une cellule (doc Daly p.24)
 
 
@@ -184,6 +185,11 @@ class Daly:
         if ouverture in (0, 0xFFFF) and ecart in (0, 0xFFFF):
             return None  # champs non renseignés
         return {"tension_ouverture_mv": ouverture, "ecart_ouverture_mv": ecart}
+
+    def piloter_equilibrage(self, actif):
+        """0x24 : démarre (True) ou arrête (False) l'équilibrage actif. Renvoie les 8 octets de la réponse, ou None."""
+        t = self._interroger(CMD_EQUILIBRAGE_ACTIF, 1, [1 if actif else 0])
+        return t[0][4:12] if t else None
 
     def commander_equilibrage(self, cellule, actif):
         """0xD7 « Balanced test » : ACTION SUR L'APPAREIL. Démarre (actif=True) ou arrête l'équilibrage de la cellule

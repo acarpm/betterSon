@@ -21,6 +21,9 @@ class Equilibrage(Module):
     teinte = "#dcebf1"
     instruments = ("equilibreur_daly",)   # détection, port et statut : gérés par l'application
 
+    def dossier_csv(self):
+        return self.dossier_sessions()
+
     def dossier_sessions(self):
         chemin = os.path.join(self.dossier(), "sessions")
         os.makedirs(chemin, exist_ok=True)

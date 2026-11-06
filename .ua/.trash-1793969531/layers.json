@@ -1,0 +1,119 @@
+[
+ {
+  "id": "layer:application-ui",
+  "name": "Application et interface",
+  "description": "Point d'entree, fenetre principale Tkinter, pages d'accueil, de modules et d'instruments, theme partage et dialogues d'identite.",
+  "nodeIds": [
+   "file:dialogue_identite.py",
+   "file:gui.py",
+   "file:page_modules.py",
+   "file:page_accueil.py",
+   "file:page_instruments.py",
+   "file:theme.py",
+   "file:main.py"
+  ]
+ },
+ {
+  "id": "layer:services",
+  "name": "Services applicatifs",
+  "description": "Configuration utilisateur, identite du poste, file d'envoi, synchronisation serveur, mise a jour automatique et version.",
+  "nodeIds": [
+   "file:config.py",
+   "file:envoi.py",
+   "file:identite.py",
+   "file:synchro.py",
+   "file:updater.py",
+   "file:version.py"
+  ]
+ },
+ {
+  "id": "layer:instruments",
+  "name": "Pilotes d'instruments",
+  "description": "Pilotes serie pyserial de l'equilibreur Daly et de la charge EA, classe de base et gestionnaire de detection des ports.",
+  "nodeIds": [
+   "file:instruments/gestionnaire.py",
+   "file:instruments/__init__.py",
+   "file:instruments/base.py",
+   "file:instruments/daly.py",
+   "file:instruments/ea.py"
+  ]
+ },
+ {
+  "id": "layer:modules-core",
+  "name": "Socle des modules",
+  "description": "Registre des modules, classes de base Action et Module, et modele a copier pour creer un nouveau module.",
+  "nodeIds": [
+   "file:modules/__init__.py",
+   "file:modules/_modele/__init__.py",
+   "file:modules/base.py"
+  ]
+ },
+ {
+  "id": "layer:module-decharge",
+  "name": "Module Decharge",
+  "description": "Tests de decharge sur la charge EA : profils, pages Tkinter, suivi en cours, resultats CSV et chemins de donnees.",
+  "nodeIds": [
+   "file:modules/decharge/page_encours.py",
+   "file:modules/decharge/__init__.py",
+   "file:modules/decharge/chemins.py",
+   "file:modules/decharge/page_lancer.py",
+   "file:modules/decharge/page_profils.py",
+   "file:modules/decharge/page_resultats.py",
+   "file:modules/decharge/profils.py",
+   "file:modules/decharge/resultats.py"
+  ]
+ },
+ {
+  "id": "layer:module-equilibrage",
+  "name": "Module Equilibrage",
+  "description": "Equilibrage de batteries avec l'equilibreur Daly : acquisition en thread, visualisation des cellules, widgets et page de session.",
+  "nodeIds": [
+   "file:modules/equilibrage/page_session.py",
+   "file:modules/equilibrage/__init__.py",
+   "file:modules/equilibrage/acquisition.py",
+   "file:modules/equilibrage/page_cellules.py",
+   "file:modules/equilibrage/widgets.py"
+  ]
+ },
+ {
+  "id": "layer:module-resistance",
+  "name": "Module Resistance interne",
+  "description": "Mesure de resistance interne : profils, calculs en mOhm, thread de mesure, pages de lancement, de suivi et de resultats.",
+  "nodeIds": [
+   "file:modules/resistance/__init__.py",
+   "file:modules/resistance/chemins.py",
+   "file:modules/resistance/page_lancer.py",
+   "file:modules/resistance/page_profils.py",
+   "file:modules/resistance/profils.py",
+   "file:modules/resistance/calcul.py",
+   "file:modules/resistance/mesure.py",
+   "file:modules/resistance/page_encours.py",
+   "file:modules/resistance/page_resultats.py",
+   "file:modules/resistance/resultats.py",
+   "file:modules/resistance/widgets.py"
+  ]
+ },
+ {
+  "id": "layer:distribution-ci",
+  "name": "Distribution et CI/CD",
+  "description": "Workflow GitHub Actions de release multi-plateforme, scripts d'installation et installateur Inno Setup Windows.",
+  "nodeIds": [
+   "pipeline:.github/workflows/release.yml",
+   "pipeline:.github/workflows/release.yml:build",
+   "pipeline:.github/workflows/release.yml:release",
+   "file:install.ps1",
+   "file:install.sh",
+   "file:installer/betterson.iss"
+  ]
+ },
+ {
+  "id": "layer:documentation-config",
+  "name": "Documentation et dependances",
+  "description": "README, profil CLAUDE.md et dependances Python du projet.",
+  "nodeIds": [
+   "document:CLAUDE.md",
+   "document:README.md",
+   "config:requirements.txt"
+  ]
+ }
+]

@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Arete depends_on gui.py -> PageSession supprimee (gui.py ne reference pas PageSession, chargement dynamique via modules.TOUS)",
+    "Aretes deploys (release.yml -> gui.py, PyInstaller) et triggers (-> installer/betterson.iss, ISCC) conservees: justifiees par le workflow",
+    "Les 52 entrees de importMap ont toutes une arete imports",
+    "Resumes de fonctions/classes verifies par echantillon: courts mais corrects, non modifies"
+  ]
+}

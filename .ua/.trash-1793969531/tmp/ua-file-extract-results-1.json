@@ -1,0 +1,6234 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 12,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 12,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "config.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "charger",
+          "startLine": 11,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "sauver",
+          "startLine": 20,
+          "endLine": 25,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "module_actif",
+          "startLine": 28,
+          "endLine": 29,
+          "params": [
+            "module_id",
+            "defaut"
+          ]
+        },
+        {
+          "name": "definir_module",
+          "startLine": 32,
+          "endLine": 36,
+          "params": [
+            "module_id",
+            "actif"
+          ]
+        },
+        {
+          "name": "reglage",
+          "startLine": 39,
+          "endLine": 41,
+          "params": [
+            "module_id",
+            "cle",
+            "defaut"
+          ]
+        },
+        {
+          "name": "definir_reglage",
+          "startLine": 44,
+          "endLine": 48,
+          "params": [
+            "module_id",
+            "cle",
+            "valeur"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "charger",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "sauver",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "module_actif",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "definir_module",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "reglage",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "definir_reglage",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "charger",
+          "callee": "open",
+          "lineNumber": 13
+        },
+        {
+          "caller": "charger",
+          "callee": "json.load",
+          "lineNumber": 14
+        },
+        {
+          "caller": "charger",
+          "callee": "isinstance",
+          "lineNumber": 15
+        },
+        {
+          "caller": "sauver",
+          "callee": "os.makedirs",
+          "lineNumber": 21
+        },
+        {
+          "caller": "sauver",
+          "callee": "os.path.dirname",
+          "lineNumber": 21
+        },
+        {
+          "caller": "sauver",
+          "callee": "open",
+          "lineNumber": 23
+        },
+        {
+          "caller": "sauver",
+          "callee": "json.dump",
+          "lineNumber": 24
+        },
+        {
+          "caller": "sauver",
+          "callee": "os.replace",
+          "lineNumber": 25
+        },
+        {
+          "caller": "module_actif",
+          "callee": "bool",
+          "lineNumber": 29
+        },
+        {
+          "caller": "module_actif",
+          "callee": "charger().get(\"modules\", {}).get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "module_actif",
+          "callee": "charger().get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "module_actif",
+          "callee": "charger",
+          "lineNumber": 29
+        },
+        {
+          "caller": "definir_module",
+          "callee": "charger",
+          "lineNumber": 34
+        },
+        {
+          "caller": "definir_module",
+          "callee": "data.setdefault",
+          "lineNumber": 35
+        },
+        {
+          "caller": "definir_module",
+          "callee": "bool",
+          "lineNumber": 35
+        },
+        {
+          "caller": "definir_module",
+          "callee": "sauver",
+          "lineNumber": 36
+        },
+        {
+          "caller": "reglage",
+          "callee": "charger().get(\"reglages\", {}).get(module_id, {}).get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "reglage",
+          "callee": "charger().get(\"reglages\", {}).get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "reglage",
+          "callee": "charger().get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "reglage",
+          "callee": "charger",
+          "lineNumber": 41
+        },
+        {
+          "caller": "definir_reglage",
+          "callee": "charger",
+          "lineNumber": 46
+        },
+        {
+          "caller": "definir_reglage",
+          "callee": "data.setdefault(\"reglages\", {}).setdefault",
+          "lineNumber": 47
+        },
+        {
+          "caller": "definir_reglage",
+          "callee": "data.setdefault",
+          "lineNumber": 47
+        },
+        {
+          "caller": "definir_reglage",
+          "callee": "sauver",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "dialogue_identite.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 175,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "_fenetre",
+          "startLine": 10,
+          "endLine": 15,
+          "params": [
+            "parent",
+            "titre"
+          ]
+        },
+        {
+          "name": "_afficher_modale",
+          "startLine": 18,
+          "endLine": 25,
+          "params": [
+            "parent",
+            "fen",
+            "focus"
+          ]
+        },
+        {
+          "name": "demander_poste",
+          "startLine": 28,
+          "endLine": 63,
+          "params": [
+            "parent",
+            "f",
+            "obligatoire"
+          ]
+        },
+        {
+          "name": "gerer_techniciens",
+          "startLine": 66,
+          "endLine": 142,
+          "params": [
+            "parent",
+            "f"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SelecteurTechnicien",
+          "startLine": 145,
+          "endLine": 175,
+          "methods": [
+            "__init__",
+            "rafraichir",
+            "_gerer",
+            "valeur"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_fenetre",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "_afficher_modale",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "demander_poste",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "gerer_techniciens",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "SelecteurTechnicien",
+          "line": 145,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_fenetre",
+          "callee": "tk.Toplevel",
+          "lineNumber": 11
+        },
+        {
+          "caller": "_fenetre",
+          "callee": "fen.title",
+          "lineNumber": 12
+        },
+        {
+          "caller": "_fenetre",
+          "callee": "fen.transient",
+          "lineNumber": 13
+        },
+        {
+          "caller": "_fenetre",
+          "callee": "fen.resizable",
+          "lineNumber": 14
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "fen.update_idletasks",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "parent.winfo_rootx",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "parent.winfo_width",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "fen.winfo_reqwidth",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "parent.winfo_rooty",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "max",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "parent.winfo_height",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "fen.winfo_reqheight",
+          "lineNumber": 21
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "fen.geometry",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "max",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "max",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "fen.grab_set",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "focus.focus_set",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_afficher_modale",
+          "callee": "parent.wait_window",
+          "lineNumber": 25
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "_fenetre",
+          "lineNumber": 30
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Frame",
+          "lineNumber": 32
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "cadre.pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Label(cadre, text=\"Identifiant de ce poste de test\" if obligatoire else \"Modifier l'identifiant du poste\",\n             bg=BG, fg=TEXTE, font=f(16, True), anchor=\"w\").pack",
+          "lineNumber": 34
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Label",
+          "lineNumber": 34
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "f",
+          "lineNumber": 35
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Label(cadre, text=\"Il figure sur chaque test réalisé depuis ce PC (ex. banc-1).\\nVous pourrez le modifier depuis \"\n                         \"l'en-tête du logiciel.\", bg=BG, fg=GRIS, font=f(11), anchor=\"w\", justify=\"left\"\n             ).pack",
+          "lineNumber": 36
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Label",
+          "lineNumber": 36
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "f",
+          "lineNumber": 37
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.StringVar",
+          "lineNumber": 39
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "identite.poste",
+          "lineNumber": 39
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "ttk.Entry",
+          "lineNumber": 40
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "f",
+          "lineNumber": 40
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "e.pack",
+          "lineNumber": 41
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Label",
+          "lineNumber": 42
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "f",
+          "lineNumber": 42
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "erreur.pack",
+          "lineNumber": 43
+        },
+        {
+          "caller": "valider",
+          "callee": "identite.definir_poste",
+          "lineNumber": 47
+        },
+        {
+          "caller": "valider",
+          "callee": "var.get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "valider",
+          "callee": "erreur.config",
+          "lineNumber": 49
+        },
+        {
+          "caller": "valider",
+          "callee": "str",
+          "lineNumber": 49
+        },
+        {
+          "caller": "valider",
+          "callee": "fen.destroy",
+          "lineNumber": 52
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "tk.Frame",
+          "lineNumber": 54
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "boutons.pack",
+          "lineNumber": 55
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "ttk.Button(boutons, text=\"Enregistrer\", style=\"Maj.TButton\", command=valider).pack",
+          "lineNumber": 56
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "ttk.Button",
+          "lineNumber": 56
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "ttk.Button(boutons, text=\"Annuler\", style=\"Tool.TButton\", command=fen.destroy).pack",
+          "lineNumber": 58
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "ttk.Button",
+          "lineNumber": 58
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "fen.bind",
+          "lineNumber": 59
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "fen.destroy",
+          "lineNumber": 59
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "fen.protocol",
+          "lineNumber": 60
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "fen.bind",
+          "lineNumber": 61
+        },
+        {
+          "caller": "demander_poste",
+          "callee": "_afficher_modale",
+          "lineNumber": 62
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "_fenetre",
+          "lineNumber": 68
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Frame",
+          "lineNumber": 70
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "cadre.pack",
+          "lineNumber": 71
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label(cadre, text=\"Techniciens\", bg=BG, fg=TEXTE, font=f(16, True), anchor=\"w\").pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label",
+          "lineNumber": 72
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 72
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Listbox",
+          "lineNumber": 73
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 73
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "liste.pack",
+          "lineNumber": 75
+        },
+        {
+          "caller": "remplir",
+          "callee": "liste.delete",
+          "lineNumber": 78
+        },
+        {
+          "caller": "remplir",
+          "callee": "identite.techniciens",
+          "lineNumber": 79
+        },
+        {
+          "caller": "remplir",
+          "callee": "liste.insert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "supprimer",
+          "callee": "liste.curselection",
+          "lineNumber": 83
+        },
+        {
+          "caller": "supprimer",
+          "callee": "identite.supprimer_technicien",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer",
+          "callee": "liste.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer",
+          "callee": "remplir",
+          "lineNumber": 85
+        },
+        {
+          "caller": "supprimer",
+          "callee": "resynchroniser",
+          "lineNumber": 86
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button(cadre, text=\"Supprimer le technicien sélectionné\", style=\"Tool.TButton\", command=supprimer).pack",
+          "lineNumber": 88
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button",
+          "lineNumber": 88
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Frame",
+          "lineNumber": 89
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ligne.pack",
+          "lineNumber": 90
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.StringVar",
+          "lineNumber": 91
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.StringVar",
+          "lineNumber": 91
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Frame",
+          "lineNumber": 93
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "bloc.pack",
+          "lineNumber": 94
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label(bloc, text=titre, bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 95
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label",
+          "lineNumber": 95
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 95
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Entry",
+          "lineNumber": 96
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 96
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "e.pack",
+          "lineNumber": 97
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label",
+          "lineNumber": 100
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 100
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "erreur.pack",
+          "lineNumber": 101
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Label",
+          "lineNumber": 102
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "f",
+          "lineNumber": 102
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "lbl_synchro.pack",
+          "lineNumber": 103
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "fen.winfo_exists",
+          "lineNumber": 106
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "synchro.etat",
+          "lineNumber": 108
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "lbl_synchro.config",
+          "lineNumber": 109
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "{\"serveur\": \"Synchronisé avec le serveur.\",\n                                 \"local\": \"Serveur injoignable : enregistré sur ce PC, transmis dès que possible.\",\n                                 \"non_configure\": \"Serveur non configuré : enregistré sur ce PC uniquement.\"}.get",
+          "lineNumber": 109
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "fen.after",
+          "lineNumber": 113
+        },
+        {
+          "caller": "maj_synchro",
+          "callee": "maj_synchro",
+          "lineNumber": 113
+        },
+        {
+          "caller": "resynchroniser",
+          "callee": "synchro.lancer",
+          "lineNumber": 116
+        },
+        {
+          "caller": "resynchroniser",
+          "callee": "lbl_synchro.config",
+          "lineNumber": 117
+        },
+        {
+          "caller": "resynchroniser",
+          "callee": "fen.after",
+          "lineNumber": 118
+        },
+        {
+          "caller": "ajouter",
+          "callee": "identite.ajouter_technicien",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ajouter",
+          "callee": "var_prenom.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ajouter",
+          "callee": "var_nom.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ajouter",
+          "callee": "erreur.config",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ajouter",
+          "callee": "str",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ajouter",
+          "callee": "var_prenom.set",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ajouter",
+          "callee": "var_nom.set",
+          "lineNumber": 127
+        },
+        {
+          "caller": "ajouter",
+          "callee": "erreur.config",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ajouter",
+          "callee": "remplir",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ajouter",
+          "callee": "resynchroniser",
+          "lineNumber": 130
+        },
+        {
+          "caller": "ajouter",
+          "callee": "premier.focus_set",
+          "lineNumber": 131
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "tk.Frame",
+          "lineNumber": 133
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "boutons.pack",
+          "lineNumber": 134
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button(boutons, text=\"Fermer\", style=\"Tool.TButton\", command=fen.destroy).pack",
+          "lineNumber": 135
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button",
+          "lineNumber": 135
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button(boutons, text=\"Ajouter\", style=\"Maj.TButton\", command=ajouter).pack",
+          "lineNumber": 136
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "ttk.Button",
+          "lineNumber": 136
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "fen.bind",
+          "lineNumber": 137
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "fen.bind",
+          "lineNumber": 138
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "fen.destroy",
+          "lineNumber": 138
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "remplir",
+          "lineNumber": 139
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "maj_synchro",
+          "lineNumber": 140
+        },
+        {
+          "caller": "gerer_techniciens",
+          "callee": "_afficher_modale",
+          "lineNumber": 141
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 149
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 149
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(self, text=\"Technicien\", bg=fond, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 151
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 151
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 151
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 152
+        },
+        {
+          "caller": "__init__",
+          "callee": "ligne.pack",
+          "lineNumber": 153
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 154
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Combobox",
+          "lineNumber": 155
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 155
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.combo.pack",
+          "lineNumber": 156
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(ligne, text=\"Gérer\", style=\"Tool.TButton\", command=self._gerer, takefocus=False).pack",
+          "lineNumber": 157
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 157
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "synchro.lancer",
+          "lineNumber": 160
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.after",
+          "lineNumber": 161
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.winfo_exists",
+          "lineNumber": 161
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.rafraichir",
+          "lineNumber": 161
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "identite.techniciens",
+          "lineNumber": 162
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.combo.config",
+          "lineNumber": 163
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.var.get",
+          "lineNumber": 164
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "identite.dernier_technicien",
+          "lineNumber": 164
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "self.var.set",
+          "lineNumber": 165
+        },
+        {
+          "caller": "rafraichir",
+          "callee": "len",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_gerer",
+          "callee": "gerer_techniciens",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_gerer",
+          "callee": "self.winfo_toplevel",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_gerer",
+          "callee": "self.rafraichir",
+          "lineNumber": 169
+        },
+        {
+          "caller": "valeur",
+          "callee": "self.var.get",
+          "lineNumber": 172
+        },
+        {
+          "caller": "valeur",
+          "callee": "identite.retenir_technicien",
+          "lineNumber": 174
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "envoi.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 162,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "_reglages",
+          "startLine": 33,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "_lire_file",
+          "startLine": 40,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "_ecrire_file",
+          "startLine": 49,
+          "endLine": 53,
+          "params": [
+            "file"
+          ]
+        },
+        {
+          "name": "_poster",
+          "startLine": 56,
+          "endLine": 78,
+          "params": [
+            "reglages",
+            "element"
+          ]
+        },
+        {
+          "name": "_noter_envoyes",
+          "startLine": 81,
+          "endLine": 90,
+          "params": [
+            "elements"
+          ]
+        },
+        {
+          "name": "_boucle",
+          "startLine": 93,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "_demarrer",
+          "startLine": 117,
+          "endLine": 122,
+          "params": []
+        },
+        {
+          "name": "envoyer",
+          "startLine": 125,
+          "endLine": 134,
+          "params": [
+            "module",
+            "chemin",
+            "motif"
+          ]
+        },
+        {
+          "name": "rattraper",
+          "startLine": 137,
+          "endLine": 156,
+          "params": [
+            "dossiers"
+          ]
+        },
+        {
+          "name": "reprendre",
+          "startLine": 159,
+          "endLine": 162,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_reglages",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "_lire_file",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "_ecrire_file",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "_poster",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "_noter_envoyes",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "_boucle",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "_demarrer",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "envoyer",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "rattraper",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "reprendre",
+          "line": 159,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_reglages",
+          "callee": "config.charger().get(\"reglages\", {}).get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_reglages",
+          "callee": "config.charger().get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_reglages",
+          "callee": "config.charger",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_reglages",
+          "callee": "str(r.get(\"url\", \"\")).rstrip",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_reglages",
+          "callee": "str",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_reglages",
+          "callee": "r.get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_reglages",
+          "callee": "str",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_reglages",
+          "callee": "r.get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_reglages",
+          "callee": "str",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_reglages",
+          "callee": "r.get",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_reglages",
+          "callee": "identite.poste",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_reglages",
+          "callee": "os.environ.get",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_reglages",
+          "callee": "os.uname",
+          "lineNumber": 36
+        },
+        {
+          "caller": "_lire_file",
+          "callee": "open",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_lire_file",
+          "callee": "json.load",
+          "lineNumber": 43
+        },
+        {
+          "caller": "_lire_file",
+          "callee": "isinstance",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_ecrire_file",
+          "callee": "open",
+          "lineNumber": 51
+        },
+        {
+          "caller": "_ecrire_file",
+          "callee": "json.dump",
+          "lineNumber": 52
+        },
+        {
+          "caller": "_ecrire_file",
+          "callee": "os.replace",
+          "lineNumber": 53
+        },
+        {
+          "caller": "_poster",
+          "callee": "open",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_poster",
+          "callee": "f.read",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_poster",
+          "callee": "urllib.request.Request",
+          "lineNumber": 65
+        },
+        {
+          "caller": "_poster",
+          "callee": "quote",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_poster",
+          "callee": "quote",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_poster",
+          "callee": "quote",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_poster",
+          "callee": "os.path.basename",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_poster",
+          "callee": "quote",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_poster",
+          "callee": "element.get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_poster",
+          "callee": "quote",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_poster",
+          "callee": "urllib.request.urlopen",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "open",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "json.load",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "open",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "json.dump",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "sorted",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "set",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_noter_envoyes",
+          "callee": "os.replace",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_reglages",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_lire_file",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_poster",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_boucle",
+          "callee": "envoyes.append",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_ecrire_file",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_lire_file",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_noter_envoyes",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_boucle",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_boucle",
+          "callee": "len",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_lire_file",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_boucle",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_boucle",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_reveil.wait",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_boucle",
+          "callee": "_reveil.clear",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_thread.is_alive",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "threading.Thread",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_thread.start",
+          "lineNumber": 122
+        },
+        {
+          "caller": "envoyer",
+          "callee": "_reglages",
+          "lineNumber": 127
+        },
+        {
+          "caller": "envoyer",
+          "callee": "os.path.abspath",
+          "lineNumber": 129
+        },
+        {
+          "caller": "envoyer",
+          "callee": "_lire_file",
+          "lineNumber": 131
+        },
+        {
+          "caller": "envoyer",
+          "callee": "_ecrire_file",
+          "lineNumber": 133
+        },
+        {
+          "caller": "envoyer",
+          "callee": "_demarrer",
+          "lineNumber": 134
+        },
+        {
+          "caller": "rattraper",
+          "callee": "_reglages",
+          "lineNumber": 140
+        },
+        {
+          "caller": "rattraper",
+          "callee": "open",
+          "lineNumber": 143
+        },
+        {
+          "caller": "rattraper",
+          "callee": "set",
+          "lineNumber": 144
+        },
+        {
+          "caller": "rattraper",
+          "callee": "json.load",
+          "lineNumber": 144
+        },
+        {
+          "caller": "rattraper",
+          "callee": "set",
+          "lineNumber": 146
+        },
+        {
+          "caller": "rattraper",
+          "callee": "_lire_file",
+          "lineNumber": 148
+        },
+        {
+          "caller": "rattraper",
+          "callee": "os.path.abspath",
+          "lineNumber": 150
+        },
+        {
+          "caller": "rattraper",
+          "callee": "dossiers.items",
+          "lineNumber": 151
+        },
+        {
+          "caller": "rattraper",
+          "callee": "sorted",
+          "lineNumber": 151
+        },
+        {
+          "caller": "rattraper",
+          "callee": "glob.glob",
+          "lineNumber": 151
+        },
+        {
+          "caller": "rattraper",
+          "callee": "os.path.join",
+          "lineNumber": 151
+        },
+        {
+          "caller": "rattraper",
+          "callee": "os.path.abspath",
+          "lineNumber": 152
+        },
+        {
+          "caller": "rattraper",
+          "callee": "_ecrire_file",
+          "lineNumber": 154
+        },
+        {
+          "caller": "rattraper",
+          "callee": "_demarrer",
+          "lineNumber": 156
+        },
+        {
+          "caller": "reprendre",
+          "callee": "_reglages",
+          "lineNumber": 161
+        },
+        {
+          "caller": "reprendre",
+          "callee": "_lire_file",
+          "lineNumber": 161
+        },
+        {
+          "caller": "reprendre",
+          "callee": "_demarrer",
+          "lineNumber": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "gui.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 321,
+      "nonEmptyLines": 287,
+      "classes": [
+        {
+          "name": "Application",
+          "startLine": 34,
+          "endLine": 316,
+          "methods": [
+            "__init__",
+            "_entete",
+            "_maj_poste",
+            "_premier_lancement",
+            "changer_poste",
+            "_etat_version",
+            "_lancer_verification",
+            "_verifier_maj",
+            "_resultat_verification",
+            "_traiter_maj",
+            "_installer_maj",
+            "_maj_pret",
+            "module_actif",
+            "modules_actifs",
+            "module_de",
+            "parent_de",
+            "page",
+            "page_occupee",
+            "occupe",
+            "aller",
+            "retour",
+            "_maj_statut",
+            "_rafraichir_statut",
+            "_fermer"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Application",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.title",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.configure",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.geometry",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.minsize",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.init_styles",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "Gestionnaire",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._entete",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.zone.pack",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._maj_poste",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.aller",
+          "lineNumber": 54
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._rafraichir_statut",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.protocol",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "updater.nettoyer",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "envoi.rattraper",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "m.dossier_csv",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "m.dossier_csv",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "synchro.lancer",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "identite.poste",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Frame",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_entete",
+          "callee": "tete.pack",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.PhotoImage",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_entete",
+          "callee": "os.path.join",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Label",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_entete",
+          "callee": "lbl.pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Label",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.f",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_entete",
+          "callee": "lbl.pack",
+          "lineNumber": 75
+        },
+        {
+          "caller": "_entete",
+          "callee": "lbl.bind",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.aller",
+          "lineNumber": 76
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Label",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.f",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.lbl_version.pack",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.lbl_version.bind",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_entete",
+          "callee": "self._lancer_verification",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_entete",
+          "callee": "ttk.Button",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.btn_poste.pack",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Label",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.f",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.lbl_statut.pack",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_entete",
+          "callee": "ttk.Button",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Frame",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.filet.pack",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Frame",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_entete",
+          "callee": "tk.Label",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.f",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.lbl_maj.pack",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_entete",
+          "callee": "ttk.Button",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.btn_plus_tard.pack",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_entete",
+          "callee": "ttk.Button",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_entete",
+          "callee": "self.btn_maj.pack",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_maj_poste",
+          "callee": "self.btn_poste.config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_maj_poste",
+          "callee": "identite.poste",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_premier_lancement",
+          "callee": "dialogue_identite.demander_poste",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_premier_lancement",
+          "callee": "self.destroy",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_premier_lancement",
+          "callee": "self._maj_poste",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_premier_lancement",
+          "callee": "synchro.lancer",
+          "lineNumber": 108
+        },
+        {
+          "caller": "changer_poste",
+          "callee": "dialogue_identite.demander_poste",
+          "lineNumber": 111
+        },
+        {
+          "caller": "changer_poste",
+          "callee": "self._maj_poste",
+          "lineNumber": 112
+        },
+        {
+          "caller": "changer_poste",
+          "callee": "synchro.lancer",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_etat_version",
+          "callee": "self.lbl_version.config",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "updater.installe",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "messagebox.showinfo",
+          "lineNumber": 126
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "self._etat_version",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "threading.Thread(target=lambda: self._maj_file.put((\"verif\", *updater.verifier(), manuel)), daemon=True).start",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "threading.Thread",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "self._maj_file.put",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_lancer_verification",
+          "callee": "updater.verifier",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_verifier_maj",
+          "callee": "self._lancer_verification",
+          "lineNumber": 135
+        },
+        {
+          "caller": "_verifier_maj",
+          "callee": "self.after",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self._etat_version",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "updater.plus_recente",
+          "lineNumber": 144
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self._etat_version",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self.btn_maj.config",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self.btn_plus_tard.config",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self.banniere.pack",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "self._etat_version",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "updater._numeros",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "updater.systeme",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "', '.join",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_resultat_verification",
+          "callee": "messagebox.showinfo",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self._maj_file.get_nowait",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self._resultat_verification",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self._maj_pret",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self.btn_maj.config",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self.btn_plus_tard.config",
+          "lineNumber": 177
+        },
+        {
+          "caller": "_traiter_maj",
+          "callee": "self.after",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "self.occupe",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "messagebox.showinfo",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "self.btn_maj.config",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "self.btn_plus_tard.config",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 191
+        },
+        {
+          "caller": "tache",
+          "callee": "updater.telecharger",
+          "lineNumber": 195
+        },
+        {
+          "caller": "tache",
+          "callee": "self._maj_file.put",
+          "lineNumber": 195
+        },
+        {
+          "caller": "tache",
+          "callee": "self._maj_file.put",
+          "lineNumber": 196
+        },
+        {
+          "caller": "tache",
+          "callee": "updater.appliquer",
+          "lineNumber": 196
+        },
+        {
+          "caller": "tache",
+          "callee": "self._maj_file.put",
+          "lineNumber": 198
+        },
+        {
+          "caller": "tache",
+          "callee": "str",
+          "lineNumber": 198
+        },
+        {
+          "caller": "tache",
+          "callee": "self._maj_file.put",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "threading.Thread(target=tache, daemon=True).start",
+          "lineNumber": 201
+        },
+        {
+          "caller": "_installer_maj",
+          "callee": "threading.Thread",
+          "lineNumber": 201
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "self.occupe",
+          "lineNumber": 204
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 205
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "os.path.abspath",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "os.path.abspath",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "updater._chemin_actuel",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "self.lbl_maj.config",
+          "lineNumber": 211
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "self.update_idletasks",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "updater.relancer",
+          "lineNumber": 214
+        },
+        {
+          "caller": "_maj_pret",
+          "callee": "self.destroy",
+          "lineNumber": 215
+        },
+        {
+          "caller": "module_actif",
+          "callee": "config.module_actif",
+          "lineNumber": 219
+        },
+        {
+          "caller": "modules_actifs",
+          "callee": "self.module_actif",
+          "lineNumber": 222
+        },
+        {
+          "caller": "module_de",
+          "callee": "page_id.startswith",
+          "lineNumber": 227
+        },
+        {
+          "caller": "module_de",
+          "callee": "page_id.split",
+          "lineNumber": 230
+        },
+        {
+          "caller": "parent_de",
+          "callee": "page_id.split",
+          "lineNumber": 237
+        },
+        {
+          "caller": "page",
+          "callee": "Accueil",
+          "lineNumber": 244
+        },
+        {
+          "caller": "page",
+          "callee": "PageModules",
+          "lineNumber": 246
+        },
+        {
+          "caller": "page",
+          "callee": "PageInstruments",
+          "lineNumber": 248
+        },
+        {
+          "caller": "page",
+          "callee": "page_id.startswith",
+          "lineNumber": 249
+        },
+        {
+          "caller": "page",
+          "callee": "PageModule",
+          "lineNumber": 250
+        },
+        {
+          "caller": "page",
+          "callee": "page_id.partition",
+          "lineNumber": 252
+        },
+        {
+          "caller": "page",
+          "callee": "self.modules[module_id].creer_page",
+          "lineNumber": 253
+        },
+        {
+          "caller": "page_occupee",
+          "callee": "self.pages.items",
+          "lineNumber": 259
+        },
+        {
+          "caller": "page_occupee",
+          "callee": "getattr",
+          "lineNumber": 260
+        },
+        {
+          "caller": "page_occupee",
+          "callee": "occupe",
+          "lineNumber": 261
+        },
+        {
+          "caller": "occupe",
+          "callee": "self.page_occupee",
+          "lineNumber": 266
+        },
+        {
+          "caller": "aller",
+          "callee": "self.page_occupee",
+          "lineNumber": 269
+        },
+        {
+          "caller": "aller",
+          "callee": "self.module_de",
+          "lineNumber": 272
+        },
+        {
+          "caller": "aller",
+          "callee": "self.module_actif",
+          "lineNumber": 273
+        },
+        {
+          "caller": "aller",
+          "callee": "self.page",
+          "lineNumber": 275
+        },
+        {
+          "caller": "aller",
+          "callee": "getattr",
+          "lineNumber": 278
+        },
+        {
+          "caller": "aller",
+          "callee": "quitter",
+          "lineNumber": 280
+        },
+        {
+          "caller": "aller",
+          "callee": "ancienne.pack_forget",
+          "lineNumber": 281
+        },
+        {
+          "caller": "aller",
+          "callee": "page.pack",
+          "lineNumber": 283
+        },
+        {
+          "caller": "aller",
+          "callee": "page.on_show",
+          "lineNumber": 284
+        },
+        {
+          "caller": "aller",
+          "callee": "self.btn_menu.pack_forget",
+          "lineNumber": 286
+        },
+        {
+          "caller": "aller",
+          "callee": "self.btn_menu.pack",
+          "lineNumber": 288
+        },
+        {
+          "caller": "aller",
+          "callee": "self._maj_statut",
+          "lineNumber": 290
+        },
+        {
+          "caller": "retour",
+          "callee": "self.aller",
+          "lineNumber": 293
+        },
+        {
+          "caller": "retour",
+          "callee": "self.parent_de",
+          "lineNumber": 293
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "self.module_de",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "self.instruments.statut",
+          "lineNumber": 299
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "max",
+          "lineNumber": 300
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "self.lbl_statut.config",
+          "lineNumber": 301
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "\"     \".join",
+          "lineNumber": 301
+        },
+        {
+          "caller": "_maj_statut",
+          "callee": "COULEURS_ETAT.get",
+          "lineNumber": 301
+        },
+        {
+          "caller": "_rafraichir_statut",
+          "callee": "self.occupe",
+          "lineNumber": 304
+        },
+        {
+          "caller": "_rafraichir_statut",
+          "callee": "self._maj_statut",
+          "lineNumber": 305
+        },
+        {
+          "caller": "_rafraichir_statut",
+          "callee": "self.after",
+          "lineNumber": 306
+        },
+        {
+          "caller": "_fermer",
+          "callee": "self.page_occupee",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_fermer",
+          "callee": "messagebox.askyesno",
+          "lineNumber": 311
+        },
+        {
+          "caller": "_fermer",
+          "callee": "getattr",
+          "lineNumber": 313
+        },
+        {
+          "caller": "_fermer",
+          "callee": "arreter",
+          "lineNumber": 315
+        },
+        {
+          "caller": "_fermer",
+          "callee": "self.destroy",
+          "lineNumber": 316
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "identite.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 122,
+      "functions": [
+        {
+          "name": "nettoyer",
+          "startLine": 21,
+          "endLine": 23,
+          "params": [
+            "texte"
+          ]
+        },
+        {
+          "name": "poste",
+          "startLine": 27,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "definir_poste",
+          "startLine": 32,
+          "endLine": 41,
+          "params": [
+            "identifiant"
+          ]
+        },
+        {
+          "name": "techniciens",
+          "startLine": 45,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "ajouter_technicien",
+          "startLine": 56,
+          "endLine": 74,
+          "params": [
+            "prenom",
+            "nom"
+          ]
+        },
+        {
+          "name": "supprimer_technicien",
+          "startLine": 77,
+          "endLine": 86,
+          "params": [
+            "complet"
+          ]
+        },
+        {
+          "name": "_en_attente",
+          "startLine": 89,
+          "endLine": 91,
+          "params": [
+            "data",
+            "cle"
+          ]
+        },
+        {
+          "name": "operations_en_attente",
+          "startLine": 94,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "operation_transmise",
+          "startLine": 100,
+          "endLine": 105,
+          "params": [
+            "cle",
+            "nom"
+          ]
+        },
+        {
+          "name": "remplacer_techniciens",
+          "startLine": 108,
+          "endLine": 117,
+          "params": [
+            "liste"
+          ]
+        },
+        {
+          "name": "dernier_technicien",
+          "startLine": 120,
+          "endLine": 122,
+          "params": []
+        },
+        {
+          "name": "retenir_technicien",
+          "startLine": 125,
+          "endLine": 129,
+          "params": [
+            "complet"
+          ]
+        },
+        {
+          "name": "lignes_signature",
+          "startLine": 133,
+          "endLine": 139,
+          "params": [
+            "technicien"
+          ]
+        },
+        {
+          "name": "lire_entete",
+          "startLine": 142,
+          "endLine": 153,
+          "params": [
+            "f"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "nettoyer",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "poste",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "definir_poste",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "techniciens",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "ajouter_technicien",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "supprimer_technicien",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "_en_attente",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "operations_en_attente",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "operation_transmise",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "remplacer_techniciens",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "dernier_technicien",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "retenir_technicien",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "lignes_signature",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "lire_entete",
+          "line": 142,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "nettoyer",
+          "callee": "re.sub(r\"\\s+\", \" \", re.sub(r\"[\\x00-\\x1f\\x7f]\", \" \", str(texte or \"\"))).strip",
+          "lineNumber": 23
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "re.sub",
+          "lineNumber": 23
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "re.sub",
+          "lineNumber": 23
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "str",
+          "lineNumber": 23
+        },
+        {
+          "caller": "poste",
+          "callee": "nettoyer",
+          "lineNumber": 28
+        },
+        {
+          "caller": "poste",
+          "callee": "config.charger().get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "poste",
+          "callee": "config.charger",
+          "lineNumber": 28
+        },
+        {
+          "caller": "poste",
+          "callee": "_POSTE_VALIDE.match",
+          "lineNumber": 29
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "nettoyer",
+          "lineNumber": 33
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "ValueError",
+          "lineNumber": 35
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "_POSTE_VALIDE.match",
+          "lineNumber": 36
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "ValueError",
+          "lineNumber": 37
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "config.charger",
+          "lineNumber": 39
+        },
+        {
+          "caller": "definir_poste",
+          "callee": "config.sauver",
+          "lineNumber": 41
+        },
+        {
+          "caller": "techniciens",
+          "callee": "config.charger().get",
+          "lineNumber": 46
+        },
+        {
+          "caller": "techniciens",
+          "callee": "config.charger",
+          "lineNumber": 46
+        },
+        {
+          "caller": "techniciens",
+          "callee": "set",
+          "lineNumber": 47
+        },
+        {
+          "caller": "techniciens",
+          "callee": "isinstance",
+          "lineNumber": 48
+        },
+        {
+          "caller": "techniciens",
+          "callee": "nettoyer",
+          "lineNumber": 49
+        },
+        {
+          "caller": "techniciens",
+          "callee": "t.casefold",
+          "lineNumber": 50
+        },
+        {
+          "caller": "techniciens",
+          "callee": "vus.add",
+          "lineNumber": 51
+        },
+        {
+          "caller": "techniciens",
+          "callee": "t.casefold",
+          "lineNumber": 51
+        },
+        {
+          "caller": "techniciens",
+          "callee": "liste.append",
+          "lineNumber": 52
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 58
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 58
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "ValueError",
+          "lineNumber": 60
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "t[:1].upper",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "maj",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "maj",
+          "lineNumber": 62
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "techniciens",
+          "lineNumber": 64
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "next",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "t.casefold",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "complet.casefold",
+          "lineNumber": 65
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "config.charger",
+          "lineNumber": 68
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "_en_attente",
+          "lineNumber": 70
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "_en_attente",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "t.casefold",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "complet.casefold",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ajouter_technicien",
+          "callee": "config.sauver",
+          "lineNumber": 73
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "config.charger",
+          "lineNumber": 79
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer(complet).casefold",
+          "lineNumber": 80
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 80
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "techniciens",
+          "lineNumber": 81
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "t.casefold",
+          "lineNumber": 81
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "_en_attente",
+          "lineNumber": 82
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "t.casefold",
+          "lineNumber": 82
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "_en_attente",
+          "lineNumber": 83
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 83
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer(data.get(\"dernier_technicien\")).casefold",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "data.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer(complet).casefold",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 84
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "data.pop",
+          "lineNumber": 85
+        },
+        {
+          "caller": "supprimer_technicien",
+          "callee": "config.sauver",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_en_attente",
+          "callee": "data.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_en_attente",
+          "callee": "nettoyer",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_en_attente",
+          "callee": "isinstance",
+          "lineNumber": 91
+        },
+        {
+          "caller": "operations_en_attente",
+          "callee": "config.charger",
+          "lineNumber": 96
+        },
+        {
+          "caller": "operations_en_attente",
+          "callee": "_en_attente",
+          "lineNumber": 97
+        },
+        {
+          "caller": "operations_en_attente",
+          "callee": "_en_attente",
+          "lineNumber": 97
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "config.charger",
+          "lineNumber": 103
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "_en_attente",
+          "lineNumber": 104
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "t.casefold",
+          "lineNumber": 104
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "nettoyer(nom).casefold",
+          "lineNumber": 104
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "nettoyer",
+          "lineNumber": 104
+        },
+        {
+          "caller": "operation_transmise",
+          "callee": "config.sauver",
+          "lineNumber": 105
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "config.charger",
+          "lineNumber": 111
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "_en_attente",
+          "lineNumber": 112
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "_en_attente",
+          "lineNumber": 112
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "nettoyer",
+          "lineNumber": 113
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "t.casefold",
+          "lineNumber": 114
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "t.casefold",
+          "lineNumber": 115
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "t.casefold",
+          "lineNumber": 116
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "x.casefold",
+          "lineNumber": 116
+        },
+        {
+          "caller": "remplacer_techniciens",
+          "callee": "config.sauver",
+          "lineNumber": 117
+        },
+        {
+          "caller": "dernier_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 121
+        },
+        {
+          "caller": "dernier_technicien",
+          "callee": "config.charger().get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "dernier_technicien",
+          "callee": "config.charger",
+          "lineNumber": 121
+        },
+        {
+          "caller": "dernier_technicien",
+          "callee": "techniciens",
+          "lineNumber": 122
+        },
+        {
+          "caller": "retenir_technicien",
+          "callee": "config.charger",
+          "lineNumber": 127
+        },
+        {
+          "caller": "retenir_technicien",
+          "callee": "nettoyer",
+          "lineNumber": 128
+        },
+        {
+          "caller": "retenir_technicien",
+          "callee": "config.sauver",
+          "lineNumber": 129
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "nettoyer",
+          "lineNumber": 135
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "nettoyer",
+          "lineNumber": 135
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "poste",
+          "lineNumber": 136
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "lignes.append",
+          "lineNumber": 137
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "poste",
+          "lineNumber": 137
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "lignes.append",
+          "lineNumber": 138
+        },
+        {
+          "caller": "lignes_signature",
+          "callee": "\"\".join",
+          "lineNumber": 139
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "f.tell",
+          "lineNumber": 147
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "f.readline",
+          "lineNumber": 148
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "next",
+          "lineNumber": 149
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "PREFIXES.items",
+          "lineNumber": 149
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "ligne.startswith",
+          "lineNumber": 149
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "f.seek",
+          "lineNumber": 151
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "nettoyer",
+          "lineNumber": 153
+        },
+        {
+          "caller": "lire_entete",
+          "callee": "len",
+          "lineNumber": 153
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "instruments/gestionnaire.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 163,
+      "nonEmptyLines": 138,
+      "classes": [
+        {
+          "name": "Gestionnaire",
+          "startLine": 21,
+          "endLine": 163,
+          "methods": [
+            "__init__",
+            "instrument",
+            "_utilisable",
+            "ports",
+            "_reclames",
+            "candidats",
+            "_cle",
+            "manuel",
+            "memorise",
+            "choisir",
+            "port",
+            "origine",
+            "statut",
+            "tester",
+            "detecter",
+            "lancer_detection",
+            "en_recherche",
+            "port_ou_erreur"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Gestionnaire",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "threading.Lock",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_utilisable",
+          "callee": "f\"{p.device} {p.description}\".lower",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_utilisable",
+          "callee": "any",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ports",
+          "callee": "time.monotonic",
+          "lineNumber": 40
+        },
+        {
+          "caller": "ports",
+          "callee": "time.monotonic",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ports",
+          "callee": "self._lister",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ports",
+          "callee": "self._utilisable",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ports",
+          "callee": "list",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_reclames",
+          "callee": "self.ports",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_reclames",
+          "callee": "self.registre.values",
+          "lineNumber": 46
+        },
+        {
+          "caller": "_reclames",
+          "callee": "i.reconnu_par_vid",
+          "lineNumber": 46
+        },
+        {
+          "caller": "candidats",
+          "callee": "inst.candidats",
+          "lineNumber": 50
+        },
+        {
+          "caller": "candidats",
+          "callee": "self.ports",
+          "lineNumber": 50
+        },
+        {
+          "caller": "candidats",
+          "callee": "self._reclames",
+          "lineNumber": 52
+        },
+        {
+          "caller": "manuel",
+          "callee": "config.reglage",
+          "lineNumber": 61
+        },
+        {
+          "caller": "manuel",
+          "callee": "self._cle",
+          "lineNumber": 61
+        },
+        {
+          "caller": "memorise",
+          "callee": "config.reglage",
+          "lineNumber": 64
+        },
+        {
+          "caller": "memorise",
+          "callee": "self._cle",
+          "lineNumber": 64
+        },
+        {
+          "caller": "choisir",
+          "callee": "config.definir_reglage",
+          "lineNumber": 68
+        },
+        {
+          "caller": "choisir",
+          "callee": "self._cle",
+          "lineNumber": 68
+        },
+        {
+          "caller": "port",
+          "callee": "self.ports",
+          "lineNumber": 73
+        },
+        {
+          "caller": "port",
+          "callee": "self.manuel",
+          "lineNumber": 74
+        },
+        {
+          "caller": "port",
+          "callee": "self.memorise",
+          "lineNumber": 77
+        },
+        {
+          "caller": "port",
+          "callee": "self.candidats",
+          "lineNumber": 78
+        },
+        {
+          "caller": "port",
+          "callee": "self.candidats",
+          "lineNumber": 82
+        },
+        {
+          "caller": "origine",
+          "callee": "self.port",
+          "lineNumber": 88
+        },
+        {
+          "caller": "origine",
+          "callee": "self.manuel",
+          "lineNumber": 90
+        },
+        {
+          "caller": "origine",
+          "callee": "self.memorise",
+          "lineNumber": 92
+        },
+        {
+          "caller": "origine",
+          "callee": "self.port",
+          "lineNumber": 92
+        },
+        {
+          "caller": "statut",
+          "callee": "self.en_recherche",
+          "lineNumber": 97
+        },
+        {
+          "caller": "statut",
+          "callee": "self.port",
+          "lineNumber": 99
+        },
+        {
+          "caller": "statut",
+          "callee": "self.manuel",
+          "lineNumber": 102
+        },
+        {
+          "caller": "tester",
+          "callee": "self.port",
+          "lineNumber": 113
+        },
+        {
+          "caller": "tester",
+          "callee": "serial.Serial",
+          "lineNumber": 118
+        },
+        {
+          "caller": "tester",
+          "callee": "inst.sonde",
+          "lineNumber": 119
+        },
+        {
+          "caller": "detecter",
+          "callee": "self.candidats",
+          "lineNumber": 128
+        },
+        {
+          "caller": "detecter",
+          "callee": "self.tester",
+          "lineNumber": 129
+        },
+        {
+          "caller": "detecter",
+          "callee": "config.definir_reglage",
+          "lineNumber": 131
+        },
+        {
+          "caller": "detecter",
+          "callee": "self._cle",
+          "lineNumber": 131
+        },
+        {
+          "caller": "lancer_detection",
+          "callee": "self.en_recherche",
+          "lineNumber": 137
+        },
+        {
+          "caller": "tache",
+          "callee": "self.detecter",
+          "lineNumber": 142
+        },
+        {
+          "caller": "tache",
+          "callee": "self._recherches.pop",
+          "lineNumber": 144
+        },
+        {
+          "caller": "lancer_detection",
+          "callee": "threading.Thread",
+          "lineNumber": 146
+        },
+        {
+          "caller": "lancer_detection",
+          "callee": "t.start",
+          "lineNumber": 148
+        },
+        {
+          "caller": "en_recherche",
+          "callee": "self._recherches.get",
+          "lineNumber": 151
+        },
+        {
+          "caller": "en_recherche",
+          "callee": "t.is_alive",
+          "lineNumber": 152
+        },
+        {
+          "caller": "port_ou_erreur",
+          "callee": "self.port",
+          "lineNumber": 156
+        },
+        {
+          "caller": "port_ou_erreur",
+          "callee": "messagebox.showerror",
+          "lineNumber": 160
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/decharge/page_encours.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 213,
+      "nonEmptyLines": 191,
+      "classes": [
+        {
+          "name": "PageEnCours",
+          "startLine": 18,
+          "endLine": 213,
+          "methods": [
+            "__init__",
+            "on_show",
+            "_etat",
+            "en_test",
+            "occupe",
+            "_boutons",
+            "demarrer",
+            "_arreter",
+            "arreter_et_attendre",
+            "_test",
+            "_traiter_file",
+            "_fin_test",
+            "_voir_analyse"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageEnCours",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 22
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 26
+        },
+        {
+          "caller": "__init__",
+          "callee": "threading.Event",
+          "lineNumber": 27
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 33
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 36
+        },
+        {
+          "caller": "__init__",
+          "callee": "haut.pack",
+          "lineNumber": 37
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.zone_btn.pack",
+          "lineNumber": 39
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 40
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 41
+        },
+        {
+          "caller": "__init__",
+          "callee": "app.aller",
+          "lineNumber": 42
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 43
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 45
+        },
+        {
+          "caller": "__init__",
+          "callee": "textes.pack",
+          "lineNumber": 46
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 47
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_profil.pack",
+          "lineNumber": 48
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_detail.pack",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 53
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.pack",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "enumerate",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "grille.columnconfigure",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 63
+        },
+        {
+          "caller": "__init__",
+          "callee": "bloc.grid",
+          "lineNumber": 64
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(bloc, text=titre, bg=BG, fg=GRIS, font=f(11)).pack",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 65
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "lbl.pack",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(corps, text=\"Évolution au cours du temps\", bg=BG, fg=TEXTE, font=f(14, True),\n                 anchor=\"w\").pack",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(corps, bg=BORD, height=1).pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "GraphesTemps",
+          "lineNumber": 73
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.pack",
+          "lineNumber": 74
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.definir",
+          "lineNumber": 75
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_etat",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 83
+        },
+        {
+          "caller": "en_test",
+          "callee": "self.thread.is_alive",
+          "lineNumber": 86
+        },
+        {
+          "caller": "occupe",
+          "callee": "self.en_test",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.zone_btn.winfo_children",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_boutons",
+          "callee": "w.pack_forget",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_stop.pack",
+          "lineNumber": 97
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_nouveau.pack",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.btn_analyse.pack",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_boutons",
+          "callee": "self.app.btn_menu.config",
+          "lineNumber": 101
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.en_test",
+          "lineNumber": 105
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.series.values",
+          "lineNumber": 107
+        },
+        {
+          "caller": "demarrer",
+          "callee": "serie.clear",
+          "lineNumber": 108
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.vals.values",
+          "lineNumber": 109
+        },
+        {
+          "caller": "demarrer",
+          "callee": "lbl.config",
+          "lineNumber": 110
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.lbl_profil.config",
+          "lineNumber": 111
+        },
+        {
+          "caller": "demarrer",
+          "callee": "morceaux.append",
+          "lineNumber": 113
+        },
+        {
+          "caller": "demarrer",
+          "callee": "T.resume_profil",
+          "lineNumber": 113
+        },
+        {
+          "caller": "demarrer",
+          "callee": "morceaux.append",
+          "lineNumber": 115
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.lbl_detail.config",
+          "lineNumber": 116
+        },
+        {
+          "caller": "demarrer",
+          "callee": "\"   ·   \".join",
+          "lineNumber": 116
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.graphes.definir",
+          "lineNumber": 117
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.stop_evt.clear",
+          "lineNumber": 119
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self._boutons",
+          "lineNumber": 120
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self._etat",
+          "lineNumber": 121
+        },
+        {
+          "caller": "demarrer",
+          "callee": "threading.Thread",
+          "lineNumber": 122
+        },
+        {
+          "caller": "demarrer",
+          "callee": "self.thread.start",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.stop_evt.set",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self._etat",
+          "lineNumber": 129
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.stop_evt.set",
+          "lineNumber": 132
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.thread.join",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_test",
+          "callee": "serial.Serial",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.verrou",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_test",
+          "callee": "q.put",
+          "lineNumber": 142
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.regler_charge",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_test",
+          "callee": "open",
+          "lineNumber": 147
+        },
+        {
+          "caller": "_test",
+          "callee": "f.write",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_test",
+          "callee": "identite.lignes_signature",
+          "lineNumber": 148
+        },
+        {
+          "caller": "_test",
+          "callee": "csv.writer",
+          "lineNumber": 149
+        },
+        {
+          "caller": "_test",
+          "callee": "ecr.writerow",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.entree",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_test",
+          "callee": "q.put",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_test",
+          "callee": "time.monotonic",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_test",
+          "callee": "self.stop_evt.is_set",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.lire_valeurs",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_test",
+          "callee": "time.monotonic",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_test",
+          "callee": "ecr.writerow",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_test",
+          "callee": "f.flush",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_test",
+          "callee": "q.put",
+          "lineNumber": 165
+        },
+        {
+          "caller": "_test",
+          "callee": "self.stop_evt.wait",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.entree",
+          "lineNumber": 171
+        },
+        {
+          "caller": "_test",
+          "callee": "q.put",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_test",
+          "callee": "charge.verrou",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_test",
+          "callee": "q.put",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.file.get_nowait",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"V\"].config",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"A\"].config",
+          "lineNumber": 185
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"W\"].config",
+          "lineNumber": 186
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"Ah\"].config",
+          "lineNumber": 187
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"Wh\"].config",
+          "lineNumber": 188
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.vals[\"t\"].config",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "time.strftime",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "time.gmtime",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.series[\"V\"].append",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.series[\"A\"].append",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.series[\"W\"].append",
+          "lineNumber": 192
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.graphes.tracer",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self._fin_test",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_traiter_file",
+          "callee": "self.after",
+          "lineNumber": 198
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._boutons",
+          "lineNumber": 201
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "envoi.envoyer",
+          "lineNumber": 202
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 204
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "messagebox.showerror",
+          "lineNumber": 205
+        },
+        {
+          "caller": "_fin_test",
+          "callee": "self._etat",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_voir_analyse",
+          "callee": "self.app.page",
+          "lineNumber": 212
+        },
+        {
+          "caller": "_voir_analyse",
+          "callee": "self.app.aller",
+          "lineNumber": 213
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "modules/equilibrage/page_session.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 258,
+      "nonEmptyLines": 233,
+      "functions": [
+        {
+          "name": "_nombre",
+          "startLine": 23,
+          "endLine": 30,
+          "params": [
+            "texte",
+            "nom",
+            "minimum",
+            "strict"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageSession",
+          "startLine": 33,
+          "endLine": 258,
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_surveiller_instrument",
+            "occupe",
+            "arreter_et_attendre",
+            "_etat",
+            "_mode",
+            "_demarrer",
+            "_arreter",
+            "_ouvrir_dossier",
+            "_traiter",
+            "_donnees",
+            "_fin"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_nombre",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "PageSession",
+          "line": 33,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_nombre",
+          "callee": "float",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_nombre",
+          "callee": "texte.strip().replace",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_nombre",
+          "callee": "texte.strip",
+          "lineNumber": 25
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 27
+        },
+        {
+          "caller": "_nombre",
+          "callee": "ValueError",
+          "lineNumber": 29
+        },
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 35
+        },
+        {
+          "caller": "__init__",
+          "callee": "queue.Queue",
+          "lineNumber": 38
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 49
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.pack",
+          "lineNumber": 50
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.columnconfigure",
+          "lineNumber": 51
+        },
+        {
+          "caller": "__init__",
+          "callee": "corps.rowconfigure",
+          "lineNumber": 52
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 55
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.grid",
+          "lineNumber": 56
+        },
+        {
+          "caller": "__init__",
+          "callee": "gauche.pack_propagate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "__init__",
+          "callee": "T.titre",
+          "lineNumber": 58
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 59
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.StringVar",
+          "lineNumber": 60
+        },
+        {
+          "caller": "__init__",
+          "callee": "SelecteurTechnicien",
+          "lineNumber": 61
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.sel_technicien.pack",
+          "lineNumber": 62
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(gauche, text=texte, bg=BG, fg=GRIS, font=f(11), anchor=\"w\").pack",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 66
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Entry",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "__init__",
+          "callee": "e.pack",
+          "lineNumber": 68
+        },
+        {
+          "caller": "__init__",
+          "callee": "e.bind",
+          "lineNumber": 69
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._demarrer",
+          "lineNumber": 69
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.champs.append",
+          "lineNumber": 70
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_start.pack",
+          "lineNumber": 72
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 73
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.btn_stop.pack",
+          "lineNumber": 74
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 75
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 75
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_etat.pack",
+          "lineNumber": 76
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 77
+        },
+        {
+          "caller": "__init__",
+          "callee": "outils.pack",
+          "lineNumber": 78
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(outils, bg=BORD, height=1).pack",
+          "lineNumber": 79
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 79
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label(outils, text=\"L'équilibreur travaille seul : la session surveille les tensions, enregistre un CSV \"\n                              \"et s'arrête dès que l'écart cible est tenu.\", bg=BG, fg=GRIS, font=f(10), anchor=\"w\",\n                 justify=\"left\", wraplength=320).pack",
+          "lineNumber": 80
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 80
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 81
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button(outils, text=\"Ouvrir le dossier des sessions\", style=\"Tool.TButton\", command=self._ouvrir_dossier).pack",
+          "lineNumber": 83
+        },
+        {
+          "caller": "__init__",
+          "callee": "ttk.Button",
+          "lineNumber": 83
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 86
+        },
+        {
+          "caller": "__init__",
+          "callee": "droite.grid",
+          "lineNumber": 87
+        },
+        {
+          "caller": "__init__",
+          "callee": "Mesures",
+          "lineNumber": 88
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.mesures.pack",
+          "lineNumber": 90
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Label",
+          "lineNumber": 91
+        },
+        {
+          "caller": "__init__",
+          "callee": "f",
+          "lineNumber": 91
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.lbl_eq.pack",
+          "lineNumber": 92
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 93
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 93
+        },
+        {
+          "caller": "__init__",
+          "callee": "BarresCellules",
+          "lineNumber": 94
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.barres.pack",
+          "lineNumber": 95
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame(droite, bg=BORD, height=1).pack",
+          "lineNumber": 96
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 96
+        },
+        {
+          "caller": "__init__",
+          "callee": "GraphesTemps",
+          "lineNumber": 97
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.pack",
+          "lineNumber": 100
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.graphes.definir",
+          "lineNumber": 101
+        },
+        {
+          "caller": "__init__",
+          "callee": "self._etat",
+          "lineNumber": 102
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.after",
+          "lineNumber": 103
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.sel_technicien.rafraichir",
+          "lineNumber": 108
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.occupe",
+          "lineNumber": 109
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.app.instruments.port",
+          "lineNumber": 111
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.app.instruments.lancer_detection",
+          "lineNumber": 112
+        },
+        {
+          "caller": "on_show",
+          "callee": "self._surveiller_instrument",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_surveiller_instrument",
+          "callee": "self.occupe",
+          "lineNumber": 120
+        },
+        {
+          "caller": "_surveiller_instrument",
+          "callee": "inst.statut",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_surveiller_instrument",
+          "callee": "self._etat",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_surveiller_instrument",
+          "callee": "self.after",
+          "lineNumber": 128
+        },
+        {
+          "caller": "occupe",
+          "callee": "self.acq.vivant",
+          "lineNumber": 132
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.acq.arreter",
+          "lineNumber": 136
+        },
+        {
+          "caller": "arreter_et_attendre",
+          "callee": "self.acq.attendre",
+          "lineNumber": 137
+        },
+        {
+          "caller": "_etat",
+          "callee": "self.lbl_etat.config",
+          "lineNumber": 140
+        },
+        {
+          "caller": "_mode",
+          "callee": "w.config",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_mode",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 146
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.occupe",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.sel_technicien.valeur",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.en_recherche",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showinfo",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.port_ou_erreur",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_nombre",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.vars[\"cible\"].get",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_nombre",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.vars[\"duree\"].get",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "_nombre",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.vars[\"stable\"].get",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "messagebox.showwarning",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "str",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "\"\".join",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "c.isalnum",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.vars[\"serie\"].get().strip",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.vars[\"serie\"].get",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "\"_\".join",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "datetime.now",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "os.path.join",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.mod.dossier_sessions",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.series.values",
+          "lineNumber": 171
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "s.clear",
+          "lineNumber": 172
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.lbl_eq.config",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.mesures.effacer",
+          "lineNumber": 176
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.barres.vider",
+          "lineNumber": 177
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.graphes.definir",
+          "lineNumber": 178
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "queue.Queue",
+          "lineNumber": 179
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "Acquisition",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "inst.instrument",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "CritereFin",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "identite.lignes_signature",
+          "lineNumber": 182
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self.acq.demarrer",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._mode",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_demarrer",
+          "callee": "self._etat",
+          "lineNumber": 185
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.acq.arreter",
+          "lineNumber": 189
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self.btn_stop.config",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_arreter",
+          "callee": "self._etat",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_ouvrir_dossier",
+          "callee": "T.ouvrir",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_ouvrir_dossier",
+          "callee": "self.mod.dossier_sessions",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self.file.get_nowait",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._donnees",
+          "lineNumber": 202
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._etat",
+          "lineNumber": 204
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self._fin",
+          "lineNumber": 206
+        },
+        {
+          "caller": "_traiter",
+          "callee": "self.after",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_donnees",
+          "callee": "d.get",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 218
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 220
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 221
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self.series[\"ecart\"].append",
+          "lineNumber": 222
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self.series[\"courant\"].append",
+          "lineNumber": 224
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self.graphes.tracer",
+          "lineNumber": 225
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_donnees",
+          "callee": "texte_courant",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_donnees",
+          "callee": "m.regler",
+          "lineNumber": 227
+        },
+        {
+          "caller": "_donnees",
+          "callee": "T.duree",
+          "lineNumber": 227
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self.barres.definir",
+          "lineNumber": 228
+        },
+        {
+          "caller": "_donnees",
+          "callee": "equilibrage_actif",
+          "lineNumber": 229
+        },
+        {
+          "caller": "_donnees",
+          "callee": "resume_equilibrage",
+          "lineNumber": 230
+        },
+        {
+          "caller": "_donnees",
+          "callee": "d.get",
+          "lineNumber": 230
+        },
+        {
+          "caller": "_donnees",
+          "callee": "d.get",
+          "lineNumber": 230
+        },
+        {
+          "caller": "_donnees",
+          "callee": "d.get",
+          "lineNumber": 230
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self.lbl_eq.config",
+          "lineNumber": 231
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self._etat",
+          "lineNumber": 233
+        },
+        {
+          "caller": "_donnees",
+          "callee": "self._etat",
+          "lineNumber": 236
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._mode",
+          "lineNumber": 239
+        },
+        {
+          "caller": "_fin",
+          "callee": "envoi.envoyer",
+          "lineNumber": 240
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._etat",
+          "lineNumber": 242
+        },
+        {
+          "caller": "_fin",
+          "callee": "messagebox.showerror",
+          "lineNumber": 243
+        },
+        {
+          "caller": "_fin",
+          "callee": "T.duree",
+          "lineNumber": 247
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._etat",
+          "lineNumber": 252
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._etat",
+          "lineNumber": 254
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._etat",
+          "lineNumber": 256
+        },
+        {
+          "caller": "_fin",
+          "callee": "self._etat",
+          "lineNumber": 258
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "page_modules.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 39,
+      "classes": [
+        {
+          "name": "PageModules",
+          "startLine": 9,
+          "endLine": 46,
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PageModules",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 11
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 11
+        },
+        {
+          "caller": "__init__",
+          "callee": "tk.Frame",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "self.colonne.pack",
+          "lineNumber": 14
+        },
+        {
+          "caller": "on_show",
+          "callee": "self.colonne.winfo_children",
+          "lineNumber": 18
+        },
+        {
+          "caller": "on_show",
+          "callee": "w.destroy",
+          "lineNumber": 19
+        },
+        {
+          "caller": "on_show",
+          "callee": "T.titre",
+          "lineNumber": 20
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(self.colonne, text=\"Un module désactivé disparaît de l'accueil. Ses données (profils, mesures…) \"\n                                    \"sont conservées et retrouvées à la réactivation.\",\n                 bg=BG, fg=GRIS, font=f(12), anchor=\"w\", justify=\"left\", wraplength=900).pack",
+          "lineNumber": 21
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 21
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 23
+        },
+        {
+          "caller": "on_show",
+          "callee": "a.modules.values",
+          "lineNumber": 24
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Frame",
+          "lineNumber": 25
+        },
+        {
+          "caller": "on_show",
+          "callee": "carte.pack",
+          "lineNumber": 26
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Frame",
+          "lineNumber": 27
+        },
+        {
+          "caller": "on_show",
+          "callee": "interne.pack",
+          "lineNumber": 28
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 29
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 29
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Frame",
+          "lineNumber": 30
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(texte, text=m.nom, bg=CARTE, fg=TEXTE, font=f(15, True), anchor=\"w\").pack",
+          "lineNumber": 31
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 31
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 31
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label(texte, text=m.description, bg=CARTE, fg=GRIS, font=f(11), anchor=\"w\", justify=\"left\",\n                     wraplength=640).pack",
+          "lineNumber": 32
+        },
+        {
+          "caller": "on_show",
+          "callee": "tk.Label",
+          "lineNumber": 32
+        },
+        {
+          "caller": "on_show",
+          "callee": "f",
+          "lineNumber": 32
+        },
+        {
+          "caller": "on_show",
+          "callee": "a.module_actif",
+          "lineNumber": 34
+        },
+        {
+          "caller": "maj",
+          "callee": "etat.config",
+          "lineNumber": 37
+        },
+        {
+          "caller": "changer",
+          "callee": "config.definir_module",
+          "lineNumber": 40
+        },
+        {
+          "caller": "changer",
+          "callee": "maj",
+          "lineNumber": 41
+        },
+        {
+          "caller": "on_show",
+          "callee": "maj",
+          "lineNumber": 43
+        },
+        {
+          "caller": "on_show",
+          "callee": "Interrupteur(interne, actif, changer).pack",
+          "lineNumber": 44
+        },
+        {
+          "caller": "on_show",
+          "callee": "Interrupteur",
+          "lineNumber": 44
+        },
+        {
+          "caller": "on_show",
+          "callee": "texte.pack",
+          "lineNumber": 45
+        },
+        {
+          "caller": "on_show",
+          "callee": "etat.pack",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "synchro.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "etat",
+          "startLine": 24,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "_appeler",
+          "startLine": 28,
+          "endLine": 34,
+          "params": [
+            "reglages",
+            "methode",
+            "chemin",
+            "corps"
+          ]
+        },
+        {
+          "name": "synchroniser",
+          "startLine": 37,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "lancer",
+          "startLine": 66,
+          "endLine": 72,
+          "params": [
+            "force"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "etat",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "_appeler",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "synchroniser",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "lancer",
+          "line": 66,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_appeler",
+          "callee": "json.dumps(corps).encode",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_appeler",
+          "callee": "json.dumps",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_appeler",
+          "callee": "urllib.request.Request",
+          "lineNumber": 31
+        },
+        {
+          "caller": "_appeler",
+          "callee": "urllib.request.urlopen",
+          "lineNumber": 33
+        },
+        {
+          "caller": "_appeler",
+          "callee": "json.loads",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_appeler",
+          "callee": "r.read",
+          "lineNumber": 34
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "envoi._reglages",
+          "lineNumber": 41
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "identite.operations_en_attente",
+          "lineNumber": 46
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "_appeler",
+          "lineNumber": 48
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "quote",
+          "lineNumber": 48
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "identite.operation_transmise",
+          "lineNumber": 49
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "_appeler",
+          "lineNumber": 51
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "identite.operation_transmise",
+          "lineNumber": 52
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "_appeler",
+          "lineNumber": 53
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "isinstance",
+          "lineNumber": 54
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "identite.remplacer_techniciens",
+          "lineNumber": 55
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "str",
+          "lineNumber": 55
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "identite.poste",
+          "lineNumber": 56
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "_appeler",
+          "lineNumber": 58
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "quote",
+          "lineNumber": 58
+        },
+        {
+          "caller": "synchroniser",
+          "callee": "time.monotonic",
+          "lineNumber": 62
+        },
+        {
+          "caller": "lancer",
+          "callee": "time.monotonic",
+          "lineNumber": 68
+        },
+        {
+          "caller": "lancer",
+          "callee": "threading.Thread",
+          "lineNumber": 70
+        },
+        {
+          "caller": "lancer",
+          "callee": "t.start",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "updater.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 261,
+      "nonEmptyLines": 214,
+      "functions": [
+        {
+          "name": "systeme",
+          "startLine": 31,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "installe",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "_numeros",
+          "startLine": 42,
+          "endLine": 44,
+          "params": [
+            "v"
+          ]
+        },
+        {
+          "name": "_requete",
+          "startLine": 47,
+          "endLine": 49,
+          "params": [
+            "url"
+          ]
+        },
+        {
+          "name": "_contexte_ssl",
+          "startLine": 52,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "_ouvrir",
+          "startLine": 65,
+          "endLine": 66,
+          "params": [
+            "url",
+            "timeout"
+          ]
+        },
+        {
+          "name": "_expliquer",
+          "startLine": 69,
+          "endLine": 80,
+          "params": [
+            "e"
+          ]
+        },
+        {
+          "name": "verifier",
+          "startLine": 83,
+          "endLine": 95,
+          "params": [
+            "timeout"
+          ]
+        },
+        {
+          "name": "derniere_version",
+          "startLine": 98,
+          "endLine": 100,
+          "params": [
+            "timeout"
+          ]
+        },
+        {
+          "name": "plus_recente",
+          "startLine": 103,
+          "endLine": 109,
+          "params": [
+            "info",
+            "courante"
+          ]
+        },
+        {
+          "name": "_somme_attendue",
+          "startLine": 113,
+          "endLine": 119,
+          "params": [
+            "info",
+            "nom"
+          ]
+        },
+        {
+          "name": "telecharger",
+          "startLine": 122,
+          "endLine": 146,
+          "params": [
+            "info",
+            "progression"
+          ]
+        },
+        {
+          "name": "_app_macos",
+          "startLine": 150,
+          "endLine": 156,
+          "params": []
+        },
+        {
+          "name": "_chemin_actuel",
+          "startLine": 159,
+          "endLine": 160,
+          "params": []
+        },
+        {
+          "name": "_remplacer_fichier",
+          "startLine": 163,
+          "endLine": 181,
+          "params": [
+            "nouveau",
+            "cible"
+          ]
+        },
+        {
+          "name": "_remplacer_app",
+          "startLine": 184,
+          "endLine": 208,
+          "params": [
+            "archive",
+            "app"
+          ]
+        },
+        {
+          "name": "_cible_macos",
+          "startLine": 211,
+          "endLine": 223,
+          "params": [
+            "app"
+          ]
+        },
+        {
+          "name": "appliquer",
+          "startLine": 226,
+          "endLine": 235,
+          "params": [
+            "fichier",
+            "cible"
+          ]
+        },
+        {
+          "name": "relancer",
+          "startLine": 238,
+          "endLine": 247,
+          "params": [
+            "chemin"
+          ]
+        },
+        {
+          "name": "nettoyer",
+          "startLine": 250,
+          "endLine": 261,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "ErreurMaj",
+          "startLine": 27,
+          "endLine": 28,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ErreurMaj",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "systeme",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "installe",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "_numeros",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "_requete",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "_contexte_ssl",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "_ouvrir",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "_expliquer",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "verifier",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "derniere_version",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "plus_recente",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "_somme_attendue",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "telecharger",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "_app_macos",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "_chemin_actuel",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "_remplacer_fichier",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "_remplacer_app",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "_cible_macos",
+          "line": 211,
+          "isDefault": false
+        },
+        {
+          "name": "appliquer",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "relancer",
+          "line": 238,
+          "isDefault": false
+        },
+        {
+          "name": "nettoyer",
+          "line": 250,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "systeme",
+          "callee": "sys.platform.startswith",
+          "lineNumber": 32
+        },
+        {
+          "caller": "installe",
+          "callee": "bool",
+          "lineNumber": 39
+        },
+        {
+          "caller": "installe",
+          "callee": "getattr",
+          "lineNumber": 39
+        },
+        {
+          "caller": "_numeros",
+          "callee": "tuple",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_numeros",
+          "callee": "int",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_numeros",
+          "callee": "re.findall",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_numeros",
+          "callee": "v.lstrip(\"vV\").split",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_numeros",
+          "callee": "v.lstrip",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_requete",
+          "callee": "urllib.request.Request",
+          "lineNumber": 48
+        },
+        {
+          "caller": "_contexte_ssl",
+          "callee": "ssl.create_default_context",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_contexte_ssl",
+          "callee": "certifi.where",
+          "lineNumber": 60
+        },
+        {
+          "caller": "_contexte_ssl",
+          "callee": "ssl.create_default_context",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_ouvrir",
+          "callee": "urllib.request.urlopen",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_ouvrir",
+          "callee": "_requete",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_ouvrir",
+          "callee": "_contexte_ssl",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_expliquer",
+          "callee": "isinstance",
+          "lineNumber": 71
+        },
+        {
+          "caller": "_expliquer",
+          "callee": "getattr",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_expliquer",
+          "callee": "isinstance",
+          "lineNumber": 78
+        },
+        {
+          "caller": "verifier",
+          "callee": "_ouvrir",
+          "lineNumber": 87
+        },
+        {
+          "caller": "verifier",
+          "callee": "json.load",
+          "lineNumber": 88
+        },
+        {
+          "caller": "verifier",
+          "callee": "_expliquer",
+          "lineNumber": 90
+        },
+        {
+          "caller": "verifier",
+          "callee": "str",
+          "lineNumber": 93
+        },
+        {
+          "caller": "verifier",
+          "callee": "data.get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "verifier",
+          "callee": "_numeros",
+          "lineNumber": 94
+        },
+        {
+          "caller": "verifier",
+          "callee": "data.get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "verifier",
+          "callee": "data.get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "derniere_version",
+          "callee": "verifier",
+          "lineNumber": 100
+        },
+        {
+          "caller": "plus_recente",
+          "callee": "_numeros",
+          "lineNumber": 108
+        },
+        {
+          "caller": "plus_recente",
+          "callee": "systeme",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "_ouvrir",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "r.read().decode(\"utf-8\", \"replace\").splitlines",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "r.read().decode",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "r.read",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "ligne.split",
+          "lineNumber": 116
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "len",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "morceaux[1].lstrip",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "morceaux[0].lower",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_somme_attendue",
+          "callee": "ErreurMaj",
+          "lineNumber": 119
+        },
+        {
+          "caller": "telecharger",
+          "callee": "systeme",
+          "lineNumber": 124
+        },
+        {
+          "caller": "telecharger",
+          "callee": "_somme_attendue",
+          "lineNumber": 126
+        },
+        {
+          "caller": "telecharger",
+          "callee": "os.path.join",
+          "lineNumber": 127
+        },
+        {
+          "caller": "telecharger",
+          "callee": "tempfile.mkdtemp",
+          "lineNumber": 127
+        },
+        {
+          "caller": "telecharger",
+          "callee": "hashlib.sha256",
+          "lineNumber": 128
+        },
+        {
+          "caller": "telecharger",
+          "callee": "_ouvrir",
+          "lineNumber": 129
+        },
+        {
+          "caller": "telecharger",
+          "callee": "open",
+          "lineNumber": 129
+        },
+        {
+          "caller": "telecharger",
+          "callee": "int",
+          "lineNumber": 130
+        },
+        {
+          "caller": "telecharger",
+          "callee": "r.headers.get",
+          "lineNumber": 130
+        },
+        {
+          "caller": "telecharger",
+          "callee": "r.read",
+          "lineNumber": 133
+        },
+        {
+          "caller": "telecharger",
+          "callee": "f.write",
+          "lineNumber": 136
+        },
+        {
+          "caller": "telecharger",
+          "callee": "h.update",
+          "lineNumber": 137
+        },
+        {
+          "caller": "telecharger",
+          "callee": "len",
+          "lineNumber": 138
+        },
+        {
+          "caller": "telecharger",
+          "callee": "progression",
+          "lineNumber": 140
+        },
+        {
+          "caller": "telecharger",
+          "callee": "ErreurMaj",
+          "lineNumber": 142
+        },
+        {
+          "caller": "telecharger",
+          "callee": "h.hexdigest",
+          "lineNumber": 143
+        },
+        {
+          "caller": "telecharger",
+          "callee": "os.remove",
+          "lineNumber": 144
+        },
+        {
+          "caller": "telecharger",
+          "callee": "ErreurMaj",
+          "lineNumber": 145
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "os.path.abspath",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "os.path.dirname",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "p.endswith",
+          "lineNumber": 152
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "os.path.dirname",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "p.endswith",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_app_macos",
+          "callee": "ErreurMaj",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_chemin_actuel",
+          "callee": "_app_macos",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_chemin_actuel",
+          "callee": "systeme",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_chemin_actuel",
+          "callee": "os.path.abspath",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "shutil.copyfile",
+          "lineNumber": 167
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.chmod",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.path.exists",
+          "lineNumber": 169
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.remove",
+          "lineNumber": 170
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.replace",
+          "lineNumber": 171
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.replace",
+          "lineNumber": 173
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.replace",
+          "lineNumber": 175
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "ErreurMaj",
+          "lineNumber": 178
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.path.exists",
+          "lineNumber": 180
+        },
+        {
+          "caller": "_remplacer_fichier",
+          "callee": "os.remove",
+          "lineNumber": 181
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "tempfile.mkdtemp",
+          "lineNumber": 188
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.dirname",
+          "lineNumber": 188
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "ErreurMaj",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "subprocess.run",
+          "lineNumber": 192
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.join",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.basename",
+          "lineNumber": 193
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.isdir",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "ErreurMaj",
+          "lineNumber": 195
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.exists",
+          "lineNumber": 196
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "shutil.rmtree",
+          "lineNumber": 197
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.rename",
+          "lineNumber": 198
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.rename",
+          "lineNumber": 200
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.path.exists",
+          "lineNumber": 202
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "os.rename",
+          "lineNumber": 203
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "ErreurMaj",
+          "lineNumber": 206
+        },
+        {
+          "caller": "_remplacer_app",
+          "callee": "shutil.rmtree",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.access",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.path.dirname",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.path.join",
+          "lineNumber": 220
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.path.expanduser",
+          "lineNumber": 220
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.makedirs",
+          "lineNumber": 221
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.path.join",
+          "lineNumber": 222
+        },
+        {
+          "caller": "_cible_macos",
+          "callee": "os.path.basename",
+          "lineNumber": 222
+        },
+        {
+          "caller": "appliquer",
+          "callee": "_chemin_actuel",
+          "lineNumber": 229
+        },
+        {
+          "caller": "appliquer",
+          "callee": "systeme",
+          "lineNumber": 230
+        },
+        {
+          "caller": "appliquer",
+          "callee": "_cible_macos",
+          "lineNumber": 231
+        },
+        {
+          "caller": "appliquer",
+          "callee": "_remplacer_app",
+          "lineNumber": 232
+        },
+        {
+          "caller": "appliquer",
+          "callee": "_remplacer_fichier",
+          "lineNumber": 234
+        },
+        {
+          "caller": "relancer",
+          "callee": "dict",
+          "lineNumber": 240
+        },
+        {
+          "caller": "relancer",
+          "callee": "systeme",
+          "lineNumber": 241
+        },
+        {
+          "caller": "relancer",
+          "callee": "subprocess.Popen",
+          "lineNumber": 242
+        },
+        {
+          "caller": "relancer",
+          "callee": "systeme",
+          "lineNumber": 243
+        },
+        {
+          "caller": "relancer",
+          "callee": "subprocess.Popen",
+          "lineNumber": 244
+        },
+        {
+          "caller": "relancer",
+          "callee": "subprocess.Popen",
+          "lineNumber": 247
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "installe",
+          "lineNumber": 252
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "_chemin_actuel",
+          "lineNumber": 255
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "os.path.isdir",
+          "lineNumber": 256
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "shutil.rmtree",
+          "lineNumber": 257
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "os.path.exists",
+          "lineNumber": 258
+        },
+        {
+          "caller": "nettoyer",
+          "callee": "os.remove",
+          "lineNumber": 259
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 21,
+        "functionCount": 20,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "version.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -43,6 +43,10 @@ class Module:
         """Texte court affiché sous la description sur l'accueil."""
         return ""
 
+    def dossier_csv(self):
+        """Dossier des CSV de test du module (renvoyés au serveur), ou None si le module n'en produit pas."""
+        return None
+
     def dossier(self):
         """Dossier de données propre au module (sous le dossier de données de l'application), créé à la demande."""
         chemin = os.path.join(T.BASE, self.id)

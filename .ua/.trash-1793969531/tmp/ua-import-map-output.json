@@ -1,0 +1,211 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 52,
+    "filesWithImports": 39,
+    "totalEdges": 109
+  },
+  "failures": [],
+  "importMap": {
+    ".github/workflows/release.yml": [],
+    "CLAUDE.md": [],
+    "README.md": [],
+    "config.py": [
+      "theme.py"
+    ],
+    "dialogue_identite.py": [
+      "identite.py",
+      "synchro.py",
+      "theme.py"
+    ],
+    "envoi.py": [
+      "config.py",
+      "identite.py",
+      "theme.py",
+      "version.py"
+    ],
+    "gui.py": [
+      "config.py",
+      "dialogue_identite.py",
+      "envoi.py",
+      "identite.py",
+      "instruments/__init__.py",
+      "modules/__init__.py",
+      "page_accueil.py",
+      "page_instruments.py",
+      "page_modules.py",
+      "synchro.py",
+      "theme.py",
+      "updater.py",
+      "version.py"
+    ],
+    "identite.py": [
+      "config.py",
+      "version.py"
+    ],
+    "install.ps1": [],
+    "install.sh": [],
+    "installer/betterson.iss": [],
+    "instruments/__init__.py": [
+      "instruments/daly.py",
+      "instruments/ea.py",
+      "instruments/gestionnaire.py"
+    ],
+    "instruments/base.py": [],
+    "instruments/daly.py": [
+      "instruments/base.py"
+    ],
+    "instruments/ea.py": [
+      "instruments/base.py"
+    ],
+    "instruments/gestionnaire.py": [
+      "config.py"
+    ],
+    "main.py": [
+      "instruments/ea.py"
+    ],
+    "modules/__init__.py": [
+      "modules/decharge/__init__.py",
+      "modules/equilibrage/__init__.py",
+      "modules/resistance/__init__.py"
+    ],
+    "modules/_modele/__init__.py": [
+      "modules/base.py",
+      "theme.py"
+    ],
+    "modules/base.py": [
+      "theme.py"
+    ],
+    "modules/decharge/__init__.py": [
+      "modules/base.py",
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "modules/decharge/resultats.py",
+      "theme.py"
+    ],
+    "modules/decharge/chemins.py": [
+      "theme.py"
+    ],
+    "modules/decharge/page_encours.py": [
+      "envoi.py",
+      "identite.py",
+      "instruments/__init__.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_lancer.py": [
+      "dialogue_identite.py",
+      "instruments/__init__.py",
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_profils.py": [
+      "modules/decharge/chemins.py",
+      "modules/decharge/profils.py",
+      "theme.py"
+    ],
+    "modules/decharge/page_resultats.py": [
+      "modules/decharge/chemins.py",
+      "modules/decharge/resultats.py",
+      "theme.py"
+    ],
+    "modules/decharge/profils.py": [],
+    "modules/decharge/resultats.py": [
+      "identite.py"
+    ],
+    "modules/equilibrage/__init__.py": [
+      "modules/base.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/acquisition.py": [
+      "instruments/daly.py"
+    ],
+    "modules/equilibrage/page_cellules.py": [
+      "instruments/daly.py",
+      "modules/equilibrage/acquisition.py",
+      "modules/equilibrage/widgets.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/page_session.py": [
+      "dialogue_identite.py",
+      "envoi.py",
+      "identite.py",
+      "modules/equilibrage/acquisition.py",
+      "modules/equilibrage/widgets.py",
+      "theme.py"
+    ],
+    "modules/equilibrage/widgets.py": [
+      "theme.py"
+    ],
+    "modules/resistance/__init__.py": [
+      "modules/base.py",
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/calcul.py": [],
+    "modules/resistance/chemins.py": [
+      "theme.py"
+    ],
+    "modules/resistance/mesure.py": [
+      "instruments/__init__.py",
+      "instruments/daly.py",
+      "modules/resistance/calcul.py"
+    ],
+    "modules/resistance/page_encours.py": [
+      "envoi.py",
+      "identite.py",
+      "modules/resistance/calcul.py",
+      "modules/resistance/mesure.py",
+      "modules/resistance/profils.py",
+      "modules/resistance/widgets.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_lancer.py": [
+      "dialogue_identite.py",
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_profils.py": [
+      "modules/resistance/chemins.py",
+      "modules/resistance/profils.py",
+      "theme.py"
+    ],
+    "modules/resistance/page_resultats.py": [
+      "modules/resistance/chemins.py",
+      "modules/resistance/page_encours.py",
+      "modules/resistance/resultats.py",
+      "modules/resistance/widgets.py",
+      "theme.py"
+    ],
+    "modules/resistance/profils.py": [],
+    "modules/resistance/resultats.py": [
+      "identite.py",
+      "modules/resistance/calcul.py"
+    ],
+    "modules/resistance/widgets.py": [
+      "theme.py"
+    ],
+    "page_accueil.py": [
+      "theme.py"
+    ],
+    "page_instruments.py": [
+      "theme.py"
+    ],
+    "page_modules.py": [
+      "config.py",
+      "theme.py"
+    ],
+    "requirements.txt": [],
+    "synchro.py": [
+      "envoi.py",
+      "identite.py"
+    ],
+    "theme.py": [],
+    "updater.py": [
+      "version.py"
+    ],
+    "version.py": []
+  }
+}

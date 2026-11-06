@@ -12,6 +12,9 @@ class Decharge(Module):
     icone = "test"
     couleur = LIME
     teinte = "#eef3c0"
+
+    def dossier_csv(self):
+        return chemins.dossier_csv()
     instruments = ("charge_ea",)   # détection, port et statut : gérés par l'application (app.instruments)
 
     def __init__(self):

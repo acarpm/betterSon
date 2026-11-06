@@ -11,9 +11,10 @@ Chaque CSV commence par deux lignes de commentaire (« # technicien: … », « 
 import re
 
 import config
+import version
 
 LONGUEUR_MAX = 60
-PREFIXES = {"technicien": "# technicien:", "poste": "# poste:"}
+PREFIXES = {"technicien": "# technicien:", "poste": "# poste:", "logiciel": "# logiciel:"}
 _POSTE_VALIDE = re.compile(r"^[\w .\-]+$")  # le serveur refuse les autres caractères (pas de chemin, pas de contrôle)
 
 
@@ -134,13 +135,14 @@ def lignes_signature(technicien):
     lignes = [f"{PREFIXES['technicien']} {nettoyer(technicien)}\n"] if nettoyer(technicien) else []
     if poste():
         lignes.append(f"{PREFIXES['poste']} {poste()}\n")
+    lignes.append(f"{PREFIXES['logiciel']} {version.__version__}\n")  # version du logiciel qui a réalisé le test
     return "".join(lignes)
 
 
 def lire_entete(f):
-    """Lit les lignes de commentaire en tête d'un fichier texte ouvert ; renvoie {'technicien', 'poste'} (None si absent).
+    """Lit les lignes de commentaire en tête d'un fichier texte ouvert ; renvoie {'technicien', 'poste', 'logiciel'} (None si absent).
     Le curseur est laissé sur la première ligne qui n'est pas une signature (l'en-tête du CSV)."""
-    infos = {"technicien": None, "poste": None}
+    infos = {k: None for k in PREFIXES}
     while True:
         debut = f.tell()
         ligne = f.readline()

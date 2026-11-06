@@ -7,6 +7,7 @@ et est réessayé toutes les minutes, y compris après un redémarrage du logici
 Réglages dans config.json : "reglages": {"serveur": {"url": "http://192.168.2.3:8090", "cle": "...", "poste": "banc-1"}}
 Sans url et cle, rien n'est envoyé.
 """
+import glob
 import json
 import os
 import threading
@@ -17,8 +18,10 @@ from urllib.parse import quote
 import config
 import identite
 import theme as T
+import version
 
 FICHIER_FILE = os.path.join(T.BASE, "envoi_attente.json")
+FICHIER_ENVOYES = os.path.join(T.BASE, "envoi_envoyes.json")  # CSV déjà reçus par le serveur : jamais renvoyés au démarrage
 DELAI_RETENTE_S = 60
 TIMEOUT_S = 15
 
@@ -51,7 +54,8 @@ def _ecrire_file(file):
 
 
 def _poster(reglages, element):
-    """True si le serveur a accepté (ou si le fichier n'existe plus : rien à renvoyer)."""
+    """True si accepté (ou fichier disparu / refus définitif) ; False si le réseau ne répond pas (inutile d'insister) ;
+    None si ce fichier précis échoue (erreur serveur) : il reste en file mais les suivants sont tentés."""
     url, cle, poste = reglages
     try:
         with open(element["chemin"], "rb") as f:
@@ -61,14 +65,29 @@ def _poster(reglages, element):
     req = urllib.request.Request(url + "/api/tests", data=corps, method="POST", headers={
         "Authorization": f"Bearer {cle}", "Content-Type": "text/csv",
         "X-Poste": quote(poste), "X-Module": quote(element["module"]),
-        "X-Fichier": quote(os.path.basename(element["chemin"])), "X-Motif": quote(element.get("motif", ""))})
+        "X-Fichier": quote(os.path.basename(element["chemin"])), "X-Motif": quote(element.get("motif", "")),
+        "X-Version": quote(version.__version__)})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT_S):
             return True
     except urllib.error.HTTPError as e:
-        return 400 <= e.code < 500 and e.code not in (401, 408, 429)  # refus définitif : inutile de réessayer
+        if e.code in (401, 408, 429):
+            return False
+        return True if e.code < 500 else None  # 4xx : refus définitif, inutile de réessayer
     except (urllib.error.URLError, OSError):
         return False
+
+
+def _noter_envoyes(elements):
+    try:
+        with open(FICHIER_ENVOYES, encoding="utf-8") as f:
+            deja = json.load(f)
+    except (OSError, ValueError):
+        deja = []
+    tmp = FICHIER_ENVOYES + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(sorted(set(deja) | {el["chemin"] for el in elements}), f, ensure_ascii=False)
+    os.replace(tmp, FICHIER_ENVOYES)
 
 
 def _boucle():
@@ -78,17 +97,19 @@ def _boucle():
             file = _lire_file()
         if not file or not reglages:
             return
-        restants = []
+        envoyes = []
         for el in file:
-            if not _poster(reglages, el):
-                restants.append(el)
+            ok = _poster(reglages, el)
+            if ok is False:
+                break  # serveur injoignable : on ne tente pas les suivants (chacun attendrait le délai maximal)
+            if ok:
+                envoyes.append(el)
         with _verrou:
-            # des éléments ont pu être ajoutés pendant l'envoi : on ne retire que ceux envoyés
-            envoyes = [el for el in file if el not in restants]
-            _ecrire_file([el for el in _lire_file() if el not in envoyes])
-            if not restants and not _lire_file():
+            _ecrire_file([el for el in _lire_file() if el not in envoyes])  # les ajouts survenus pendant l'envoi restent
+            _noter_envoyes(envoyes)
+            if len(envoyes) == len(file) and not _lire_file():
                 return
-        if restants:
+        if len(envoyes) < len(file):
             _reveil.wait(DELAI_RETENTE_S)
             _reveil.clear()
 
@@ -111,6 +132,28 @@ def envoyer(module, chemin, motif=""):
         if el not in file:
             _ecrire_file(file + [el])
     _demarrer()
+
+
+def rattraper(dossiers):
+    """Met en file les CSV locaux jamais envoyés (tests faits avant la mise en place de l'envoi, ou sans serveur).
+    dossiers : {identifiant du module: dossier de ses CSV}. À appeler au démarrage, quand aucun test n'est en cours."""
+    if not _reglages():
+        return
+    try:
+        with open(FICHIER_ENVOYES, encoding="utf-8") as f:
+            deja = set(json.load(f))
+    except (OSError, ValueError):
+        deja = set()
+    with _verrou:
+        file = _lire_file()
+        connus = deja | {el["chemin"] for el in file}
+        nouveaux = [{"module": m, "chemin": os.path.abspath(p), "motif": "importe"}
+                    for m, d in dossiers.items() for p in sorted(glob.glob(os.path.join(d, "*.csv")))
+                    if os.path.abspath(p) not in connus]
+        if nouveaux:
+            _ecrire_file(file + nouveaux)
+    if file or nouveaux:
+        _demarrer()
 
 
 def reprendre():

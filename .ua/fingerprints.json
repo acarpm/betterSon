@@ -1,0 +1,4079 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "bb4c1a05f5b41625172a84820d80f3d4a398faaa",
+  "generatedAt": "2026-11-06T12:52:07.672Z",
+  "files": {
+    ".github/workflows/release.yml": {
+      "filePath": ".github/workflows/release.yml",
+      "contentHash": "d49733831b80a12a791f0325a1d72418e953a1932a5afe6d1d1c1c5fde6af9f0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": false
+    },
+    "CLAUDE.md": {
+      "filePath": "CLAUDE.md",
+      "contentHash": "a9a9011f6d78d418a0b2b5f305c495d51ba950a040579f734972d4622d7592df",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "1a1d03407efc55164cf82e71d927f05f26922a91551951483e798cdec5205cca",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 148,
+      "hasStructuralAnalysis": false
+    },
+    "config.py": {
+      "filePath": "config.py",
+      "contentHash": "bde7eed1e9562970f81468d2303dfefa945183aa261e4de287657323f61db5ba",
+      "functions": [
+        {
+          "name": "charger",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "sauver",
+          "params": [
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "module_actif",
+          "params": [
+            "module_id",
+            "defaut"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "definir_module",
+          "params": [
+            "module_id",
+            "actif"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "reglage",
+          "params": [
+            "module_id",
+            "cle",
+            "defaut"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "definir_reglage",
+          "params": [
+            "module_id",
+            "cle",
+            "valeur"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        }
+      ],
+      "exports": [
+        "charger",
+        "sauver",
+        "module_actif",
+        "definir_module",
+        "reglage",
+        "definir_reglage"
+      ],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "dialogue_identite.py": {
+      "filePath": "dialogue_identite.py",
+      "contentHash": "80aaf727fb0bd5a7321abdcb13e6100dea7a66189587f05c16b0810fcbbeee10",
+      "functions": [
+        {
+          "name": "_fenetre",
+          "params": [
+            "parent",
+            "titre"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "_afficher_modale",
+          "params": [
+            "parent",
+            "fen",
+            "focus"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "demander_poste",
+          "params": [
+            "parent",
+            "f",
+            "obligatoire"
+          ],
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "gerer_techniciens",
+          "params": [
+            "parent",
+            "f"
+          ],
+          "exported": true,
+          "lineCount": 77
+        }
+      ],
+      "classes": [
+        {
+          "name": "SelecteurTechnicien",
+          "methods": [
+            "__init__",
+            "rafraichir",
+            "_gerer",
+            "valeur"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "synchro",
+          "specifiers": [
+            "synchro"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ROUGE",
+            "TEXTE"
+          ]
+        }
+      ],
+      "exports": [
+        "_fenetre",
+        "_afficher_modale",
+        "demander_poste",
+        "gerer_techniciens",
+        "SelecteurTechnicien"
+      ],
+      "totalLines": 176,
+      "hasStructuralAnalysis": true
+    },
+    "envoi.py": {
+      "filePath": "envoi.py",
+      "contentHash": "bcc4d68326960eab2ba71efc0b1a9dea4418d35b064b70e530fc6ab4b6aff3ce",
+      "functions": [
+        {
+          "name": "_reglages",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_lire_file",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_ecrire_file",
+          "params": [
+            "file"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "_poster",
+          "params": [
+            "reglages",
+            "element"
+          ],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "_noter_envoyes",
+          "params": [
+            "elements"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_boucle",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "_demarrer",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "envoyer",
+          "params": [
+            "module",
+            "chemin",
+            "motif"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "rattraper",
+          "params": [
+            "dossiers"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "reprendre",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "glob",
+          "specifiers": [
+            "glob"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "urllib.error",
+          "specifiers": [
+            "urllib.error"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "urllib.request"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "quote"
+          ]
+        },
+        {
+          "source": "config",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "version",
+          "specifiers": [
+            "version"
+          ]
+        }
+      ],
+      "exports": [
+        "_reglages",
+        "_lire_file",
+        "_ecrire_file",
+        "_poster",
+        "_noter_envoyes",
+        "_boucle",
+        "_demarrer",
+        "envoyer",
+        "rattraper",
+        "reprendre"
+      ],
+      "totalLines": 163,
+      "hasStructuralAnalysis": true
+    },
+    "gui.py": {
+      "filePath": "gui.py",
+      "contentHash": "f7450ebc86b38577070caf6735fec9cef024662f2c1cfb3aa202c99a31c3acc9",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Application",
+          "methods": [
+            "__init__",
+            "_entete",
+            "_maj_poste",
+            "_premier_lancement",
+            "changer_poste",
+            "_etat_version",
+            "_lancer_verification",
+            "_verifier_maj",
+            "_resultat_verification",
+            "_traiter_maj",
+            "_installer_maj",
+            "_maj_pret",
+            "module_actif",
+            "modules_actifs",
+            "module_de",
+            "parent_de",
+            "page",
+            "page_occupee",
+            "occupe",
+            "aller",
+            "retour",
+            "_maj_statut",
+            "_rafraichir_statut",
+            "_fermer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 283
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "config",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "dialogue_identite",
+          "specifiers": [
+            "dialogue_identite"
+          ]
+        },
+        {
+          "source": "envoi",
+          "specifiers": [
+            "envoi"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "synchro",
+          "specifiers": [
+            "synchro"
+          ]
+        },
+        {
+          "source": "modules",
+          "specifiers": [
+            "modules"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "updater",
+          "specifiers": [
+            "updater"
+          ]
+        },
+        {
+          "source": "version",
+          "specifiers": [
+            "version"
+          ]
+        },
+        {
+          "source": "instruments",
+          "specifiers": [
+            "INSTRUMENTS"
+          ]
+        },
+        {
+          "source": "instruments",
+          "specifiers": [
+            "Gestionnaire"
+          ]
+        },
+        {
+          "source": "page_accueil",
+          "specifiers": [
+            "Accueil",
+            "PageModule"
+          ]
+        },
+        {
+          "source": "page_instruments",
+          "specifiers": [
+            "PageInstruments"
+          ]
+        },
+        {
+          "source": "page_modules",
+          "specifiers": [
+            "PageModules"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "ANTHRACITE",
+            "BG",
+            "CARTE",
+            "GRIS",
+            "LIME",
+            "ORANGE",
+            "ROUGE",
+            "TEXTE",
+            "VERT"
+          ]
+        }
+      ],
+      "exports": [
+        "Application"
+      ],
+      "totalLines": 322,
+      "hasStructuralAnalysis": true
+    },
+    "identite.py": {
+      "filePath": "identite.py",
+      "contentHash": "69a00024b4962bed85713dd8f5bf56b3be681f33ffc7e1bcc8776cb2d1294eaa",
+      "functions": [
+        {
+          "name": "nettoyer",
+          "params": [
+            "texte"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "poste",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "definir_poste",
+          "params": [
+            "identifiant"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "techniciens",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "ajouter_technicien",
+          "params": [
+            "prenom",
+            "nom"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "supprimer_technicien",
+          "params": [
+            "complet"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "_en_attente",
+          "params": [
+            "data",
+            "cle"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "operations_en_attente",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "operation_transmise",
+          "params": [
+            "cle",
+            "nom"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "remplacer_techniciens",
+          "params": [
+            "liste"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "dernier_technicien",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "retenir_technicien",
+          "params": [
+            "complet"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "lignes_signature",
+          "params": [
+            "technicien"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "lire_entete",
+          "params": [
+            "f"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "config",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "version",
+          "specifiers": [
+            "version"
+          ]
+        }
+      ],
+      "exports": [
+        "nettoyer",
+        "poste",
+        "definir_poste",
+        "techniciens",
+        "ajouter_technicien",
+        "supprimer_technicien",
+        "_en_attente",
+        "operations_en_attente",
+        "operation_transmise",
+        "remplacer_techniciens",
+        "dernier_technicien",
+        "retenir_technicien",
+        "lignes_signature",
+        "lire_entete"
+      ],
+      "totalLines": 154,
+      "hasStructuralAnalysis": true
+    },
+    "install.ps1": {
+      "filePath": "install.ps1",
+      "contentHash": "46c46b8c7fb08f846f0ae9f890d9a590f9b4df7caf7e69dcebdb2e977c915aa9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": false
+    },
+    "install.sh": {
+      "filePath": "install.sh",
+      "contentHash": "56796b013de92176161663467d6473a0999a707e4147f5edf31216c529535ebb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": false
+    },
+    "installer/betterson.iss": {
+      "filePath": "installer/betterson.iss",
+      "contentHash": "e2e190d4197e9cc808a7c726e815c29185bb08a72ceb33a80f990c27b96fcca2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": false
+    },
+    "instruments/__init__.py": {
+      "filePath": "instruments/__init__.py",
+      "contentHash": "39f77ddaba4a2db3d5d6e7aa1d75e030cd37ae2096e355b453c77076161ffb95",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": ".daly",
+          "specifiers": [
+            "EquilibreurDaly"
+          ]
+        },
+        {
+          "source": ".ea",
+          "specifiers": [
+            "ChargeEA"
+          ]
+        },
+        {
+          "source": ".gestionnaire",
+          "specifiers": [
+            "Gestionnaire"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "instruments/base.py": {
+      "filePath": "instruments/base.py",
+      "contentHash": "7e548e31352b631db0fc429410f457c24360470659a7f6efaca7b0475d54354f",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Instrument",
+          "methods": [
+            "reconnu_par_vid",
+            "candidats",
+            "sonde"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "Instrument"
+      ],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "instruments/daly.py": {
+      "filePath": "instruments/daly.py",
+      "contentHash": "01cca543d63301567e2936b7ca8933cfc2c0eed6769037b491176c96d6cf4116",
+      "functions": [
+        {
+          "name": "somme_controle",
+          "params": [
+            "trame"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "requete",
+          "params": [
+            "cmd",
+            "donnees"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "trame_valide",
+          "params": [
+            "t",
+            "cmd"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "resume_cellules",
+          "params": [
+            "cellules"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "Daly",
+          "methods": [
+            "__init__",
+            "_lire_trame",
+            "_interroger",
+            "lire_global",
+            "lire_nombre_cellules",
+            "lire_cellules",
+            "_tenir",
+            "lire_equilibrage",
+            "lire_parametres_equilibrage",
+            "piloter_equilibrage",
+            "commander_equilibrage",
+            "lire_tout"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 177
+        },
+        {
+          "name": "EquilibreurDaly",
+          "methods": [
+            "sonde"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": ".base",
+          "specifiers": [
+            "Instrument"
+          ]
+        }
+      ],
+      "exports": [
+        "somme_controle",
+        "requete",
+        "trame_valide",
+        "resume_cellules",
+        "Daly",
+        "EquilibreurDaly"
+      ],
+      "totalLines": 250,
+      "hasStructuralAnalysis": true
+    },
+    "instruments/ea.py": {
+      "filePath": "instruments/ea.py",
+      "contentHash": "dab316eaedf225a8a6f0051fc47feaab48be5f683bd6525a44c797e916666881",
+      "functions": [
+        {
+          "name": "trouver_ports",
+          "params": [
+            "sn"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "identifier",
+          "params": [
+            "s"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "mesurer",
+          "params": [
+            "s",
+            "commande"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "lire_valeurs",
+          "params": [
+            "s",
+            "v",
+            "i",
+            "p"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "regler_charge",
+          "params": [
+            "s",
+            "v",
+            "i",
+            "p"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "verrou",
+          "params": [
+            "s",
+            "actif"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "entree",
+          "params": [
+            "s",
+            "actif"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [
+        {
+          "name": "ChargeEA",
+          "methods": [
+            "reconnu_par_vid",
+            "candidats",
+            "sonde"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "serial.tools.list_ports",
+          "specifiers": [
+            "lp"
+          ]
+        },
+        {
+          "source": ".base",
+          "specifiers": [
+            "Instrument"
+          ]
+        }
+      ],
+      "exports": [
+        "trouver_ports",
+        "identifier",
+        "mesurer",
+        "lire_valeurs",
+        "regler_charge",
+        "verrou",
+        "entree",
+        "ChargeEA"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "instruments/gestionnaire.py": {
+      "filePath": "instruments/gestionnaire.py",
+      "contentHash": "21af6757592f8752f289f9e3d9d8a80832afa99fcab042093089ecfe777e8b3b",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Gestionnaire",
+          "methods": [
+            "__init__",
+            "instrument",
+            "_utilisable",
+            "ports",
+            "_reclames",
+            "candidats",
+            "_cle",
+            "manuel",
+            "memorise",
+            "choisir",
+            "port",
+            "origine",
+            "statut",
+            "tester",
+            "detecter",
+            "lancer_detection",
+            "en_recherche",
+            "port_ou_erreur"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 143
+        }
+      ],
+      "imports": [
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "serial.tools.list_ports",
+          "specifiers": [
+            "lp"
+          ]
+        },
+        {
+          "source": "config",
+          "specifiers": [
+            "config"
+          ]
+        }
+      ],
+      "exports": [
+        "Gestionnaire"
+      ],
+      "totalLines": 164,
+      "hasStructuralAnalysis": true
+    },
+    "main.py": {
+      "filePath": "main.py",
+      "contentHash": "604452c1eab6b05cf2b165d3b89784ba8a94c1929aefba3e0449f473ac7351fd",
+      "functions": [
+        {
+          "name": "demander_nombre",
+          "params": [
+            "question",
+            "defaut",
+            "optionnel"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "decharge",
+          "params": [
+            "s"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "enregistrer",
+          "params": [
+            "s",
+            "chemin",
+            "v_coupure"
+          ],
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "menu",
+          "params": [
+            "s"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "instruments.ea",
+          "specifiers": [
+            "INTERVALLE_S",
+            "entree",
+            "identifier",
+            "lire_valeurs",
+            "mesurer",
+            "regler_charge",
+            "trouver_ports",
+            "verrou"
+          ]
+        }
+      ],
+      "exports": [
+        "demander_nombre",
+        "decharge",
+        "enregistrer",
+        "menu",
+        "main"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "modules/__init__.py": {
+      "filePath": "modules/__init__.py",
+      "contentHash": "fc5340c8eb90a0f41bc60f575bb850d35d1728ca0422f09f0db926fdd7e09508",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": ".decharge",
+          "specifiers": [
+            "Decharge"
+          ]
+        },
+        {
+          "source": ".equilibrage",
+          "specifiers": [
+            "Equilibrage"
+          ]
+        },
+        {
+          "source": ".resistance",
+          "specifiers": [
+            "Resistance"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "modules/_modele/__init__.py": {
+      "filePath": "modules/_modele/__init__.py",
+      "contentHash": "90a7fe5dc32a24696456e8d8d4a0d9b66dd3002a010cf6e5fcdf80946b469d1a",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageExemple",
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "Modele",
+          "methods": [
+            "actions",
+            "creer_page"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "GRIS",
+            "TEXTE"
+          ]
+        },
+        {
+          "source": "..base",
+          "specifiers": [
+            "Action",
+            "Module"
+          ]
+        }
+      ],
+      "exports": [
+        "PageExemple",
+        "Modele"
+      ],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "modules/base.py": {
+      "filePath": "modules/base.py",
+      "contentHash": "b99da62576c64e368ba63b8f18183a2c6e3fe6c1ae914509218646eb0b3f1a39",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Action",
+          "methods": [],
+          "properties": [
+            "page",
+            "titre",
+            "description",
+            "icone",
+            "couleur",
+            "teinte",
+            "info"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "Module",
+          "methods": [
+            "actions",
+            "creer_page",
+            "info",
+            "dossier_csv",
+            "dossier"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "dataclasses",
+          "specifiers": [
+            "dataclass"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Callable",
+            "Optional"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "LIME"
+          ]
+        }
+      ],
+      "exports": [
+        "Action",
+        "Module"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/__init__.py": {
+      "filePath": "modules/decharge/__init__.py",
+      "contentHash": "9685a111f53280926d30a1e5bcba21fa9491a96f4218f513aa019d24c4541a2a",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Decharge",
+          "methods": [
+            "dossier_csv",
+            "__init__",
+            "_charger",
+            "profils",
+            "dernier",
+            "dernier",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 73
+        }
+      ],
+      "imports": [
+        {
+          "source": "theme",
+          "specifiers": [
+            "ANTHRACITE",
+            "LIME",
+            "TEAL"
+          ]
+        },
+        {
+          "source": "..base",
+          "specifiers": [
+            "Action",
+            "Module"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils",
+            "resultats"
+          ]
+        }
+      ],
+      "exports": [
+        "Decharge"
+      ],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/chemins.py": {
+      "filePath": "modules/decharge/chemins.py",
+      "contentHash": "439c9fdb218ea9bbfc349b80e4c21c4d78e7793fdf20eeece41f55e3c918af3c",
+      "functions": [
+        {
+          "name": "dossier_csv",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "fichier_profils",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        }
+      ],
+      "exports": [
+        "dossier_csv",
+        "fichier_profils"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/page_encours.py": {
+      "filePath": "modules/decharge/page_encours.py",
+      "contentHash": "15fc0658aa3143726cdc0353eb2c0c8a4a827a7b88b6d27d5c3488f0edbc043e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageEnCours",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_etat",
+            "en_test",
+            "occupe",
+            "_boutons",
+            "demarrer",
+            "_arreter",
+            "arreter_et_attendre",
+            "_test",
+            "_traiter_file",
+            "_fin_test",
+            "_voir_analyse"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 196
+        }
+      ],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "envoi",
+          "specifiers": [
+            "envoi"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "instruments",
+          "specifiers": [
+            "charge"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BLEU",
+            "BORD",
+            "GRIS",
+            "ORANGE",
+            "ROUGE",
+            "TEXTE",
+            "VERT",
+            "GraphesTemps"
+          ]
+        }
+      ],
+      "exports": [
+        "PageEnCours"
+      ],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/page_lancer.py": {
+      "filePath": "modules/decharge/page_lancer.py",
+      "contentHash": "25fac1d7381b416dd66885ee7a6d201d6833e68196791cd240dc270b63aad9a8",
+      "functions": [
+        {
+          "name": "_propre",
+          "params": [
+            "texte"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageLancer",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_profil_courant",
+            "_profil_choisi",
+            "_resume",
+            "_commande_simple",
+            "_identite",
+            "_mesure",
+            "_demarrer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 148
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "dialogue_identite",
+          "specifiers": [
+            "SelecteurTechnicien"
+          ]
+        },
+        {
+          "source": "instruments",
+          "specifiers": [
+            "charge"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "CARTE",
+            "GRIS",
+            "TEXTE",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils"
+          ]
+        }
+      ],
+      "exports": [
+        "_propre",
+        "PageLancer"
+      ],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/page_profils.py": {
+      "filePath": "modules/decharge/page_profils.py",
+      "contentHash": "384625b8c1a88d67615d9a79eee990e528917dcd48530654eb3dae7be6260a1e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageProfils",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_rafraichir",
+            "_afficher",
+            "_nouveau",
+            "_selectionner",
+            "_enregistrer",
+            "_supprimer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 123
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ROUGE",
+            "TEXTE",
+            "VERT",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils"
+          ]
+        }
+      ],
+      "exports": [
+        "PageProfils"
+      ],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/page_resultats.py": {
+      "filePath": "modules/decharge/page_resultats.py",
+      "contentHash": "ea0c87e2fcbc19996d856bd5a402332ca505a68d06956c8f9858c3f3a90728d4",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageResultats",
+          "methods": [
+            "__init__",
+            "_dossier",
+            "on_show",
+            "_filtrer",
+            "_courant",
+            "_afficher",
+            "_tracer",
+            "_ouvrir_csv"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 129
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "TEXTE",
+            "GraphesTemps",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "resultats"
+          ]
+        }
+      ],
+      "exports": [
+        "PageResultats"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/profils.py": {
+      "filePath": "modules/decharge/profils.py",
+      "contentHash": "319f302cd42441d71013933cb4934f349c71a496f0e4a61e1930026ebebf9d47",
+      "functions": [
+        {
+          "name": "_nombre",
+          "params": [
+            "valeur",
+            "libelle",
+            "optionnel"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "valider",
+          "params": [
+            "brut"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "charger",
+          "params": [
+            "chemin"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "sauver",
+          "params": [
+            "chemin",
+            "profils",
+            "dernier"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [
+        "_nombre",
+        "valider",
+        "charger",
+        "sauver"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "modules/decharge/resultats.py": {
+      "filePath": "modules/decharge/resultats.py",
+      "contentHash": "01863b8bc1f84c8df7e49f11858b3e729c28dcac3ed02a1803a908ddcf9560f7",
+      "functions": [
+        {
+          "name": "lister",
+          "params": [
+            "dossier"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "analyser",
+          "params": [
+            "chemin"
+          ],
+          "exported": true,
+          "lineCount": 37
+        },
+        {
+          "name": "analyser_dossier",
+          "params": [
+            "dossier"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "glob",
+          "specifiers": [
+            "glob"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        }
+      ],
+      "exports": [
+        "lister",
+        "analyser",
+        "analyser_dossier"
+      ],
+      "totalLines": 61,
+      "hasStructuralAnalysis": true
+    },
+    "modules/equilibrage/__init__.py": {
+      "filePath": "modules/equilibrage/__init__.py",
+      "contentHash": "a6040370c8b8fa7182fc82c7025f53b51ec2b4f2cdc3d31b39cfee9db4fe3d0d",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Equilibrage",
+          "methods": [
+            "dossier_csv",
+            "dossier_sessions",
+            "_nb_sessions",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 43
+        }
+      ],
+      "imports": [
+        {
+          "source": "glob",
+          "specifiers": [
+            "glob"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "ANTHRACITE",
+            "LIME",
+            "TEAL"
+          ]
+        },
+        {
+          "source": "..base",
+          "specifiers": [
+            "Action",
+            "Module"
+          ]
+        }
+      ],
+      "exports": [
+        "Equilibrage"
+      ],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "modules/equilibrage/acquisition.py": {
+      "filePath": "modules/equilibrage/acquisition.py",
+      "contentHash": "6c43e5b5127ac143f756e4e9478b16b6a50cecf17d24bda2996c3c559e000811",
+      "functions": [],
+      "classes": [
+        {
+          "name": "CritereFin",
+          "methods": [
+            "__init__",
+            "verifier"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "Acquisition",
+          "methods": [
+            "__init__",
+            "demarrer",
+            "arreter",
+            "vivant",
+            "attendre",
+            "_boucle"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 106
+        }
+      ],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "instruments.daly",
+          "specifiers": [
+            "BAUD",
+            "DELAI_SERIE",
+            "Daly"
+          ]
+        }
+      ],
+      "exports": [
+        "CritereFin",
+        "Acquisition"
+      ],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "modules/equilibrage/page_cellules.py": {
+      "filePath": "modules/equilibrage/page_cellules.py",
+      "contentHash": "fdeb18e7f86a814244a94cd60f2bf6baa9f1f3a054d57b1258a7ac762ad85603",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageCellules",
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_actif",
+            "_basculer",
+            "_demarrer",
+            "_attendre_detection",
+            "_etat",
+            "_traiter",
+            "_afficher"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 131
+        }
+      ],
+      "imports": [
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ORANGE",
+            "ROUGE",
+            "TEXTE",
+            "VERT"
+          ]
+        },
+        {
+          "source": "instruments.daly",
+          "specifiers": [
+            "resume_cellules"
+          ]
+        },
+        {
+          "source": ".acquisition",
+          "specifiers": [
+            "Acquisition"
+          ]
+        },
+        {
+          "source": ".widgets",
+          "specifiers": [
+            "BarresCellules",
+            "Mesures",
+            "resume_equilibrage",
+            "texte_courant"
+          ]
+        }
+      ],
+      "exports": [
+        "PageCellules"
+      ],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "modules/equilibrage/page_session.py": {
+      "filePath": "modules/equilibrage/page_session.py",
+      "contentHash": "18ffe8417c1177d276699cec8705ba7d148d8d6ac5afb1a30007e0b31604afb7",
+      "functions": [
+        {
+          "name": "_nombre",
+          "params": [
+            "texte",
+            "nom",
+            "minimum",
+            "strict"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageSession",
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_surveiller_instrument",
+            "occupe",
+            "arreter_et_attendre",
+            "_etat",
+            "_mode",
+            "_demarrer",
+            "_arreter",
+            "_ouvrir_dossier",
+            "_traiter",
+            "_donnees",
+            "_fin"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 226
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "envoi",
+          "specifiers": [
+            "envoi"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "dialogue_identite",
+          "specifiers": [
+            "SelecteurTechnicien"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ORANGE",
+            "ROUGE",
+            "TEAL",
+            "TEXTE",
+            "VERT",
+            "GraphesTemps"
+          ]
+        },
+        {
+          "source": ".acquisition",
+          "specifiers": [
+            "Acquisition",
+            "CritereFin"
+          ]
+        },
+        {
+          "source": ".widgets",
+          "specifiers": [
+            "BarresCellules",
+            "Mesures",
+            "equilibrage_actif",
+            "resume_equilibrage",
+            "texte_courant"
+          ]
+        }
+      ],
+      "exports": [
+        "_nombre",
+        "PageSession"
+      ],
+      "totalLines": 259,
+      "hasStructuralAnalysis": true
+    },
+    "modules/equilibrage/widgets.py": {
+      "filePath": "modules/equilibrage/widgets.py",
+      "contentHash": "0d9357da9a94a10b1ca7fe4fdf7a7c08ac074855f8d9603e5a891550028c8cb1",
+      "functions": [
+        {
+          "name": "equilibrage_actif",
+          "params": [
+            "flags",
+            "courant"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "texte_courant",
+          "params": [
+            "courant",
+            "flags"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "resume_equilibrage",
+          "params": [
+            "flags",
+            "courant",
+            "ecart_mv",
+            "seuils",
+            "v_max"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [
+        {
+          "name": "Mesures",
+          "methods": [
+            "__init__",
+            "regler",
+            "masquer",
+            "effacer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "BarresCellules",
+          "methods": [
+            "__init__",
+            "definir",
+            "vider",
+            "tracer",
+            "_construire",
+            "_positionner"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 92
+        }
+      ],
+      "imports": [
+        {
+          "source": "math",
+          "specifiers": [
+            "math"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "CARTE",
+            "GRIS",
+            "LIME",
+            "ORANGE",
+            "ROUGE",
+            "TEAL",
+            "TEXTE"
+          ]
+        }
+      ],
+      "exports": [
+        "equilibrage_actif",
+        "texte_courant",
+        "resume_equilibrage",
+        "Mesures",
+        "BarresCellules"
+      ],
+      "totalLines": 186,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/__init__.py": {
+      "filePath": "modules/resistance/__init__.py",
+      "contentHash": "72acf3f7505ea8c4f56e3327f1bdd3f2a209e7329c1f82b47d6e71e0dec57b63",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Resistance",
+          "methods": [
+            "dossier_csv",
+            "__init__",
+            "_charger",
+            "profils",
+            "dernier",
+            "dernier",
+            "_nb_tests",
+            "_pluriel",
+            "actions",
+            "info",
+            "creer_page"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 66
+        }
+      ],
+      "imports": [
+        {
+          "source": "glob",
+          "specifiers": [
+            "glob"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "ANTHRACITE",
+            "LIME",
+            "TEAL"
+          ]
+        },
+        {
+          "source": "..base",
+          "specifiers": [
+            "Action",
+            "Module"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils"
+          ]
+        }
+      ],
+      "exports": [
+        "Resistance"
+      ],
+      "totalLines": 82,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/calcul.py": {
+      "filePath": "modules/resistance/calcul.py",
+      "contentHash": "7111ff0d0c694f71f88ee81af73b897c73b14574a0162a6ad72a22de1acb9037",
+      "functions": [
+        {
+          "name": "moyenne",
+          "params": [
+            "valeurs"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_r_mohm",
+          "params": [
+            "v_repos",
+            "v_pulse",
+            "courant"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_moyenne_cellules",
+          "params": [
+            "echantillons",
+            "nb"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "resistance_essai",
+          "params": [
+            "echantillons",
+            "essai"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "resistances",
+          "params": [
+            "echantillons"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "_stats",
+          "params": [
+            "valeurs"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "synthese",
+          "params": [
+            "essais"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "statistics",
+          "specifiers": [
+            "statistics"
+          ]
+        }
+      ],
+      "exports": [
+        "moyenne",
+        "_r_mohm",
+        "_moyenne_cellules",
+        "resistance_essai",
+        "resistances",
+        "_stats",
+        "synthese"
+      ],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/chemins.py": {
+      "filePath": "modules/resistance/chemins.py",
+      "contentHash": "556389e4465fd99b3f47e46098c8e5aaf797ec69c289a9e600ba29d24247364a",
+      "functions": [
+        {
+          "name": "dossier",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "dossier_csv",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "fichier_profils",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        }
+      ],
+      "exports": [
+        "dossier",
+        "dossier_csv",
+        "fichier_profils"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/mesure.py": {
+      "filePath": "modules/resistance/mesure.py",
+      "contentHash": "c74795eb253c8d74123e1a6bfbf3c166457e1d3f940cdd85e772970ddd61d20b",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Mesure",
+          "methods": [
+            "__init__",
+            "demarrer",
+            "arreter",
+            "vivant",
+            "attendre",
+            "_boucle",
+            "_sequence"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 101
+        }
+      ],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "serial",
+          "specifiers": [
+            "serial"
+          ]
+        },
+        {
+          "source": "instruments",
+          "specifiers": [
+            "charge"
+          ]
+        },
+        {
+          "source": "instruments.daly",
+          "specifiers": [
+            "DELAI_SERIE",
+            "Daly",
+            "BAUD_DALY"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "calcul"
+          ]
+        }
+      ],
+      "exports": [
+        "Mesure"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/page_encours.py": {
+      "filePath": "modules/resistance/page_encours.py",
+      "contentHash": "e3e67d982b050b4e742285805cb44debf76e82b69df9c13030a5328bf8ab8928",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageEnCours",
+          "methods": [
+            "__init__",
+            "on_show",
+            "en_test",
+            "occupe",
+            "_etat",
+            "_boutons",
+            "demarrer",
+            "_arreter",
+            "arreter_et_attendre",
+            "_traiter_file",
+            "_essai_termine",
+            "_fin_test",
+            "_voir_analyse"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 162
+        }
+      ],
+      "imports": [
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "envoi",
+          "specifiers": [
+            "envoi"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BLEU",
+            "BORD",
+            "GRIS",
+            "ORANGE",
+            "ROUGE",
+            "TEAL",
+            "TEXTE",
+            "VERT",
+            "GraphesTemps"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "calcul",
+            "profils"
+          ]
+        },
+        {
+          "source": ".mesure",
+          "specifiers": [
+            "Mesure"
+          ]
+        },
+        {
+          "source": ".widgets",
+          "specifiers": [
+            "BarresResistance",
+            "texte_mohm"
+          ]
+        }
+      ],
+      "exports": [
+        "PageEnCours"
+      ],
+      "totalLines": 182,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/page_lancer.py": {
+      "filePath": "modules/resistance/page_lancer.py",
+      "contentHash": "b8792841453252222930dc508d419205d76ca677c78406accd93fa7d297910a4",
+      "functions": [
+        {
+          "name": "_propre",
+          "params": [
+            "texte"
+          ],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageLancer",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_profil_courant",
+            "_profil_choisi",
+            "_resume",
+            "_demarrer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 107
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "dialogue_identite",
+          "specifiers": [
+            "SelecteurTechnicien"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "CARTE",
+            "GRIS",
+            "TEXTE",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils"
+          ]
+        }
+      ],
+      "exports": [
+        "_propre",
+        "PageLancer"
+      ],
+      "totalLines": 125,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/page_profils.py": {
+      "filePath": "modules/resistance/page_profils.py",
+      "contentHash": "14618830a87ea8e4c4accd527674a439420ac11bd7dc456a8f9767a3fe42ecf8",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageProfils",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_rafraichir",
+            "_afficher",
+            "_nouveau",
+            "_selectionner",
+            "_enregistrer",
+            "_supprimer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 119
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ROUGE",
+            "TEXTE",
+            "VERT",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "profils"
+          ]
+        }
+      ],
+      "exports": [
+        "PageProfils"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/page_resultats.py": {
+      "filePath": "modules/resistance/page_resultats.py",
+      "contentHash": "065fd42ae0da9f847c74f12dbef759a6a7a095d7c84b769e9701060094415494",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageResultats",
+          "methods": [
+            "__init__",
+            "on_show",
+            "_filtrer",
+            "_courant",
+            "_afficher",
+            "_ouvrir_csv"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 114
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "TEAL",
+            "TEXTE",
+            "GraphesTemps",
+            "ListeLignes"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "chemins",
+            "resultats"
+          ]
+        },
+        {
+          "source": ".page_encours",
+          "specifiers": [
+            "DEFS_GRAPHE"
+          ]
+        },
+        {
+          "source": ".widgets",
+          "specifiers": [
+            "BarresResistance",
+            "texte_mohm"
+          ]
+        }
+      ],
+      "exports": [
+        "PageResultats"
+      ],
+      "totalLines": 128,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/profils.py": {
+      "filePath": "modules/resistance/profils.py",
+      "contentHash": "6e33a7625ba38cbf474e47f3d7527d8c8e4de6038e7d4795df2439b6ac288b61",
+      "functions": [
+        {
+          "name": "defauts",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_nombre",
+          "params": [
+            "valeur",
+            "libelle",
+            "entier",
+            "optionnel"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "valider",
+          "params": [
+            "brut"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "duree_totale_s",
+          "params": [
+            "p"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "resume",
+          "params": [
+            "p"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "charger",
+          "params": [
+            "chemin"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "sauver",
+          "params": [
+            "chemin",
+            "profils",
+            "dernier"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        }
+      ],
+      "exports": [
+        "defauts",
+        "_nombre",
+        "valider",
+        "duree_totale_s",
+        "resume",
+        "charger",
+        "sauver"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/resultats.py": {
+      "filePath": "modules/resistance/resultats.py",
+      "contentHash": "71a5be43c616ca011d4a3d3c5508888c91e4dbcf413d88b25c3d8b5f57f5fbf0",
+      "functions": [
+        {
+          "name": "lister",
+          "params": [
+            "dossier"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_nombre",
+          "params": [
+            "texte"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "analyser",
+          "params": [
+            "chemin"
+          ],
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "analyser_dossier",
+          "params": [
+            "dossier"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "csv",
+          "specifiers": [
+            "csv"
+          ]
+        },
+        {
+          "source": "glob",
+          "specifiers": [
+            "glob"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "calcul"
+          ]
+        }
+      ],
+      "exports": [
+        "lister",
+        "_nombre",
+        "analyser",
+        "analyser_dossier"
+      ],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "modules/resistance/widgets.py": {
+      "filePath": "modules/resistance/widgets.py",
+      "contentHash": "b6d0a163ff03d2f6016e735b9386a441863ceecfe8eee2dfbb69753f41f35c0b",
+      "functions": [
+        {
+          "name": "texte_mohm",
+          "params": [
+            "valeur",
+            "decimales"
+          ],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [
+        {
+          "name": "BarresResistance",
+          "methods": [
+            "__init__",
+            "definir",
+            "tracer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 41
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BORD",
+            "CARTE",
+            "GRIS",
+            "ORANGE",
+            "TEAL",
+            "TEXTE"
+          ]
+        }
+      ],
+      "exports": [
+        "BarresResistance",
+        "texte_mohm"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "page_accueil.py": {
+      "filePath": "page_accueil.py",
+      "contentHash": "f6e18a0914dea8c90adeffa92ec2c08e26decb50348fa7cabea598feb25144e6",
+      "functions": [
+        {
+          "name": "_disposer",
+          "params": [
+            "parent",
+            "fabriques",
+            "par_ligne"
+          ],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [
+        {
+          "name": "Accueil",
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "PageModule",
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "GRIS",
+            "ORANGE",
+            "TEXTE"
+          ]
+        }
+      ],
+      "exports": [
+        "_disposer",
+        "Accueil",
+        "PageModule"
+      ],
+      "totalLines": 85,
+      "hasStructuralAnalysis": true
+    },
+    "page_instruments.py": {
+      "filePath": "page_instruments.py",
+      "contentHash": "bd8d9b971f4909be828e6604f7de9ed9853d55c44322c55d89b21a7540ee87e0",
+      "functions": [
+        {
+          "name": "_decrire",
+          "params": [
+            "infos"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageInstruments",
+          "methods": [
+            "__init__",
+            "on_show",
+            "on_hide",
+            "_courant",
+            "_boucle",
+            "_rafraichir",
+            "_actualiser",
+            "_choisir_instrument",
+            "_choisir_port",
+            "_rechercher",
+            "_tester"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 144
+        }
+      ],
+      "imports": [
+        {
+          "source": "queue",
+          "specifiers": [
+            "queue"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "ttk"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "GRIS",
+            "ORANGE",
+            "ROUGE",
+            "TEXTE",
+            "VERT",
+            "ListeLignes"
+          ]
+        }
+      ],
+      "exports": [
+        "_decrire",
+        "PageInstruments"
+      ],
+      "totalLines": 171,
+      "hasStructuralAnalysis": true
+    },
+    "page_modules.py": {
+      "filePath": "page_modules.py",
+      "contentHash": "f4d7a365fe9c064dc602ab97d61937e58523cdeddd6d74bdda6240bf0fa2e1d2",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PageModules",
+          "methods": [
+            "__init__",
+            "on_show"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "imports": [
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "config",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "T"
+          ]
+        },
+        {
+          "source": "theme",
+          "specifiers": [
+            "BG",
+            "BORD",
+            "CARTE",
+            "GRIS",
+            "TEXTE",
+            "VERT",
+            "Interrupteur"
+          ]
+        }
+      ],
+      "exports": [
+        "PageModules"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "0a3ffc0c65788e30397fb481fa4c58c8daabc2ebe0057f3ec99b16498a51c23a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
+    "synchro.py": {
+      "filePath": "synchro.py",
+      "contentHash": "7ebc28ef771235a0be7acf30f594b66a285d3e3bf2d246034a084482a2848c86",
+      "functions": [
+        {
+          "name": "etat",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_appeler",
+          "params": [
+            "reglages",
+            "methode",
+            "chemin",
+            "corps"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "synchroniser",
+          "params": [],
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "lancer",
+          "params": [
+            "force"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            "threading"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "urllib.error",
+          "specifiers": [
+            "urllib.error"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "urllib.request"
+          ]
+        },
+        {
+          "source": "urllib.parse",
+          "specifiers": [
+            "quote"
+          ]
+        },
+        {
+          "source": "envoi",
+          "specifiers": [
+            "envoi"
+          ]
+        },
+        {
+          "source": "identite",
+          "specifiers": [
+            "identite"
+          ]
+        }
+      ],
+      "exports": [
+        "etat",
+        "_appeler",
+        "synchroniser",
+        "lancer"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
+    "theme.py": {
+      "filePath": "theme.py",
+      "contentHash": "e396d88e799c108b654c2667557e6fb19d9a397a0e08d569490e39fe6845b816",
+      "functions": [
+        {
+          "name": "_dossier_donnees",
+          "params": [],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "init_styles",
+          "params": [
+            "root"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "titre",
+          "params": [
+            "parent",
+            "texte",
+            "f",
+            "fond"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "resume_profil",
+          "params": [
+            "p"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "duree",
+          "params": [
+            "s"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "ouvrir",
+          "params": [
+            "chemin",
+            "reveler"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "icone",
+          "params": [
+            "parent",
+            "genre",
+            "fond",
+            "teinte",
+            "taille"
+          ],
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "tuile",
+          "params": [
+            "parent",
+            "f",
+            "titre_",
+            "desc",
+            "genre",
+            "couleur",
+            "teinte",
+            "commande",
+            "largeur",
+            "hauteur"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [
+        {
+          "name": "ListeLignes",
+          "methods": [
+            "__init__",
+            "_maj_defilement",
+            "_molette",
+            "_roue",
+            "remplir",
+            "_ligne",
+            "_survol",
+            "choisir",
+            "activer"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 104
+        },
+        {
+          "name": "Interrupteur",
+          "methods": [
+            "__init__",
+            "regler",
+            "basculer",
+            "_dessiner"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "GraphesTemps",
+          "methods": [
+            "__init__",
+            "definir",
+            "basculer",
+            "_maj_pastilles",
+            "tracer",
+            "_survol"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 149
+        }
+      ],
+      "imports": [
+        {
+          "source": "bisect",
+          "specifiers": [
+            "bisect"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tk"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "tkfont"
+          ]
+        },
+        {
+          "source": "tkinter",
+          "specifiers": [
+            "messagebox",
+            "ttk"
+          ]
+        }
+      ],
+      "exports": [
+        "_dossier_donnees",
+        "init_styles",
+        "titre",
+        "resume_profil",
+        "duree",
+        "ouvrir",
+        "ListeLignes",
+        "icone",
+        "tuile",
+        "Interrupteur",
+        "GraphesTemps"
+      ],
+      "totalLines": 472,
+      "hasStructuralAnalysis": true
+    },
+    "updater.py": {
+      "filePath": "updater.py",
+      "contentHash": "928994eaed6b3f5fe71239ddbac716290065ca65478b4a959978fd054ad1086b",
+      "functions": [
+        {
+          "name": "systeme",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "installe",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_numeros",
+          "params": [
+            "v"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_requete",
+          "params": [
+            "url"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "_contexte_ssl",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "_ouvrir",
+          "params": [
+            "url",
+            "timeout"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_expliquer",
+          "params": [
+            "e"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "verifier",
+          "params": [
+            "timeout"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "derniere_version",
+          "params": [
+            "timeout"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "plus_recente",
+          "params": [
+            "info",
+            "courante"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_somme_attendue",
+          "params": [
+            "info",
+            "nom"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "telecharger",
+          "params": [
+            "info",
+            "progression"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "_app_macos",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "_chemin_actuel",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "_remplacer_fichier",
+          "params": [
+            "nouveau",
+            "cible"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "_remplacer_app",
+          "params": [
+            "archive",
+            "app"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "_cible_macos",
+          "params": [
+            "app"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "appliquer",
+          "params": [
+            "fichier",
+            "cible"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "relancer",
+          "params": [
+            "chemin"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "nettoyer",
+          "params": [],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [
+        {
+          "name": "ErreurMaj",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "hashlib",
+          "specifiers": [
+            "hashlib"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "shutil",
+          "specifiers": [
+            "shutil"
+          ]
+        },
+        {
+          "source": "ssl",
+          "specifiers": [
+            "ssl"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "tempfile",
+          "specifiers": [
+            "tempfile"
+          ]
+        },
+        {
+          "source": "urllib.request",
+          "specifiers": [
+            "urllib.request"
+          ]
+        },
+        {
+          "source": "urllib.error",
+          "specifiers": [
+            "HTTPError",
+            "URLError"
+          ]
+        },
+        {
+          "source": "version",
+          "specifiers": [
+            "version"
+          ]
+        }
+      ],
+      "exports": [
+        "ErreurMaj",
+        "systeme",
+        "installe",
+        "_numeros",
+        "_requete",
+        "_contexte_ssl",
+        "_ouvrir",
+        "_expliquer",
+        "verifier",
+        "derniere_version",
+        "plus_recente",
+        "_somme_attendue",
+        "telecharger",
+        "_app_macos",
+        "_chemin_actuel",
+        "_remplacer_fichier",
+        "_remplacer_app",
+        "_cible_macos",
+        "appliquer",
+        "relancer",
+        "nettoyer"
+      ],
+      "totalLines": 262,
+      "hasStructuralAnalysis": true
+    },
+    "version.py": {
+      "filePath": "version.py",
+      "contentHash": "abcf6167332edf493632196a66f39b67cc559d9bdb8e5adbb728ca486c36a200",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
