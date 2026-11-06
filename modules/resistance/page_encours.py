@@ -4,6 +4,7 @@ import time
 import tkinter as tk
 from tkinter import messagebox, ttk
 
+import envoi
 import identite
 import theme as T
 from theme import BG, BLEU, BORD, GRIS, ORANGE, ROUGE, TEAL, TEXTE, VERT, GraphesTemps
@@ -161,6 +162,7 @@ class PageEnCours(tk.Frame):
     def _fin_test(self, motif, detail):
         self.phase = None
         self._boutons("fin")
+        envoi.envoyer("resistance", self.dernier_csv, motif)
         if motif == "erreur":
             self._etat("Test interrompu sur erreur - vérifiez la charge et l'équilibreur.", ROUGE)
             return messagebox.showerror("Erreur", f"{detail}\n\nL'entrée de la charge a été coupée (vérifiez-le sur la charge).")
