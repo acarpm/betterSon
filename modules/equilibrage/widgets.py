@@ -26,14 +26,25 @@ def texte_courant(courant, flags=None):
     return "non fourni" if any(flags or []) else "0.0 A"
 
 
-def resume_equilibrage(flags, courant=None, ecart_mv=None):
-    """(texte, couleur) décrivant ce que fait l'appareil : états d'équilibrage par cellule (0x97) et courant d'équilibrage."""
+def resume_equilibrage(flags, courant=None, ecart_mv=None, seuils=None, v_max=None):
+    """(texte, couleur) décrivant ce que fait l'appareil : états d'équilibrage par cellule (0x97), courant d'équilibrage
+    et, quand l'appareil les fournit (0x5F), ses seuils de déclenchement."""
     actives = [f"C{i + 1}" for i, a in enumerate(flags or []) if a]
     if equilibrage_actif(flags, courant):
         detail = f" sur {', '.join(actives)}" if actives else ""
         amp = f" · courant {courant:+.1f} A" if courant is not None and abs(courant) >= 0.05 else ""
         return f"Équilibrage en cours{detail}{amp}", ORANGE
     mesure = ("courant 0,0 A" + (", aucune cellule active" if flags is not None else "")) if courant is not None else "aucune activité signalée"
+    if seuils and ecart_mv is not None:
+        s_ecart, s_tension = seuils["ecart_ouverture_mv"], seuils["tension_ouverture_mv"]
+        regle = f"seuils de l'appareil : écart ≥ {s_ecart} mV et cellule ≥ {s_tension / 1000:.3f} V"
+        if ecart_mv < s_ecart:
+            return f"Équilibrage au repos ({mesure}) : écart de {ecart_mv:.0f} mV sous le seuil de déclenchement ({regle})", GRIS
+        if v_max is not None and v_max * 1000 < s_tension:
+            return (f"Équilibrage au repos ({mesure}) : l'écart ({ecart_mv:.0f} mV) dépasse le seuil mais aucune cellule n'atteint la "
+                    f"tension d'ouverture ({regle})"), GRIS
+        return (f"L'appareil devrait équilibrer ({regle}) mais n'équilibre pas ({mesure}) : "
+                "équilibrage désactivé ou réservé à la charge ? Voir les réglages de l'appareil."), ROUGE
     if ecart_mv is not None and ecart_mv >= ECART_ANORMAL_MV:
         return (f"L'appareil n'équilibre pas alors que l'écart est de {ecart_mv:.0f} mV ({mesure}) : équilibrage désactivé, "
                 "réservé à la charge, ou seuil de déclenchement plus élevé ? Voir les réglages de l'appareil."), ROUGE

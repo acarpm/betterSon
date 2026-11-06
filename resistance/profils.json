@@ -1,0 +1,16 @@
+{
+  "profils": [
+    {
+      "nom": "COURSIER 19Ah",
+      "courant": 20.0,
+      "pulse_s": 4.0,
+      "mesure_apres_s": 3.0,
+      "repos_s": 10.0,
+      "repetitions": 3,
+      "attente_s": 50.0,
+      "tension_min_cellule": 3.0,
+      "notes": ""
+    }
+  ],
+  "dernier": "COURSIER 19Ah"
+}

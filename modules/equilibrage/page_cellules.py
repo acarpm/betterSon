@@ -142,6 +142,6 @@ class PageCellules(tk.Frame):
             m.regler("soc", f"{d['soc']:.0f} %")
         if cel:
             self.barres.definir(cel, d["equilibrage"])
-            texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"))
+            texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"), d.get("seuils"), d.get("v_max"))
             self.lbl_eq.config(text=texte, fg=couleur)
         self._etat(f"● Lecture en direct · {len(cel)} cellules", VERT)

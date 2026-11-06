@@ -120,6 +120,7 @@ Tkinter est nécessaire (macOS Homebrew : `brew install python-tk@3.x`).
 | `modules/__init__.py` | **registre des modules** (`TOUS`) |
 | `modules/decharge/` | module Décharge : pages, profils, analyse des CSV, chemins de données |
 | `modules/equilibrage/` | module Équilibrage : lecture périodique + CSV (`acquisition.py`), pages |
+| `modules/resistance/` | module Résistance interne : profils, séquence de pulses (`mesure.py`), calcul (`calcul.py`), pages |
 | `modules/_modele/` | squelette commenté à copier pour un nouveau module (non enregistré) |
 | `main.py` | version console du test de décharge (utilise `instruments/ea.py`) |
 | `install.sh`, `install.ps1` | installation en une commande |

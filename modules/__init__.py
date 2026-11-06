@@ -7,5 +7,6 @@ Chaque module peut ensuite être activé / désactivé depuis l'écran « Gérer
 """
 from .decharge import Decharge
 from .equilibrage import Equilibrage
+from .resistance import Resistance
 
-TOUS = [Decharge(), Equilibrage()]
+TOUS = [Decharge(), Equilibrage(), Resistance()]

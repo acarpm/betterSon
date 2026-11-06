@@ -246,6 +246,8 @@ def icone(parent, genre, fond, teinte, taille=84):
         c.create_rectangle(48, 42, 64, 60, fill=TEAL, outline="")
         c.create_line(38, 32, 46, 32, arrow="last", width=3, fill=ANTHRACITE)
         c.create_line(46, 42, 38, 42, arrow="last", width=3, fill=ANTHRACITE)
+    elif genre == "resistance":  # résistance en zigzag entre deux fils
+        c.create_line(15, 42, 25, 42, 29, 30, 37, 54, 45, 30, 53, 54, 57, 42, 69, 42, fill=ANTHRACITE, width=3, joinstyle="round")
     elif genre == "connexion":  # prise
         c.create_rectangle(29, 38, 55, 56, outline=ANTHRACITE, width=3)
         c.create_rectangle(34, 24, 39, 38, fill=ANTHRACITE, outline="")

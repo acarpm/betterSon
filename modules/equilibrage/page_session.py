@@ -227,7 +227,7 @@ class PageSession(tk.Frame):
         m.regler("duree", T.duree(t))
         self.barres.definir(d["cellules"], d["equilibrage"])
         self._activite_vue = self._activite_vue or equilibrage_actif(d["equilibrage"], d["courant"])
-        texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"))
+        texte, couleur = resume_equilibrage(d["equilibrage"], d["courant"], d.get("ecart_mv"), d.get("seuils"), d.get("v_max"))
         self.lbl_eq.config(text=texte, fg=couleur)
         if self._deja_equilibre:  # c'est le cas d'un pack déjà équilibré : l'appareil n'a rien à corriger, il ne se passera rien
             self._etat(f"Pack déjà équilibré : écart {self.ecart_initial:.0f} mV, sous la cible de {self._cible:g} mV. "

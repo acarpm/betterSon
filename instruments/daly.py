@@ -20,14 +20,20 @@ TENUE = 5   # une cellule dont la trame manque garde sa dernière valeur pendant
 DEBUT = 0xA5
 ADRESSE_PC = 0x40
 CMD_GLOBAL, CMD_ETAT, CMD_CELLULES, CMD_EQUILIBRAGE = 0x90, 0x94, 0x95, 0x97
+CMD_PARAM_EQUILIBRAGE = 0x5F   # LECTURE : seuils de déclenchement de l'équilibrage (doc Daly p.18)
+CMD_TEST_EQUILIBRAGE = 0xD7    # ÉCRITURE « Balanced test » : démarre/arrête l'équilibrage d'une cellule (doc Daly p.24)
 
 
 def somme_controle(trame):
     return sum(trame[:12]) & 0xFF
 
 
-def requete(cmd):
-    t = bytearray([DEBUT, ADRESSE_PC, cmd, 0x08] + [0] * 9)
+def requete(cmd, donnees=()):
+    """Trame de requête : 8 octets de données (réservés à zéro pour une lecture)."""
+    donnees = list(donnees)
+    if len(donnees) > 8:
+        raise ValueError("8 octets de données au maximum")
+    t = bytearray([DEBUT, ADRESSE_PC, cmd, 0x08] + donnees + [0] * (8 - len(donnees)) + [0])
     t[12] = somme_controle(t)
     return bytes(t)
 
@@ -57,6 +63,8 @@ class Daly:
         self._manques_cell = []
         self._lectures_vides = 0
         self._pack_prec, self._pack_manques = None, 0
+        self.seuils = None         # seuils d'équilibrage de l'appareil (0x5F), lus une fois
+        self._essais_seuils = 0
 
     # ---------- bas niveau ----------
     def _lire_trame(self, cmd):
@@ -74,9 +82,9 @@ class Daly:
             if trame_valide(t, cmd):
                 return t
 
-    def _interroger(self, cmd, nombre=1):
+    def _interroger(self, cmd, nombre=1, donnees=()):
         self.ser.reset_input_buffer()
-        self.ser.write(requete(cmd))
+        self.ser.write(requete(cmd, donnees))
         trames = []
         limite = time.monotonic() + self.delai * (nombre + 1)
         while len(trames) < nombre and time.monotonic() < limite:
@@ -104,8 +112,11 @@ class Daly:
         t = self._interroger(CMD_ETAT)
         return t[0][4] if t and t[0][4] > 0 else None
 
-    def lire_cellules(self):
+    def lire_cellules(self, tenir=True):
         """Tensions (V) de chaque cellule, dans l'ordre ; None pour une cellule dont la trame manque.
+
+        tenir=False : aucune valeur n'est reportée d'une lecture à l'autre (mesures de précision, ex. résistance interne :
+        une valeur ancienne fausserait le calcul).
 
         Si des trames manquent, la lecture est retentée une fois ; une cellule encore manquante garde sa dernière valeur
         pendant TENUE lectures (une trame perdue ne doit pas faire clignoter l'affichage).
@@ -118,7 +129,7 @@ class Daly:
             if len(par_numero) >= nombre:
                 break
         if not par_numero:
-            return self._tenir(None)
+            return self._tenir(None) if tenir else None
         base = min(par_numero)  # numéro de la première trame : 0 ou 1 selon les appareils
         par_indice = {}
         for numero, tr in par_numero.items():
@@ -130,7 +141,7 @@ class Daly:
         else:
             while liste and not liste[-1]:  # nombre inconnu : on retire les voies non câblées (0 V)
                 liste.pop()
-        return self._tenir(liste or None)
+        return self._tenir(liste or None) if tenir else (liste or None)
 
     def _tenir(self, liste):
         """Complète une lecture incomplète avec les dernières valeurs connues (au plus TENUE lectures de suite)."""
@@ -163,6 +174,32 @@ class Daly:
         self._manques_equilibrage = 0
         return [bool((t[0][4 + i // 8] >> (i % 8)) & 1) for i in range(min(n, 64))]
 
+    def lire_parametres_equilibrage(self):
+        """Seuils de déclenchement de l'équilibrage (0x5F, lecture) : tension et écart d'ouverture en mV, ou None."""
+        t = self._interroger(CMD_PARAM_EQUILIBRAGE)
+        if not t:
+            return None
+        d = t[0][4:12]
+        ouverture, ecart = (d[0] << 8) | d[1], (d[2] << 8) | d[3]
+        if ouverture in (0, 0xFFFF) and ecart in (0, 0xFFFF):
+            return None  # champs non renseignés
+        return {"tension_ouverture_mv": ouverture, "ecart_ouverture_mv": ecart}
+
+    def commander_equilibrage(self, cellule, actif):
+        """0xD7 « Balanced test » : ACTION SUR L'APPAREIL. Démarre (actif=True) ou arrête l'équilibrage de la cellule
+        `cellule` (1..n). Renvoie True / False selon le résultat annoncé par l'appareil, None s'il ne répond pas.
+
+        Commande de test d'usine : la sémantique exacte (équilibrage passif ou actif, direction du transfert) dépend du
+        modèle. Elle n'est utilisée par aucune page de l'application tant qu'elle n'a pas été validée sur l'appareil réel.
+        """
+        maxi = self.n_cellules or 48
+        if isinstance(cellule, bool) or not isinstance(cellule, int) or not 1 <= cellule <= maxi:
+            raise ValueError(f"cellule invalide : {cellule!r} (1 à {maxi})")
+        t = self._interroger(CMD_TEST_EQUILIBRAGE, 1, [cellule, 1 if actif else 0])
+        if not t:
+            return None
+        return t[0][4] == 1  # octet 0 de la réponse : 0 = échec, 1 = succès
+
     def lire_tout(self):
         """Une lecture complète, ou None si l'appareil ne répond à rien (en veille, mauvais port...)."""
         g = self.lire_global()
@@ -177,8 +214,12 @@ class Daly:
         elif self._pack_prec is not None and self._pack_manques < TENUE:  # réponse perdue : on tient la dernière valeur
             v_pack, self._pack_manques = self._pack_prec, self._pack_manques + 1
         res = {"v_pack": v_pack, "courant": g["courant"] if g else None,
-               "soc": g["soc"] if g else None, "cellules": cellules or [], "equilibrage": None}
+               "soc": g["soc"] if g else None, "cellules": cellules or [], "equilibrage": None, "seuils": self.seuils}
         if cellules:
+            if self.seuils is None and self._essais_seuils < 2:  # une seule lecture des seuils (2 essais au plus)
+                self._essais_seuils += 1
+                self.seuils = self.lire_parametres_equilibrage()
+            res["seuils"] = self.seuils
             res["equilibrage"] = self.lire_equilibrage(len(cellules))
             res.update(resume_cellules(cellules) or {})
         return res
